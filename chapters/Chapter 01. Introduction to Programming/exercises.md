@@ -1,4 +1,4 @@
-# Chapter 1 Exercises
+# Chapter 01 Exercises
 
 1. Install and make yourself familiar with Microsoft Visual Studio and Microsoft Developer Network (MSDN) Library Documentation.
 2. Find the description of the System.Console class in the standard .NET API documentation (MSDN Library).
