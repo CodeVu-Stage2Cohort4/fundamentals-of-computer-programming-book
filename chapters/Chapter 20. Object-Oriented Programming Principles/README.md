@@ -920,26 +920,3 @@ public class Example
 }
 Other Design Patterns
 There are dozens of other well-known design patterns, but we are not going to discuss them. The more inquisitive readers can look up "Design Patterns" on the internet and learn what other design patterns, such as Abstract Factory, Prototype, Adapter, Composite, Facade, Command, Observer, Iterator, etc. serve for and how they are put into use. If you pursue .NET development more seriously, you will see for yourselves that the whole standard library (FCL) is built on the principles of OOP and the classic design patterns are very actively used.
-Exercises
-	We are given a school. The school has classes of students. Each class has a set of teachers. Each teacher teaches a set of courses. The students have a name and unique number in the class. Classes have a unique text identifier. Teachers have names. Courses have a name, count of classes and count of exercises. The teachers as well as the students are people. Your task is to model the classes (in terms of OOP) along with their attributes and operations define the class hierarchy and create a class diagram with Visual Studio.
-	Define a class Human with properties "first name" and "last name". Define the class Student inheriting Human, which has the property "mark". Define the class Worker inheriting Human with the property "wage" and "hours worked". Implement a "calculate hourly wage" method, which calculates a worker’s hourly pay rate based on wage and hours worked. Write the corresponding constructors and encapsulate all data in properties.
-	Initialize an array of 10 students and sort them by mark in ascending order. Use the interface System.IComparable<T>.
-	Initialize an array of 10 workers and sort them by salary in descending order.
-	Define an abstract class Shape with abstract method CalculateSurface() and fields width and height. Define two additional classes for a triangle and a rectangle, which implement CalculateSurface(). This method has to return the areas of the rectangle (height*width) and the triangle (height*width/2). Define a class for a circle with an appropriate constructor, which initializes the two fields (height and width) with the same value (the radius) and implement the abstract method for calculating the area. Create an array of different shapes and calculate the area of each shape in another array.
-	Implement the following classes: Dog, Frog, Cat, Kitten and Tomcat. All of them are animals (Animal). Animals are characterized by age, name and gender. Each animal makes a sound (use a virtual method in the Animal class). Create an array of different animals and print on the console their name, age and the corresponding sound each one makes.
-	Using Visual Studio generate the class diagrams of the classes from the previous task with it.
-	A bank holds different types of accounts for its customers: deposit accounts, loan accounts and mortgage accounts. Customers can be individuals or companies. All accounts have a customer, balance and interest rate (monthly based). Deposit accounts allow depositing and withdrawing of money. Loan and mortgage accounts allow only depositing. All accounts can calculate their interest for a given period (in months). In the general case, it is calculated as follows: number_of_months * interest_rate. Loan accounts have no interest rate during the first 3 months if held by individuals and during the first 2 months if held by a company. Deposit accounts have no interest rate if their balance is positive and less than 1000. Mortgage accounts have ? the interest rate during the first 12 months for companies and no interest rate during the first 6 months for individuals. Your task is to write an object-oriented model of the bank system. You must identify the classes, interfaces, base classes and abstract actions and implement the interest calculation functionality.
-	Read about the Abstract Factory design pattern and implement it in C#.
-Solutions and Guidelines
-	The task is trivial. Just follow the problem description and write the code.
-	The task is trivial. Just follow the problem description and write the code.
-	Implement IComparable<T> in Student and then sort the array.
-	This problem is like the previous one.
-	Just implement the classes as described in the problem description.
-	Printing information can be implemented in the virtual method System.
-Object.ToString(). In order to print the content of an array of animals, you can use a foreach loop.
-	If you have the full version of Visual Studio, just use "Add New Item" ? "Class Diagram". Class diagrams are not supported in VS Express Edition. In this case you can find some other UML tool (see http://en.wikipedia.org/
-wiki/List_of_UML_tools).
-	Use abstract class Account with abstract method CalculateInterest(…).
-	You can read about the "abstract factory" design pattern in Wikipedia: http://en.wikipedia.org/wiki/Abstract_factory_pattern.
-

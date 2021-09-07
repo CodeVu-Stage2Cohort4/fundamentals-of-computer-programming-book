@@ -1,0 +1,22 @@
+# Chapter 06 Solutions and Guidelines
+
+1. Use a for-loop.
+1. Use a for-loop and the operator % for finding the remainder in integer division. A number num is not divisible by 3 and 7 simultaneously exactly when (num % (3*7) == 0).
+1. First read the count of numbers, for example in a variable n. Then consequently enter n numbers with one for loop. While entering each new number, save in two variables the smallest and the largest number until this moment. At the start initialize the smallest and the largest number with Int32.MaxValue and Int32.MinValue respectively.
+1. Number the cards from 2 to 14 (these numbers will match the cards 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A). Number the suits from 1 to 4 (1 – club, 2 – diamond, 3 – heart and 4 – spades). Now you can use the two nested loops and print each of the cards with two switch statements.
+1. Fibonacci numbers start from 0 and 1, each additional is obtained as the sum of the previous two. You can find the first n Fibonacci numbers with a for-loop from 1 to n, and at each iteration calculate the next number by using the previous two (which you will keep in two additional variables).
+1. Multiply the numbers from K+1 to N (think why this is correct). You may check the properties of the factorial function in Wikipedia: http://en.wikipedia.org/wiki/Factorial.
+1. One solution is to calculate separately each factorial and at the end to perform the respective operations with the results.
+    - Think how you can optimize the calculations, in order to not calculate too many factorials! In fractions of factorials there are many possibilities to reduce the same factors in the numerator and denominator. These optimizations will not only reduce the calculations and increase the performance but will save you from overflows in some situations. You might need to use arrays num[0..N] and denum[0..n] to hold the factors in the numerator and in the denominator and to cancel the fraction. You may read about arrays in the chapter "Arrays".
+1. Use the same concept of canceling the faction of simple factors, like you probably did in the previous problem.
+You may also read more about the Catalan numbers in Wikipedia (http://en.wikipedia.org/wiki/Catalan_number) and use the recurrent formula for calculating them.
+1. You can solve the problem with a for-loop for k=0…n, by using three additional variables factorial, power and sum in which you will keep for the kth iteration of the loop respectively k!, xk and the sum of the first k members of sequence. If your implementation is good, you should have only one loop and you should not use external functions to calculate factorials and to raise power.
+1. You should use two nested loops, similar to the problem "Printing a Triangle". The outer loop must run from 1 to N, and the inner – from the value of the outer loop to the value of the outer loop + N - 1.
+1. The number of zeros at the end of n! depends on how many times the number 10 is a divisor of the factorial. Because the product 1*2*3…*n has a greater number of divisors 2, than 5 and because 10 = 2 * 5, then the number of zeros in n! is exactly as many as the multipliers with value 5 in the product 1 * 2 * 3 * … * n. Because every fifth number is divisible by 5, and every 25th number is divisible by 5 two times, etc., the number of zeros in n! is the sum: n/5 + n/25 + n/125 + …
+1. Read in Wikipedia what numeral systems are: <http://en.wikipedia.org/wiki/Numeral_system>. After that consider how you can convert numbers from decimal numeral system to another. Think about the opposite – moving from another numeral system to decimal. If you have difficulty, see the chapter "Numeral Systems".
+1. See the previous problem.
+1. See the previous problem.
+1. See the previous problem.
+1. Search in the Internet for information about the class System.Random. Read in the Internet about arrays (or in the next chapter). Create an array with N elements and write in it the numbers from 1 to N. After that a few times (think exactly how many) swap two random pairs of elements from the array.
+1. Search the Internet for the Euclidean algorithm for calculation the greatest common divisor (CGD) or read about it in Wikipedia: <http://en.wikipedia.org/wiki/Euclidean_algorithm>.
+1. You should use a two-dimensional array (matrix). Search the Internet or see the chapter "Arrays". The algorithm of filling a spiral matrix in not straightforward and may require a bit of thinking. You might find helpful the "Spiral Matrix" problem from chapter "Sample Programming Exam – Topic #3".

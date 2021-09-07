@@ -558,52 +558,6 @@ Enter a and b (for rectangle) or a and h (for triangle):
 Enter 1 for a rectangle or 2 for a triangle:
 2
 The area of your figure is 10
-Exercises
-	Write a program that reads from the console three numbers of type int and prints their sum.
-	Write a program that reads from the console the radius "r" of a circle and prints its perimeter and area.
-	A given company has name, address, phone number, fax number, web site and manager. The manager has name, surname and phone number. Write a program that reads information about the company and its manager and then prints it on the console.
-	Write a program that prints three numbers in three virtual columns on the console. Each column should have a width of 10 characters and the numbers should be left aligned. The first number should be an integer in hexadecimal; the second should be fractional positive; and the third – a negative fraction. The last two numbers have to be rounded to the second decimal place.
-	Write a program that reads from the console two integer numbers (int) and prints how many numbers between them exist, such that the remainder of their division by 5 is 0. Example: in the range (14, 25) there are 3 such numbers: 15, 20 and 25.
-	Write a program that reads two numbers from the console and prints the greater of them. Solve the problem without using conditional statements.
-	Write a program that reads five integer numbers and prints their sum. If an invalid number is entered the program should prompt the user to enter another number.
-	Write a program that reads five numbers from the console and prints the greatest of them.
-	Write a program that reads an integer number n from the console. After that reads n numbers from the console and prints their sum.
-	Write a program that reads an integer number n from the console and prints all numbers in the range [1…n], each on a separate line.
-	Write a program that prints on the console the first 100 numbers in the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, …
-	Write a program that calculates the sum (with precision of 0.001) of the following sequence: 1 + 1/2 - 1/3 + 1/4 - 1/5 + …
-Solutions and Guidelines
-	Use the methods Console.ReadLine() and Int32.Parse().
-	Use Math.PI constant and the well-known geometric formulas.
-	Format the text with Write(…) or WriteLine(…) similar to the example with the letter that we looked at.
-	Use the format strings explained in the "Composite Formatting" section and the method Console.WriteLine(). Below is a piece of the code:
-int hexNum = 2013;
-Console.WriteLine("|0x{0,-8:X}|", hexNum);
-double fractNum = -1.856;
-Console.WriteLine("|{0,-10:f2}|", fractNum);
-	There are two approaches for solving the problem:
-First approach: Use mathematical tricks for optimized calculation based on the fact that every fifth number is divisible by 5. Think how to implement this correctly and about the borderline cases.
-The second approach is easier but it works slower. With a for-loop each number within the given range can be checked. You should read in Internet or in the chapter "Loops" how to use for-loops.
-	Since the problem requires a solution, which does not use conditional statements, you should use a different approach. Two possible solutions of the problem include the use of functions of class Math. The greater of the two numbers you can find with the function Math.Max(a, b) and the smaller with Math.Min(a, b).
-Another solution to the problem includes usage of the function for taking the absolute value of a number Math.Abs(a):
-int a = 2011;
-int b = 1990;
-Console.WriteLine("Greater: {0}", (a + b + Math.Abs(a-b)) / 2);
-Console.WriteLine("Smaller: {0}", (a + b - Math.Abs(a-b)) / 2);
-The third solution uses bitwise operations:
-int a = 1990;
-int b = 2011;
-int max = a - ((a - b) & ((a - b) >> 31));
-Console.WriteLine(max);
-There is another solution which is partially correct because it uses a hidden conditional statement (the ternary ?: operator):
-int a = 1990;
-int b = 2013;
-int max = a > b ? a : b;
-Console.WriteLine(max);
-	You can read the numbers in five different variables and finally sum them and print the obtained sum. Note that the sum of 5 int values may not fit in the int type so you should use long.
-Another approach is using loops. When parsing the consecutive numbers use conditional parsing with TryParse(…). When an invalid number is entered, repeat reading of the number. You can do this through while loop with an appropriate exit condition. To avoid repetitive code you can explore the for-loops from the chapter "Loops".
-	You can use the comparison statement "if" (you can read about it on the Internet or from the chapter "Conditional Statements"). To avoid repeating code you can use the looping construct "for" (you could read about it online or in the chapter "Loops").
-	You should use a for-loop (see the chapter "Loops"). Read the numbers one after another and accumulate their sum in a variable, which then display on the console at the end.
-	Use a combination of loops (see the chapter "Loops") and the methods Console.ReadLine(), Console.WriteLine() and Int32.Parse().
-	More about the Fibonacci sequence can be found in Wikipedia at: http://en.wikipedia.org/wiki/Fibonacci_sequence. For the solution of the problem use 2 temporary variables in which store the last 2 calculated values and with a loop calculate the rest (each subsequent number in the sequence is a sum of the last two). Use a for-loop to implement the repeating logic (see the chapter "Loops").
-	Accumulate the sum of the sequence in a variable inside a while-loop (see the chapter "Loops"). At each step compare the old sum with the new sum. If the difference between the two sums Math.Abs(current_sum – old_sum) is less than the required precision (0.001), the calculation should finish because the difference is constantly decreasing and the precision is constantly increasing at each step of the loop. The expected result is 1.307.
+
+
 
