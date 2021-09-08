@@ -94,7 +94,7 @@ uint days = 730480;
 ulong hours = 17531520;
 // Print the result on the console
 Console.WriteLine(centuries + " centuries are " + years +
-	" years, or " + days + " days, or " + hours + " hours.");
+    " years, or " + days + " days, or " + hours + " hours.");
 
 // Console output:
 // 20 centuries are 2000 years, or 730480 days, or 17531520
@@ -282,13 +282,13 @@ Consider an example in which we declare one variable of type `char`, initialize 
 char ch = 'a';
 // Print the results on the console
 Console.WriteLine(
-	"The code of '" + ch + "' is: " + (int)ch);
+    "The code of '" + ch + "' is: " + (int)ch);
 ch = 'b';
 Console.WriteLine(
-	"The code of '" + ch + "' is: " + (int)ch);
+    "The code of '" + ch + "' is: " + (int)ch);
 ch = 'A';
 Console.WriteLine(
-	"The code of '" + ch + "' is: " + (int)ch);
+    "The code of '" + ch + "' is: " + (int)ch);
 
 // Console output:
 // The code of 'a' is: 97

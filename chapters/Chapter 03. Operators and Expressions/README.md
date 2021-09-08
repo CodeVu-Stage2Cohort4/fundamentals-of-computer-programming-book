@@ -462,36 +462,53 @@ Specific conversion from type `S` to type `T` allows the expression of type `S` 
 
 In C# not all types can be converted to all other types, but only to some of them. For convenience, we shall group some of the possible transformations in C# according to their type into three categories:
 
-	implicit conversion;
-	explicit conversion;
-	conversion to or from string;
-Implicit Type Conversion
-Implicit (hidden) type conversion is possible only when there is no risk of data loss during the conversion, i.e. when converting from a lower range type to a larger range (e.g. from int to long). To make an implicit conversion it is not necessary to use any operator and therefore such transformation is called implicit. The implicit conversion is done automatically by the compiler when you assign a value with lower range to a variable with larger range or if the expression has several types with different ranges. In such case the conversion is executed into the type with the highest range.
-Implicit Type Conversion – Examples
+- implicit conversion;
+- explicit conversion;
+- conversion to or from `string`;
+
+### Implicit Type Conversion
+
+Implicit (hidden) type conversion is possible only when there is no risk of data loss during the conversion, i.e. when converting from a lower range type to a larger range (e.g. from `int` to `long`). To make an **implicit conversion** it is not necessary to use any operator and therefore such transformation is called implicit. The implicit conversion is done automatically by the compiler when you assign a value with lower range to a variable with larger range or if the expression has several types with different ranges. In such case the conversion is executed into the type with the highest range.
+
+#### Implicit Type Conversion – Examples
+
 Here is an example of implicit type conversion:
+
+```cs
 int myInt = 5;
 Console.WriteLine(myInt); // 5
 long myLong = myInt;
 Console.WriteLine(myLong); // 5
 Console.WriteLine(myLong + myInt); // 10
-In the example we create a variable myInt of type int and assign it the value 5. After that we create a variable myLong of type long and assign it the value contained in myInt. The value stored in myLong is automatically converted from type int to type long. Finally, we output the result from adding the two variables. Because the variables are from different types they are automatically converted to the type with the greater range, i.e. to type long and the result that is printed on the console is long again. Indeed, the given parameter to the method Console.WriteLine() is of type long, but inside the method it will be converted again, this time to type string, so it can be printed on the console. This transformation is performed by the method Long.ToString().
-Possible Implicit Conversions
+```
+
+In the example we create a variable `myInt` of type int and assign it the value 5. After that we create a variable `myLong` of type `long` and assign it the value contained in `myInt`. The value stored in `myLong` is automatically converted from type `int` to type `long`. Finally, we output the result from adding the two variables. Because the variables are from different types they are automatically converted to the type with the greater range, i.e. to type `long` and the result that is printed on the console is `long` again. Indeed, the given parameter to the method `Console.WriteLine()` is of type `long`, but inside the method it will be converted again, this time to type `string`, so it can be printed on the console. This transformation is performed by the method `Long.ToString()`.
+
+#### Possible Implicit Conversions
 Here are some possible implicit conversions of primitive data types in C#:
-	sbyte > short, int, long, float, double, decimal;
-	byte > short, ushort, int, uint, long, ulong, float, double, decimal;
-	short > int, long, float, double, decimal;
-	ushort > int, uint, long, ulong, float, double, decimal;
-	char > ushort, int, uint, long, ulong, float, double, decimal (although char is a character type in some cases it may be regarded as a number and have a numeric type of behavior, it can even participate in numeric expressions);
-	uint > long, ulong, float, double, decimal;
-	int > long, float, double, decimal;
-	long > float, double, decimal;
-	ulong > float, double, decimal;
-	float > double.
-There is no data loss when converting types of smaller range to types with a larger range. The numerical value remains the same after conversion. There are a few exceptions. When you convert type int to type float (32-bit values), the difference is that int uses all bits for a whole number, whereas float has a part of bits used for representation of a fractional part. Hence, loss of precision is possible because of rounding when conversion from int to float is made. The same applies for the conversion of 64-bit long to 64-bit double.
-Explicit Type Conversion
-Explicit type conversion is used whenever there is a possibility of data loss. When converting floating point type to integer type there is always a loss of data coming from the elimination of the fractional part and an explicit conversion is obligatory (e.g. double to long). To make such a conversion it is necessary to use the operator for data conversion (type). There may also be data loss when converting a type with a wider range to type with a narrower one (double to float or long to int).
-Explicit Type Conversion – Example
+
+- `sbyte` > `short`, `int`, `long`, `float`, `double`, `decimal`;
+- `byte` > `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`;
+- `short` > `int`, `long`, `float`, `double`, `decimal`;
+- `ushort` > `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`;
+- `char` > `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal` (although `char` is a character type in some cases it may be regarded as a number and have a numeric type of behavior, it can even participate in numeric expressions);
+- `uint` > `long`, `ulong`, `float`, `double`, `decimal`;
+- `int` > `long`, `float`, `double`, `decimal`;
+- `long` > `float`, `double`, `decimal`;
+- `ulong` > `float`, `double`, `decimal`;
+- `float` > `double`.
+
+There is **no data loss when converting types of smaller range to types with a larger range**. The numerical value remains the same after conversion. There are a few exceptions. When you convert type `int` to type `float` (32-bit values), the difference is that `int` uses all bits for a whole number, whereas `float` has a part of bits used for representation of a fractional part. Hence, loss of precision is possible because of rounding when conversion from `int` to `float` is made. The same applies for the conversion of 64-bit `long` to 64-bit `double`.
+
+### Explicit Type Conversion
+
+Explicit type conversion is used whenever there is a possibility of data loss. When converting floating point type to integer type there is always a loss of data coming from the elimination of the fractional part and an **explicit conversion** is obligatory (e.g. `double` to `long`). To make such a conversion it is necessary to use the operator for data conversion (`type`). There may also be data loss when converting a type with a wider range to type with a narrower one (`double` to `float` or `long` to `int`).
+
+#### Explicit Type Conversion – Example
+
 The following example illustrates the use of explicit type conversion and data loss that may occur in some cases:
+
+```cs
 double myDouble = 5.1d;
 Console.WriteLine(myDouble); // 5.1
 
@@ -504,41 +521,75 @@ Console.WriteLine(myDouble); // 5000000000
 int myInt = (int)myDouble;
 Console.WriteLine(myInt); // -2147483648
 Console.WriteLine(int.MinValue); // -2147483648
-In the first line of the example we assign a value 5.1 to the variable myDouble. After we convert (explicitly) to type long using the operator (long) and print on the console the variable myLong we see that the variable has lost its fractional part, because long is an integer. Then we assign to the real double precision variable myDouble the value 5 billion. Finally, we convert myDouble to int by the operator (int) and print variable myInt. The result is the same like when we print int.MinValue because myDouble contains a value bigger than the range of int.
- 	It is not always possible to predict what the value of a variable will be after its scope overflows! Therefore, use sufficiently large types and be careful when switching to a "smaller" type.
-Data Loss during Type Conversion
+```
+
+In the first line of the example we assign a value 5.1 to the variable `myDouble`. After we convert (explicitly) to type long using the operator (`long`) and print on the console the variable `myLong` we see that the variable has lost its fractional part, because `long` is an integer. Then we assign to the real double precision variable `myDouble` the value 5 billion. Finally, we convert `myDouble` to `int` by the operator (`int`) and print variable `myInt`. The result is the same like when we print `int`.MinValue because `myDouble` contains a value bigger than the range of `int`.
+
+| :warning: | It is not always possible to predict what the value of a variable will be after its scope overflows! Therefore, use sufficiently large types and be careful when switching to a "smaller" type. |
+|---|:--|
+
+### Data Loss during Type Conversion
+
 We will give an example for data loss during type conversion:
+
+```cs
 long myLong = long.MaxValue;
 int myInt = (int)myLong;
 
 Console.WriteLine(myLong); // 9223372036854775807
 Console.WriteLine(myInt); // -1
+```
+
 The type conversion operator may also be used in case of an intentional implicit conversion. This contributes to the readability of code, reducing the chance for errors and it is considered good practice by many programmers.
+
 Here are some more examples for type conversions:
+
+```cs
 float heightInMeters = 1.74f; // Explicit conversion
 double maxHeight = heightInMeters; // Implicit
 double minHeight = (double)heightInMeters; // Explicit
 float actualHeight = (float)maxHeight; // Explicit
 
 float maxHeightFloat = maxHeight; // Compilation error!
-In the example above at the last line we have an expression that will generate a compilation error. This is because we try implicitly to convert type double to float, which can cause data loss. C# is a strongly typed programming language and does not allow such appropriation of values.
-Forcing Overflow Exceptions during Casting
-Sometimes it is convenient, instead of getting the wrong result, when a type overflows during switching from larger to smaller type, to get notification of the problem. This is done by the keyword checked which includes a check for overflow in integer types:
+```
+
+In the example above at the last line we have an expression that will generate a compilation error. This is because we try implicitly to convert type `double` to `float`, which can cause data loss. C# is a strongly typed programming language and does not allow such appropriation of values.
+
+### Forcing Overflow Exceptions during Casting
+
+Sometimes it is convenient, instead of getting the wrong result, when a type overflows during switching from larger to smaller type, to get notification of the problem. This is done by the keyword `checked` which includes a **check for overflow in integer types**:
+
+```cs
 double d = 5e9d; // 5 * 10^9
 Console.WriteLine(d); // 5000000000
 int i = checked((int)d); // System.OverflowException
 Console.WriteLine(i);
-During the execution of the code fragment above an exception (i.e. notification of an error) of type OverflowException is raised. More information about the exceptions and the methods to catch and handle them can be found in the chapter "Exception Handling".
-Possible Explicit Conversions
+```
+
+During the execution of the code fragment above an exception (i.e. notification of an error) of type `OverflowException` is raised. More information about the exceptions and the methods to catch and handle them can be found in the chapter "Exception Handling".
+
+### Possible Explicit Conversions
+
 The explicit conversions between numeral types in C# are possible between any couple among the following types:
+
+```plain
 sbyte, byte, short, ushort, char, int, uint, long, ulong, float, double, decimal
+```
+
 In these conversions data can be lost, like data about the number size or information about its precision.
+
 Notice that conversion to or from string is not possible through typecasting.
-Conversion to String
-If it is necessary we can convert any type of data, including the value null, to string. The conversion of strings is done automatically whenever you use the concatenation operator (+) and one of the arguments is not of type string. In this case the argument is converted to a string and the operator returns a new string representing the concatenation of the two strings.
-Another way to convert different objects to type string is to call the method ToString() of the variable or the value. It is valid for all data types in .NET Framework. Even calling 3.ToString() is fully valid in C# and the result will return the string "3".
-Conversion to String – Example
+
+### Conversion to String
+
+If it is necessary we can convert any type of data, including the value `null`, to string. The conversion of strings is done automatically whenever you use the concatenation operator (`+`) and one of the arguments is not of type string. In this case the argument is **converted to a string** and the operator returns a new string representing the concatenation of the two strings.
+Another way to convert different objects to type string is to call the method `ToString()` of the variable or the value. It is valid for all data types in .NET Framework. Even calling `3.ToString()` is fully valid in C# and the result will return the string "3".
+
+#### Conversion to String – Example
+
 Let’s take a look on several examples for converting different data types to string:
+
+```cs
 int a = 5;
 int b = 7;
 
@@ -550,16 +601,25 @@ Console.WriteLine(incorrect);
 
 Console.WriteLine(
 	"Perimeter = " + 2 * (a + b) + ". Area = " + (a * b) + ".");
+```
+
 The result from the example is as follows:
+
+```plain
 Sum = 12
 Sum = 57
 Perimeter = 24. Area = 35.
-From the results it is obvious, that concatenating a number to a character string returns in result the string followed by the text representation of the number. Note that the "+" for concatenating strings can cause unpleasant effects on the addition of numbers, because it has equal priority with the operator "+" for mathematical addition. Unless the priorities of the operations are changed by placing the brackets, they will always be executed from left to right.
-More details about converting from and to string we will look at the chapter "Console Input and Output".
+```
+
+From the results it is obvious, that concatenating a number to a character string returns in result the string followed by the text representation of the number. Note that the "`+`" for concatenating strings can cause **unpleasant effects** on the addition of numbers, because it has equal priority with the operator "`+`" for mathematical addition. Unless the priorities of the operations are changed by placing the brackets, they will always be executed from left to right.
+
+More details about converting from and to `string` we will look at the chapter "Console Input and Output".
 
 ## Expressions
 
-Much of the program’s work is the calculation of expressions. Expressions are sequences of operators, literals and variables that are calculated to a value of some type (number, string, object or other type). Here are some examples of expressions:
+Much of the program’s work is the calculation of expressions. **Expressions are sequences of operators, literals and variables** that are calculated to a value of some type (number, string, object or other type). Here are some examples of expressions:
+
+```cs
 int r = (150-20) / 2 + 5;
 
 // Expression for calculating the surface of the circle
@@ -571,19 +631,32 @@ double perimeter = 2 * Math.PI * r;
 Console.WriteLine(r);
 Console.WriteLine(surface);
 Console.WriteLine(perimeter);
+```
+
 In the example three expressions are defined. The first expression calculates the radius of a circle. The second calculates the area of a circle, and the last one finds the perimeter. Here is the result from the fragment above:
+
+```plain
 70
 15393.80400259
 439.822971502571
-Side Effects of Expressions
-The calculation of the expression can have side effects, because the expression can contain embedded assignment operators, can cause increasing or decreasing of the value and calling methods. Here is an example of such a side effect:
+```
+
+### Side Effects of Expressions
+
+The calculation of the expression can have **side effects**, because the expression can contain embedded assignment operators, can cause increasing or decreasing of the value and calling methods. Here is an example of such a side effect:
+
+```cs
 int a = 5;
 int b = ++a;
 
 Console.WriteLine(a); // 6
 Console.WriteLine(b); // 6
-Expressions, Data Types and Operator Priorities
+```
+
+### Expressions, Data Types and Operator Priorities
+
 When writing expressions, the data types and the behavior of the used operators should be considered. Ignoring this can lead to unexpected results. Here are some simple examples:
+```
 // First example
 double d = 1 / 2;
 Console.WriteLine(d); // 0, not 0.5
@@ -591,18 +664,30 @@ Console.WriteLine(d); // 0, not 0.5
 // Second example
 double half = (double)1 / 2;
 Console.WriteLine(half); // 0.5
-In the first example, an expression divides two integers (written this way, 1 and two are integers) and assigns the result to a variable of type double. The result may be unexpected for some people, but that is because they are ignoring the fact that in this case the operator "/" works over integers and the result is an integer obtained by cutting the fractional part.
-The second example shows that if we want to do division with fractions in the result, it is necessary to convert to float or double at least one of the operands. In this scenario the division is no longer integer and the result is correct.
-Division by Zero
-Another interesting example is division by 0. Most programmers think that division by 0 is an invalid operation and causes an error at runtime (exception) but this is actually true only for integer division by 0. Here is an example, which shows that fractional division by 0 is Infinity or NaN:
+```
+
+In the first example, an expression divides two integers (written this way, 1 and two are integers) and assigns the result to a variable of type `double`. The result may be unexpected for some people, but that is because they are ignoring the fact that in this case the operator "`/`" works over integers and the result is an integer obtained by cutting the fractional part.
+
+The second example shows that if we want to do division with fractions in the result, it is necessary to convert to `float` or `double` at least one of the operands. In this scenario the division is no longer integer and the result is correct.
+
+### Division by Zero
+
+Another interesting example is **division by 0**. Most programmers think that division by 0 is an invalid operation and causes an error at runtime (exception) but this is actually true only for integer division by 0. Here is an example, which shows that fractional division by `0` is `Infinity` or `NaN`:
+
+```cs
 int num = 1;
 double denum = 0; // The value is 0.0 (real number)
 int zeroInt = (int) denum; // The value is 0 (integer number)
 Console.WriteLine(num / denum); // Infinity
 Console.WriteLine(denum / denum); // NaN
 Console.WriteLine(zeroInt / zeroInt); // DivideByZeroException
-Using Brackets to Make the Code Clear
-When working with expressions it is important to use brackets whenever there is the slightest doubt about the priorities of the operations. Here is an example that shows how useful the brackets are:
+```
+
+### Using Brackets to Make the Code Clear
+
+When working with expressions it is important to **use brackets** whenever there is the slightest doubt about the priorities of the operations. Here is an example that shows how useful the brackets are:
+
+```cs
 double incorrect = (double)((1 + 2) / 4);
 Console.WriteLine(incorrect); // 0
 
@@ -611,3 +696,4 @@ Console.WriteLine(correct); // 0.75
 
 Console.WriteLine("2 + 3 = " + 2 + 3); // 2 + 3 = 23
 Console.WriteLine("2 + 3 = " + (2 + 3)); // 2 + 3 = 5
+```
