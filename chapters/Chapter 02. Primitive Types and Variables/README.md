@@ -427,10 +427,13 @@ A list of the C# keywords can be found in the section "Keywords" in chapter "Int
 #### Naming Variables – Examples
 
 Proper names:
+
 - `name`
 - `first_Name`
 - `_name1`
+
 Improper names (will lead to compilation error):
+
 - `1` (digit)
 - `if` (keyword)
 - `1name` (starts with a digit)
@@ -565,7 +568,7 @@ byte[] bytes = { 1, 2, 3 };
 
 At this point the variables are located in the memory as follows:
 
-![	](./assets/variables-in-mem.jpg)
+![](./assets/variables-in-mem.jpg)
 
 If we now execute the following code, which changes the values of the variables, we will see what **happens to the memory** when changing the value and reference types:
 
