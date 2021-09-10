@@ -204,7 +204,7 @@ The main format of the conditional statements if is as follows:
 ```cs
 if (Boolean expression)
 {
-	Body of the conditional statement;
+    Body of the conditional statement;
 }
 ```
 
@@ -223,17 +223,17 @@ Let’s take a look at an example of using a conditional statement if:
 ```cs
 static void Main()
 {
-	Console.WriteLine("Enter two numbers.");
-	Console.Write("Enter first number: ");
-	int firstNumber = int.Parse(Console.ReadLine());
-	Console.Write("Enter second number: ");
-	int secondNumber = int.Parse(Console.ReadLine());
-	int biggerNumber = firstNumber;
-	if (secondNumber > firstNumber)
-	{
-		biggerNumber = secondNumber;
-	}
-	Console.WriteLine("The bigger number is: {0}", biggerNumber);
+    Console.WriteLine("Enter two numbers.");
+    Console.Write("Enter first number: ");
+    int firstNumber = int.Parse(Console.ReadLine());
+    Console.Write("Enter second number: ");
+    int secondNumber = int.Parse(Console.ReadLine());
+    int biggerNumber = firstNumber;
+    if (secondNumber > firstNumber)
+    {
+        biggerNumber = secondNumber;
+    }
+    Console.WriteLine("The bigger number is: {0}", biggerNumber);
 }
 ```
 
@@ -255,8 +255,8 @@ Here is an example of omitting the curly brackets which leading to confusion:
 ```cs
 int a = 6;
 if (a > 5)
-	Console.WriteLine("The variable is greater than 5.");
-	Console.WriteLine("This code will always execute!");
+    Console.WriteLine("The variable is greater than 5.");
+    Console.WriteLine("This code will always execute!");
 // Bad practice: misleading code
 ```
 
@@ -272,11 +272,11 @@ In C#, as in most of the programming languages there is a conditional statement 
 ```cs
 if (Boolean expression)
 {
-	Body of the conditional statement;
+    Body of the conditional statement;
 }
 else
 {
-	Body of the else statement;
+    Body of the else statement;
 }
 ```
 
@@ -291,15 +291,15 @@ Let’s take a look at the next example and illustrate how the if-else statement
 ```cs
 static void Main()
 {
-	int x = 2;
-	if (x > 3)
-	{
-		Console.WriteLine("x is greater than 3");
-	}
-	else
-	{
-		Console.WriteLine("x is not greater than 3");
-	}
+    int x = 2;
+    if (x > 3)
+    {
+        Console.WriteLine("x is greater than 3");
+    }
+    else
+    {
+        Console.WriteLine("x is not greater than 3");
+    }
 }
 ```
 
@@ -331,18 +331,18 @@ int second = 3;
 
 if (first == second)
 {
-	Console.WriteLine("These two numbers are equal.");
+    Console.WriteLine("These two numbers are equal.");
 }
 else
 {
-	if (first > second)
-	{
-		Console.WriteLine("The first number is greater.");
-	}
-	else
-	{
-		Console.WriteLine("The second number is greater.");
-	}
+    if (first > second)
+    {
+        Console.WriteLine("The first number is greater.");
+    }
+    else
+    {
+        Console.WriteLine("The second number is greater.");
+    }
 }
 ```
 
@@ -360,27 +360,27 @@ Sometimes we need to use a **sequence of `if` structures,** where the `else` cla
 char ch = 'X';
 if (ch == 'A' || ch == 'a')
 {
-	Console.WriteLine("Vowel [ei]");
+    Console.WriteLine("Vowel [ei]");
 }
 else if (ch == 'E' || ch == 'e')
 {
-	Console.WriteLine("Vowel [i:]");
+    Console.WriteLine("Vowel [i:]");
 }
 else if (ch == 'I' || ch == 'i')
 {
-	Console.WriteLine("Vowel [ai]");
+    Console.WriteLine("Vowel [ai]");
 }
 else if (ch == 'O' || ch == 'o')
 {
-	Console.WriteLine("Vowel [ou]");
+    Console.WriteLine("Vowel [ou]");
 }
 else if (ch == 'U' || ch == 'u')
 {
-	Console.WriteLine("Vowel [ju:]");
+    Console.WriteLine("Vowel [ju:]");
 }
 else
 {
-	Console.WriteLine("Consonant");
+    Console.WriteLine("Consonant");
 }
 ```
 
@@ -409,16 +409,16 @@ The structure `switch-case` chooses which part of the programming code to execut
 ```cs
 switch (integer_selector)
 {
-	case integer_value_1: 
-		statements;
-		break;
-	case integer_value_2:
-		statements;
-		break;
-	// ...
-	default:
-		statements;
-		break;
+    case integer_value_1: 
+        statements;
+        break;
+    case integer_value_2:
+        statements;
+        break;
+    // ...
+    default:
+        statements;
+        break;
 }
 ```
 
@@ -440,22 +440,22 @@ Using multiple labels is appropriate, when we want to execute the same structure
 int number = 6;
 switch (number)
 {
-	case 1:
-	case 4:
-	case 6:
-	case 8:
-	case 10:
-		Console.WriteLine("The number is not prime!"); 
-		break;
-	case 2:
-	case 3:
-	case 5:
-	case 7:
-		Console.WriteLine("The number is prime!"); 
-		break;
-	default:
-		Console.WriteLine("Unknown number!"); 
-		break;
+    case 1:
+    case 4:
+    case 6:
+    case 8:
+    case 10:
+        Console.WriteLine("The number is not prime!"); 
+        break;
+    case 2:
+    case 3:
+    case 5:
+    case 7:
+        Console.WriteLine("The number is prime!"); 
+        break;
+    default:
+        Console.WriteLine("Unknown number!"); 
+        break;
 }
 ```
 
