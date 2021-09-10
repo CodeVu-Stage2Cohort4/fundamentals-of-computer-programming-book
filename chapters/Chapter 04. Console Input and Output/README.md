@@ -30,10 +30,7 @@ After starting the console a black screen (this color can be changed) like the f
 
 ![alt](./assets/windows-terminal.JPG)
  
-When starting the console the home directory of the current user (in this case the username is `nakov`) is used as a current directory and this is displayed as a guide for the user.
-
-| :warning: | Console can be launched through pressing the Start button and typing "`cmd`" in the search box and pressing [Enter] (on Windows Vista, Windows 7 and later). For Windows XP, go through the sequence Start -> Run... ->, type in "cmd" and press [Enter]. |
-|:---:|:---|
+When starting the console the home directory of the current user (in this case the username is `pearse.hutson`) is used as a current directory and this is displayed as a guide for the user.
 
 For simplified visualization of the results from now on in this chapter instead of a console screenshot we will use the form:
 
