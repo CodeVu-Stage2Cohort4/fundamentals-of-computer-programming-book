@@ -33,7 +33,7 @@ It is the same with computers and software – they have many levels of manageme
 The essence of programming is to control the work of the computer on all levels. This is done with the help of "orders" and "commands" from the programmer, also known as programming instructions. To "program" means to organize the work of the computer through sequences of instructions. These commands (instructions) are given in written form and are implicitly followed by the computer (respectively by the operating system, the CPU and the peripheral devices).
 
 | :warning: | To "program" means writing sequences of instructions in order to organize the work of the computer to perform something. These sequences of instructions are called "computer programs" or "scripts". |
-|:---:|---|
+|:---:|:---|
 
 A sequence of steps to achieve, complete some work or obtain some result is called an algorithm. This is how programming is related to algorithms. Programming involves describing what you want the computer to do by a sequence of steps, by algorithms.
 
@@ -168,7 +168,7 @@ More information about expressions can be found in chapter "Operators and Expres
 The C# language distinguishes between uppercase and lowercase letters so we should use the correct casing when we write C# code. In the example above we used some keywords like class, static, void and the names of some of the system classes and objects, such as System.Console.
 
 | :warning: | Be careful when writing! The same thing, written in upper-case, lower-case or a mix of both, means different things in C#. Writing Class is different from class and System.Console is different from SYSTEM.CONSOLE. |
-|:---:|---|
+|:---:|:---|
 
 This rule applies to all elements of your program: keywords, names of variables, class names etc.
 
@@ -218,7 +218,7 @@ Console.WriteLine("Hello C#!")       ;}          }
 The examples above will compile and run exactly like the formatted code but they are more difficult to read and understand, and therefore difficult to modify and maintain.
 
 | :warning: | Never let your programs contain unformatted code! That severely reduces program readability and leads to difficulties for later modifications of the code. |
-|:---:|---|
+|:---:|:---|
 
 ### Main Formatting Rules
 
@@ -279,7 +279,7 @@ One of the biggest advantages of the .NET Framework is the built-in automatic me
 In the .NET Framework, there is a special component of the CLR that looks after memory management. It is called a "garbage collector" (automated memory cleaning system). The garbage collector has the following main tasks: to check when the allocated memory for variables is no longer in use, to release it and make it available for allocation of new objects.
 
 | :warning: | It is important to note that it is not exactly clear at what moment the memory gets cleaned of unused objects (local variables for example). According to the C# language specifications, it happens at some moment after a given variable gets out of scope but it is not specified, whether this happens instantly, after some time or when the available memory becomes insufficient for the normal program operation. |
-|:---:|---|
+|:---:|:---|
 
 ### Independence from the Environment and the Programming Language
 
@@ -341,7 +341,7 @@ Very often it is necessary to document an API, because it contains many namespac
 
 The .NET Framework also has a documentation officially developed and supported by Microsoft. It is publicly available on the Internet and is also distributed with the .NET platform as a collection of documents and tools for browsing and searching.
 
-![Documentation Thumbnail](.\assets\clip_image0038_thumb.png)
+![alt](./assets/clip_image0038_thumb.png)
 
 The MSDN Library is Microsoft’s official documentation for all their products for developers and software technologies. The .NET Framework’s technical documentation is part of the MSDN Library and can be found here: http://msdn.microsoft.com/en-us/library/vstudio/gg145045.aspx. The above screenshot shows how it might look like (for .NET version 4.5).
 
@@ -356,7 +356,7 @@ In order to program in C#, we need two basic things – an installed .NET Framew
 By default, the .NET Framework is installed along with Windows, but in old Windows versions it could be missing. To install the .NET Framework, we must download it from Microsoft’s website (http://download.microsoft.com). It is best if we download and install the latest version.
 
 | :warning: | Do not forget that we need to install the .NET Framework before we begin! Otherwise, we will not be able to compile and execute the program. |
-|:---:|---|
+|:---:|:---|
 
 If we run Windows 8 or Windows 7, the .NET Framework will be already installed as part of Windows.
 
