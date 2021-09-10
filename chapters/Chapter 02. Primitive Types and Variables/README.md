@@ -568,7 +568,7 @@ byte[] bytes = { 1, 2, 3 };
 
 At this point the variables are located in the memory as follows:
 
-![](./assets/variables-in-mem.jpg)
+![variables in memory](./assets/variables-in-mem.jpg)
 
 If we now execute the following code, which changes the values of the variables, we will see what **happens to the memory** when changing the value and reference types:
 
@@ -583,7 +583,7 @@ bytes[1] = 0;
 
 After these changes the variables and their values are **located in the memory** as follows:
 
-![happens to the memory](./assets/variables-in-mem-after-change.jpg)
+![variables in memory after change](./assets/variables-in-mem-after-change.jpg)
 
 As you can see from the figure, a change in a value type (`i = 0`) changes its value **directly into the stack**. When changing a reference type, things are different: the value is **changed in the heap** (`bytes[1] = 0`). The variable that keeps the array reference remains unchanged (`0x00190D11`). When assigning a `null` value in a reference type, that reference is disconnected from its value and the variable remains with no value (`obj = null`).
 

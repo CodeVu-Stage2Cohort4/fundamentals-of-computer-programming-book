@@ -23,17 +23,17 @@ In some cases the console remains an irreplaceable tool for communication with t
 Each operating system has its own way to launch the console. On Windows for example, it can be done in the following way:
 
 ```console
-Start -> (All) Programs -> Accessories -> Command Prompt
+Start -> Windows Terminal
 ```
 
 After starting the console a black screen (this color can be changed) like the following should appear:
 
-![alt](./assets/command-prompt.png)
+![alt](./assets/windows-terminal.JPG)
  
 When starting the console the home directory of the current user (in this case the username is `nakov`) is used as a current directory and this is displayed as a guide for the user.
 
 | :warning: | Console can be launched through pressing the Start button and typing "`cmd`" in the search box and pressing [Enter] (on Windows Vista, Windows 7 and later). For Windows XP, go through the sequence Start -> Run... ->, type in "cmd" and press [Enter]. |
-|---|:---|
+|:---:|:---|
 
 For simplified visualization of the results from now on in this chapter instead of a console screenshot we will use the form:
 
@@ -63,13 +63,13 @@ For both types the main purpose of the shell is **to run other programs** with w
 | :warning: | Each operating system has its own command interpreter that has its own commands. |
 |---|:---|
 
-For example, when starting Windows console, we run the so-called Windows **command interpreter** in it (`cmd.exe`) that executes system programs and commands in interactive mode. For example, the command `dir` shows the files in the current directory:
+For example, when starting Windows console, we run the so-called Windows **command interpreter** in it that executes system programs and commands in interactive mode. For example, the command `dir` shows the files in the current directory:
 
-![cmd.exe](./assets/command-prompt-dir.png)
+![dir command](./assets/windows-terminal-dir.JPG)
 
 ### Basic Console Commands
 
-We will take a look at some basic commands in the Windows standard **command prompt,** which is useful for finding and launching programs.
+We will take a look at some basic commands in the Powershell using the Windows Terminal, which is useful for finding and launching programs.
 
 #### Windows Console Commands
 
@@ -87,25 +87,34 @@ Command | Description
 Here is an example of multiple commands executed in the Windows command shell. The result of the commands’ execution is displayed on the console:
 
 ```console
-C:\Documents and Settings\User1>cd "D:\Project2009\C# Book"
+PS C:\> cd .\git\fundamentals-of-computer-programming-book\chapters\
+PS C:\git\fundamentals-of-computer-programming-book\chapters> dir
 
-C:\Documents and Settings\User1>D:
 
-D:\Project2008\C# Book>dir
- Volume in drive D has no label.
- Volume Serial Number is B43A-B0D6
+    Directory: C:\git\fundamentals-of-computer-programming-book\chapters
 
- Directory of D:\Project2009\C# Book
 
-26.12.2009   12:24    <DIR>          .
-26.12.2009   12:24    <DIR>          ..
-26.12.2009   12:23           537 600 Chapter-4-Console-Input-Output.doc
-26.12.2009   12:23    <DIR>          Test Folder
-26.12.2009   12:24                 0 Test.txt
-             2 File(s)        537 600 bytes
-             3 Dir(s)  24 154 062 848 bytes free
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         9/8/2021   8:56 PM                Chapter 01. Introduction to Programming
+d-----         9/8/2021   8:56 PM                Chapter 02. Primitive Types and Variables
+d-----         9/8/2021   8:56 PM                Chapter 03. Operators and Expressions
+d-----         9/8/2021   9:08 PM                Chapter 04. Console Input and Output
+d-----         9/9/2021   8:48 PM                Chapter 05. Conditional Statements
+d-----         9/8/2021   8:56 PM                Chapter 06. Loops
+d-----         9/8/2021   8:56 PM                Chapter 07. Arrays
+d-----         9/8/2021   8:56 PM                Chapter 09. Methods
+d-----         9/8/2021   8:56 PM                Chapter 10. Recursion
+d-----         9/8/2021   8:56 PM                Chapter 11. Creating and Using Objects
+d-----         9/8/2021   8:56 PM                Chapter 12. Exception Handling
+d-----         9/8/2021   8:56 PM                Chapter 14. Defining Classes
+d-----         9/8/2021   8:56 PM                Chapter 16. Linear Data Structures
+d-----         9/8/2021   8:56 PM                Chapter 18. Dictionaries Hash-Tables and Sets
+d-----         9/8/2021   8:56 PM                Chapter 19. Data Structures and Algorithm Complexity
+d-----         9/8/2021   8:56 PM                Chapter 20. Object-Oriented Programming Principles
 
-D:\Project2009\C# Book>
+
+PS C:\git\fundamentals-of-computer-programming-book\chapters>
 ```
 
 ### Standard Input-Output
@@ -261,7 +270,7 @@ In order to avoid this **unpleasant situation** we can use parentheses that will
 This mistake is very common for beginner programmers because they do not consider that string concatenation is performed from left to right because the addition of numbers is of the same priority than as concatenation.
 
 | :warning: | When you concatenate strings and also sum numbers, use parentheses to specify the correct order of operations. Otherwise they are executed from left to right. |
-|---|:---|
+|:---:|:---|
 
 ### Formatted Output with `Write(...)` and `WriteLine(...)`
 
@@ -269,7 +278,7 @@ For printing long and elaborate series of elements, special options (also known 
 
 ```cs
 public static void Write(string format, object arg0,
-	object arg1, object arg2, object arg3, ...);
+    object arg1, object arg2, object arg3, ...);
 ```
 
 #### Formatted Output – Examples
@@ -303,7 +312,7 @@ string name = "John";
 int age = 18;
 string town = "Seattle";
 Console.Write(
-	"{0} is {1} years old from {2}!\n", name, age, town);
+    "{0} is {1} years old from {2}!\n", name, age, town);
 ```
 
 The result of this example execution is as follows:
@@ -340,7 +349,7 @@ The `index` component is an integer and indicates **the position** of the argume
 
 ```cs
 Console.Write(
-	"{1} is {0} years old from {3}!", 18, "John", 0, "Seattle");
+    "{1} is {0} years old from {3}!", 18, "John", 0, "Seattle");
 ```
 
 In cases where some of the arguments are not referenced by any of the formatting items, those arguments are simply **ignored** and do not play a role. However it is good to remove such arguments from the list of arguments because they introduce unnecessary complexity and may lead to confusion.
@@ -409,23 +418,23 @@ StandardNumericFormats.cs
 ```cs
 class StandardNumericFormats
 {
-	static void Main()
-	{
-		Console.WriteLine("{0:C2}", 123.456);
-		//Output: 123,46 лв.
-		Console.WriteLine("{0:D6}", -1234);
-		//Output: -001234
-		Console.WriteLine("{0:E2}", 123);
-		//Output: 1,23E+002
-		Console.WriteLine("{0:F2}", -123.456);
-		//Output: -123,46
-		Console.WriteLine("{0:N2}", 1234567.8);
-		//Output: 1 234 567,80
-		Console.WriteLine("{0:P}", 0.456);
-		//Output: 45,60 %
-		Console.WriteLine("{0:X}", 254);
-		//Output: FE
-	}
+    static void Main()
+    {
+        Console.WriteLine("{0:C2}", 123.456);
+        //Output: 123,46 лв.
+        Console.WriteLine("{0:D6}", -1234);
+        //Output: -001234
+        Console.WriteLine("{0:E2}", 123);
+        //Output: 1,23E+002
+        Console.WriteLine("{0:F2}", -123.456);
+        //Output: -123,46
+        Console.WriteLine("{0:N2}", 1234567.8);
+        //Output: 1 234 567,80
+        Console.WriteLine("{0:P}", 0.456);
+        //Output: 45,60 %
+        Console.WriteLine("{0:X}", 254);
+        //Output: FE
+    }
 }
 ```
 
@@ -462,19 +471,19 @@ CustomNumericFormats.cs
 ```cs
 class CustomNumericFormats
 {
-	static void Main()
-	{
-		Console.WriteLine("{0:0.00}", 1);
-		//Output: 1.00
-		Console.WriteLine("{0:#.##}", 0.234);
-		//Output: .23
-		Console.WriteLine("{0:#####}", 12345.67);
-		//Output: 12346
-		Console.WriteLine("{0:(0#) ### ## ##}", 29342525);
-		//Output: (02) 934 25 25
-		Console.WriteLine("{0:%##}", 0.234);
-		//Output: %23
-	}
+    static void Main()
+    {
+        Console.WriteLine("{0:0.00}", 1);
+        //Output: 1.00
+        Console.WriteLine("{0:#.##}", 0.234);
+        //Output: .23
+        Console.WriteLine("{0:#####}", 12345.67);
+        //Output: 12346
+        Console.WriteLine("{0:(0#) ### ## ##}", 29342525);
+        //Output: (02) 934 25 25
+        Console.WriteLine("{0:%##}", 0.234);
+        //Output: %23
+    }
 }
 ```
 
@@ -580,20 +589,20 @@ using System.Globalization;
 
 class CultureInfoExample
 {
-	static void Main()
-	{
-		DateTime d = new DateTime(2012, 02, 27, 17, 30, 22);
+    static void Main()
+    {
+        DateTime d = new DateTime(2012, 02, 27, 17, 30, 22);
 
-		Thread.CurrentThread.CurrentCulture =
-			CultureInfo.GetCultureInfo("en-US");
-		Console.WriteLine("{0:N}", 1234.56);
-		Console.WriteLine("{0:D}", d);
+        Thread.CurrentThread.CurrentCulture =
+            CultureInfo.GetCultureInfo("en-US");
+        Console.WriteLine("{0:N}", 1234.56);
+        Console.WriteLine("{0:D}", d);
 
-		Thread.CurrentThread.CurrentCulture =
-			CultureInfo.GetCultureInfo("bg-BG");
-		Console.WriteLine("{0:N}", 1234.56);
-		Console.WriteLine("{0:D}", d);
-	}
+        Thread.CurrentThread.CurrentCulture =
+            CultureInfo.GetCultureInfo("bg-BG");
+        Console.WriteLine("{0:N}", 1234.56);
+        Console.WriteLine("{0:D}", d);
+    }
 }
 ```
 
@@ -630,21 +639,21 @@ UsingReadLine.cs
 ```cs
 class UsingReadLine
 {
-	static void Main()
-	{
-		Console.Write("Please enter your first name: ");
-		string firstName = Console.ReadLine();
+    static void Main()
+    {
+        Console.Write("Please enter your first name: ");
+        string firstName = Console.ReadLine();
 
-		Console.Write("Please enter your last name: ");
-		string lastName = Console.ReadLine();
+        Console.Write("Please enter your last name: ");
+        string lastName = Console.ReadLine();
 
-		Console.WriteLine("Hello, {0} {1}!", firstName, lastName);
-	}
+        Console.WriteLine("Hello, {0} {1}!", firstName, lastName);
+    }
 }
 
-// Output:	Please enter your first name: John
-//					Please enter your last name: Smith
-//					Hello, John Smith!
+// Output:    Please enter your first name: John
+//                    Please enter your last name: Smith
+//                    Hello, John Smith!
 ```
 
 We see how easy it is to read text from the console by using the method `Console.ReadLine()`:
@@ -663,19 +672,19 @@ UsingRead.cs
 ```cs
 class UsingRead
 {
-	static void Main()
-	{
-		int codeRead = 0;
-		do
-		{
-			codeRead = Console.Read();
-			if (codeRead != 0)
-			{
-				Console.Write((char)codeRead);
-			}
-		}
-		while (codeRead != 10);
-	}
+    static void Main()
+    {
+        int codeRead = 0;
+        do
+        {
+            codeRead = Console.Read();
+            if (codeRead != 0)
+            {
+                Console.Write((char)codeRead);
+            }
+        }
+        while (codeRead != 10);
+    }
 }
 ```
 
@@ -692,22 +701,22 @@ ReadingNumbers.cs
 ```cs
 class ReadingNumbers
 {
-	static void Main()
-	{
-		Console.Write("a = ");
-		int a = int.Parse(Console.ReadLine());
+    static void Main()
+    {
+        Console.Write("a = ");
+        int a = int.Parse(Console.ReadLine());
 
-		Console.Write("b = ");
-		int b = int.Parse(Console.ReadLine());
+        Console.Write("b = ");
+        int b = int.Parse(Console.ReadLine());
 
-		Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
-		Console.WriteLine("{0} * {1} = {2}", a, b, a * b);
+        Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
+        Console.WriteLine("{0} * {1} = {2}", a, b, a * b);
 
-		Console.Write("f = ");
-		double f = double.Parse(Console.ReadLine());
-		Console.WriteLine("{0} * {1} / {2} = {3}",
-			a, b, f, a * b / f);
-	}
+        Console.Write("f = ");
+        double f = double.Parse(Console.ReadLine());
+        Console.WriteLine("{0} * {1} / {2} = {3}",
+            a, b, f, a * b / f);
+    }
 }
 ```
 
@@ -725,7 +734,7 @@ f = 7.5
 In this particular example the specific thing is that we use **parsing methods of numerical types** and when wrong a result is passed (such as text) this will cause an error (exception) `System.FormatException`. This is especially true when reading real numbers, because the delimiter used between the whole and fractional part is different in various cultures and depends on regional settings of the operating system.
 
 | :warning: | The separator for floating point numbers depends on the current language settings of the operating system (Regional and Language Options in Windows). In some systems as separator the character comma can be used, in others – point (dot). Entering a point (dot) instead of a comma will cause System.FormatException when the current language settings use comma. |
-|---|:---|
+|:---:|:---|
 
 The exceptions as a mechanism for reporting errors will be discussed in the chapter "Exception Handling". For now you can consider that when the program provides an error this is associated with the occurrence of an exception that prints detailed information about the error on the console. For example, let’s suppose that the regional settings of the computer are Bulgarian and we execute the following code:
 
@@ -740,11 +749,11 @@ If we enter the number "3.14" (with a wrong decimal separator for the Bulgarian 
 
 ```console
 Unhandled Exception: System.FormatException: Input string was not in a correct format.
-	at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-	at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
-	at System.Double.Parse(String s, NumberStyles style, NumberFormatInfo info)
-	at System.Double.Parse(String s)
-	at ConsoleApplication.Program.Main() in C:\Projects\IntroCSharpBook\ConsoleExample\Program.cs:line 14
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+    at System.Double.Parse(String s, NumberStyles style, NumberFormatInfo info)
+    at System.Double.Parse(String s)
+    at ConsoleApplication.Program.Main() in C:\Projects\IntroCSharpBook\ConsoleExample\Program.cs:line 14
 ```
 
 ### Parsing Numbers Conditionally
@@ -763,8 +772,8 @@ string str = Console.ReadLine();
 int intValue;
 bool parseSuccess = Int32.TryParse(str, out intValue);
 Console.WriteLine(parseSuccess ?
-	"The square of the number is " + intValue * intValue + "."
-	: "Invalid number!");
+    "The square of the number is " + intValue * intValue + "."
+    : "Invalid number!");
 ```
 
 In the example, conditional parsing of a string entered from the console to the integer type `Int32` is performed. If we enter as input "2", parsing will be successful so the result of `TryParse()` will be `true`, and the parsed number will be recorded in the variable `intValue` and on the console the squared number will be printed:
@@ -829,25 +838,25 @@ PrintingLetter.cs
 ```cs
 class PrintingLetter
 {
-	static void Main()
-	{
-		Console.Write("Enter person name: ");
-		string person = Console.ReadLine();
+    static void Main()
+    {
+        Console.Write("Enter person name: ");
+        string person = Console.ReadLine();
 
-		Console.Write("Enter book name: ");
-		string book = Console.ReadLine();
+        Console.Write("Enter book name: ");
+        string book = Console.ReadLine();
 
-		string from = "Authors Team";
+        string from = "Authors Team";
 
-		Console.WriteLine("  Dear {0},", person);
-		Console.Write("We are pleased to inform " +
-			"you that \"{1}\" is the best Bulgarian book. {2}" +
-			"The authors of the book wish you good luck {0}!{2}",
-			person, book, Environment.NewLine);
+        Console.WriteLine("  Dear {0},", person);
+        Console.Write("We are pleased to inform " +
+            "you that \"{1}\" is the best Bulgarian book. {2}" +
+            "The authors of the book wish you good luck {0}!{2}",
+            person, book, Environment.NewLine);
 
-		Console.WriteLine("  Yours,");
-		Console.WriteLine("  {0}", from);
-	}
+        Console.WriteLine("  Yours,");
+        Console.WriteLine("  {0}", from);
+    }
 }
 ```
 
@@ -874,24 +883,24 @@ CalculatingArea.cs
 ```cs
 class CalculatingArea
 {
-	static void Main()
-	{
-		Console.WriteLine("This program calculates " +
-		"the area of a rectangle or a triangle");
+    static void Main()
+    {
+        Console.WriteLine("This program calculates " +
+        "the area of a rectangle or a triangle");
 
-		Console.WriteLine("Enter a and b (for rectangle) " +
-			"or a and h (for triangle): ");
+        Console.WriteLine("Enter a and b (for rectangle) " +
+            "or a and h (for triangle): ");
 
-		int a = int.Parse(Console.ReadLine());
-		int b = int.Parse(Console.ReadLine());
+        int a = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
 
-		Console.WriteLine("Enter 1 for a rectangle or " +
-				"2 for a triangle: ");
+        Console.WriteLine("Enter 1 for a rectangle or " +
+                "2 for a triangle: ");
 
-		int choice = int.Parse(Console.ReadLine());
-		double area = (double) (a * b) / choice;
-		Console.WriteLine("The area of your figure is " + area);
-	}
+        int choice = int.Parse(Console.ReadLine());
+        double area = (double) (a * b) / choice;
+        Console.WriteLine("The area of your figure is " + area);
+    }
 }
 ```
 
