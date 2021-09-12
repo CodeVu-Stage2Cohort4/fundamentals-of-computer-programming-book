@@ -17,7 +17,7 @@ One of the simplest and most commonly used loops is while.
 ```cs
 while (condition)
 {
-	loop body;
+    loop body;
 }
 ```
 
@@ -39,10 +39,10 @@ int counter = 0;
 // Execute the loop body while the loop condition holds
 while (counter <= 9)
 {
-	// Print the counter value
-	Console.WriteLine("Number : " + counter);
-	// Increment the counter
-	counter++;
+    // Print the counter value
+    Console.WriteLine("Number : " + counter);
+    // Increment the counter
+    counter++;
 }
 ```
 
@@ -75,9 +75,9 @@ int sum = 1;
 Console.Write("The sum 1");
 while (num < n)
 {
-	num++;
-	sum += num;
-	Console.Write(" + " + num);
+    num++;
+    sum += num;
+    Console.Write(" + " + num);
 }
 Console.WriteLine(" = " + sum);
 ```
@@ -103,11 +103,11 @@ int maxDivider = (int)Math.Sqrt(num);
 bool prime = true;
 while (prime && (divider <= maxDivider))
 {
-	if (num % divider == 0)
-	{
-		prime = false;
-	}
-	divider++;
+    if (num % divider == 0)
+    {
+        prime = false;
+    }
+    divider++;
 }
 Console.WriteLine("Prime? " + prime);
 ```
@@ -153,12 +153,12 @@ decimal factorial = 1;
 // Perform an "infinite loop"
 while (true)
 {
-	if (n <= 1)
-	{
-		break;
-	}
-	factorial *= n;
-	n--;
+    if (n <= 1)
+    {
+        break;
+    }
+    factorial *= n;
+    n--;
 }
 Console.WriteLine("n! = " + factorial);
 ```
@@ -179,7 +179,7 @@ The `do-while` loop is similar to the `while` loop, but it checks the condition 
 ```cs
 do
 {
-	executable code;
+    executable code;
 } while (condition);
 ```
 
@@ -203,8 +203,8 @@ int n = int.Parse(Console.ReadLine());
 decimal factorial = 1;
 do
 {
-	factorial *= n;
-	n--;
+    factorial *= n;
+    n--;
 } while (n > 0);
 Console.WriteLine("n! = " + factorial);
 ```
@@ -225,9 +225,9 @@ You might be wondering what will happen if we set a large value for the number n
 ```cs
 n = 100
 Unhandled Exception: System.OverflowException: Value was either too large or too small for a Decimal.
-	at System.Decimal.FCallMultiply(Decimal& result, Decimal d1, Decimal d2)
-	at System.Decimal.op_Multiply(Decimal d1, Decimal d2)
-	at TestProject.Program.Main() in C:\Projects\TestProject\Program.cs:line 17
+    at System.Decimal.FCallMultiply(Decimal& result, Decimal d1, Decimal d2)
+    at System.Decimal.op_Multiply(Decimal d1, Decimal d2)
+    at TestProject.Program.Main() in C:\Projects\TestProject\Program.cs:line 17
 ```
 
 If we want to calculate 100! we can use data type `BigInteger` (which is new as of .NET Framework 4.0 and is missing in the older .NET versions). This type represents an integer, which can be **very large** (for example 100,000 digits). There is no limit on the size of the numbers recorded in the class `BigInteger` (as long as you have enough RAM).
@@ -250,18 +250,18 @@ using System.Numerics;
 
 class Factorial
 {
-	static void Main()
-	{
-		Console.Write("n = ");
-		int n = int.Parse(Console.ReadLine());
-		BigInteger factorial = 1;
-		do
-		{
-			factorial *= n;
-			n--;
-		} while (n > 0);
-		Console.WriteLine("n! = " + factorial);
-	}
+    static void Main()
+    {
+        Console.Write("n = ");
+        int n = int.Parse(Console.ReadLine());
+        BigInteger factorial = 1;
+        do
+        {
+            factorial *= n;
+            n--;
+        } while (n > 0);
+        Console.WriteLine("n! = " + factorial);
+    }
 }
 ```
 
@@ -289,8 +289,8 @@ int num = n;
 long product = 1;
 do
 {
-	product *= num;
-	num++;
+    product *= num;
+    num++;
 } while (num <= m);
 
 Console.WriteLine("product[n...m] = " + product);
@@ -319,7 +319,7 @@ They contain an **initialization block** (A), **condition** (B), **body** (D) an
 ```cs
 for (initialization; condition; update)
 {
-	loop's body;
+    loop's body;
 }
 ```
 
@@ -332,7 +332,7 @@ Since none of the listed elements of the `for`-loops is mandatory, we can skip t
 ```cs
 for ( ; ; )
 {
-	// Loop body
+    // Loop body
 }
 ```
 
@@ -345,7 +345,7 @@ Now let’s consider in details the separate parts of a `for`-loop.
 ```cs
 for (int num = 0; ...; ...)
 {
-	// The variable num is visible here and it can be used
+    // The variable num is visible here and it can be used
 }
 // Here num can not be used
 ```
@@ -359,7 +359,7 @@ For-loops can have a **loop condition:**
 ```cs
 for (int num = 0; num < 10; ...)
 {
-	// Loop body
+    // Loop body
 }
 ```
 
@@ -372,7 +372,7 @@ The last element of a `for`-loop contains **code that updates** the loop variabl
 ```cs
 for (int num = 0; num < 10; num++)
 {
-	// Loop body
+    // Loop body
 }
 ```
 
@@ -389,7 +389,7 @@ Here is a complete example of a `for`-loop:
 ```cs
 for (int i = 0; i <= 10; i++)
 {
-	Console.Write(i + " ");
+    Console.Write(i + " ");
 }
 ```
 
@@ -404,7 +404,7 @@ Here is another, more complicated example of a `for`-loop, in which we have two 
 ```cs
 for (int i = 1, sum = 1; i <= 128; i = i * 2, sum += i)
 {
-	Console.WriteLine("i={0}, sum={1}", i, sum);
+    Console.WriteLine("i={0}, sum={1}", i, sum);
 }
 ```
 
@@ -433,7 +433,7 @@ int m = int.Parse(Console.ReadLine());
 decimal result = 1;
 for (int i = 0; i < m; i++)
 {
-	result *= n;
+    result *= n;
 }
 Console.WriteLine("n^m = " + result);
 ```
@@ -455,7 +455,7 @@ As we have already seen, in the construct of a `for`-loop we can use **multiple 
 ```cs
 for (int small=1, large=10; small<large; small++, large--)
 {
-	Console.WriteLine(small + " " + large);
+    Console.WriteLine(small + " " + large);
 }
 ```
 
@@ -480,11 +480,11 @@ int n = int.Parse(Console.ReadLine());
 int sum = 0;
 for (int i = 1; i <= n; i += 2)
 {
-	if (i % 7 == 0)
-	{
-		continue;
-	}
-	sum += i;
+    if (i % 7 == 0)
+    {
+        continue;
+    }
+    sum += i;
 }
 Console.WriteLine("sum = " + sum);
 ```
@@ -509,7 +509,7 @@ Here is how a `foreach` loop looks like:
 ```cs
 foreach (type variable in collection)
 {
-	statements;
+    statements;
 }
 ```
 
@@ -519,13 +519,13 @@ As we see, **it is significantly simpler than the standard `for`-loop** and ther
 int[] numbers = { 2, 3, 5, 7, 11, 13, 17, 19 };
 foreach (int i in numbers)
 {
-	Console.Write(" " + i);
+    Console.Write(" " + i);
 }
 Console.WriteLine();
 string[] towns = { "London", "Paris", "Milan", "New York" };
 foreach (string town in towns)
 {
-	Console.Write(" " + town);
+    Console.Write(" " + town);
 }
 ```
 
@@ -543,11 +543,11 @@ The **nested loops** are programming constructs consisting of several loops loca
 ```cs
 for (initialization, verification, update)
 {
-	for (initialization, verification, update)
-	{
-		executable code
-	}
-	...
+    for (initialization, verification, update)
+    {
+        executable code
+    }
+    ...
 }
 ```
 
@@ -581,11 +581,11 @@ Finally we get the following code:
 int n = int.Parse(Console.ReadLine());
 for (int row = 1; row <= n; row++)
 {
-	for (int col = 1; col <= row; col++)
-	{
-		Console.Write(col + " ");
-	}
-	Console.WriteLine();
+    for (int col = 1; col <= row; col++)
+    {
+        Console.Write(col + " ");
+    }
+    Console.WriteLine();
 }
 ```
 
@@ -616,22 +616,22 @@ int m = int.Parse(Console.ReadLine());
 
 for (int num = n; num <= m; num++)
 {
-	bool prime = true;
-	int divider = 2;
-	int maxDivider = (int)Math.Sqrt(num);
-	while (divider <= maxDivider)
-	{
-		if (num % divider == 0)
-		{
-			prime = false;
-			break;
-		}
-		divider++;
-	}
-	if (prime)
-	{
-		Console.Write(" " + num);
-	}
+    bool prime = true;
+    int divider = 2;
+    int maxDivider = (int)Math.Sqrt(num);
+    while (divider <= maxDivider)
+    {
+        if (num % divider == 0)
+        {
+            prime = false;
+            break;
+        }
+        divider++;
+    }
+    if (prime)
+    {
+        Console.Write(" " + num);
+    }
 }
 ```
 
@@ -652,20 +652,20 @@ Let’s consider another example through which we will show that we can put even
 ```cs
 for (int a = 1; a <= 9; a++)
 {
-	for (int b = 0; b <= 9; b++)
-	{
-		for (int c = 0; c <= 9; c++)
-		{
-			for (int d = 0; d <= 9; d++)
-			{
-				if ((a + b) == (c + d))
-				{
-					Console.WriteLine(
-						" " + a + " " + b + " " + c + " " + d);
-				}
-			}
-		}
-	}
+    for (int b = 0; b <= 9; b++)
+    {
+        for (int c = 0; c <= 9; c++)
+        {
+            for (int d = 0; d <= 9; d++)
+            {
+                if ((a + b) == (c + d))
+                {
+                    Console.WriteLine(
+                        " " + a + " " + b + " " + c + " " + d);
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -692,23 +692,23 @@ In the following example we will find **all possible combinations of the lottery
 ```cs
 for (int i1 = 1; i1 <= 44; i1++)
 {
-	for (int i2 = i1 + 1; i2 <= 45; i2++)
-	{
-		for (int i3 = i2 + 1; i3 <= 46; i3++)
-		{
-			for (int i4 = i3 + 1; i4 <= 47; i4++)
-			{
-				for (int i5 = i4 + 1; i5 <= 48; i5++)
-				{
-					for (int i6 = i5 + 1; i6 <= 49; i6++)
-					{
-						Console.WriteLine(i1 + " " + i2 + " " +
-							i3 + " " + i4 + " " + i5 + " " + i6);
-					}
-				}
-			}
-		}
-	}
+    for (int i2 = i1 + 1; i2 <= 45; i2++)
+    {
+        for (int i3 = i2 + 1; i3 <= 46; i3++)
+        {
+            for (int i4 = i3 + 1; i4 <= 47; i4++)
+            {
+                for (int i5 = i4 + 1; i5 <= 48; i5++)
+                {
+                    for (int i6 = i5 + 1; i6 <= 49; i6++)
+                    {
+                        Console.WriteLine(i1 + " " + i2 + " " +
+                            i3 + " " + i4 + " " + i5 + " " + i6);
+                    }
+                }
+            }
+        }
+    }
 }
 ```
 
