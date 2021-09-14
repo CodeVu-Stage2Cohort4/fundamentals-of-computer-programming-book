@@ -28,8 +28,8 @@ Let’s take for example an object from the real world – "dog". The states of 
 
 Objects in OOP combine data and the means for their processing in one. They correspond to objects in real world and contain data and actions:
 
-- Data members – embedded in objects variables, which describe their states.
-- Methods – we have already considered them in details. They are a tool for building the objects.
+- **Data members** – embedded in objects variables, which describe their states.
+- **Methods** – we have already considered them in details. They are a tool for building the objects.
 
 ### What Is a Class?
 
@@ -74,58 +74,58 @@ We are going to give an example of a class in C#, which contains the listed elem
 ```cs
 public class Cat
 {
-	// Field name
-	private string name;
-	// Field color
-	private string color;
+    // Field name
+    private string name;
+    // Field color
+    private string color;
 
-	public string Name
-	{
-		// Getter of the property "Name"
-		get
-		{
-			return this.name;
-		}
-		// Setter of the property "Name"
-		set
-		{
-			this.name = value;
-		}
-	}
+    public string Name
+    {
+        // Getter of the property "Name"
+        get
+        {
+            return this.name;
+        }
+        // Setter of the property "Name"
+        set
+        {
+            this.name = value;
+        }
+    }
 
-	public string Color
-	{
-		// Getter of the property "Color"
-		get
-		{
-			return this.color;
-		}
-		// Setter of the property "Color"
-		set
-		{
-			this.color = value;
-		}
-	}
+    public string Color
+    {
+        // Getter of the property "Color"
+        get
+        {
+            return this.color;
+        }
+        // Setter of the property "Color"
+        set
+        {
+            this.color = value;
+        }
+    }
 
-	// Default constructor
-	public Cat()
-	{
-		this.name = "Unnamed";
-		this.color = "gray";
-	}
+    // Default constructor
+    public Cat()
+    {
+        this.name = "Unnamed";
+        this.color = "gray";
+    }
 
-	// Constructor with parameters
-	public Cat(string name, string color)
-	{
-		this.name = name;
-		this.color = color;
-	}
+    // Constructor with parameters
+    public Cat(string name, string color)
+    {
+        this.name = name;
+        this.color = color;
+    }
 
-	// Method SayMiau
-	public void SayMiau()
-	{
-		Console.WriteLine("Cat {0} said: Miauuuuuu!", name);
-	}
+    // Method SayMiau
+    public void SayMiau()
+    {
+        Console.WriteLine("Cat {0} said: Miauuuuuu!", name);
+    }
 }
 ```
 
@@ -136,14 +136,14 @@ After the example class is defined we can now use it in the following way:
 ```cs
 static void Main()
 {
-	Cat firstCat = new Cat();
-	firstCat.Name = "Tony";
-	firstCat.SayMiau();
+    Cat firstCat = new Cat();
+    firstCat.Name = "Tony";
+    firstCat.SayMiau();
 
-	Cat secondCat = new Cat("Pepy", "red");
-	secondCat.SayMiau();
-	Console.WriteLine("Cat {0} is {1}.",
-		secondCat.Name, secondCat.Color);
+    Cat secondCat = new Cat("Pepy", "red");
+    secondCat.SayMiau();
+    Console.WriteLine("Cat {0} is {1}.",
+        secondCat.Name, secondCat.Color);
 }
 ```
 
@@ -226,14 +226,14 @@ We are going to give an example of using a property of an object, as well as usi
 ```cs
 class CatManipulating
 {
-	static void Main()
-	{
-		Cat myCat = new Cat();
-		myCat.Name = "Alfred";
+    static void Main()
+    {
+        Cat myCat = new Cat();
+        myCat.Name = "Alfred";
 
-		Console.WriteLine("The name of my cat is {0}.",
-			myCat.Name);
-	}
+        Console.WriteLine("The name of my cat is {0}.",
+            myCat.Name);
+    }
 }
 ```
 
@@ -250,14 +250,14 @@ We are going to complement the example we already gave as we call the method `Sa
 ```cs
 class CatManipulating
 {
-	static void Main()
-	{
-		Cat myCat = new Cat();
-		myCat.Name = "Alfred";
+    static void Main()
+    {
+        Cat myCat = new Cat();
+        myCat.Name = "Alfred";
 
-		Console.WriteLine("The name of my cat is {0}.",myCat.Name);
-		myCat.SayMiau();
-	}
+        Console.WriteLine("The name of my cat is {0}.",myCat.Name);
+        myCat.SayMiau();
+    }
 }
 ```
 
@@ -285,28 +285,28 @@ Lets' take a look again at the definition of the class `Cat` and more particular
 ```cs
 public class Cat
 {
-	// Field name
-	private string name;
-	// Field color
-	private string color;
+    // Field name
+    private string name;
+    // Field color
+    private string color;
 
-	...
+    ...
 
-	// Parameterless constructor
-	public Cat()
-	{
-		this.name = "Unnamed";
-		this.color = "gray";
-	}
+    // Parameterless constructor
+    public Cat()
+    {
+        this.name = "Unnamed";
+        this.color = "gray";
+    }
 
-	// Constructor with parameters
-	public Cat(string name, string color)
-	{
-		this.name = name;
-		this.color = color;
-	}
+    // Constructor with parameters
+    public Cat(string name, string color)
+    {
+        this.name = name;
+        this.color = color;
+    }
 
-	...
+    ...
 }
 ```
 
@@ -315,20 +315,20 @@ We are going to use these constructors to illustrate the usage of constructors w
 ```cs
 class CatManipulating
 {
-	static void Main()
-	{
-		Cat someCat = new Cat();
+    static void Main()
+    {
+        Cat someCat = new Cat();
 
-		someCat.SayMiau();
-		Console.WriteLine("The color of cat {0} is {1}.",
-			someCat.Name, someCat.Color);
+        someCat.SayMiau();
+        Console.WriteLine("The color of cat {0} is {1}.",
+            someCat.Name, someCat.Color);
 
-		Cat someCat = new Cat("Johnny", "brown");
+        Cat someCat = new Cat("Johnny", "brown");
 
-		someCat.SayMiau();
-		Console.WriteLine("The color of cat {0} is {1}.",
-			someCat.Name, someCat.Color);
-	}
+        someCat.SayMiau();
+        Console.WriteLine("The color of cat {0} is {1}.",
+            someCat.Name, someCat.Color);
+    }
 }
 ```
 
@@ -369,20 +369,20 @@ Let’s assume that the method is called `NextValue()` and is defined in a class
 ```cs
 public class Sequence
 {
-	// Static field, holding the current sequence value
-	private static int currentValue = 0;
+    // Static field, holding the current sequence value
+    private static int currentValue = 0;
 
-	// Intentionally deny instantiation of this class
-	private Sequence()
-	{
-	}
+    // Intentionally deny instantiation of this class
+    private Sequence()
+    {
+    }
 
-	// Static method for taking the next sequence value
-	public static int NextValue()
-	{
-		currentValue++;
-		return currentValue;
-	}
+    // Static method for taking the next sequence value
+    public static int NextValue()
+    {
+        currentValue++;
+        return currentValue;
+    }
 }
 ```
 
@@ -398,12 +398,12 @@ Let’s take a look at a simple program, which uses the class `Sequence`:
 ```cs
 class SequenceManipulating
 {
-	static void Main()
-	{
-		Console.WriteLine("Sequence[1...3]: {0}, {1}, {2}",
-			Sequence.NextValue(), Sequence.NextValue(),
-			Sequence.NextValue());
-	}
+    static void Main()
+    {
+        Console.WriteLine("Sequence[1...3]: {0}, {1}, {2}",
+            Sequence.NextValue(), Sequence.NextValue(),
+            Sequence.NextValue());
+    }
 }
 ```
 
@@ -431,21 +431,21 @@ Now we are going to show one interesting application of a method of the class `E
 ```cs
 class SystemTest
 {
-	static void Main()
-	{
-		int sum = 0;
-		int startTime = Environment.TickCount;
+    static void Main()
+    {
+        int sum = 0;
+        int startTime = Environment.TickCount;
 
-		// The code fragment to be tested
-		for (int i = 0; i < 10000000; i++)
-		{
-			sum++;
-		}
+        // The code fragment to be tested
+        for (int i = 0; i < 10000000; i++)
+        {
+            sum++;
+        }
 
-		int endTime = Environment.TickCount;
-		Console.WriteLine("The time elapsed is {0} sec.",
-			(endTime - startTime) / 1000.0);
-	}
+        int endTime = Environment.TickCount;
+        Console.WriteLine("The time elapsed is {0} sec.",
+            (endTime - startTime) / 1000.0);
+    }
 }
 ```
 
@@ -473,19 +473,19 @@ We want to make a program, which calculates the area of a triangle by given two 
 ```cs
 class MathTest
 {
-	static void Main()
-	{
-		Console.WriteLine("Length of the first side:");
-		double a = double.Parse(Console.ReadLine());
-		Console.WriteLine("Length of the second side:");
-		double b = double.Parse(Console.ReadLine());
-		Console.WriteLine("Size of the angle in degrees:");
-		int angle = int.Parse(Console.ReadLine());
+    static void Main()
+    {
+        Console.WriteLine("Length of the first side:");
+        double a = double.Parse(Console.ReadLine());
+        Console.WriteLine("Length of the second side:");
+        double b = double.Parse(Console.ReadLine());
+        Console.WriteLine("Size of the angle in degrees:");
+        int angle = int.Parse(Console.ReadLine());
 
-		double angleInRadians = Math.PI * angle / 180.0;
-		Console.WriteLine("Area of the triangle: {0}",
-			0.5 * a * b * Math.Sin(angleInRadians));
-	}
+        double angleInRadians = Math.PI * angle / 180.0;
+        Console.WriteLine("Area of the triangle: {0}",
+            0.5 * a * b * Math.Sin(angleInRadians));
+    }
 }
 ```
 
@@ -503,7 +503,7 @@ Depending on your system localization (Region and Language Settings) your output
 
 ```cs
 System.Threading.Thread.CurrentThread.CurrentCulture =
-	System.Globalization.CultureInfo.InvariantCulture;
+    System.Globalization.CultureInfo.InvariantCulture;
 ```
 
 #### The System.Math Class – More Examples
@@ -531,15 +531,15 @@ Below is an example source code of a program, which generates 6 random numbers i
 ```cs
 class RandomNumbersBetween1And49
 {
-	static void Main()
-	{
-		Random rand = new Random();
-		for (int number = 1; number <= 6; number++)
-		{
-			int randomNumber = rand.Next(49) + 1;
-			Console.Write("{0} ", randomNumber);
-		}
-	}
+    static void Main()
+    {
+        Random rand = new Random();
+        for (int number = 1; number <= 6; number++)
+        {
+            int randomNumber = rand.Next(49) + 1;
+            Console.Write("{0} ", randomNumber);
+        }
+    }
 }
 ```
 
@@ -565,71 +565,71 @@ An implementation of the described algorithm is given below:
 ```cs
 class RandomPasswordGenerator
 {
-	private const string CapitalLetters =
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private const string SmallLetters =
-		"abcdefghijklmnopqrstuvwxyz";
-	private const string Digits = "0123456789";
-	private const string SpecialChars =
-		"~!@#$%^&*()_+=`{}[]\\|':;.,/?<>";
-	private const string AllChars =
-		CapitalLetters + SmallLetters + Digits + SpecialChars;
+    private const string CapitalLetters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private const string SmallLetters =
+        "abcdefghijklmnopqrstuvwxyz";
+    private const string Digits = "0123456789";
+    private const string SpecialChars =
+        "~!@#$%^&*()_+=`{}[]\\|':;.,/?<>";
+    private const string AllChars =
+        CapitalLetters + SmallLetters + Digits + SpecialChars;
 
-	private static Random rnd = new Random();
+    private static Random rnd = new Random();
 
-	static void Main()
-	{
-		StringBuilder password = new StringBuilder();
+    static void Main()
+    {
+        StringBuilder password = new StringBuilder();
 
-		// Generate two random capital letters
-		for (int i = 1; i <= 2; i++)
-		{
-			char capitalLetter = GenerateChar(CapitalLetters);
-			InsertAtRandomPosition(password, capitalLetter);
-		}
+        // Generate two random capital letters
+        for (int i = 1; i <= 2; i++)
+        {
+            char capitalLetter = GenerateChar(CapitalLetters);
+            InsertAtRandomPosition(password, capitalLetter);
+        }
 
-		// Generate two random small letters
-		for (int i = 1; i <= 2; i++)
-		{
-			char smallLetter = GenerateChar(SmallLetters);
-			InsertAtRandomPosition(password, smallLetter);
-		}
+        // Generate two random small letters
+        for (int i = 1; i <= 2; i++)
+        {
+            char smallLetter = GenerateChar(SmallLetters);
+            InsertAtRandomPosition(password, smallLetter);
+        }
 
-		// Generate one random digit
-		char digit = GenerateChar(Digits);
-		InsertAtRandomPosition(password, digit);
+        // Generate one random digit
+        char digit = GenerateChar(Digits);
+        InsertAtRandomPosition(password, digit);
 
-		// Generate 3 special characters
-		for (int i = 1; i <= 3; i++)
-		{
-			char specialChar = GenerateChar(SpecialChars);
-			InsertAtRandomPosition(password, specialChar);
-		}
+        // Generate 3 special characters
+        for (int i = 1; i <= 3; i++)
+        {
+            char specialChar = GenerateChar(SpecialChars);
+            InsertAtRandomPosition(password, specialChar);
+        }
 
-		// Generate few random characters (between 0 and 7)
-		int count = rnd.Next(8);
-		for (int i = 1; i <= count; i++)
-		{
-			char specialChar = GenerateChar(AllChars);
-			InsertAtRandomPosition(password, specialChar);
-		}
+        // Generate few random characters (between 0 and 7)
+        int count = rnd.Next(8);
+        for (int i = 1; i <= count; i++)
+        {
+            char specialChar = GenerateChar(AllChars);
+            InsertAtRandomPosition(password, specialChar);
+        }
 
-		Console.WriteLine(password);
-	}
+        Console.WriteLine(password);
+    }
 
-	private static void InsertAtRandomPosition(
-		StringBuilder password, char character)
-	{
-		int randomPosition = rnd.Next(password.Length + 1);
-		password.Insert(randomPosition, character);
-	}
+    private static void InsertAtRandomPosition(
+        StringBuilder password, char character)
+    {
+        int randomPosition = rnd.Next(password.Length + 1);
+        password.Insert(randomPosition, character);
+    }
 
-	private static char GenerateChar(string availableChars)
-	{
-		int randomIndex = rnd.Next(availableChars.Length);
-		char randomChar = availableChars[randomIndex];
-		return randomChar;
-	}
+    private static char GenerateChar(string availableChars)
+    {
+        int randomIndex = rnd.Next(availableChars.Length);
+        char randomChar = availableChars[randomIndex];
+        return randomChar;
+    }
 }
 ```
 
@@ -637,15 +637,15 @@ Let’s explain several unclear moments in the source code. Let’s start from t
 
 ```cs
 private const string CapitalLetters =
-	"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 private const string SmallLetters =
-	"abcdefghijklmnopqrstuvwxyz";
+    "abcdefghijklmnopqrstuvwxyz";
 private const string Digits = "0123456789";
 private const string SpecialChars =
-	"~!@#$%^&*()_+=`{}[]\\|':;.,/?<>";
+    "~!@#$%^&*()_+=`{}[]\\|':;.,/?<>";
 private const string AllChars =
-	CapitalLetters + SmallLetters + Digits + SpecialChars;
-```	
+    CapitalLetters + SmallLetters + Digits + SpecialChars;
+```    
 
 **Constants** in C# are immutable variables whose values are assigned during their initialization in the source code of the program and after that they cannot be changed. They are declared with the modifier `const`. They are used for defining a number or a string, which afterwards is used many times in the program. This way repetition of certain values in the code is avoided and these values can be easily altered by changing only one place in the code. For example, if in a certain moment we decide that the character "," (comma) should not be used when generating a password, we can change only one row in the program (the corresponding constant) and the change is going to reflect on every row where the constant is being used. In C# constants are written in Pascal Case (the words in the name, merged together, each of them starts with an uppercase letter, and the rest of them are lowercase). More about constants we will learn in the section "Constants" in the chapter "Defining Classes".
 
@@ -688,7 +688,7 @@ If we have defined a class in its own file and we like to add it in a new or alr
 ```cs
 namespace <namespace_name>
 {
-	...
+    ...
 }
 ```
 
@@ -750,48 +750,48 @@ In order to illustrate the principle of inclusion of a namespace, we are going t
 ```cs
 class NamespaceImportTest
 {
-	static void Main()
-	{
-		System.Collections.Generic.List<int> ints =
-			new System.Collections.Generic.List<int>();
-		System.Collections.Generic.List<double> doubles =
-			new System.Collections.Generic.List<double>();
+    static void Main()
+    {
+        System.Collections.Generic.List<int> ints =
+            new System.Collections.Generic.List<int>();
+        System.Collections.Generic.List<double> doubles =
+            new System.Collections.Generic.List<double>();
 
-		while (true)
-		{
-			int intResult;
-			double doubleResult;
-			Console.WriteLine("Enter an int or a double:");
-			string input = Console.ReadLine();
+        while (true)
+        {
+            int intResult;
+            double doubleResult;
+            Console.WriteLine("Enter an int or a double:");
+            string input = Console.ReadLine();
 
-			if (int.TryParse(input, out intResult))
-			{
-				ints.Add(intResult);
-			}
-			else if (double.TryParse(input, out doubleResult))
-			{
-				doubles.Add(doubleResult);
-			}
-			else
-			{
-				break;
-			}
-		}
+            if (int.TryParse(input, out intResult))
+            {
+                ints.Add(intResult);
+            }
+            else if (double.TryParse(input, out doubleResult))
+            {
+                doubles.Add(doubleResult);
+            }
+            else
+            {
+                break;
+            }
+        }
 
-		Console.Write("You entered {0} ints:", ints.Count);
-		foreach (var i in ints)
-		{
-			Console.Write(" " + i);
-		}
-		Console.WriteLine();
+        Console.Write("You entered {0} ints:", ints.Count);
+        foreach (var i in ints)
+        {
+            Console.Write(" " + i);
+        }
+        Console.WriteLine();
 
-		Console.Write("You entered {0} doubles:", doubles.Count);
-		foreach (var d in doubles)
-		{
-			Console.Write(" " + d);
-		}
-		Console.WriteLine();
-	}
+        Console.Write("You entered {0} doubles:", doubles.Count);
+        foreach (var d in doubles)
+        {
+            Console.Write(" " + d);
+        }
+        Console.WriteLine();
+    }
 }
 ```
 
@@ -814,11 +814,11 @@ using System.Collections.Generic;
 
 class NamespaceImportTest
 {
-	static void Main()
-	{
-		List<int> ints = new List<int>();
-		List<double> doubles = new List<double>();
-		...
-	}
+    static void Main()
+    {
+        List<int> ints = new List<int>();
+        List<double> doubles = new List<double>();
+        ...
+    }
 }
 ```
