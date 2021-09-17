@@ -1,26 +1,48 @@
-Chapter 12. Exception Handling
+# Chapter 12. Exception Handling
 
-In This Chapter
-In this chapter we will discuss exceptions in the object-oriented programming and in C# in particular. We will learn how to handle exceptions using the try-catch construct, how to pass them to the calling methods and how to throw standard or our own exceptions using the throw construct. We will give various examples for using exceptions. We will look at the types of exceptions and the exceptions hierarchy in the .NET Framework. At the end, we will look at the advantages of using exceptions, best practices and how to apply them in different situations.
-What Is an Exception?
-When we write a program, we describe step-by-step what the computer must do (at least in imperative programming; in the functional programming things look a bit different) and in most of the cases we rely that the program will execute normally. Indeed, most of the time, programs are following this normal pattern, but there are some exceptions. Let’s say we want to read a file and display its contents on the screen. Let’s assume the file is located on a remote server and during the process of reading it, the connection goes down. The file then will be only partially loaded. The program will not be able to execute normally and show file’s contents on the screen. In this case, we have an exception from the normal (and correct) program execution and this exception must be reported to the user and/or the administrator.
-Exceptions
-Exception is a notification that something interrupts the normal program execution. Exceptions provide a programming paradigm for detecting and reacting to unexpected events. When an exception arises, the state of the program is saved, the normal flow is interrupted and the control is passed to an exception handler (if such exists in the current context).
-Exceptions are raised or thrown by programming code that must send a signal to the executing program about an error or an unusual situation. For example, if we try to open a file, which doesn’t exist, the code responsible for opening the file will detect this and will throw an exception with a proper error message.
+## In This Chapter
+
+In this chapter we will discuss **exceptions** in the object-oriented programming and in C# in particular. We will learn how to **handle exceptions** using the try-catch construct, how to pass them to the calling methods and how to **throw standard or our own exceptions** using the `throw` construct. We will give various examples for using exceptions. We will look at the types of exceptions and the **exceptions hierarchy** in the .NET Framework. At the end, we will look at the advantages of using exceptions, best practices and how to apply them in different situations.
+
+## What Is an Exception?
+
+When we write a program, we describe step-by-step what the computer must do (at least in imperative programming; in the functional programming things look a bit different) and in most of the cases we rely that the program will execute normally. Indeed, most of the time, programs are following this normal pattern, but there are some exceptions. Let’s say we want to read a file and display its contents on the screen. Let’s assume the file is located on a remote server and during the process of reading it, the connection goes down. The file then will be only partially loaded. The program will not be able to execute normally and show file’s contents on the screen. In this case, we have an **exception** from the normal (and correct) program execution and this exception must be reported to the user and/or the administrator.
+
+### Exceptions
+
+**Exception** is a **notification that something interrupts the normal program execution.** Exceptions provide a programming paradigm for detecting and reacting to unexpected events. When an exception arises, the state of the program is saved, the normal flow is interrupted and the control is passed to an **exception handler** (if such exists in the current context).
+
+Exceptions are raised or **thrown** by programming code that must send a signal to the executing program about **an error or an unusual situation.** For example, if we try to open a file, which doesn’t exist, the code responsible for opening the file will detect this and will throw an exception with a proper error message.
+
 Exceptions are one of the main paradigms of object-oriented programming (OOP), which is described in details in the chapter "Object-Oriented Programming Principles".
-Catching and Handling Exceptions
-Exception handling is a mechanism, which allows exceptions to be thrown and caught. This mechanism is provided internally by the CLR (Common Language Runtime). Parts of the exception handling infrastructure are the language constructs in C# for throwing and catching exceptions. CLR takes care to propagate each exception to the code that can handle it.
-Exceptions in the Object-Oriented Programming
-In Object-Oriented Programming (OOP), exceptions are a powerful mecha¬nism for centralized processing of errors and exceptional situations. This mechanism replaces the procedure-oriented method of error handling in which each function returns a code indicating an error or a successful execution.
-Usually in OOP, a code executing some operation will cause an exception if there is a problem and the operation could not be successfully completed. The method causing the operation could catch the exception (and handle the error) or pass the exception through to the calling method. This allows handling errors to be delegated to some upper level in the call stack and in general, allows flexible management of errors and unexpected situations.
-Another fundamental concept is exceptions hierarchy. In OOP, exceptions are classes and they can be inherited to build hierarchies. When an exception is handled (caught), the handling mechanism could catch a whole class of exceptions and not just a particular error (as in the traditional procedural programming).
-In OOP, it is recommended to use exceptions for managing error situations or unexpected events that may arise during a program execution. This replaces the procedural error-handling approach and gives important advantages such as centralized error processing, handling multiple errors in one place and ability to pass errors to a higher-level handler. Another important advantage is that exceptions self-describe themselves and can create hierarchies.
+
+### Catching and Handling Exceptions
+
+**Exception handling** is a mechanism, which allows **exceptions to be thrown and caught.** This mechanism is provided internally by the CLR (Common Language Runtime). Parts of the exception handling infrastructure are the **language constructs in C#** for throwing and catching exceptions. CLR takes care to propagate each exception to the code that can handle it.
+
+### Exceptions in the Object-Oriented Programming
+
+In Object-Oriented Programming (OOP), exceptions are a powerful mechanism for **centralized processing of errors** and exceptional situations. This mechanism replaces the procedure-oriented method of error handling in which each function returns a code indicating an error or a successful execution.
+
+Usually in OOP, a code executing some operation will cause an exception if there is a problem and the **operation could not be successfully completed.** The method causing the operation could catch the exception (and handle the error) or pass the exception through to the calling method. This allows handling errors to be delegated to some upper level in the call stack and in general, allows flexible management of errors and unexpected situations.
+
+Another fundamental concept is **exceptions hierarchy.** In OOP, exceptions are classes and they can be inherited to build hierarchies. When an exception is handled (caught), the handling mechanism could catch a whole class of exceptions and not just a particular error (as in the traditional procedural programming).
+
+In OOP, it is recommended to **use exceptions for managing error situations or unexpected events** that may arise during a program execution. This replaces the procedural error-handling approach and gives important advantages such as centralized error processing, handling multiple errors in one place and ability to pass errors to a higher-level handler. Another important advantage is that exceptions self-describe themselves and can create hierarchies.
+
 Sometimes exceptions are used not so much to signal a problem but to handle some expected event. This is not considered a good practice as exceptions should not control the normal flow of the program. At the end of the chapter we will look in more details into this.
-Exceptions in .NET
-Exception in .NET is an object, which signals an error or an event, which is not anticipated in the normal program flow. When such unusual event takes place, the executing method ’throws' a special object containing information about the type of the error, the place in the program where the error occurred as well as the program state at the moment of the error.
-Each exception in .NET contains the so-called stack trace, which gives information of where exactly the error occurred. This will be discussed in more details later in this chapter.
-An Example Code Throwing an Exception
-Here is an example for a code that will throw an exception:
+
+### Exceptions in .NET
+
+**Exception** in .NET is an **object,** which signals an error or an event, which is not anticipated in the normal program flow. When such unusual event takes place, the executing method ’throws' a special object containing information about the type of the error, the place in the program where the error occurred as well as the program state at the moment of the error.
+
+Each exception in .NET contains the so-called **stack trace,** which gives information of where exactly the error occurred. This will be discussed in more details later in this chapter.
+
+### An Example Code Throwing an Exception
+
+Here is an example for a code that will **throw an exception:**
+
+```cs
 class ExceptionsDemo
 {
 	static void Main()
@@ -37,12 +59,20 @@ class ExceptionsDemo
 		reader.Close();
 	}
 }
-This program will compile successfully but if you run it, the result will look like the following (FileNotFoundException dumped on the console):
- 
+```
+
+This program will compile successfully but if you run it, the result will look like the following (`FileNotFoundException` dumped on the console):
+
+![FileNotFoundException](./assets/filenotefoundexception-in-console.png)
+
 In this example, we have a code trying to open a text file for reading and then display the first line of this file on the screen. We will discuss working with files in more details in the chapter "Text Files".
-The first two lines of ReadFile() contain code that throws an exception. In this example, if the file WrongTextFile.txt doesn’t exist, the constructor StreamReader(string, fileName) will throw a FileNotFoundException. If an unexpected problem occurs during the input-output operations, the stream methods, such as ReadLine() will throw an IOException.
-The code above will successfully compile but at run-time it will throw an exception if the WrongTextFile.txt file does not exist. The end result in this case is an error message displayed on the console. The console output also contains information of where and how the error occurred.
-How Do Exceptions Work?
+
+The first two lines of `ReadFile()` contain code that throws an exception. In this example, if the file `WrongTextFile.txt` doesn’t exist, the constructor `StreamReader(string, fileName)` will throw a `FileNotFoundException`. If an unexpected problem occurs during the input-output operations, the stream methods, such as `ReadLine()` will throw an `IOException`.
+
+The code above will successfully compile but at run-time it will throw an exception if the `WrongTextFile.txt` file does not exist. The end result in this case is an error message displayed on the console. The console output also contains information of where and how the error occurred.
+
+### How Do Exceptions Work?
+
 If during the normal program execution one of the methods throws an exception, the normal flow of the program is interrupted. In the example above this happens when the StreamReader is initialized. Let’s take a look on the following line:
 TextReader reader = new StreamReader("WrongTextFile.txt");
 If this line triggers an error, the reader local variable will not be initialized and it will have its default value of null. None of the lines that follow in the method will be executed. The program will be interrupted until the CLR finds a handler that can process the exception.
@@ -153,7 +183,9 @@ static void Main()
 The result from running this program is:
 Unhandled Exception: System.Exception: There was a problem
 	at Exceptions.Demo1.Main() in Program.cs:line 11
-Exceptions Hierarchy
+	
+## Exceptions Hierarchy
+
 There are two types of exceptions in .NET Framework: exceptions thrown by the applications we develop (ApplicationException) and exceptions thrown by the runtime (SystemException). Each of these is a base class for a hierarchy of exception classes:
  
 As all of these classes have different characteristics, we will examine them one by one.
@@ -191,7 +223,9 @@ Application vs. System Exceptions
 Exceptions in .NET are two types – system and application. System exceptions are defined in .NET libraries and are used by the framework, while application exceptions are defined by application developers and are used by the application software. When we, as developers, design our own exception classes, it is a good practice to inherit from ApplicationException and not directly from SystemException (or even worse – directly from Exception). SystemException should only be inherited internally within the .NET Framework.
 Some of the worst system exceptions include ExecutionEngineException (which is thrown on internal error within CLR), StackOverflowException (call-stack overflow, most probably due to infinite recursion) and OutOfMemoryException (insufficient memory). In all of these cases, our application could hardly recover or react in some reasonable manner. Most frequently, when such exception occurs, the application just crashes.
 Exceptions related to interaction with external components (like COM components) inherit from ExternalException. Examples are COMException and Win32Exception.
-Throwing and Catching Exceptions
+
+## Throwing and Catching Exceptions
+
 Let’s look in more details at throwing and catching exceptions.
 Nested Exceptions
 We’ve already seen that each exception could contain a nested (inner) exception. Let’s explain in more details why it is a common practice in OOP error handling to wrap exceptions in this way.
@@ -302,7 +336,9 @@ static void ReadFile(string fileName)
 In this example the ReadFile() method catches and handles only FileNotFoundException while passing all other exceptions up to the Main() method. In the Main() method we handle only exceptions of type IOException and will let the CLR to handle all other exceptions (for instance, if OutOfMemoryException is thrown during program’s execution, it will be handled by the CLR).
 If the Main() method passes a wrong filename, FileNotFoundException will be thrown while initializing the TextReader in ReadFile(). This exception will be handled by the ReadFile() method itself. If on the other hand the file exists but there is some problem reading it (insufficient permissions, damaged file contents etc.), the respective exception that will be thrown will be handled in the Main() method.
 Handling exceptions at different levels allows the error conditions to be handled at the most suitable place for the particular error. This allows the program code to be clear and structured and the flexibility achieved is enormous.
-The try-finally Construct
+
+## The try-finally Construct
+
 Every try block could contain a respective finally block. The code within the finally block is always executed, no matter how the program flow leaves the try block. This guarantees that the finally block will be executed even if an exception is thrown or a return statement is executed within the try block.
  	The code in the finally block will not be executed if while executing the try block, CLR is unexpectedly terminated, e.g. if we stop the program through Windows Task Manager.
 The basic form of the finally block is given below:
@@ -440,7 +476,9 @@ static void ReadFile(string filename)
 	}
 }
 Both of these options are correct and both are applied depending on the situation and programmer’s preference. The second approach is a little bit riskier as if an exception occurs in the finally block, some of the resources will not be cleaned up. In the example above, if an exception is thrown during r1.Release(), r2 will not be cleaned up. If we use the first option, there is no such problem but the code is a bit longer.
-IDisposable and the "using" Statement
+
+## IDisposable and the "using" Statement
+
 It is time to present a new shorter and simplified way to release some kinds of resources in C#. We will demonstrate which resources can use this special programming construct and how it looks like.
 IDisposable
 The main use of IDisposable interface is to release resources. In .NET such resources are window handles, files, streams and others. We will talk about interfaces in "OOP Principles" chapter. Now we may consider interface as an indication that given type of objects (for example streams for reading files) support a certain number of operations (for example closing the stream and releasing related resources).
@@ -484,7 +522,9 @@ When to Use the "using" Statement?
 There is a simple rule when to use using with .NET classes:
  	Use the using statement with all classes that implement the IDisposable interface. Look for IDisposable in MSDN.
 When a class implements IDisposable interface this means that the creator of this class expects it can be used with the using statement and the class contains some expensive resource that should not be left unreleased. Implementing IDisposable also means that it should be released immediately after we finish using the class and the easiest way to do this in C# is with using statement.
-Advantages of Using Exceptions
+
+## Advantages of Using Exceptions
+
 So far we reviewed the exceptions in details, their characteristics and how to use them. Now let’s find out why they were introduced and why they are so widely used.
 Separation of the Exception Handling Code
 Using exceptions allow us to separate the code, which describes the normal execution of the program from the code required for unexpected execution and the code for error handling. We will demonstrate this separation concept in the following example:
@@ -664,7 +704,9 @@ void Method1()
 	ReadFile();
 }
 If an error occurs during reading the file it will be ignored in Method1() and Method2() and will be caught and handled in Method3() where is the most appropriate place to handle the error. Let’s remember again the most important rule: every method should catch only exceptions that can handle and skip all the others.
-Best Practices when Using Exceptions
+
+## Best Practices when Using Exceptions
+
 In this section we will give some recommendations and best practices for correctly using exceptions for error handling and unexpected situations. These are important rules that should be remembered and followed.
 When to Rely on Exceptions?
 To understand when it is good to rely on exceptions let’s see the following example: we have a program that opens a file by given path and file name. While writing the user can write the file name wrong. This should rather be considered normal and not exceptional.
@@ -730,7 +772,7 @@ This is the good way to show the error message to the end user. The message is e
 It is recommended when exceptions are not caught by anyone (such exceptions can only be runtime errors) to be caught by a global exception handler which saves them on the disk and shows user friendly message such as "An error occurred, please try again later". It is a good a practice to show not only a user friendly message but also technical information (stack trace) available on demand (e.g. through an additional button or link).
 Throw Exceptions at the Appropriate Level of Abstraction!
 When we throw our own exceptions we must keep in mind the abstractions in the context our methods work. For example if our method works with arrays we can throw IndexOutOfRangeException or NullReferenceException because our method works at low level and directly operates with the memory and the array elements. But if our method is doing accumulating of interests at all accounts in a bank it should not throw IndexOutOfRangeException because this exception is not from the business area of the banking sector. It would be normal accumulation of interests in a bank software to throw InvalidInterestException exception with an appropriate error message where the original IndexOutOfRangeException exception to be attached.
-Let’s give another example: we call a method that sorts an array of integers and throws an exception TransactionAbortedException. This is also an inappropriate exception just as NullReferenceException was in accumu¬lation of interests in the bank software. That is why we should consider the abstraction level where our method works when we throw our exception.
+Let’s give another example: we call a method that sorts an array of integers and throws an exception TransactionAbortedException. This is also an inappropriate exception just as NullReferenceException was in accumulation of interests in the bank software. That is why we should consider the abstraction level where our method works when we throw our exception.
 If Your Exception Has a Source, Use It!
 When we catch an exception and throw a new one with a higher level of abstraction we should always attach the original exception to it. This way the user of our code will be able to easily find the exact reason for the error and the location where it occurred at the first place.
 This rule is a special case of more general rule:

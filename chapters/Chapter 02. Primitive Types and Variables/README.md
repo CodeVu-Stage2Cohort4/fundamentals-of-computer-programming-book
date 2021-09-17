@@ -46,9 +46,9 @@ These data types are called **primitive (built-in types)**, because they are emb
 | **uint** | 0u | 0 | 4294967295 |
 | **long** | 0L | -9223372036854775808 | 9223372036854775807 |
 | **ulong** | 0u | 0 | 18446744073709551615 |
-| **float** | 0.0f | ±1.5?10-45 | ±3.4?1038 |
-| **double** | 0.0d | ±5.0?10-324 | ±1.7?10308 |
-| **decimal** | 0.0m | ±1.0?10-28 | ±7.9?1028 |
+| **float** | 0.0f | ±1.5×10<sup>-45</sup> | ±3.4×10<sup>38</sup> |
+| **double** | 0.0d | ±5.0×10<sup>-324</sup> | ±1.7×10<sup>308</sup> |
+| **decimal** | 0.0m | ±1.0×10<sup>-28</sup> | ±7.9×10<sup>28</sup> |
 | **bool** | `false` | Two possible values: `true` and `false` | |
 | **char** | '\u0000' | '\u0000' | '\uffff' |
 | **object** | null | - | - |
