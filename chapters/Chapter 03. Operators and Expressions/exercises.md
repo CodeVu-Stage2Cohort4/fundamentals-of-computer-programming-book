@@ -6,7 +6,7 @@
 4. Write an expression that checks whether the **third bit** in a given integer is 1 or 0.
 5. Write an expression that calculates the **area of a trapezoid** by given sides **a**, **b** and height **h**.
 6. Write a program that prints on the console the **perimeter and the area of a rectangle** by given side and height entered by the user.
-7. The gravitational field of the Moon is approximately 17% of that on the Earth. Write a program that calculates the **weight of a man on the moo**n by a given weight on the Earth.
+7. The gravitational field of the Moon is approximately 17% of that on the Earth. Write a program that calculates the **weight of a person on the moon** by a given weight on the Earth.
 8. Write an expression that checks for a given point {x, y} if it is **within the circle** K({0, 0}, R=5). Explanation: the point {0, 0} is the center of the circle and 5 is the radius.
 9. Write an expression that checks for given point {x, y} if it is **within the circle** K({0, 0}, R=5) and **out of the rectangle** [{-1, 1}, {5, 5}]. Clarification: for the rectangle the lower left and the upper right corners are given.
 10. Write a program that takes as input a **four-digit number** in format abcd (e.g. 2011) and performs the following actions:
@@ -18,5 +18,5 @@
 12. Write a Boolean expression that checks if the bit on position `p` in the integer `v` has the value 1. Example `v=5`, `p=1` -> `false`.
 13. We are given the number n, the value v (v = 0 or 1) and the position `p`. write a sequence of operations that changes the value of `n`, so the bit on the position    has the value of `v`. Example: n=35, p=5, v=0 -> n=3. Another example: n=35, p=2, v=1 -> n=39.
 14. Write a program that checks if a given number n (1 < n < 100) is a **prime number** (i.e. it is divisible without remainder only to itself and 1).
-15. * Write a program that **exchanges the values of the bits** on positions 3, 4 and 5 with bits on positions 24, 25 and 26 of a given 32-bit unsigned integer.
-16. * Write a program that **exchanges bits** {p, p+1, …, p+k-1} with bits {q, q+1, …, q+k-1} of a given 32-bit unsigned integer.
+15. Write a program that **exchanges the values of the bits** on positions 3, 4 and 5 with bits on positions 24, 25 and 26 of a given 32-bit unsigned integer.
+16. Write a program that **exchanges bits** {p, p+1, …, p+k-1} with bits {q, q+1, …, q+k-1} of a given 32-bit unsigned integer.
