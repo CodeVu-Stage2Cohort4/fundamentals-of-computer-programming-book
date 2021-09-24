@@ -1,40 +1,78 @@
-Chapter 14. Defining Classes
+# Chapter 14. Defining Classes
 
-In This Chapter
-In this chapter we will understand how to define custom classes and their elements. We will learn to declare fields, constructors and properties for the classes. We will revise what a method is and we will broaden our knowledge about access modifiers and methods. We will observe the characteristics of the constructors and we will set out how the program objects coexist in the dynamic memory and how their fields are initialized. Finally, we will explain what the static elements of a class are – fields (including constants), properties and methods and how to use them properly. In this chapter we will also introduce generic types (generics), enumerated types (enumerations) and nested classes.
-Custom Classes
-The aim of every program written by the programmer is to solve a given problem based on the implementation of a certain idea. In order to create a solution, first, we sketch a simplified actual model, which does not represent everything, but focuses on these facts, which are significant for the end result. Afterwards, based on the sketched model, we are looking for an answer (i.e. to create an algorithm) for our problem and the solution we describe via given programming language.
-Nowadays, the most used programming languages are the object-oriented. And because the object-oriented programming (OOP) is close to the way humans think, using one easily allows us to describe models of the surrounding life. Certain reason for this behavior is, because OOP offers tools to draw the set of concepts, which outline classes of objects in every model. The term – class and the definition of custom classes, different from the .NET system framework’s, is built-in feature of the C# programming language. The purpose of this chapter is to get us know with it.
-Let’s Recall: What Does It Mean Class and Object?
-Class in the OOP is called a definition (specification) of a given type of objects from the real-world. The class represents a pattern, which describes the different states and behavior of the certain objects (the copies), which are created from this class (pattern).
-Object is a copy created from the definition (specification) of a given class, also called an instance. When one object is created by the description of one class we say the object is from type "name of the class".
-For example, if we have a class type Dog, which describes some of the characteristics of a real dog, then, the objects based on the description of the class (e.g. the doggies "Fido" and "Rex") are from type class Dog. It means the same when the string "some string" is from class type String. The difference is that objects from type Dog is are copies of the class, which is not part of the system library classes of the .NET Framework, but defined by ourselves (the users of the programming language).
-What Does a Class Contain?
-Every class contains a definition of what kind of data types and objects has in order to be described. The object (the certain copy of this class) holds the actual data. The data defines the object’s state.
-In addition to the state, in the class is described the behavior of the objects. The behavior is represented by actions, which can be performed by the objects themselves. The resource in OOP, through which we can describe this behavior of the objects from a given class, is the declaration of methods in the class body.
-Elements of the Class
-Now, we will go through the main elements of every class, and we will explain them in details latter. The main elements of a C# classes are the following:
-	Class declaration – this is the line where we declare the name of the class, e.g.:
-public class Dog
-	Class body – similar to the method idioms in the language, the classes also have single class body. It is defined right after the class declaration, enclosed in curly brackets "{" and "}". The content inside the brackets is known as body of the class. The elements of the class, which are numbered below, are part of the body.
-public class Dog
-{
-	// … The body of the class comes here …
-} 
-	Constructor – it is used for creating new objects. Here is a typical constructor:
-public Dog()
-{
-	// … Some code …
-}
-	Fields – they are variables, declared inside the class (somewhere in the literature are known as member-variables). The data of the object, which these variables represent, and are retained into them, is the specific state of an object, and one is required for the proper work of object’s methods. The values, which are in the fields, reflect the specific state of the given object, but despite of this there are other types of fields, called static, which are shared among all the objects.
-// Field definition
-private string name;
-	Properties – this is the way to describe the characteristics of a given class. Usually, the value of the characteristics is kept in the fields of the object. Similar to the fields, the properties may be held by certain object or to be shared among the rest of the objects.
-// Property definition
-private string Name { get; set; }
-	Methods – from the chapter "Methods" we know that methods are named blocks of programming code. They perform particular actions and through them the objects achieve their behavior based on the class type. Methods execute the implemented programming logic (algorithms) and the handling of data.
-Sample Class: Dog
-Here is how a class looks like. The class Dog defined here owns all the elements, which we described so far:
+## In This Chapter
+
+In this chapter we will understand how to **define custom classes** and their elements. We will learn to declare **fields, constructors and properties** for the classes. We will revise what a method is and we will broaden our knowledge about **access modifiers** and **methods.** We will observe the characteristics of the constructors and we will set out how the program objects coexist in the dynamic memory and how their fields are initialized. Finally, we will explain what the **static elements** of a class are – fields (including **constants**), properties and methods and how to use them properly. In this chapter we will also introduce generic types (**generics**), enumerated types (**enumerations**) and **nested classes.**
+
+## Custom Classes
+
+The aim of every program written by the programmer is to **solve a given problem** based on the implementation of a certain idea. In order to create a solution, first, we sketch a simplified actual model, which does not represent everything, but focuses on these facts, which are significant for the end result. Afterwards, based on the sketched model, we are looking for an answer (i.e. to create an algorithm) for our problem and the solution we describe via given programming language.
+
+Nowadays, the most used programming languages are the object-oriented. And because the **object-oriented programming (OOP)** is close to the way humans think, using one easily allows us to describe models of the surrounding life. Certain reason for this behavior is, because OOP offers tools to draw the set of concepts, which outline classes of objects in every model. The term – class and the definition of custom classes, different from the .NET system framework’s, is built-in feature of the C# programming language. The purpose of this chapter is to get us know with it.
+
+### Let’s Recall: What Does It Mean Class and Object?
+
+**Class** in the OOP is called a definition (**specification**) of a given type of objects from the real-world. The class represents a pattern, which describes the different states and behavior of the certain objects (the copies), which are created from this class (pattern).
+
+**Object** is a copy created from the definition (specification) of a given class, also called an **instance.** When one object is created by the description of one class we say **the object is from type "name of the class".**
+
+For example, if we have a class type `Dog`, which describes some of the characteristics of a real dog, then, the objects based on the description of the class (e.g. the doggies "Fido" and "Rex") are from type class `Dog`. It means the same when the string "some string" is from class type `String`. The difference is that **objects** from type `Dog` is are copies of the class, which is not part of the system library classes of the .NET Framework, but defined by ourselves (the users of the programming language).
+
+### What Does a Class Contain?
+
+Every class contains a definition of what kind of data types and objects has in order to be described. The object (the certain copy of this class) holds the **actual** data. The data defines the object’s **state.**
+
+In addition to the **state,** in the class is described the **behavior** of the objects. The behavior is represented by actions, which can be performed by the objects themselves. The resource in OOP, through which we can describe this behavior of the objects from a given class, is the declaration of **methods** in the class body.
+
+### Elements of the Class
+
+Now, we will go through the main elements of every class, and we will explain them in details latter. The main **elements of a C# classes** are the following:
+
+- **Class declaration** – this is the line where we declare the name of the class, e.g.:
+
+	```cs
+	public class Dog
+	```
+
+- **Class body** – similar to the method idioms in the language, the classes also have single class body. It is defined right after the class declaration, enclosed in curly brackets "`{`" and "`}`". The content inside the brackets is known as body of the class. The elements of the class, which are numbered below, are part of the body.
+
+	```cs
+	public class Dog
+	{
+		// ... The body of the class comes here ...
+	} 
+	```
+
+- **Constructor** – it is used for **creating new objects.** Here is a typical constructor:
+
+	```cs
+	public Dog()
+	{
+		// ... Some code ...
+	}
+	```
+
+- **Fields** – they are variables, declared inside the class (somewhere in the literature are known as **member-variables**). The data of the object, which these variables represent, and are retained into them, is the specific state of an object, and one is required for the proper work of object’s methods. The values, which are in the fields, reflect the specific state of the given object, but despite of this there are other types of fields, called **static,** which are shared among all the objects.
+
+	```cs
+	// Field definition
+	private string name;
+	```
+
+- **Properties** – this is the way to describe the **characteristics** of a given class. Usually, the value of the characteristics is kept in the fields of the object. Similar to the fields, the properties may be held by certain object or to be shared among the rest of the objects.
+
+	```cs
+	// Property definition
+	private string Name { get; set; }
+	```
+
+- **Methods** – from the chapter "Methods" we know that methods are named blocks of programming code. They perform particular actions and through them the objects achieve their behavior based on the class type. Methods execute the implemented programming logic (algorithms) and the handling of data.
+
+#### Sample Class: Dog
+
+Here is how a class looks like. The class `Dog` defined here owns all the elements, which we described so far:
+
+```cs
 // Class declaration
 public class Dog
 {	// Opening bracket of the class body
@@ -67,15 +105,26 @@ public class Dog
 			name ?? "[unnamed dog]");
 	}
 }	// Closing bracket of the class body
+```
+
 At the moment we will not explain in greater details this code, because the related information will be presented later in this chapter.
-Usage of Class and Objects
+
+## Usage of Class and Objects
+
 In the chapter "Creating and Using Objects" we saw in details how new objects of a given class are created and how they can be used. Now, shortly we will revise this programming technique.
-How to Use a Class Defined by Us (Custom Class)?
-In order to be able to use a given class, first we need to create an object of it. This is done by the reserved word new in combination with some of the constructors of the class. This will create an object from a given class (type).
+
+### How to Use a Class Defined by Us (Custom Class)?
+
+In order to be able to use a given class, first we need to create an object of it. This is done by the reserved word `new` in combination with some of the constructors of the class. This will create an object from a given class (type).
+
 If we want to manipulate the newly created object, we will have to assign it to a variable from its class type. By doing it, in this variable we will keep the connection (reference) to the object.
 Using the variable, and the "dot" notation, we can call the methods and the properties of the object, and as well as gain access to the fields (member-variables).
-Example – A Dog Meeting
-Let’s have the example from the previous section where we defined the class Dog, describing a dog, and let’s add a method Main() to the class. In this method we will demonstrate how to use the mentioned elements until here: create few Dog objects, assign properties to these objects and call methods on these objects:
+
+#### Example – A Dog Meeting
+
+Let’s have the example from the previous section where we defined the class `Dog`, describing a dog, and let’s add a method `Main()` to the class. In this method we will demonstrate how to use the mentioned elements until here: create few Dog objects, assign properties to these objects and call methods on these objects:
+
+```cs
 static void Main()
 {
 	string firstDogName = null;
@@ -104,40 +153,75 @@ static void Main()
 		dog.Bark();
 	}
 }
+```
+
 The output from the execution will be the following:
+
+```console
 Enter first dog name: Axl
 Enter second dog name: Bobby
 Axl said: Wow-wow!
 Bobby said: Wow-wow!
 [unnamed dog] said: Wow-wow!
-In the example program, with the help of Console.ReadLine(), we got the name of the objects of type dog, which the user should input.
-We assigned the first entered string to the variable firstDogName. Afterwards we used this variable when we created the first object from class type Dog – firstDog, by assigning it to the parameter of the constructor.
-We created the second object Dog, without using a string for the name of the dog in the constructor. With the help of Console.ReadLine() we got the name of the dog and then the value was assigned to the property Name. This is done by using a "dot" convention, applied to the variable, which keeps the reference to the second object from type Dog – secondDog.Name.
-When we created the third object from class type Dog, we used for the name of the dog its default value which is null. Note that in the Bark() method dogs whthout name (name == null) are printed as "[unnamed dog]".
-Afterward we created an array from type Dog, by initializing it with the three newly created objects.
-At the end, we used a loop, to go through the array of objects from type Dog. For every element from the array we again used the "dot" notation, be calling the method Bark() for the particular object: dog.Bark().
-Nature of Objects
-Let’s revise, when we create an object in .NET, one consists from two parts – the significant part (data), which contains its data and it is located in the memory of the operating system called a dynamic memory (heap) and a reference part to this object, which resides in the other part of the operating system’s memory, where are stored the local variable and parameters of the methods (the program execution stack).
-For example, let’s have a class called Dog, which has the properties for name, kind and age. Let’s create a variable dog from this class. This variable is a reference to the object and is in the dynamic memory (heap).
-The reference is a variable, which can access objects. The figure below depicts an example reference, which has link to the real object in the heap, and is called with the name dog. One, compare to the variable from primitive (value type), does not contain the real value (i.e. the data of the object), but the address, where one is located in the heap memory:
+```
+
+In the example program, with the help of `Console.ReadLine()`, we got the name of the objects of type dog, which the user should input.
+
+We assigned the first entered string to the variable `firstDogName`. Afterwards we used this variable when we created the first object from class type `Dog` – `firstDog`, by assigning it to the parameter of the constructor.
+
+We created the second object `Dog`, without using a string for the name of the dog in the constructor. With the help of `Console.ReadLine()` we got the name of the dog and then the value was assigned to the property Name. This is done by using a "dot" convention, applied to the variable, which keeps the reference to the second object from type `Dog` – `secondDog.Name`.
+
+When we created the third object from class type `Dog`, we used for the name of the dog its default value which is null. Note that in the `Bark()` method dogs without name (`name == null`) are printed as "[unnamed dog]".
+
+Afterward we created an array from type `Dog`, by initializing it with the three newly created objects.
+
+At the end, we used a loop, to go through the array of objects from type Dog. For every element from the array we again used the "dot" notation, be calling the method `Bark()` for the particular object: `dog.Bark()`.
+
+### Nature of Objects
+
+Let’s revise, when we create an object in .NET, one consists from two parts – the **significant part (data),** which contains its data and it is located in the memory of the operating system called a dynamic memory (heap) and a **reference part** to this object, which resides in the other part of the operating system’s memory, where are stored the local variable and parameters of the methods (the program execution stack).
+
+For example, let’s have a class called `Dog`, which has the properties for name, kind and age. Let’s create a variable `dog` from this class. This variable is a reference to the object and is in the dynamic memory (heap).
+
+The **reference** is a variable, which can access objects. The figure below depicts an example reference, which has link to the real object in the heap, and is called with the name `dog`. One, compare to the variable from primitive (value type), does not contain the real value (i.e. the data of the object), but the address, where one is located in the heap memory:
+
+![object reference in stack](assets/reference-in-stack.png)
  
-When we declare one variable from type a particular class, and we do not want the variable to be associated with a specific object, then we assign to it the value null. The reserved word null in the C# language means, that the variable does not point to any object (there is a missing value):
+When we declare one variable from type a particular class, and we do not want the variable to be associated with a specific object, then we assign to it the value `null`. The reserved word `null` in the C# language means, that the variable does not point to any object (there is a missing value):
+
+![null reference in stack](./assets/null-in-stack.png)
  
-Organizing Classes in Files and Namespaces
-In C# the only one limitation regarding the saving of our own custom classes is: they have to be saved in files with file extension .cs. In such a file several classes, structures and other types can be defined. Although it is not a requirement of the compiler, it is recommended every class to be stored in exactly one file, which corresponds to its name, i.e. the class Dog should be saved in a file Dog.cs.
-Organizing Classes in Namespaces
-As we should know from the chapter "Creating and Using Objects", the namespaces in C# are named group of classes, which are logically connected, without a requirement how they are stored in the file system.
-If we want to include in our code namespaces for the operation in our classes, declared in some file or set of files, this should be done by the so named using directives. They are not required, but if they exist, they are on the first lines in the class file, before the declaration of the classes or other types. In the next paragraphs we will understand how they exactly are used.
-After the insertion of the used namespaces, the next is the declaration of the namespace of the classes in the file. As we know, there is no requirement to declare classes in a namespace, but it is a good programming technique if we do it, because the class distribution in the namespace is used for better organization of the code and determination of the classes with equal names.
-The namespaces contain classes, structure, interfaces and other types of data, and as well other namespaces. An example of nested namespace is System, which contains the namespace Data. The full name of the second namespace is System.Data and one is nested in the namespace System.
-The full name of a class in .NET Framework is the class name, preceded by the namespace in which the class is declared, e.g.: <namespace_name>.
-<class_name>. By the using reserved word we can use types from certain namespace, without writing the full name, e.g.:
+## Organizing Classes in Files and Namespaces
+
+In C# the only one limitation regarding the saving of our own custom classes is: they have to be **saved in files with file extension `.cs`**. In such a file several classes, structures and other types can be defined. Although it is not a requirement of the compiler, it is recommended **every class to be stored in exactly one file, which corresponds to its name,** i.e. the class `Dog` should be saved in a file `Dog.cs`.
+
+### Organizing Classes in Namespaces
+
+As we should know from the chapter "Creating and Using Objects", the **namespaces in C# are named group of classes,** which are logically connected, without a requirement how they are stored in the file system.
+
+If we want to include in our code namespaces for the operation in our classes, declared in some file or set of files, this should be done by the so named `using` **directives.** They are not required, but if they exist, they are on the first lines in the class file, before the declaration of the classes or other types. In the next paragraphs we will understand how they exactly are used.
+
+After the insertion of the used namespaces, the next is the declaration of the **namespace** of the classes in the file. As we know, there is no requirement to declare classes in a namespace, but it is a good programming technique if we do it, because the class distribution in the namespace is used for better organization of the code and determination of the classes with equal names.
+
+The namespaces contain classes, structure, interfaces and other types of data, and as well other namespaces. An example of nested namespace is `System`, which contains the namespace `Data`. The full name of the second namespace is `System.Data` and one is nested in the namespace `System`.
+
+The **full name of a class** in .NET Framework is the class name, preceded by the namespace in which the class is declared, e.g.: `<namespace_name>.<class_name>`. By the using reserved word we can use types from certain namespace, without writing the full name, e.g.:
+
+```cs
 using System;
-…
+...
 DateTime date;
+```
+
 Instead of:
+
+```cs
 System.DateTime date;
-One typical declaration sequence, which we should follow when we create custom classes in .cs files, is:
+```
+
+One typical declaration sequence, which we should follow when we create custom classes in `.cs` files, is:
+
+```cs
 // Using directives – optional
 using <namespace1>;
 using <namespace2>;
@@ -148,26 +232,33 @@ namespace <namespace_name>
 	// Class declaration
 	class <first_class_name>
 	{
-		// … Class body …
+		// ... Class body ...
 	}
 
 	// Class declaration
 	class <second_class_name>
 	{
-		// … Class body …
+		// ... Class body ...
 	}
 
-	// …
+	// ...
 
 	// Class declaration
 	class <n-th_class_name>
 	{
-		// … Class body …
+		// ... Class body ...
 	}
 }
+```
+
 The declaring of the namespace and the relevant include of it is already explained in the chapter "Creating and Using Objects" and therefore we will not discuss it again.
+
 Before we continue, let’s look into the first line of the previous snippet. Instead include of namespace it is a source code comment. This is not a problem in compilation time, the comments are "removed" from the code and thus the first line is still the including statement.
-Encoding of Files and Using of Cyrillic and Unicode
+
+<!-- Cutting this out. We don't need Cyrillic files
+
+### Encoding of Files and Using of Cyrillic and Unicode
+
 While we are creating a .cs file, in which to declare our classes, it is good to think about its character encoding in the file system.
 In the .NET Framework the compiled code is represented in Unicode so it is possible to use characters in our code from alphabets other than Latin. In the next example we use Cyrillic letters for identifiers in Bulgarian language as well as comments in the code, written in Bulgarian (in Cyrillic letters):
 using System;
@@ -186,7 +277,7 @@ This code will compile and execute without a problem, but to keep the characters
 As we know from the "Strings" chapter, some not all characters can be stored in all encodings. If we use non-standard characters such as Chinese, Cyrillic or Arabic letters, we can use UTF-8 or other character encoding that supports these characters. By default Visual Studio uses the default character encoding (system locale) defined in the regional settings in Windows. This might be ISO-8859-1 in U.K. or U.S. and Windows-1251 in Bulgaria.
 To use a different encoding other than the system’s default encoding in Visual Studio, we need to choose the appropriate encoding of the file when opening it in the editor:
 	From the File menu we choose Open and then File.
-	In the Open File window we click on the option next to the button Open and we choose Open With…
+	In the Open File window we click on the option next to the button Open and we choose Open With...
 	From the list in the Open With window we choose an editor with encoding support, for example CSharp Editor with Encoding.
 	Then press [OK].
 	In the window Encoding we choose the appropriate encoding from the dropdown menu Encoding.
@@ -199,74 +290,140 @@ The steps for saving files in the file system with a specific encoding are:
 	In Advanced Save Options we select the desired encoding from the list (preferably the universal UTF-8).
 	From the Line Endings we select the desired line ending type.
 Although we have the ability to use characters from any non-English alphabet, in .cs files it is highly recommended to write all the identifiers and comments in English, because this way our code will be readable for more people in the world.
-Imagine that you live in Germany and you need to type a code written by a Vietnamese person, where the names of all variables and comments are in Vietnamese. You will prefer English, right? Then think about how a developer from Vietnam will handle variables and comments in German.
-Modifiers and Access Levels (Visibility)
-Let’s revise, from the chapter "Methods" we know that a modifier is a reserved word and with the help of it we add additional information for the compiler and the code related to the modifier.
-In C# there are four access modifiers: public, private, protected and internal. The access modifiers can be used only in front the following elements of the class: class declaration, fields, properties and methods.
-Modifiers and Access Levels
-As we explained, in C# there are four access modifiers – public, private, protected and internal. Based on them we control the access (visibility) to the elements of the class, in front of which they are used. The levels of access in .NET are public, protected, internal, protected internal and private. In this chapter we will review in details only public, private and internal. More about protected and protected internal we will learn in "Object-Oriented Programming Principles".
-Access Level "public"
-When we use the modifier public in front of some element, we are telling the compiler, that this element can be accessed from every class, no matter from the current project (assembly), from the current namespace. The access level public defines the miss of restrictions regarding the visibility. This access level is the least restricted access level in C#.
-Access Level "private"
-The access level private is the one, which defines the most restrictive level of visibility of the class and its elements. The modifier private is used to indicate, that the element, to which is issued, cannot be accessed from any other class (except the class, in which it is defined), even if this class exists in the same namespace. This is the default access level, i.e. it is used when there is no access level modifier in front of the respective element of a class (this is true only for elements inside a class).
-Access Level "internal"
-The modifier internal is used to limit the access to the elements of the class only to files from the same assembly, i.e. the same project in Visual Studio. When we create several projects in Visual Studio, the classes from will be compiled in different assemblies.
-Assembly
-.NET assemblies are collections of compiled types (classes and other types) and resources, which form a logical unit. Assemblies are stored in a binary file of type .exe or .dll. All types in C# and as general in .NET Framework can reside only inside assemblies. By every compilation of a .NET application one or several assemblies are created by the C# compiler and each assembly is stored inside an .exe or .dll file.
-Declaring Classes
+Imagine that you live in Germany and you need to type a code written by a Vietnamese person, where the names of all variables and comments are in Vietnamese. You will prefer English, right? Then think about how a developer from Vietnam will handle variables and comments in German. -->
+
+## Modifiers and Access Levels (Visibility)
+
+Let’s revise, from the chapter "Methods" we know that a **modifier** is a reserved word and with the help of it we add additional information for the compiler and the code related to the modifier.
+
+In C# there are four **access modifiers:** `public`, `private`, `protected` and `internal`. The access modifiers can be used only in front the following elements of the class: class declaration, fields, properties and methods.
+
+### Modifiers and Access Levels
+
+As we explained, in C# there are four access modifiers – `public`, `private`, `protected` and `internal`. Based on them we control the access (visibility) to the elements of the class, in front of which they are used. The levels of access in .NET are `public`, `protected`, `internal`, `protected internal` and `private`. In this chapter we will review in details only `public`, `private` and `internal`. More about protected and `protected internal` we will learn in "Object-Oriented Programming Principles".
+
+### Access Level "public"
+
+When we use the modifier `public` in front of some element, we are telling the compiler, that this element **can be accessed from every class,** no matter from the current project (assembly), from the current namespace. The access level `public` defines the miss of restrictions regarding the visibility. This access level is the least restricted access level in C#.
+
+### Access Level "private"
+
+The access level `private` is the one, which defines **the most restrictive level of visibility** of the class and its elements. The modifier `private` is used to indicate, that the element, to which is issued, **cannot be accessed from any other class** (except the class, in which it is defined), even if this class exists in the same namespace. This is the default access level, i.e. it is used when there is no access level modifier in front of the respective element of a class (this is true only for elements inside a class).
+
+### Access Level "internal"
+
+The modifier `internal` is used to limit the access to the elements of the class only to files **from the same assembly,** i.e. the same project in Visual Studio. When we create several projects in Visual Studio, the classes from will be compiled in different assemblies.
+
+### Assembly
+
+.NET assemblies are **collections of compiled types** (classes and other types) and **resources,** which form a logical unit. Assemblies are stored in a binary file of type `.exe` or `.dll`. All types in C# and as general in .NET Framework can reside only inside assemblies. By every compilation of a .NET application one or several assemblies are created by the C# compiler and each assembly is stored inside an `.exe` or `.dll` file.
+
+## Declaring Classes
+
 The definition of a class is based on strict syntactical rules:
+
+```cs
 [<access_modifier>] class <class_name>
-When we declare a class, it is mandatory to use the reserved word class. After it must stay the name of the class <class_name>.
-Besides the reserved word class and the name of the class, in the declaration of the class can be used several modifiers, e.g. the reviewed until now modifiers.
-Class Visibility
-Let’s consider two classes – A and B. We say that, class A accesses the elements of class B, if the first class can do one of the following:
-	Creates an object (instance) from class type B.
-	Can access distinct methods and fields in the class B, based on the access level assigned to the particular methods and fields.
-There is also another operation, which can be done over the classes, when the visibility allows it. The operation is called inheritance of a class, but we will discuss it later in the chapter Object-Oriented Programming Principles.
-As we understood, the access level term means "visibility". If the class A cannot "see" the class B, the access level of the methods and the fields in B does not matter.
-The access levels, which an outer class can have, are only public and internal. Inner classes can be defined with other access levels.
-Access Level "public"
-If we declare a class access modifier as public, we can reach it from every class and from every namespace, regardless of where it exists. It means that every other class can create objects from this type and has access to the methods and the fields of the public class.
-Just to know, if we want to use a class with access level public from other namespace, different from the current, we should use the reserved word for including different namespaces using or every time we should write the full name of the class.
-Access Level "internal"
-If we declare one class with access modifier internal, one will be accessible only from the same namespace. It means that only the classes from the same assembly can create objects from this type class and to have access to the methods and fields (with related access level) of the class. This access level is the default, where it is not used access modifier by the declaration of the class.
-If we have two projects in common solution in Visual Studio and we want to use a class from one project into the other one then the referenced class should be declared as public.
-Access Level "private"
-If we want to be exhaustive, we have to mention that as access modifier for a class can be used the visibility modifier private, but this is related to the term "inner class" (nested class), which we will review in the "Nested Classes" section. Private classes like other private members are accessible only inside the class which defined them.
-Body of the Class
+```
+
+When we declare a class, it is mandatory to use the reserved word `class`. After it must stay the name of the class `<class_name>`.
+
+Besides the reserved word `class` and the name of the class, in the declaration of the class can be used several modifiers, e.g. the reviewed until now modifiers.
+
+### Class Visibility
+
+Let’s consider two classes – `A` and `B`. We say that, class A accesses the elements of class `B`, if the first class can do one of the following:
+
+- Creates an object (instance) from class type `B`.
+- Can access distinct methods and fields in the class `B`, based on the access level assigned to the particular methods and fields.
+  
+There is also another operation, which can be done over the classes, when the visibility allows it. The operation is called **inheritance of a class,** but we will discuss it later in the chapter Object-Oriented Programming Principles.
+
+As we understood, the access level term means **"visibility".** If the class `A` cannot "see" the class `B`, the access level of the methods and the fields in `B` does not matter.
+
+The access levels, which an outer class can have, are only `public` and `internal`. Inner classes can be defined with other access levels.
+
+#### Access Level "public"
+
+If we declare a class access modifier as `public`, we can reach it from **every class and from every namespace,** regardless of where it exists. It means that every other class can create objects from this type and has access to the methods and the fields of the public class.
+
+Just to know, if we want to use a class with access level `public` from other namespace, different from the current, we should use the reserved word for including different namespaces `using` or every time we should write the full name of the class.
+
+#### Access Level "internal"
+
+If we declare one class with access modifier `internal`, one will be **accessible only from the same namespace.** It means that only the classes from the same assembly can create objects from this type class and to have access to the methods and fields (with related access level) of the class. This access level is the default, where it is not used access modifier by the declaration of the class.
+
+If we have two projects in common solution in Visual Studio and we want to use a class from one project into the other one then the referenced class should be declared as `public`.
+
+#### Access Level "private"
+
+If we want to be exhaustive, we have to mention that as access modifier for a class can be used the visibility modifier `private`, but this is related to the term "inner class" (nested class), which we will review in the "Nested Classes" section. Private classes like other private members are accessible only inside the class which defined them.
+
+### Body of the Class
+
 By similarity to the methods, after the declaration of the class follows its body, i.e. the part of the class where resides the following programming code:
+
+```cs
 [<access_modifier>] class <class_name>
 {
-	// … Class body – the code of the class goes here …
+	// ... Class body – the code of the class goes here ...
 }
-The body of the class begins with opening curly bracket "{" and ends with closing one – "}". The class always should have a body.
-Class Naming Convention
+```
+
+The body of the class begins with opening curly bracket "`{`" and ends with closing one – "`}`". The class always should have a body.
+
+### Class Naming Convention
+
 Equal to the methods, for creation of the class names there are the following common standards:
-	The names of the classes begin with capital letter, and the rest of the letters are lower case. If the name of the class consists of several words, every word begins with capital letter, without separator to be used. This is the well-known PascalCase convention.
-	For name of the classes nouns are usually used.
-	It is recommended the name of the class to be in English language.
+
+- The names of the classes begin with capital letter, and the rest of the letters are lower case. If the name of the class consists of several words, every word begins with capital letter, without separator to be used. This is the well-known **PascalCase** convention.
+- For name of the classes **nouns** are usually used.
+- It is recommended the name of the class to be in **English** language.
+
 Here are some example class names, which are following the guidelines:
+
+```console
 Dog
 Account
 Car
 BufferedReader
+```
+
 More about the name of the classes we will learn in the chapter "High-Quality Programming Code".
-The Reserved Word "this"
-The reserved word this in C# is used to reference the current object, when one is used from method in the same class. This is the object, which method or constructor is called. The reserved word can be deemed as an address (reference), given priory from the language authors, with which we access the elements (fields, methods, constructor) of the own class:
+
+## The Reserved Word "this"
+
+The reserved word `this` in C# is used to **reference the current object,** when one is used from method in the same class. This is the object, which method or constructor is called. The reserved word can be deemed as an address (reference), given priory from the language authors, with which we access the elements (fields, methods, constructor) of the own class:
+
+```cs
 this.myField; // access a field in the class
 this.DoMyMethod(); // access a method in the class
 this(3, 4); // access a constructor with two int parameters
-Currently, we will not explain the given code above. Later, we will do it in other sections of this chapter, dedicated to the elements of the class (fields, methods, constructors) and as well related to the reserved word this.
-Fields
-Objects describe things from the real world. In order to describe an object, we focus on its characteristics, which are related to the problems solved in our program. These characteristics of the real-world object we will hold in the declaration of the class in special types of variables. These variables, called fields (or member-variables), are holding the state of the object. When we create an object based on certain class definition, the values of the fields are containing the characteristics of the created object (its state). These characteristics have different values different for the different objects.
-Declaring Fields in a Class
+```
+
+Currently, we will not explain the given code above. Later, we will do it in other sections of this chapter, dedicated to the elements of the class (fields, methods, constructors) and as well related to the reserved word `this`.
+
+## Fields
+
+Objects describe things from the real world. In order to describe an object, we focus on its **characteristics,** which are related to the problems solved in our program. These characteristics of the real-world object we will hold in the declaration of the class in special types of variables. These variables, called **fields** (or member-variables), are holding the **state of the object.** When we create an object based on certain class definition, the values of the fields are containing the characteristics of the created object (its state). These characteristics have different values different for the different objects.
+
+### Declaring Fields in a Class
+
 Until now we have discussed only two types of variables (see "Methods") depending on where they are declared:
-	Local variables – these are the variables declared in the body of some method (or block).
-	Parameters – these are the variables in the list of parameters, which one method can have.
-In C# a third type of variable exists, called field or instance variable.
+
+- **Local variables** – these are the variables declared in the body of some method (or block).
+- **Parameters** – these are the variables in the list of parameters, which one method can have.
+
+In C# a third type of variable exists, called **field** or **instance variable.**
+
 Fields are declared in the body of the class, outside the body of a single method or constructor.
- 	Fields are declared in the body of the class but not in the bodies of the methods or the constructors.
+
+| :warning: | Fields are declared in the body of the class but not in the bodies of the methods or the constructors. |
+|:--:|:--|
+
 This is a sample code declaring several fields:
+
+```cs
 class SampleClass
 {
 	int age;
@@ -274,19 +431,39 @@ class SampleClass
 	string[] names;
 	Dog myDog;
 }
+```
+
 More formal, the declaration of a field is done in the following way:
+
+```cs
 [<modifiers>] <field_type> <field_name>;
-The <field_type> part determinates the type of a given field. This type can be primitive (byte, short, char and so on), an array, or also some class type (e.g. Dog or string).
-The <field_name> part is the name of the field. As the name of the normal variables, when we declare the name of the instance-variables, we should obey the rules for naming of identifiers in C# (see chapter "Primitive Types and Variables").
-The <modifiers> part is a definition, which describes the access modifiers and as well other modifiers. The last ones are not a mandatory part of the field declaration.
+```
+
+The `<field_type>` part determines the type of a given field. This type can be primitive (`byte`, `short`, `char` and so on), an array, or also some class type (e.g. `Dog` or `string`).
+
+The `<field_name>` part is the name of the field. As the name of the normal variables, when we declare the name of the instance-variables, we should obey the rules for naming of identifiers in C# (see chapter "Primitive Types and Variables").
+
+The `<modifiers>` part is a definition, which describes the access modifiers and as well other modifiers. The last ones are not a mandatory part of the field declaration.
+
 Modifiers and the access modifiers, allowed in the declaration of one field, are explained in chapter "Primitive Types and Variables".
-In this chapter, from the other modifiers, which are not based on access levels, and can be used in the declaration of fields, we will discuss static, const and readonly.
-Scope
-The scope of a class field starts from the line where is declared and ends at the closing bracket of the body of the class.
-Initialization during Declaration
+
+In this chapter, from the other modifiers, which are not based on access levels, and can be used in the declaration of fields, we will discuss `static`, `const` and `readonly`.
+
+#### Scope
+
+The **scope of a class field** starts from the line where is declared and ends at the closing bracket of the body of the class.
+
+### Initialization during Declaration
+
 When we declare one field it is possible to assign to it an initial value. We do this similarly to an assignment of normal local variable:
+
+```cs
 [<modifiers>] <field_type> <field_name> = <initial_value>;
-Of course, the <initial_value> has to be a type compatible with the field’s type, e.g.:
+```
+
+Of course, the `<initial_value>` has to be a type compatible with the field’s type, e.g.:
+
+```cs
 class SampleClass
 {
 	int age = 5;
@@ -295,31 +472,45 @@ class SampleClass
 	string[] names = new string[] { "Peter", "Martin" };
 	Dog myDog = new Dog();
 
-	// … Other code …
+	// ... Other code ...
 }
-Default Values of the Fields
-Every time, when we create a new object of a given class, it is allocated memory in the heap for every field from the class. In order this to be done the memory is initialized automatically with the default values for the certain field. The fields, which do not have explicitly a default value in the code, use the default value specified for the .NET type, to which they belong.
+```
+
+### Default Values of the Fields
+
+Every time, when we create a new object of a given class, it is allocated memory in the heap for every field from the class. In order this to be done the memory is **initialized automatically with the default values** for the certain field. The fields, which do not have explicitly a default value in the code, use the default value specified for the .NET type, to which they belong.
+
 This is different for the local variables defined in methods. If a local variable in a method does not have a value assigned, the code will not compile. If a member variable (field) in a class does not have a value assigned, it will be automatically zeroed by the compiler.
- 	When an object is created all of the fields are initialized with their respective default values in .NET, except if they are not explicitly initialized with some other value.
-In some languages (as C and C++) the newly created objects are not initialized with default values of theirs data and this creates conditions for hard-to-find errors. The last leads to uncontrolled behavior, where the program sometimes works correctly (when the allocated memory by chance has good values), and sometimes does not work (when the allocated memory does not contain the proper values). In C# and generally in .NET Framework this problem is solved by the default values for each type coming from the framework.
+
+| :warning: | When an object is created all of the fields are initialized with their respective default values in .NET, except if they are not explicitly initialized with some other value. |
+|:--:|:--|
+
+In some languages (as C and C++) the newly created objects are not initialized with default values of theirs data and this creates conditions for hard-to-find errors. The last leads to **uncontrolled behavior,** where the program sometimes works correctly (when the allocated memory by chance has good values), and sometimes does not work (when the allocated memory does not contain the proper values). In C# and generally in .NET Framework this problem is solved by the default values for each type coming from the framework.
+
 The value of all types is 0 or something similar. For the most used types these values are as the follows:
-Type of the Field	Default Value
-bool	false
-byte	0
-char	'\0'
-decimal	0.0M
-double	0.0D
-float	0.0F
-int	0
-object reference	null
+
+Type of the Field | Default Value
+------------------|--------------
+`bool` | `false`
+`byte` | `0`
+`char` | `'\0'`
+`decimal` | `0.0M`
+`double` | `0.0D`
+`float` | `0.0F`
+`int` | `0`
+`object reference` | `null`
+
 For more detailed information you can check chapter "Primitive Types and Variables" and its section about the primitive types and their default values.
-For example, if we create a class Dog and we define for it fields name, age and length and check for the gender isMale, without explicitly initializing them, they will be automatically zeroed when we create an object of this class:
+
+For example, if we create a class `Dog` and we define for it fields `name`, `age` and `length` and `isHungry`, without explicitly initializing them, they will be automatically zeroed when we create an object of this class:
+
+```cs
 public class Dog
 {
 	string name;
 	int age;
 	int length;
-	bool isMale;
+	bool isHungry;
 
 	static void Main()
 	{
@@ -327,28 +518,50 @@ public class Dog
 		Console.WriteLine("Dog's name is: " + dog.name);
 		Console.WriteLine("Dog's age is: " + dog.age);
 		Console.WriteLine("Dog's length is: " + dog.length);
-		Console.WriteLine("Dog is male: " + dog.isMale);
+		Console.WriteLine("Dog is hungry: " + dog.isHungry);
 	}
 }
+```
+
 Respectively, when we execute the program we will have as output the following:
+
+```console
 Dog's name is:
 Dog's age is: 0
 Dog's length is: 0
-Dog is male: False
-Automated Initialization of Local Variables and Fields
-If we define a local variable in one method, without initializing it, and afterward we try to use it (e.g. printing its value), this will trigger a compilation error, because the local variables are not initialized with default values when they are declared.
- 	Unlike fields, local variables are not initialized with default values when they are declared.
+Dog is hungry: False
+```
+
+### Automated Initialization of Local Variables and Fields
+
+If we define a local variable in one method, without initializing it, and afterward we try to use it (e.g. printing its value), this will trigger a **compilation error,** because the local variables are not initialized with default values when they are declared.
+
+| :warning: | Unlike fields, local variables are not initialized with default values when they are declared. |
+|:--:|:--|
+
 Let’s have look into one example:
+
+```cs
 static void Main()
 {
 	int notInitializedLocalVariable;
 	Console.WriteLine(notInitializedLocalVariable);
 }
+```
+
 If we try to compile, we will receive the following error:
+
+```console
 Use of unassigned local variable 'notInitializedLocalVariable'
-Custom Default Values
+```
+
+### Custom Default Values
+
 A good programming practice is, when we declare fields in the class, to explicitly initialize them with some default value, even if the default value is zero. This will make our code clearer and easy to read.
-One example for such initialization is the modified example class SampleClass from the previous section:
+
+One example for such initialization is the modified example class `SampleClass` from the previous section:
+
+```cs
 class SampleClass
 {
 	int age = 0;
@@ -356,15 +569,25 @@ class SampleClass
 	string[] names = null;
 	Dog myDog = null;
 
-	// … Other code …
+	// ... Other code ...
 }
-Modifiers "const" and "readonly"
-As was explained in the beginning in this section, in the declaration of one field is allowed to use the modifications const and readonly. The fields, declared as const or readonly are called constants. They are used when a certain value is used several times. These values are declared only ones without repetitions. Examples of constants in the .NET Framework are the mathematical constants Math.PI and Math.E, and as well the constants String.Empty and Int32.MaxValue.
-Constants Based on "const"
-The fields, declared with const, have to be initialized during the de facto declaration and afterwards theirs value cannot be changed. They can be accessed without to create an instance (an object) of the class and they are common for all created objects in our program. Something more, when we compile the code, the places where const fields are referred are replaced with theirs particular values directly without to use the constant variable at all. For this reason the const fields are called compile-time constants, because they are replaced with the value during the compilation process.
-Constants Based on "readonly"
-The modifier readonly creates fields, which values cannot be changed once they are assigned. Fields, declared as readonly, allow one-time initialization either in the moment of the declaration or in the class constructors. Later theirs values cannot be changed. Because of this reason, the readonly fields are called run-time constants – constants, because their values cannot be changed after assignment and run-time, because this process happens during the execution of the program (in runtime).
+```
+
+### Modifiers "const" and "readonly"
+
+As was explained in the beginning in this section, in the declaration of one field is allowed to use the modifications `const` and `readonly`. The fields, declared as `const` or `readonly` are called **constants.** They are used when a certain **value is used several times.** These values are declared only ones without repetitions. Examples of constants in the .NET Framework are the mathematical constants `Math.PI` and `Math.E`, and as well the constants `String.Empty` and `Int32.MaxValue`.
+
+#### Constants Based on "const"
+
+The fields, declared with `const`, have to be initialized during the de facto declaration and afterwards theirs value cannot be changed. They can be accessed without to create an instance (an object) of the class and they are common for all created objects in our program. Something more, when we compile the code, the places where `const` fields are referred are replaced with theirs particular values directly without to use the constant variable at all. For this reason the `const` fields are called **compile-time constants,** because they are replaced with the value during the compilation process.
+
+#### Constants Based on "readonly"
+
+The modifier `readonly` creates fields, which values cannot be changed once they are assigned. Fields, declared as `readonly`, allow one-time initialization either in the moment of the declaration or in the class constructors. Later theirs values cannot be changed. Because of this reason, the `readonly` fields are called **run-time constants** – constants, because their values cannot be changed after assignment and run-time, because this process happens during the execution of the program (in runtime).
+
 Let’s illustrate the foregoing with the following example:
+
+```cs
 public class ConstAndReadOnlyExample
 {
 	public const double PI = 3.1415926535897932385;
@@ -396,33 +619,58 @@ public class ConstAndReadOnlyExample
 		instance.Size = 0;
 	}
 }
-Methods
-In chapter "Methods" we have discussed how to declare and use a method. In this section we will revise how we do this and we will focus on some additional features from the process of creating methods. Till now we have used static methods only. Now it is time to start using non-static (instance) methods.
-Declaring of Class Method
+```
+
+## Methods
+
+In chapter "Methods" we have discussed how to **declare and use a method.** In this section we will revise how we do this and we will focus on some additional features from the process of creating methods. Till now we have used static methods only. Now it is time to start using non-static (instance) methods.
+
+### Declaring of Class Method
+
 The declaration of methods is done in the following way:
+
+```cs
 // Method definition
 [<modifiers>] [<return_type>] <method_name>([<parameters_list>])
 {
-	// … Method's body …
+	// ... Method's body ...
 	[<return_statement>];
 }
-The mandatory elements for declaration of a method are the type of the return value <return_type>, the name of the method <method_name> and the opening and the closing brackets – "(" and ")".
-The parameter list <params_list> is not mandatory. We use it to pass data to the method, which we declare, when this is required.
-We know, if the return type <return_type> is void, then <return_statement> can be declared without the return statement. If <return_type> is different from void, the method has to return a result with the help of the reserved word return and an expression, which is from the type <return_type> or a compatible one.
-The work, which the method has to do, is situated in the method body, enclosed in curly brackets – "{" and "}".
+```
+
+The mandatory elements for declaration of a method are the type of the return value `<return_type>`, the name of the method `<method_name>` and the opening and the closing brackets – "`(`" and "`)`".
+
+The parameter list `<params_list>` is not mandatory. We use it to pass data to the method, which we declare, when this is required.
+
+We know, if the return type `<return_type>` is `void`, then `<return_statement>` can be declared without the `return` statement. If `<return_type>` is different from `void`, the method has to return a result with the help of the reserved word `return` and an expression, which is from the type `<return_type>` or a compatible one.
+
+The work, which the method has to do, is situated in the method body, enclosed in curly brackets – "`{`" and "`}`".
+
 We already discussed some of the access modifiers that can be used in the declaration of a method in the section "Visibility of Methods and Fields" we will review in details this again.
-The static modifier will be explained in depth in the section "Static Classes and Static Members".
-Example – Method Declaration
+
+The `static` modifier will be explained in depth in the section "Static Classes and Static Members".
+
+#### Example – Method Declaration
+
 Let’s see the declaration of a method, which sums two values:
+
+```cs
 int Add(int number1, int number2)
 {
 	int result = number1 + number2;
 	return result;
 }
-The name of the method is Add and the return value type is int. The parameter list consists of two elements – the variables number1 and number2. Accordingly, the return value is the sum of the two parameters as a result.
-Accessing Non-Static Data of the Class
-In "Creating and Using Objects", we have discussed how based on the "dot" operator we can access fields and to call the methods of a given class. Now, let’s recall how we use conventional non-static methods of a given class, i.e. the methods do not have the modifier static in theirs declaration.
-E.g. let’s have the class Dog with the field age. To print the value of this field we need to create a Dog instance and access the field of this instance via a "dot" notation:
+```
+
+The name of the method is `Add` and the return value type is `int`. The parameter list consists of two elements – the variables `number1` and `number2`. Accordingly, the return value is the sum of the two parameters as a result.
+
+## Accessing Non-Static Data of the Class
+
+In "Creating and Using Objects", we have discussed how based on the "dot" operator we can access fields and to call the methods of a given class. Now, let’s recall how we use conventional non-static methods of a given class, i.e. the methods do not have the modifier `static` in theirs declaration.
+
+E.g. let’s have the class `Dog` with the field `age`. To print the value of this field we need to create a `Dog` instance and access the field of this instance via a "dot" notation:
+
+```cs
 public class Dog
 {
 	int age = 2;
@@ -433,50 +681,99 @@ public class Dog
 		Console.WriteLine("Dog's age is: " + dog.age);
 	}
 }
+```
+
 The result will be:
+
+```console
 Dog's age is: 2
-Accessing Non-Static Fields from Non-Static Method
-The access to the value of one field can be done via the "dot" notation (as in the last example dog.age), or via a method or property. Now, let’s create in the class Dog a method, which will return the value of age:
+```
+
+### Accessing Non-Static Fields from Non-Static Method
+
+The access to the value of one field can be done via the "dot" notation (as in the last example `dog.age`), or via a method or property. Now, let’s create in the class `Dog` a method, which will return the value of `age`:
+
+```cs
 public int GetAge()
 {
 	return this.age;
 }
-As we see, to access the value of the age field, inside, from the owner class, we use the reserved word this. We know that the word this is a reference to the current object, in which the method resides. Therefore, in our example, with "return this.age", we say "from the current object (this) take (the use of the operator "dot"), the value of the field age, and return it as result from the method (with the help of the reserved word return). Then, instead from the Main() method to access the values of the field age of the object dog, we simple call the method GetAge():
+```
+
+As we see, to access the value of the age field, inside, from the owner class, we use the **reserved word `this`.** We know that the word `this` is a reference to the current object, in which the method resides. Therefore, in our example, with "`return this.age`", we say "from the current object (`this`) take (the use of the operator "dot"), the value of the field `age`, and return it as result from the method (with the help of the reserved word return). Then, instead from the `Main()` method to access the values of the field `age` of the object `dog`, we simple call the method `GetAge()`:
+
+```cs
 static void Main()
 {
 	Dog dog = new Dog();
 	Console.WriteLine("Dog's age is: " + dog.GetAge());
 }
+```
+
 The result of the execution based on the change will be the same.
+
 Formally, the declaration of access to a field in the boundaries of a class is the following:
+
+```cs
 this.<field_name>
-Let’s emphasize, that this access option is possible only from non-static code, i.e. method or block, which is without static modifier.
-Except for retrieving of the value of one field, we can use the reserved word this for modification of the field.
-E.g., let’s declare a method MakeOlder(), which will be called every year on the date of the birthday of our pet and this method will increment the age with one year:
+```
+
+Let’s emphasize, that this access option is possible only from non-static code, i.e. method or block, which is without `static` modifier.
+
+Except for retrieving of the value of one field, we can use the reserved word `this` for modification of the field.
+
+E.g., let’s declare a method **MakeOlder(),** which will be called every year on the date of the birthday of our pet and this method will increment the age with one year:
+
+```cs
 public void MakeOlder()
 {
 	this.age++;
 }
-To check if this is correct in the Main() method we add the following lines:
-// One year later, at the birthday date…
+```
+
+To check if this is correct in the `Main()` method we add the following lines:
+
+```cs
+// One year later, at the birthday date...
 dog.MakeOlder();
 Console.WriteLine("After one year dog's age is: " + dog.age);
+```
+
 After the execution of the program, the result is the following:
+
+```console
 Dog's age is: 2
 After one year dog's age is: 3
-Calling Non-Static Methods
-Like the fields, which do not have static modifier in theirs declarations, the methods, which are also non-static, can be called in the body of a class via the reserved word this. This is happening again with the "dot" notation and more specifically with the required arguments (if there are any):
-this.<method_name>(…)
-For example, let’s create a method PrintAge(), which prints the age of the object from type Dog, and for this purpose calls the method GetAge():
+```
+
+### Calling Non-Static Methods
+
+Like the fields, which do not have `static` modifier in theirs declarations, the methods, which are also non-static, can be called in the body of a class via the reserved word `this`. This is happening again with the "dot" notation and more specifically with the required arguments (if there are any):
+
+```cs
+this.<method_name>(...)
+```
+
+For example, let’s create a method `PrintAge()`, which prints the age of the object from type `Dog`, and for this purpose calls the method `GetAge()`:
+
+```cs
 public void PrintAge()
 {
 	int myAge = this.GetAge();
 	Console.WriteLine("My age is: " + myAge);
 }
-The first line of the example is indicating that we want to receive the age (the value of the field age) of the current object, using the method GetAge(). This is done via the reserved word this.
- 	The access to the non-static elements of a class (fields and methods) is done via the reserved word this and the operator for access – "dot".
-Skip "this" Keyword When Accessing Non-Static Data
-When we access the fields of a class or we call its non-static methods, it is possible to omit the reserved word this. Then both methods, which we already declared will be written in this way:
+```
+
+The first line of the example is indicating that we want to receive the age (the value of the field `age`) of the current object, using the method `GetAge()`. This is done via the reserved word `this`.
+
+| :warning: | The access to the non-static elements of a class (fields and methods) is done via the reserved word this and the operator for access – "dot". |
+|:--:|:--|
+
+### Skip "this" Keyword When Accessing Non-Static Data
+
+When we access the fields of a class or we call its non-static methods, it is possible to **omit the reserved word `this`.** Then both methods, which we already declared will be written in this way:
+
+```cs
 public int GetAge()
 {
 	return age; // The same like this.age
@@ -486,11 +783,20 @@ public void MakeOlder()
 {
 	age++; // The same like this.age++
 }
-The reserved word this is used to indicate explicitly that we want to have access to a non-static field of a class or to call some of its non-static methods. When this explicit clarification is not needed, it can be skipped and directly to access the elements of the class.
-Although it is understood clearly, the reserved word this is often used for access to fields in the class, because it helps to make the code easier to read, understand and maintain, by explicitly stating that we access a field and not a local variable.
- 	When it is not required explicitly the reserved word this can be skipped when we access the elements of the class. For better readability use this keyword even when not required.
-Hiding Fields with Local Variables
-From the section "Declaring Fields" above, we know that the scope of one field starts from the line where the declaration is made to the closing curly bracket of the class. For example let's see the OverlappingScopeTest class:
+```
+
+The reserved word `this` is used to indicate **explicitly** that we want to have access to a non-static field of a class or to call some of its non-static methods. When this explicit clarification is not needed, it can be skipped and directly to access the elements of the class.
+
+Although it is understood clearly, the reserved word `this` is often used for access to fields in the class, because it helps to make the code easier to read, understand and maintain, by explicitly stating that we access a field and not a local variable.
+
+| :warning: | When it is not required explicitly the reserved word `this` can be skipped when we access the elements of the class. For better readability use `this` keyword even when not required. |
+|:--:|:--|
+
+## Hiding Fields with Local Variables
+
+From the section "Declaring Fields" above, we know that the **scope of one field** starts from the line where the declaration is made to the closing curly bracket of the class. For example let's see the `OverlappingScopeTest` class:
+
+```cs
 public class OverlappingScopeTest
 {
 	int myValue = 3;
@@ -506,43 +812,84 @@ public class OverlappingScopeTest
 		instance.PrintMyValue();
 	}
 }
+```
+
 This code will have the following result on the console:
+
+```console
 My value is: 3
-On the other hand, when we implement the body of one method we have to declare local variables which we will use for the work of the method. As we know, the scope of a local variable begins from the line where it is declared to the closing bracket of the body of the method. For example, let’s add this method to the class OverlappingScopeTest:
-Int CalculateNewValue(int newValue)
+```
+
+On the other hand, when we implement the body of one method we have to declare local variables which we will use for the work of the method. As we know, the **scope of a local variable** begins from the line where it is declared to the closing bracket of the body of the method. For example, let’s add this method to the class `OverlappingScopeTest`:
+
+```cs
+int CalculateNewValue(int newValue)
 {
 	int result = myValue + newValue;
 	return result;
 }
-In this case, the local variable, which we will use to calculate the new value, is result.
+```
+
+In this case, the local variable, which we will use to calculate the new value, is `result`.
+
 Sometimes the name of the local variable can overlap with the name of some field. In this case there is a collision.
-Let’s first look at one example, before we explain what it is about. Let’s modify the method PrintMyValue() in the following way:
+
+Let’s first look at one example, before we explain what it is about. Let’s modify the method `PrintMyValue()` in the following way:
+
+```cs
 void PrintMyValue()
 {
 	int myValue = 5;
 	Console.WriteLine("My value is: " + myValue);
 }
+```
+
 If we declare in this way the method, could it be possible to compile this code? And if it is compiled, is it possible to execute it? If it is compiled and executed which value will be printed – the one of the field or the one of the local variable?
-After the execution of the Main() method, the result will be:
+
+After the execution of the `Main()` method, the result will be:
+
+```console
 My value is: 5
-This is so, because C# allows defining local variables, which names match with fields of the class. If this happens, we say that the scope of the local variable overlays the field variable (scope overlapping).
-Therefore the scope of the local variable myValue with value 5 overlapped the scope of the field variable in the class. Then, when we print we will get the local variable value.
-Despite this, sometimes it is required use the field instead the local variable with the same name. In this case, to retrieve the value of the field, we use the reserved word this. For this purpose we access the field by using the "dot" operator, applied to the reserved word this. In this way, we say deliberately that we want to use the field of the class, and not the local variable with the same name.
-Let’s take a look again at our example relate to the printing of the value myValue:
+```
+
+This is so, because **C# allows defining local variables, which names match with fields of the class.** If this happens, we say that the scope of the local variable overlays the field variable (**scope overlapping**).
+
+Therefore the scope of the local variable `myValue` with value 5 overlapped the scope of the field variable in the class. Then, when we print we will get the local variable value.
+
+Despite this, sometimes it is required use the field instead the local variable with the same name. In this case, to retrieve the value of the field, we use the reserved word `this`. For this purpose we access the field by using the "dot" operator, applied to the reserved word `this`. In this way, we say deliberately that we want to use the field of the class, and not the local variable with the same name.
+
+Let’s take a look again at our example relate to the printing of the value `myValue`:
+
+```cs
 void PrintMyValue()
 {
 	int myValue = 5;
 	Console.WriteLine("My value is: " + this.myValue);
 }
+```
+
 This time, after we applied the changes, the result from the call of the method is different:
+
+```console
 My value is: 3
-Visibility of Fields and Methods
-In the beginning of this chapter we have discussed the generality of the modifiers and the access levels for the elements in one class in C#. Later we have discussed the access level in the declaration for one class.
-Now we will discuss the visibility levels of fields and methods in a class. Because the fields and the methods are elements of the class (members) and have similar rules for access levels, we will expose these rules simultaneously.
-Differently from the declaration of a class, when we declare fields and methods in the class we can use the four access levels – public, protected, internal and private. The access level protected will not be discussed in this chapter, because it is related to class inheritance and is explained in details in the chapter "Object-Oriented Programming Principles".
-Before we continue, let’s revise, if one class A is not visible (does not have access) from other class B, then none of its elements (fields and method) can be accessed from class B.
- 	If two classes are not visible one to other, then their members (fields and methods) are not visible also, regardless of what kind of access levels their elements have.
-In the next subsections, to the explanations until now, we will review examples, in which we have two classes (Dog and Kid) and which are visible one to other, i.e. every from the classes can create objects from the other type – the other class and to access its elements depending from the defined access level declared. Here is how the first class Dog looks like:
+```
+
+## Visibility of Fields and Methods
+
+In the beginning of this chapter we have discussed the generality of the **modifiers and the access levels** for the elements in one class in C#. Later we have discussed the access level in the declaration for one class.
+
+Now we will discuss the **visibility levels of fields and methods** in a class. Because the fields and the methods are elements of the class (members) and have similar rules for access levels, we will expose these rules simultaneously.
+
+Differently from the declaration of a class, when we declare fields and methods in the class we can use the four access levels – `public`, `protected`, `internal` and `private`. The access level `protected` will not be discussed in this chapter, because it is related to class inheritance and is explained in details in the chapter "Object-Oriented Programming Principles".
+
+Before we continue, let’s revise, if one class `A` is not visible (does not have access) from other class `B`, then none of its elements (fields and method) can be accessed from class `B`.
+
+| :warning: | If two classes are not visible one to other, then their members (fields and methods) are not visible also, regardless of what kind of access levels their elements have. |
+|:--:|:--|
+
+In the next subsections, to the explanations until now, we will review examples, in which we have two classes (`Dog` and `Kid`) and which are visible one to other, i.e. every from the classes can create objects from the other type – the other class and to access its elements depending from the defined access level declared. Here is how the first class `Dog` looks like:
+
+```cs
 public class Dog
 {
 	private string name = "Doggy";
@@ -562,8 +909,13 @@ public class Dog
 		this.Bark();
 	}
 }
-In addition to the fields and the methods the property Name is used, which just returns the field’s value. We will discuss in details the property concept later, so currently we will just focus on everything else except the properties.
-The code of the class Kid looks like this:
+```
+
+In addition to the fields and the methods the property `Name` is used, which just returns the field’s value. We will discuss in details the property concept later, so currently we will just focus on everything else except the properties.
+
+The code of the class `Kid` looks like this:
+
+```cs
 public class Kid
 {
 	public void CallTheDog(Dog dog)
@@ -576,12 +928,19 @@ public class Kid
 		dog.Bark();
 	}
 }
-Currently, all elements (fields and methods) of both classes are declared with access modifier public, but when we discuss the other access modifiers we will change some of them accordingly. What we would like to find is how the change in the access levels of the elements (fields and methods) of the class Dog will be reflected, when the access is made with:
-	The own body of the class Dog.
-	The body of the class Kid, respectively, taking into account that Kid is in the same namespace (or assembly), in which the Dog class is defined or not.
-Access Level "public"
-When a method or a value of a class is declared with access level public, the last can be used from other classes, independently from the fact if another class is declared in the same namespace, assembly or outside of it.
-Let’s review both type of access to members of a class, which are matched in our classes Dog and Kid:
+```
+
+Currently, all elements (fields and methods) of both classes are declared with access modifier `public`, but when we discuss the other access modifiers we will change some of them accordingly. What we would like to find is how the change in the access levels of the elements (fields and methods) of the class `Dog` will be reflected, when the access is made with:
+
+- The own body of the class Dog.
+- The body of the class `Kid`, respectively, taking into account that `Kid` is in the same namespace (or assembly), in which the `Dog` class is defined or not.
+
+### Access Level "public"
+
+When a method or a value of a class is declared with access level `public`, the last **can be used from other classes,** independently from the fact if another class is declared in the same namespace, assembly or outside of it.
+
+Let’s review both type of access to members of a class, which are matched in our classes `Dog` and `Kid`:
+
  	The access to the member of the class is done inside the same class directly (the class refers itself).
  	The access to the member of the class is done via a reference to an object created in the body of another class (the class refers another class).
 When the members of both classes are public, we have the following:
@@ -776,14 +1135,14 @@ public class Dog
 {
 	private string name = "Doggy";
 
-	// …
+	// ...
 
 	private void Bark()
 	{
 		Console.WriteLine("wow-wow");
 	}
 
-	// …
+	// ...
 
 	static void Main()
 	{
@@ -797,7 +1156,9 @@ The compilation finished successfully. Respectively, the result from the executi
 My dog's name is Rolf
 Wow-wow
 Everything works, because the access modifiers for the elements of the class are applied to the class and not to a level objects. Because the variable myDog is defined in the body of the class Dog (where also is situated Main() – the start method of the program), we can access its elements (fields and methods) via "dot" notation, regardless we have declared the access level as private. If we try to do the same in the body of the class Kid, this will be not possible, because the access to private fields from outside class is forbidden.
-Constructors
+
+## Constructors
+
 In object-oriented programming, when creating an object from a given class, it is necessary to call a special method of the class known as a constructor.
 What Is a Constructor?
 Constructor of a class is a pseudo-method, which does not have a return type, has the name of the class and is called using the keyword new. The task of the constructor is to initialize the memory, allocated for the object, where its fields will be stored (those which are not static ones).
@@ -861,7 +1222,7 @@ public class Dog
 		this.name = "Sharo";
 	}
 
-	// … The rest of the class body …
+	// ... The rest of the class body ...
 }
 Although we initialize the fields in the constructor, some people recommend explicitly assigning their type’s default values during initialization with the purpose of improving the readability of the code, but it is a matter of personal choice:
 public class Dog
@@ -873,7 +1234,7 @@ public class Dog
 		this.name = "Sharo";
 	}
 
-	// … The rest of the class body …
+	// ... The rest of the class body ...
 }
 Fields Initialization in the Constructor
 Let’s see in details what the constructor does after being called and the class fields have been initialized in its body. We know that, when called, it will allocate memory for each field and this memory will be initialized with the default values.
@@ -936,9 +1297,9 @@ public class Dog
 	{
 		Console.WriteLine(
 			"this.name has value of: \"" + this.name + "\"");
-		// … No other code here …
+		// ... No other code here ...
 	}
-	// … Rest of the class body …
+	// ... Rest of the class body ...
 }
 When we try to create a new object of our class type the console will show:
 this.name has value of: "" 
@@ -1015,7 +1376,7 @@ Similar to methods with variable number of arguments, discussed in chapter "Meth
 Consider a sample declaration of a constructor of a class, which describes a lecture:
 public Lecture(string subject, params string[] studentsNames)
 {
-	// … Initialization of the instance variables …
+	// ... Initialization of the instance variables ...
 }
 The first parameter in the declaration is the name of the subject of the lecture and the next parameter represents a variable number of arguments – the names of the students. Here is how a sample object of this class would be constructed:
 Lecture lecture =
@@ -1160,7 +1521,9 @@ Before we finish this section for the constructors, we will clarify something ve
  	Although the default constructor and the one without parameters are similar in signature, they are completely different.
 The difference is that the default implicit constructor is created by the compiler, if we do not declare any constructor in our class, and the constructor without parameters is declared by us.
 Moreover, as explained earlier, the default constructor will always have access level protected or public, depending on the access modifier of the class, while the level of access of the constructor without parameters all depends on us – we define it.
-Properties
+
+## Properties
+
 In the world of object-oriented programming there is an element of the classes called property, which is somewhere between a field and a method and serves to better protect the state in the class. In some languages for object-oriented programming, like C#, Delphi / Pascal, Visual Basic, Python, JavaScript, and others, the properties are a part of the language, i.e. there is a special mechanism to declare and use them. Other languages like Java do not support the property concept and for this purpose the programmers should declare a pair of methods (for reading and modifying the property) to provide this functionality.
 Properties in C# – Introduction by Example
 Using the properties is a good and proven practice and an important part of the concepts for object-oriented programming. The creation of a property in programming is done by declaring two methods – one for access (reading) and one for modifying (setting) the value of the respective property.
@@ -1303,7 +1666,7 @@ The Body of a Property
 Like classes and methods in C# properties also have bodies, where the methods for access are declared (accessors).
 [<modifiers>] <property_type> <property_name>
 {
-	// … Property's accessors methods go here
+	// ... Property's accessors methods go here
 }
 The body of a property begins with an opening bracket "{" and ends with a closing bracket – "}". Properties should always have a body.
 Method for Reading the Value of a Property (Getter)
@@ -1321,7 +1684,7 @@ public int Age					// Property declaration
 Calling a Method for Reading Property’s Value
 Assume that the property Age from the last example is declared in the class Dog. Then calling the method for reading the value of the property is done by a "dot" notation, applied to a variable of the type, in the class of which the property is declared:
 Dog dogInstance = new Dog();
-// …
+// ...
 int dogAge = dogInstance.Age; 				// Getter invocation
 Console.WriteLine(dogInstance.Age); 	// Getter invocation
 The last two lines of the example show that when accessing through a dot notation the name of the property, its getter method (method for reading its value) is called automatically.
@@ -1341,7 +1704,7 @@ public int Age					// Property declaration
 Calling a Method for Modifying the Property’s Value
 Calling the method to modify the property’s value is performed via the "dot" notation, applied to the variable of the type, in the class of which the property is declared:
 Dog dogInstance = new Dog();
-// …
+// ...
 dogInstance.Age = 3; 				// Setter invocation
 In the last line where the value 3 is assigned the setter method of the property Age is called. In this way the value is saved in the parameter value and is assigned to the setter method of the property Age. In our example, the value of the variable value is assigned to the field age from the class Dog, but in the general case this can be handled in a more complicated way.
 Assertion of the Input Values
@@ -1398,7 +1761,9 @@ Depending on their definition we can classify the properties as follows:
 	Write-only, i.e. these properties have only a set method, but no method for reading the value of the property.
 	And the most common case is read-write, where the property has methods both for reading and for changing the value.
 Some properties are designed to be read-only. Others are supposed to support both read and write operations. The developers should decide whether someone should be able to change the value of given property and define it as read-only or read / write. Write-only properties are used very rarely.
-Static Classes and Static Members
+
+## Static Classes and Static Members
+
 We call an element static when it is declared with the modifier static. In C# we can declare fields, methods, properties, constructors and classes as static.
 We will first consider the static elements of a class or in other words we will look at the fields, methods, properties and constructors of a class and then we will study the concept of the static class.
 What the Static Elements Are Used For?
@@ -1519,7 +1884,7 @@ The value of PI is: 3.14285714285714
 If we do not give a value to a constant at its declaration, but later, we will get a compilation error. For example, if we take the example of the constant PI, we first declare the constant and later try to give it a value:
 public const double PI;
 
-// … Some code …
+// ... Some code ...
 
 public void SetPiValue()
 {
@@ -1613,7 +1978,7 @@ public static int Add(int number1, int number2)
 	return (number1 + number2);
 }
 Accessing Static Methods
-Like static fields, static methods can be accessed with the "dot" notation (the dot operator) applied to the name of the class and the class name can be skipped if the calling is performed by the same class, in which the static method is declared. Here is an example of calling the static method Add(…):
+Like static fields, static methods can be accessed with the "dot" notation (the dot operator) applied to the name of the class and the class name can be skipped if the calling is performed by the same class, in which the static method is declared. Here is an example of calling the static method Add(...):
 static void Main()
 {
 	// Call the static method through its class
@@ -1795,7 +2160,7 @@ As we can guess, all we need to do to turn a simple property into a static one, 
 The static properties are declared as follows:
 [<modifiers>] static <property_type> <property_name>
 {
-	// … Property's accessors methods go here
+	// ... Property's accessors methods go here
 }
 Let’s consider an example. We have a class that describes a system. We can create many objects from it, but the model of the system has a version and a vendor, which are common to all instances created from this class. We can make the version and the vendors as static properties of the class:
 SystemInfo.cs
@@ -1818,7 +2183,7 @@ public class SystemInfo
 		set { vendor = value; }
 	}
 
-	// … More (non)static code here …
+	// ... More (non)static code here ...
 }
 In this example we have chosen to keep the value of static properties in static variables (which are logical, since they are bound only to the class). The properties that we consider are Version and Vendor, respectively. For each of them we have created static methods for reading and modification. Thus, all objects of this class will be able to retrieve the current version and vendor of the system, which describes the class. Accordingly, if one day an upgrade of the system version is done and the value becomes 0.2, as a result each object will receive the new version by accessing the class property.
 Static Properties and the Keyword "this"
@@ -1854,7 +2219,7 @@ Static Classes
 For complete understanding we have to explain that we can also declare classes as static. Similar to static members, a class is static, when the keyword static is used in its declaration.
 [<modifiers>] static class <class_name>
 {
-	// … Class body goes here
+	// ... Class body goes here
 }
 When a class is declared as static, it is an indication that this class contains only static members (i.e. static fields, methods, properties) and cannot be instantiated.
 The use of static classes is rare and most often associated with the use of static methods and constants, which do not belong to any particular object. For this reason, the details of static classes go beyond the scope of this book. Curious reader can find more information on the site of the Microsoft Developer Network (MSDN): http://msdn.microsoft.com/en-us/library/79b3xss3.aspx.
@@ -1910,7 +2275,9 @@ class SqrtTest
 		// Result: 15
 	}
 }
-Structures
+
+## Structures
+
 In C# and .NET Framework there are two implementations of the concept of "class" from the object-oriented programming: classes and structures. Classes are defined through the keyword class while the structures are defined through the keyword struct. The main difference between a structure and a class is that:
 	Classes are reference types (references to some address in the heap which holds their members).
 	Structures (structs) are value types (they directly hold their members in the program execution stack).
@@ -1983,14 +2350,16 @@ Use structures to hold simple data structures consisting of few fields that come
 Use classes for more complex scenarios where you combine data and programming logic into a class. If you have logic, use a class. If you have more than few simple fields, use a class. If you need to pass variables by reference, use a class. If you need to assign a null value, prefer using a class. If you prefer working with a reference type, use a class.
 Classes are used more often than structures. Use structs as exception, and only if you know well what are you doing!
 There are few other differences between class and structure in addition that classes are reference types and structures are values types, but we will not going to discuss them. For more details refer to the following article in MSDN: http://msdn.microsoft.com/en-us/library/ms173109.aspx.
-Enumerations
+
+## Enumerations
+
 Earlier in this chapter we discussed what constants are, how to declare and use them. In this connection we will now consider a part of the C# language, in which a variety of logically connected constants can be linked by means of language. These language constructs are the so-called enumerated types.
 Declaration of Enumerations
 Enumeration is a structure, which resembles a class but differs from it in that in the class body we can declare only constants. Enumerations can take values only from the constants listed in the type. An enumerated variable can have as a value one of the listed in the type constants but cannot have value null.
 Formally speaking, the enumerations can be declared using the reserved word enum instead of class:
 [<modifiers>] enum <enum_name>
 {
-	constant1 [, constant2 [, [, … [, constantN]]
+	constant1 [, constant2 [, [, ... [, constantN]]
 }
 Under <modifiers> we understand the access modifiers public, internal and private. The identifier <enum_name> follows the rules for class names in C#. Constants separated by commas are declared in the enumeration block.
 Consider an example. Let’s define an enumeration for the days of the week (we will call it Days). As we can guess, the constants that will appear in this particular enumeration are the names of the week days:
@@ -2024,7 +2393,7 @@ Hidden Numerical Value of Constants in Enumeration
 As we can guess it is possible to change the numerical value of constants in an enumeration. This is done when we assign the values we prefer to each of the constants at the time of declaration.
 [<modifiers>] enum <enum_name>
 {
-	constant1[=value1] [, constant2[=value2] [, … ]]
+	constant1[=value1] [, constant2[=value2] [, ... ]]
 }
 Accordingly value1, value2, etc. must be integers.
 To get a clearer idea of the given definition consider the following example: let’s have a class Coffee, which represents a cup of coffee that customers order in a coffee shop:
@@ -2131,7 +2500,9 @@ public enum CoffeeSize
 When we try to calculate the coffee price with the new quantity, the method, which calculates the price, will throw an exception, informing the user that such amount of coffee is not available in the coffee shop.
 What we should do to solve this problem is to add a new case-condition, which reflects the new constant in the enumerated CoffeeSize type.
  	When we modify the list of constants in an existing enumeration, we should be careful not to break the logic of the code that already exists and uses the constants, declared so far.
-Inner Classes (Nested Classes)
+
+## Inner Classes (Nested Classes)
+
 In C# an inner (nested) class is called a class that is declared inside the body of another class. Accordingly, the class that encloses the inner class is called an outer class.
 The main reason to declare one class into another are:
 	To better organize the code when working with objects in the real world, among which have a special relationship and one cannot exist without the other.
@@ -2253,7 +2624,9 @@ public double CalcPrice(Coffee.CoffeeSize coffeeSize)
 				"Unsupported coffee quantity: " + ((int)coffeeSize));
 	}
 }
-Generics
+
+## Generics
+
 In this section we will explain the concept of generic classes (generic data types, generics). Before we begin, however, let’s look through an example that will help us understand more easily the idea.
 Shelter for Homeless Animals – Example
 Let’s assume that we have two classes. A class Dog, which describes a dog:
@@ -2376,18 +2749,18 @@ It should be noticed that the characters '<' and '>', which surround the substit
 The declaration of generic class, which describes a shelter for homeless animals, should look like as follows:
 class AnimalShelter<T>
 {
-	// Class body here …
+	// Class body here ...
 }
 Let’s can imagine that we are creating a template of our class AnimalShelter, which we will specify later, replacing T with a specific type, for instance a Dog.
 A particular class may have more than one substitute (to be parameterized by more than one type), depending on its needs:
-[<modifiers>] class <class_name><T1 [, T2, [… [, Tn]]]>
+[<modifiers>] class <class_name><T1 [, T2, [... [, Tn]]]>
 {
 }
-If the class needs several different unknown types, these types should be listed by a comma between the characters '<' and '>' in the declaration of the class, as each of the substitutes used must be different identifier (e.g. a different letter) – in the definition they are indicated as T1, T2, …, Tn.
+If the class needs several different unknown types, these types should be listed by a comma between the characters '<' and '>' in the declaration of the class, as each of the substitutes used must be different identifier (e.g. a different letter) – in the definition they are indicated as T1, T2, ..., Tn.
 In case, we should to create a shelter for animals of a mixed type, one that accommodates both – dogs and cats, we should declare the class as follows:
 class AnimalShelter<T, U>
 {
-	// Class body here …
+	// Class body here ...
 }
 If this were our case, we would use the first parameter T, to indicate objects of type Dog, which our class would operate with, and with U – to indicate objects of type Cat.
 Specifying Generic Classes
@@ -2418,27 +2791,27 @@ As a parameter in the list of parameters of the method:
 <return_type> MethodWithParamsOfT(T param)
 	As a result of implementation of the method:
 T MethodWithReturnTypeOfT(<params>)
-As we already guessed, using our example, we can adapt the methods Shelter(…) and Release(…), respectively:
+As we already guessed, using our example, we can adapt the methods Shelter(...) and Release(...), respectively:
 	As a method of unknown type parameter T:
 public void Shelter(T newAnimal)
 {
-	// Method's body goes here …
+	// Method's body goes here ...
 }
 	And a method, which returns a result of unknown type T:
 public T Release(int i)
 {
-	// Method's body goes here …
+	// Method's body goes here ...
 }
 As we already know when we create an object from our class shelter and replace the unknown type with a specific one (e.g. Cat), during the execution of the program, the above methods will have the following form:
 	The parameter of method Shelter will be of type Cat:
 public void Shelter(Cat newAnimal)
 {
-	// Method's body goes here …
+	// Method's body goes here ...
 }
 	The method Release will return a result of type Cat:
 public Cat Release(int i)
 {
-	// Method's body goes here …
+	// Method's body goes here ...
 }
 Typifying (Generics) – Behind the Scenes
 Before we continue, let’s us explain what happens into the memory of the computer, when we work with generic classes.
@@ -2502,7 +2875,7 @@ As we have already seen in the section "Using Unknown Types in a Declaration of 
 AnimalShelter.cs
 public class AnimalShelter<T>
 {
-	// … The rest of the code …
+	// ... The rest of the code ...
 
 	public void Shelter(T newAnimal)
 	{
@@ -2620,7 +2993,7 @@ Before we finish generics as a topic, let’s give you some guidance on working 
 AnimalShelter.cs
 public class AnimalShelter<Animal>
 {
-	// … The rest of the code …
+	// ... The rest of the code ...
 
 	public void Shelter(Animal newAnimal)
 	{
