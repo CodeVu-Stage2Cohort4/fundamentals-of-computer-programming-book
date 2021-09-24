@@ -45,19 +45,19 @@ Here is an example for a code that will **throw an exception:**
 ```cs
 class ExceptionsDemo
 {
-	static void Main()
-	{
-		string fileName = "WrongTextFile.txt";
-		ReadFile(fileName);
-	}
+    static void Main()
+    {
+        string fileName = "WrongTextFile.txt";
+        ReadFile(fileName);
+    }
 
-	static void ReadFile(string fileName)
-	{
-		TextReader reader = new StreamReader(fileName);
-		string line = reader.ReadLine();
-		Console.WriteLine(line);
-		reader.Close();
-	}
+    static void ReadFile(string fileName)
+    {
+        TextReader reader = new StreamReader(fileName);
+        string line = reader.ReadLine();
+        Console.WriteLine(line);
+        reader.Close();
+    }
 }
 ```
 
@@ -104,15 +104,15 @@ To handle an exception, we must surround the code that could throw an exception 
 ```cs
 try
 {
-	// Some code that may throw an exception
+    // Some code that may throw an exception
 }
 catch (ExceptionType objectName)
 {
-	// Code handling an Exception
+    // Code handling an Exception
 }
 catch (ExceptionType objectName)
 {
-	// Code handling an Exception
+    // Code handling an Exception
 }
 ```
 
@@ -125,27 +125,27 @@ Let’s now modify the code in our previous example to make it handle its except
 ```cs
 static void ReadFile(string fileName)
 {
-	// Exceptions could be thrown in the code below
-	try
-	{
-		TextReader reader = new StreamReader(fileName);
-		string line = reader.ReadLine();
-		Console.WriteLine(line);
-		reader.Close();
-	}
-	catch (FileNotFoundException fnfe)
-	{
-		// Exception handler for FileNotFoundException
-		// We just inform the user that there is no such file
-		Console.WriteLine(
-			"The file '{0}' is not found.", fileName);
-	}
-	catch (IOException ioe)
-	{
-		// Exception handler for other input/output exceptions
-		// We just print the stack trace on the console
-		Console.WriteLine(ioe.StackTrace);
-	}
+    // Exceptions could be thrown in the code below
+    try
+    {
+        TextReader reader = new StreamReader(fileName);
+        string line = reader.ReadLine();
+        Console.WriteLine(line);
+        reader.Close();
+    }
+    catch (FileNotFoundException fnfe)
+    {
+        // Exception handler for FileNotFoundException
+        // We just inform the user that there is no such file
+        Console.WriteLine(
+            "The file '{0}' is not found.", fileName);
+    }
+    catch (IOException ioe)
+    {
+        // Exception handler for other input/output exceptions
+        // We just print the stack trace on the console
+        Console.WriteLine(ioe.StackTrace);
+    }
 }
 ```
 
@@ -154,9 +154,9 @@ Now our method works in a different way. When `FileNotFoundException` is thrown 
 ```cs
 catch (FileNotFoundException fnfe)
 {
-	// Exception handler for FileNotFoundException
-	// We just inform the user that there is no such file
-	Console.WriteLine("The file '{0}' is not found.", fileName);
+    // Exception handler for FileNotFoundException
+    // We just inform the user that there is no such file
+    Console.WriteLine("The file '{0}' is not found.", fileName);
 }
 ```
 
@@ -171,9 +171,9 @@ Similarly, if an `IOException` is thrown during `reader.ReadLine()`, it is handl
 ```cs
 catch (IOException ioe)
 {
-	// Exception handler for FileNotFoundException
-	// We just print the stack trace on the screen
-	Console.WriteLine(ioe.StackTrace);
+    // Exception handler for FileNotFoundException
+    // We just print the stack trace on the screen
+    Console.WriteLine(ioe.StackTrace);
 }
 ```
 
@@ -196,13 +196,13 @@ Here is the stack trace from our first example:
 
 ```console
 Unhandled Exception: System.IO.FileNotFoundException: Could not find file '...\WrongTextFile.txt'.
-	at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-	at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
-	at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
-	at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize)
-	at System.IO.StreamReader..ctor(String path)
-	at Exceptions.Demo1.ReadFile(String fileName) in Program.cs:line 17
-	at Exceptions.Demo1.Main() in Program.cs:line 11
+    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+    at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+    at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+    at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize)
+    at System.IO.StreamReader..ctor(String path)
+    at Exceptions.Demo1.ReadFile(String fileName) in Program.cs:line 17
+    at Exceptions.Demo1.Main() in Program.cs:line 11
 ```
 
 The system cannot find the file named "`WrongTextfile.txt`" and the `FileNotFoundException` is thrown.
@@ -226,7 +226,7 @@ In our example above, the full name of the exception is `System.IO.FileNotFoundE
 Every method is shown in a separate line. On the first line is the method that threw the exception and on the least line – the `Main()` method (notice that the `Main()` method might not be present in case of an exception thrown by a thread which is not the main thread of the program). Every method is given with full information about the class that contains it and (if possible) even the line in the source code:
 
 ```console
-	at Exceptions.Demo1.ReadFile(String fileName) in ...\Program.cs:line 17
+    at Exceptions.Demo1.ReadFile(String fileName) in ...\Program.cs:line 17
 ```
 
 The line numbers are included only if the respective class **is compiled with debug information** (this information contains line numbers, variable names and other technical information). The debug information is not included in the .NET assemblies but is in separate files called 'debug symbols' (`.pdb`). As you can see in the example stack trace, debug information is available for some assemblies, while for others (like the .NET assemblies) it is not. This is why some entries in the stack trace have line numbers and others – not.
@@ -244,8 +244,8 @@ Here is an example:
 ```cs
 static void Main()
 {
-	Exception e = new Exception("There was a problem");
-	throw e;
+    Exception e = new Exception("There was a problem");
+    throw e;
 }
 ```
 
@@ -253,7 +253,7 @@ The result from running this program is:
 
 ```console
 Unhandled Exception: System.Exception: There was a problem
-	at Exceptions.Demo1.Main() in Program.cs:line 11
+    at Exceptions.Demo1.Main() in Program.cs:line 11
 ```
 
 ## Exceptions Hierarchy
@@ -282,18 +282,18 @@ Here is how the `System.Exception` class looks like:
 [ClassInterfaceAttribute(ClassInterfaceType.None)]
 public class Exception : ISerializable, _Exception
 {
-	public Exception();
-	public Exception(string message);
-	public Exception(string message, Exception innerException);
-	public virtual IDictionary Data { get; }
-	public virtual string HelpLink { get; set; }
-	protected int HResult { get; set; }
-	public Exception InnerException { get; }
-	public virtual string Message { get; }
-	public virtual string Source { get; set; }
-	public virtual string StackTrace { get; }
-	public MethodBase TargetSite { get; }
-	public virtual Exception GetBaseException();
+    public Exception();
+    public Exception(string message);
+    public Exception(string message, Exception innerException);
+    public virtual IDictionary Data { get; }
+    public virtual string HelpLink { get; set; }
+    protected int HResult { get; set; }
+    public Exception InnerException { get; }
+    public virtual string Message { get; }
+    public virtual string Source { get; set; }
+    public virtual string StackTrace { get; }
+    public MethodBase TargetSite { get; }
+    public virtual Exception GetBaseException();
 }
 ```
 
@@ -342,23 +342,23 @@ Below we have an example that creates an exception chain. We will demonstrate ho
 ```cs
 37    static void Main()
 38    {
-39    	try
-40    	{
-41    		string fileName = "WrongFileName.txt";
-42    		ReadFile(fileName);
-43    	}
-44    	catch (Exception e)
-45    	{
-46    		throw new ApplicationException("Smth. bad happened", e);
-47    	}
+39        try
+40        {
+41            string fileName = "WrongFileName.txt";
+42            ReadFile(fileName);
+43        }
+44        catch (Exception e)
+45        {
+46            throw new ApplicationException("Smth. bad happened", e);
+47        }
 48    }
 49    static void ReadFile(string fileName)
 50    {
-51    	TextReader reader = new StreamReader(fileName);
-52    	string line = reader.ReadLine();
-53    	Console.WriteLine(line);
-54    	reader.Close();
-55    }	
+51        TextReader reader = new StreamReader(fileName);
+52        string line = reader.ReadLine();
+53        Console.WriteLine(line);
+54        reader.Close();
+55    }    
 ```
 
 In this example, we call the `ReadFile()` method (line 42), which will throw an exception (line 51) because the file "`WrongFileName.txt`" does not exist. In the `Main()` method we catch all exceptions (line 44), wrap them into a new exception of type `ApplicationException` and throw them again (line 46). As we shall see later in the section "Grouping Different Error Types", caching an `Exception` also catches all its descendant exceptions in its hierarchy. Finally the thrown exception (at line 46) is caught by .NET Framework and its stack trace is dumped on the console.
@@ -412,7 +412,7 @@ Throwing exceptions from the `Main()` method is generally not a good practice. I
 ```cs
 static void Main()
 {
-	throw new Exception("Ooops!");
+    throw new Exception("Ooops!");
 }
 ```
 
@@ -425,31 +425,31 @@ The ability to pass (or bubble) exceptions through a given method up to the call
 ```cs
 static void Main()
 {
-	try
-	{
-		string fileName = "WrongFileName.txt";
-		ReadFile(fileName);
-	}
-	catch (Exception e)
-	{
-		throw new ApplicationException("Bad thing happened", e);
-	}
+    try
+    {
+        string fileName = "WrongFileName.txt";
+        ReadFile(fileName);
+    }
+    catch (Exception e)
+    {
+        throw new ApplicationException("Bad thing happened", e);
+    }
 }
 
 static void ReadFile(string fileName)
 {
-	try
-	{
-		TextReader reader = new StreamReader(fileName);
-		string line = reader.ReadLine();
-		Console.WriteLine(line);
-		reader.Close();
-	}
-	catch (FileNotFoundException fnfe)
-	{
-		Console.WriteLine("The file {0} does not exist!",
-			filename);
-	}
+    try
+    {
+        TextReader reader = new StreamReader(fileName);
+        string line = reader.ReadLine();
+        Console.WriteLine(line);
+        reader.Close();
+    }
+    catch (FileNotFoundException fnfe)
+    {
+        Console.WriteLine("The file {0} does not exist!",
+            filename);
+    }
 }
 ```
 
@@ -471,11 +471,11 @@ The basic form of the `finally` block is given below:
 ```cs
 try
 {
-	// Some code that could or could not cause an exception
+    // Some code that could or could not cause an exception
 }
 finally
 {
-	// Code here will always execute
+    // Code here will always execute
 }
 ```
 
@@ -484,19 +484,19 @@ Every `try` block may have zero or more `catch` blocks and at most one `finally`
 ```cs
 try
 {
-	some code
+    some code
 }
 catch (...)
 {
-	// Code handling an exception
+    // Code handling an exception
 }
 catch (...)
 {
-	// Code handling another exception
+    // Code handling another exception
 }
 finally
 {
-	// This code will always execute
+    // This code will always execute
 }
 ```
 
@@ -515,10 +515,10 @@ In our example, we want to **read a file.** To accomplish this, we have a reader
 ```cs
 static void ReadFile(string fileName)
 {
-	TextReader reader = new StreamReader(fileName);
-	string line = reader.ReadLine();
-	Console.WriteLine(line);
-	reader.Close();
+    TextReader reader = new StreamReader(fileName);
+    string line = reader.ReadLine();
+    Console.WriteLine(line);
+    reader.Close();
 }
 ```
 
@@ -542,21 +542,21 @@ Closing a file stream could be done using the following pattern:
 ```cs
 static void ReadFile(string fileName)
 {
-	TextReader reader = null;
-	try
-	{
-		reader = new StreamReader(fileName);
-		string line = reader.ReadLine();
-		Console.WriteLine(line);
-	}
-	finally
-	{
-		// Always close "reader" (if it was opened)
-		if (reader != null)
-		{
-			reader.Close();
-		}
-	}
+    TextReader reader = null;
+    try
+    {
+        reader = new StreamReader(fileName);
+        string line = reader.ReadLine();
+        Console.WriteLine(line);
+    }
+    finally
+    {
+        // Always close "reader" (if it was opened)
+        if (reader != null)
+        {
+            reader.Close();
+        }
+    }
 }
 ```
 
@@ -573,16 +573,16 @@ While the above solution is correct, it is unnecessary complex. Let’s look at 
 ```cs
 static void ReadFile(string fileName)
 {
-	TextReader reader = new StreamReader(fileName);
-	try
-	{
-		string line = reader.ReadLine();
-		Console.WriteLine(line);
-	}
-	finally
-	{
-		reader.Close();
-	}
+    TextReader reader = new StreamReader(fileName);
+    try
+    {
+        string line = reader.ReadLine();
+        Console.WriteLine(line);
+    }
+    finally
+    {
+        reader.Close();
+    }
 }
 ```
 
@@ -599,23 +599,23 @@ We can use the same approach outlined above, nesting the `try-finally` blocks in
 ```cs
 static void ReadFile(string filename)
 {
-	Resource r1 = new Resource1();
-	try
-	{
-		Resource r2 = new Resource2();
-		try
-		{
-			// Use r1 and r2
-		}
-		finally
-		{
-			r2.Release();
-		}
-	}
-	finally
-	{
-		r1.Release();
-	}
+    Resource r1 = new Resource1();
+    try
+    {
+        Resource r2 = new Resource2();
+        try
+        {
+            // Use r1 and r2
+        }
+        finally
+        {
+            r2.Release();
+        }
+    }
+    finally
+    {
+        r1.Release();
+    }
 }
 ```
 
@@ -624,26 +624,26 @@ Another option is to declare all of the resources in advance and then make the c
 ```cs
 static void ReadFile(string filename)
 {
-	Resource r1 = null;
-	Resource r2 = null;
-	try
-	{
-		Resource r1 = new Resource1();
-		Resource r2 = new Resource2();
+    Resource r1 = null;
+    Resource r2 = null;
+    try
+    {
+        Resource r1 = new Resource1();
+        Resource r2 = new Resource2();
 
-		// Use r1 and r2
-	}
-	finally
-	{
-		if (r1 != null)
-		{
-			r1.Release();
-		}
-		if (r2 != null)
-		{
-			r2.Release();
-		}
-	}
+        // Use r1 and r2
+    }
+    finally
+    {
+        if (r1 != null)
+        {
+            r1.Release();
+        }
+        if (r2 != null)
+        {
+            r2.Release();
+        }
+    }
 }
 ```
 
@@ -665,14 +665,14 @@ The important method in `IDisposable` interface is `Dispose()`. The main thing w
 StreamReader reader = new StreamReader(fileName);
 try
 {
-	// Use the reader here
+    // Use the reader here
 }
 finally
 {
-	if (reader != null)
-	{
-		reader.Dispose();
-	}
+    if (reader != null)
+    {
+        reader.Dispose();
+    }
 }
 ```
 
@@ -683,7 +683,7 @@ The previous example can be written in shorter form with the help of the using *
 ```cs
 using (StreamReader reader = new StreamReader(fileName))
 {
-	// Use the reader here
+    // Use the reader here
 }
 ```
 
@@ -699,10 +699,10 @@ The `using` statements can be nested one within another:
 
 ```cs
 using (ResourceType r1 = ...)
-	using (ResourceType r2 = ...)
-		...
-			using (ResourceType rN = ...)
-				statements;
+    using (ResourceType r2 = ...)
+        ...
+            using (ResourceType rN = ...)
+                statements;
 ```
 
 The previous example can be written like this:
@@ -710,7 +710,7 @@ The previous example can be written like this:
 ```cs
 using (ResourceType r1 = ..., r2 = ..., ..., rN = ...)
 {
-	statements;
+    statements;
 }
 ```
 
@@ -736,13 +736,13 @@ Using exceptions allow us to separate the code, which describes the normal execu
 ```cs
 void ReadFile()
 {
-	OpenTheFile();
-	while (FileHasMoreLines)
-	{
-		ReadNextLineFromTheFile();
-		PrintTheLine();
-	}
-	CloseTheFile();
+    OpenTheFile();
+    while (FileHasMoreLines)
+    {
+        ReadNextLineFromTheFile();
+        PrintTheLine();
+    }
+    CloseTheFile();
 }
 ```
 
@@ -768,48 +768,48 @@ Let’s change the method having these questions in mind **without using excepti
 ```cs
 int ReadFile()
 {
-	errorCode = 0;
-	openFileErrorCode = OpenTheFile();
+    errorCode = 0;
+    openFileErrorCode = OpenTheFile();
 
-	// Check whether the file is open
-	if (openFileErrorCode == 0)
-	{
-		while (FileHasMoreLines)
-		{
-			readLineErrorCode = ReadNextLineFromTheFile();
-			if (readLineErrorCode == 0)
-			{
-				// Line has been read properly
-				PrintTheLine();
-			}
-			else
-			{
-				// Error during line reading
-				errorCode = -1;
-				break;
-			}
-		}
-		closeFileErrorCode = CloseTheFile();
-		if (closeFileErrorCode != 0 && errorCode == 0)
-		{
-			errorCode = -2;
-		}
-		else
-		{
-			errorCode = -3;
-		}
-	}
-	else if (openFileErrorCode == -1)
-	{
-		// File does not exist
-		errorCode = -4;
-	}
-	else if (openFileErrorCode == -2)
-	{
-		// File can't be open
-		errorCode = -5;
-	}
-	return errorCode;
+    // Check whether the file is open
+    if (openFileErrorCode == 0)
+    {
+        while (FileHasMoreLines)
+        {
+            readLineErrorCode = ReadNextLineFromTheFile();
+            if (readLineErrorCode == 0)
+            {
+                // Line has been read properly
+                PrintTheLine();
+            }
+            else
+            {
+                // Error during line reading
+                errorCode = -1;
+                break;
+            }
+        }
+        closeFileErrorCode = CloseTheFile();
+        if (closeFileErrorCode != 0 && errorCode == 0)
+        {
+            errorCode = -2;
+        }
+        else
+        {
+            errorCode = -3;
+        }
+    }
+    else if (openFileErrorCode == -1)
+    {
+        // File does not exist
+        errorCode = -4;
+    }
+    else if (openFileErrorCode == -2)
+    {
+        // File can't be open
+        errorCode = -5;
+    }
+    return errorCode;
 }
 ```
 
@@ -822,27 +822,27 @@ We can avoid all of the above spaghetti code just by **using exceptions.** Here 
 ```cs
 void ReadFile()
 {
-	try
-	{
-		OpenTheFile();
-		while (FileHasMoreLines)
-		{
-			ReadNextLineFromTheFile();
-			PrintTheLine();
-		}
-	}
-	catch (FileNotFoundException)
-	{
-		DoSomething();
-	}
-	catch (IOException)
-	{
-		DoSomethingElse();
-	}
-	finally
-	{
-		CloseTheFile();
-	}
+    try
+    {
+        OpenTheFile();
+        while (FileHasMoreLines)
+        {
+            ReadNextLineFromTheFile();
+            PrintTheLine();
+        }
+    }
+    catch (FileNotFoundException)
+    {
+        DoSomething();
+    }
+    catch (IOException)
+    {
+        DoSomethingElse();
+    }
+    finally
+    {
+        CloseTheFile();
+    }
 }
 ```
 
@@ -855,7 +855,7 @@ The hierarchical nature of exceptions allows us to catch and handle whole groups
 ```cs
 catch (IOException e)
 {
-	// Handle IOException and all its descendants
+    // Handle IOException and all its descendants
 }
 ```
 
@@ -866,7 +866,7 @@ It is not a good practice, but it is possible to catch all exceptions:
 ```cs
 catch (Exception e)
 {
-	// A (too) general exception handler
+    // A (too) general exception handler
 }
 ```
 
@@ -879,17 +879,17 @@ The ability to **catch exceptions at multiple locations** is extremely comfortab
 ```cs
 Method3()
 {
-	Method2();
+    Method2();
 }
 
 Method2()
 {
-	Method1();
+    Method1();
 }
 
 Method1()
 {
-	ReadFile();
+    ReadFile();
 }
 ```
 
@@ -898,29 +898,29 @@ The method `Method3()` calls `Method2()`, which calls `Method1()` where `ReadFil
 ```cs
 void Method3()
 {
-	errorCode = Method2();
-	if (errorCode != 0)
-		process the error;
-	else
-		DoTheActualWork();
+    errorCode = Method2();
+    if (errorCode != 0)
+        process the error;
+    else
+        DoTheActualWork();
 }
 
 int Method2()
 {
-	errorCode = Method1();
-	if (errorCode != 0)
-		return errorCode;
-	else
-		DoTheActualWork();
+    errorCode = Method1();
+    if (errorCode != 0)
+        return errorCode;
+    else
+        DoTheActualWork();
 }
 
 int Method1()
 {
-	errorCode = ReadFile();
-	if (errorCode != 0)
-		return errorCode;
-	else
-		DoTheActualWork();
+    errorCode = ReadFile();
+    if (errorCode != 0)
+        return errorCode;
+    else
+        DoTheActualWork();
 }
 ```
 
@@ -931,24 +931,24 @@ How can we avoid all this? Let’s remember that that the CLR searches for excep
 ```cs
 void Method3()
 {
-	try
-	{
-		Method2();
-	}
-	catch (Exception e)
-	{
-		process the exception;
-	}
+    try
+    {
+        Method2();
+    }
+    catch (Exception e)
+    {
+        process the exception;
+    }
 }
 
 void Method2()
 {
-	Method1();
+    Method1();
 }
 
 void Method1()
 {
-	ReadFile();
+    ReadFile();
 }
 ```
 
@@ -967,22 +967,22 @@ We can be prepared and first check if the file exists before we try to open it:
 ```cs
 static void ReadFile(string fileName)
 {
-	if (!File.Exists(fileName))
-	{
-		Console.WriteLine(
-			"The file '{0}' does not exist.", fileName);
-		return;
-	}
+    if (!File.Exists(fileName))
+    {
+        Console.WriteLine(
+            "The file '{0}' does not exist.", fileName);
+        return;
+    }
 
-	StreamReader reader = new StreamReader(fileName);
-	using (reader)
-	{
-		while (!reader.EndOfStream)
-		{
-			string line = reader.ReadLine();
-			Console.WriteLine(line);
-		}
-	}
+    StreamReader reader = new StreamReader(fileName);
+    using (reader)
+    {
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            Console.WriteLine(line);
+        }
+    }
 }
 ```
 
@@ -997,29 +997,29 @@ The other way to implement this is the following:
 ```cs
 static void ReadFile(string filename)
 {
-	StreamReader reader = null;
-	try
-	{
-		reader = new StreamReader(filename);
-		while (!reader.EndOfStream)
-		{
-			string line = reader.ReadLine();
-			Console.WriteLine(line);
-		}
-		reader.Close();
-	}
-	catch (FileNotFoundException)
-	{
-		Console.WriteLine(
-			"The file '{0}' does not exist.", filename);
-	}
-	finally
-	{
-		if (reader != null)
-		{
-			reader.Close();
-		}
-	}
+    StreamReader reader = null;
+    try
+    {
+        reader = new StreamReader(filename);
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            Console.WriteLine(line);
+        }
+        reader.Close();
+    }
+    catch (FileNotFoundException)
+    {
+        Console.WriteLine(
+            "The file '{0}' does not exist.", filename);
+    }
+    finally
+    {
+        if (reader != null)
+        {
+            reader.Close();
+        }
+    }
 }
 ```
 
@@ -1104,11 +1104,11 @@ Let’s give some examples:
 - We have a method that reads integers from a file. If in the file we have a row without an integer we should get an error, which explains that at row 17 for example an integer is expected instead of a string (and prints the string).
 - We have a method that calculates the sum of numeric expression. If we find an error in the expression the exception should say what error occurred and at what position. The code that causes the error may use `String.Format(...)` to build the error message. Here is an example how to implement this:
 
-	```cs
-	throw new FormatException(
-		string.Format("Invalid character at position {0}. " +
-		"Number expected but character '{1}' found.", index, ch));
-	```
+    ```cs
+    throw new FormatException(
+        string.Format("Invalid character at position {0}. " +
+        "Number expected but character '{1}' found.", index, ch));
+    ```
 
 ### Error Messages with Wrong Content
 
@@ -1130,8 +1130,8 @@ Never ignore the exceptions you catch without handling them. Here is an example 
 ```cs
 try
 {
-	string fileName = "WrongTextFile.txt";
-	ReadFile(fileName);
+    string fileName = "WrongTextFile.txt";
+    ReadFile(fileName);
 }
 catch (Exception e)
 { }
@@ -1145,12 +1145,12 @@ If we ever need to ignore an exception on purpose we should add a comment, which
 int number = 0;
 try
 {
-	string line = Console.ReadLine();
-	number = Int32.Parse(line);
+    string line = Console.ReadLine();
+    number = Int32.Parse(line);
 }
 catch (Exception)
 {
-	// Incorrect numbers are intentionally considered 0
+    // Incorrect numbers are intentionally considered 0
 }
 Console.WriteLine("The number is: " + number);
 ```
@@ -1189,11 +1189,11 @@ A very common mistake with exceptions is to catch all exceptions no matter what 
 ```cs
 try
 {
-	ReadFile("CorrectTextFile.txt");
+    ReadFile("CorrectTextFile.txt");
 }
 catch (Exception)
 {
-	Console.WriteLine("File not found.");
+    Console.WriteLine("File not found.");
 }
 ```
 
