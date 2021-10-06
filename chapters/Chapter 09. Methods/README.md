@@ -1405,7 +1405,7 @@ static long Multiply(int number1, int number2)
 
 In this method after the multiplication, by using the `return` the method will produce as a result of its execution the integer variable `result`.
 
-### Compatibility of the Result and the Retuning Type
+### Compatibility of the Result and the Returning Type
 
 The result returned by the method, can be of a type that is **compatible** (the one that can be implicitly converted) with the type of the returned value `<return_type>`.
 
