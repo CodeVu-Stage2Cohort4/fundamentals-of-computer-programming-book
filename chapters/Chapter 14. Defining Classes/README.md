@@ -1761,23 +1761,40 @@ Moreover, as explained earlier, the default constructor will always have access 
 
 ## Properties
 
-In the world of object-oriented programming there is an element of the classes called property, which is somewhere between a field and a method and serves to better protect the state in the class. In some languages for object-oriented programming, like C#, Delphi / Pascal, Visual Basic, Python, JavaScript, and others, the properties are a part of the language, i.e. there is a special mechanism to declare and use them. Other languages like Java do not support the property concept and for this purpose the programmers should declare a pair of methods (for reading and modifying the property) to provide this functionality.
-Properties in C# – Introduction by Example
-Using the properties is a good and proven practice and an important part of the concepts for object-oriented programming. The creation of a property in programming is done by declaring two methods – one for access (reading) and one for modifying (setting) the value of the respective property.
-Consider an example. Assume we have again class Dog, which describes a dog. A characteristic of a dog is, for example, its color. The access to the property "color" of a dog and its corresponding modification can be accomplished in the following way:
+In the world of object-oriented programming there is an element of the classes called **property,** which is **somewhere between a field and a method** and serves to better protect the state in the class. In some languages for object-oriented programming, like C#, Delphi / Pascal, Visual Basic, Python, JavaScript, and others, the properties are a part of the language, i.e. there is a special mechanism to declare and use them. Other languages like Java do not support the property concept and for this purpose the programmers should declare a pair of methods (for reading and modifying the property) to provide this functionality.
+
+### Properties in C# – Introduction by Example
+
+Using the properties is a good and proven practice and an important part of the concepts for object-oriented programming. The creation of a property in programming is done by **declaring two methods** – one for access **(reading)** and one for modifying **(setting)** the value of the respective property.
+
+Consider an example. Assume we have again class `Dog`, which describes a dog. A characteristic of a dog is, for example, its color. The access to the property "color" of a dog and its corresponding modification can be accomplished in the following way:
+
+```cs
 // Getting (reading) a property
 string colorName = dogInstance.Color;
 
 // Setting (modifying) a property
 dogInstance.Color = "black";
-Properties – Encapsulation of Fields
-The main objective of the properties is to ensure the encapsulation of the state of the class in which they are declared, i.e. to protect the class from falling into invalid state.
-Encapsulation is hiding of the physical representation of data in one class so that if we subsequently change this presentation, it will not reflect on other classes, which use this class.
-Though the C# syntax this is done by declaring the fields (physical presentation of data) with possibly the most limited level of visibility (mostly with the modifier private) and declaring that access to these fields (reading and modifying) is to take place only through special accessor methods.
-Example of Encapsulation
+```
+
+### Properties – Encapsulation of Fields
+
+The main objective of the properties is to ensure the **encapsulation of the state of the class** in which they are declared, i.e. to protect the class from falling into **invalid state.**
+
+**Encapsulation** is **hiding of the physical representation** of data in one class so that if we subsequently change this presentation, it will not reflect on other classes, which use this class.
+
+Though the C# syntax this is done by declaring the fields (physical presentation of data) with possibly the most limited level of visibility (mostly with the modifier private) and declaring that access to these fields (reading and modifying) is to take place only through special **accessor methods.**
+
+#### Example of Encapsulation
+
 To illustrate what the encapsulation, which provides properties to a class, is and what the properties themselves represent, we shall consider an example.
-Let’s have a class, which represents a point from the 2D space with properties representing the coordinates {x, y}. Here is how it would look like if we declare each of the coordinates as a field:
-Point.cs
+
+Let’s have a class, which represents a **point from the 2D space** with properties representing the coordinates `{x, y}`. Here is how it would look like if we declare each of the coordinates as a field:
+
+| Point.cs |
+|---|
+
+```cs
 class Point
 {
 	private double x;
@@ -1801,8 +1818,14 @@ class Point
 		set { this.y = value; }
 	}
 }
-The fields of the objects of our class (i.e. the point’s coordinates) are declared as private and cannot be accessed by a "dot" notation. If we create an object from class Point, we can modify and read the properties (the coordinates) of the point only through the properties for access to them:
-PointTest.cs
+```
+
+The fields of the objects of our class (i.e. the point’s coordinates) are declared as `private` and cannot be accessed by a "dot" notation. If we create an object from class `Point`, we can modify and read the properties (the coordinates) of the point only through the properties for access to them:
+
+| PointTest.cs |
+|---|
+
+```cs
 using System;
 
 class PointTest
@@ -1818,11 +1841,21 @@ class PointTest
 		Console.WriteLine("The Y coordinate is: " + myPointYCoord);
 	}
 }
-The result of the execution of the Main() method will be:
+```
+
+The result of the execution of the `Main()` method will be:
+
+```console
 The X coordinate is: 2
 The Y coordinate is: 3
+```
+
 If, however, we decide to change the internal representation of the point’s properties, e.g. instead of two fields, we declare them as a one-dimensional array with two elements; we can do it without affecting in any way of the other classes of our project:
-Point.cs
+
+| Point.cs |
+|---|
+
+```cs
 using System;
 
 class Point
@@ -1852,18 +1885,35 @@ class Point
 		set { coordinates[1] = value; }
 	}
 }
-The result of the implementation of the Main() method will not be changed and will be the same even without changing a single character in the code of the class PointTest.
-The demonstration is a good example of data encapsulation of an object, provided by the mechanism of the properties. Through them we hide the internal representation of the information by declaring properties and methods for accessing it, and if later a change occurs in the representation, this will not affect the other classes using our class, because they only use its properties and do not know how the information is represented "behind the scene".
-Of course, the example shows only one of the benefits of class fields wrapping (packing) into properties. Properties allow further control over the data in the class and they can check whether the assigned values are correct according to some criteria. For example, if we have a property "maximum speed" for a class Car, it is possible, through properties, to require its value to be within the range of 1 to 300 km/h.
-Physical Presentation of the Properties in a Class
-As we saw above, the properties may have different presentation in one class at a physical level. In our example, the information about the properties of the class Point initially was stored in two fields and later in one field–array.
-However, if we decide instead of keeping the information about the properties of the point in a field, to save it in a file or a database and every time we need to access the respective property, we can read or write from the file or the database rather than use the fields of the class as in the previous examples. Since the properties are accessed by special methods (called methods for access and modification or accessor methods) to be discussed later, for the classes that will use our class the question how the information will be stored would not matter (because of the good encapsulation).
-In the most common case, however, the information about the properties of the class is saved in a field of the class, which has the most rigorous level of visibility – private.
- 	It does not matter how the information for the properties in a class in C# is saved, but usually this is done by a class field with the most restrictive access level (private).
-Property without Declaration of a Field
+```
+
+The result of the implementation of the `Main()` method will not be changed and will be the same even without changing a single character in the code of the class `PointTest`.
+
+The demonstration is a **good example of data encapsulation** of an object, provided by the mechanism of the properties. Through them we **hide the internal representation** of the information by declaring properties and methods for accessing it, and if later a change occurs in the representation, this will not affect the other classes using our class, because they only use its properties and do not know how the information is represented "behind the scene".
+
+Of course, the example shows only one of the benefits of class fields wrapping (packing) into properties. **Properties allow further control over the data** in the class and they can check whether the assigned values are correct according to some criteria. For example, if we have a property "maximum speed" for a class `Car`, it is possible, through properties, to require its value to be within the range of 1 to 300 km/h.
+
+### Physical Presentation of the Properties in a Class
+
+As we saw above, the properties may have **different presentation in one class** at a physical level. In our example, the information about the properties of the class Point initially was stored in two fields and later in one field–array.
+
+However, if we decide instead of keeping the information about the properties of the point in a field, to save it in a file or a database and every time we need to access the respective property, we can read or write from the file or the database rather than use the fields of the class as in the previous examples. Since the properties are accessed by special methods (called methods for access and modification or **accessor methods**) to be discussed later, for the classes that will use our class the question how the information will be stored would not matter (because of the good encapsulation).
+
+In the most common case, however, the information about the properties of the class is saved in a field of the class, which has the most rigorous level of visibility – `private`.
+
+| :warning: | It does not matter how the information for the properties in a class in C# is saved, but usually this is done by a class field with the most restrictive access level (`private`). |
+|:--:|:--|
+
+### Property without Declaration of a Field
+
 Consider an example, in which the property is stored neither in the field, nor anywhere else, but recalculated when trying to access it.
-Let’s have the class Rectangle, which represents the geometric shape of a rectangle. Accordingly, this class has two fields – for width and for height. Assume our class has one more property – area. Because we always can calculate the property "area" of a rectangle based on the width and the height, it is not required to define a separate field in the class to keep this value. Therefore, we can simply declare a method for obtaining the area through which we calculate the area of a rectangle:
-Rectangle.cs
+
+Let’s have the class `Rectangle`, which represents the geometric shape of a rectangle. Accordingly, this class has two fields – for `width` and for `height`. Assume our class has one more property – `area`. Because we always can **calculate the property "area"** of a rectangle based on the width and the height, it is not required to define a separate field in the class to keep this value. Therefore, we can simply declare a method for obtaining the area through which we calculate the area of a rectangle:
+
+| Rectangle.cs |
+|---|
+
+```cs
 using System;
 
 class Rectangle
@@ -1883,14 +1933,27 @@ class Rectangle
 		get { return this.height * this.width; }
 	}
 }
-As we will see later, a property does not necessarily have an accessing and a modifying method at the same time. Therefore, it is allowed to declare only a method for reading the property Area of the rectangle. There is no point to have a method, which modifies the value of the area of a rectangle because the area is always one and the same based on given lengths of the sides.
-Declaring Properties in C#
+```
+
+As we will see later, a property does not necessarily have an accessing and a modifying method at the same time. Therefore, it is allowed to declare only a method for reading the property `Area` of the rectangle. There is no point to have a method, which modifies the value of the area of a rectangle because the area is always one and the same based on given lengths of the sides.
+
+### Declaring Properties in C#
+
 To declare a property in C#, we have to declare access methods (for reading and changing) of the respective property and to decide how we will store the information related to the property in the class.
+
 Before we declare the methods, however, we have to declare the property of the class. Formal declaration of properties appears in the following way:
+
+```cs
 [<modifiers>] <property_type> <property_name>
-With <modifiers> we have denoted both the access modifiers and other modifiers (e.g. static, to be discussed in the next section of this chapter). They are not a mandatory part of the declaration of a field.
-The type of the property <property_type> specifies the type of the values of the property. It may be either a primitive type (e.g. int), or a reference type (e.g. array).
-Respectively, <property_name> is the name of the property. It must begin with a capital letter and to satisfy the PascalCase rule, i.e. every new word that is adjoined to the end part of the property name, starts with a capital letter. Here are some examples of properly named properties:
+```
+
+With `<modifiers>` we have denoted both the **access modifiers and other modifiers** (e.g. `static`, to be discussed in the next section of this chapter). They are not a mandatory part of the declaration of a field.
+
+The **type of the property** `<property_type>` specifies the type of the values of the property. It may be either a primitive type (e.g. `int`), or a reference type (e.g. array).
+
+Respectively, `<property_name>` is **the name of the property.** It must begin with a capital letter and to satisfy the `PascalCase` rule, i.e. every new word that is adjoined to the end part of the property name, starts with a capital letter. Here are some examples of properly named properties:
+
+```cs
 // MyValue property
 public int MyValue { get; set; }
 
@@ -1899,54 +1962,100 @@ public string Color { get; set; }
 
 // X-coordinate property
 public double X { get; set; }
-The Body of a Property
-Like classes and methods in C# properties also have bodies, where the methods for access are declared (accessors).
+```
+
+### The Body of a Property
+
+Like classes and methods in C# properties also have **bodies,** where the methods for access are declared (**accessors**).
+
+```cs
 [<modifiers>] <property_type> <property_name>
 {
 	// ... Property's accessors methods go here
 }
-The body of a property begins with an opening bracket "{" and ends with a closing bracket – "}". Properties should always have a body.
-Method for Reading the Value of a Property (Getter)
-As we explained, the declaration of a method for reading a value of a property (in the literature called a getter) is made in the body of a property by using the following syntaxes:
+```
+
+The body of a property begins with an opening bracket "`{`" and ends with a closing bracket – "`}`". Properties should always have a body.
+
+### Method for Reading the Value of a Property (Getter)
+
+As we explained, the declaration of a **method for reading a value of a property** (in the literature called a **getter**) is made in the body of a property by using the following syntaxes:
+
+```cs
 get { <accessor_body> }
-The content of the block surrounded by the braces (<accessor_body>) is similar to the contents of any method. The actions, which should be performed to return the result of the method, are declared in it.
-The method of reading the value of a property must end with a return or throw operation. The type of the value, which is returned as a result of this method, has to be the same as <property_type> described in the property declaration.
-Although earlier in this section we considered many examples of declared properties with a method for reading their values, let’s consider another example of a property – Age, which is of type int and is declared via a field in the same class:
+```
+
+The content of the block surrounded by the braces (`<accessor_body>`) is similar to the contents of any method. The actions, which should be performed to return the result of the method, are declared in it.
+
+The method of reading the value of a property must end with a `return` or `throw` operation. The type of the value, which is returned as a result of this method, has to be the same as `<property_type>` described in the property declaration.
+
+Although earlier in this section we considered many examples of declared properties with a method for reading their values, let’s consider another example of a property – `Age`, which is of type `int` and is declared via a field in the same class:
+
+```cs
 private int age; 					// Field declaration
 
 public int Age					// Property declaration
 {
 	get { return this.age; }	// Getter declaration
 }
-Calling a Method for Reading Property’s Value
-Assume that the property Age from the last example is declared in the class Dog. Then calling the method for reading the value of the property is done by a "dot" notation, applied to a variable of the type, in the class of which the property is declared:
+```
+
+### Calling a Method for Reading Property’s Value
+
+Assume that the property `Age` from the last example is declared in the class `Dog`. Then calling the method for reading the value of the property is done by a "dot" notation, applied to a variable of the type, in the class of which the property is declared:
+
+```cs
 Dog dogInstance = new Dog();
 // ...
-int dogAge = dogInstance.Age; 				// Getter invocation
+int dogAge = dogInstance.Age; 			// Getter invocation
 Console.WriteLine(dogInstance.Age); 	// Getter invocation
+```
+
 The last two lines of the example show that when accessing through a dot notation the name of the property, its getter method (method for reading its value) is called automatically.
-Method for Modifying Property’s Value (Setter)
-Like the method of reading the property’s value we can also declare the method of changing (modifying) the value of a property (in the literature known as setter). It is declared in the body of a property with void return value and the assigned value is accessible through an implicit parameter value.
+
+### Method for Modifying Property’s Value (Setter)
+
+Like the method of reading the property’s value we can also declare the method of changing **(modifying) the value of a property** (in the literature known as **setter**). It is declared in the body of a property with `void` return value and the assigned value is accessible through an implicit parameter `value`.
+
 The declaration is made in the body of the property through the following syntax:
+
+```cs
 set { <accessor_body> }
-The contents of the block surrounded by arrow brackets – <accessor_body> are similar to the content of any method. It declares the actions that must be performed to change the value of the property. The method uses a hidden parameter called value, which is available in C# by default and contains the new value of the property. The type of the parameter is the same as the type of the property.
-Let’s add the example for the property Age in the class Dog to illustrate what we discussed so far:
-private int age; 					// Field declaration
+```
+
+The contents of the block surrounded by arrow brackets – `<accessor_body>` are similar to the content of any method. It declares the actions that must be performed to change the value of the property. The method uses a hidden parameter called `value`, which is available in C# by default and contains the new value of the property. The type of the parameter is the same as the type of the property.
+
+Let’s add the example for the property `Age` in the class `Dog` to illustrate what we discussed so far:
+
+```cs
+private int age; 				// Field declaration
 
 public int Age					// Property declaration
 {
 	get { return this.age; }
 	set { this.age = value; }	// Setter declaration
 }
-Calling a Method for Modifying the Property’s Value
+```
+
+### Calling a Method for Modifying the Property’s Value
+
 Calling the method to modify the property’s value is performed via the "dot" notation, applied to the variable of the type, in the class of which the property is declared:
+
+```cs
 Dog dogInstance = new Dog();
 // ...
-dogInstance.Age = 3; 				// Setter invocation
-In the last line where the value 3 is assigned the setter method of the property Age is called. In this way the value is saved in the parameter value and is assigned to the setter method of the property Age. In our example, the value of the variable value is assigned to the field age from the class Dog, but in the general case this can be handled in a more complicated way.
-Assertion of the Input Values
-It is a good practice in the programming process to check the validity of the input values for the setter method of modifying a property and if they are not valid to take the necessary "measures". Mostly, in case of incorrect input data an exception is caused.
-Consider again the example with the age of the dog. As we know the age has to be a positive number. To prevent someone from assigning a negative number or a zero to the property Age, we add the following validation at the beginning of the setter method:
+dogInstance.Age = 3; 			// Setter invocation
+```
+
+In the last line where the value 3 is assigned the setter method of the property `Age` is called. In this way the value is saved in the parameter `value` and is assigned to the setter method of the property `Age`. In our example, the value of the variable `value` is assigned to the field `age` from the class `Dog`, but in the general case this can be handled in a more complicated way.
+
+### Assertion of the Input Values
+
+It is a good practice in the programming process to **check the validity of the input values** for the setter method of modifying a property and if they are not valid to take the necessary "measures". Mostly, in case of incorrect input data an exception is caused.
+
+Consider again the example with the age of the dog. As we know the age has to be a positive number. To prevent someone from assigning a negative number or a zero to the property `Age`, we add the following validation at the beginning of the setter method:
+
+```cs
 public int Age
 {
 	get { return this.age; }
@@ -1962,11 +2071,20 @@ public int Age
 		this.age = value;
 	}
 }
-In case someone tries to assign a value to Age, which is a negative number or 0, the code will throw an exception from the type ArgumentException, with details of the problem.
-To protect itself from invalid data a class must verify the input values for all properties and constructors submitted to the setter methods, as well as all methods, which can change a field of a class. This programming practice to protect classes from invalid data and invalid internal states is widely used and is a part of the "Defensive Programming" concept, which we will discuss in chapter "High-Quality Programming Code".
-Automatic Properties in C#
+```
+
+In case someone tries to assign a value to `Age`, which is a negative number or 0, the code will throw an exception from the type `ArgumentException`, with details of the problem.
+
+To protect itself from invalid data a class must **verify the input values for all properties and constructors** submitted to the setter methods, as well as all methods, which can change a field of a class. This programming practice to protect classes from invalid data and invalid internal states is widely used and is a part of the "Defensive Programming" concept, which we will discuss in chapter "High-Quality Programming Code".
+
+### Automatic Properties in C#
+
 In C# we could define properties without explicitly defining the underlying field behind them. This is called automatic properties:
-Point.cs
+
+| Point.cs |
+|---|
+
+```cs
 using System;
 
 class Point
@@ -1990,50 +2108,93 @@ class PointTest
 		Console.WriteLine("The Y coordinate is: " + myPoint.Y);
 	}
 }
-The above example declares a class Point with two automatic properties: X and Y. These properties do not have explicitly defined underlying fields and the compiler defines them during the compilation. It looks like the get and set methods are empty but in fact the compiler defines an underlying field and fills the body of the get and set accessors with some code to read / write the automatically defined underlying field.
-Use automatic properties for simple classes where you want to write less code but have in mind that when you use automatic properties your control over the assigned values is limited. You might have difficulties to add checks for invalid data.
-Types of Properties
+```
+
+The above example declares a class `Point` with two **automatic properties:** `X` and `Y`. These properties do not have explicitly defined underlying fields and the compiler defines them during the compilation. It looks like the `get` and `set` methods are empty but in fact the compiler defines an underlying field and fills the body of the `get` and `set` accessors with some code to read / write the automatically defined underlying field.
+
+**Use automatic properties for simple classes** where you want to write less code but have in mind that when you use automatic properties your control over the assigned values is limited. You might have difficulties to add checks for invalid data.
+
+### Types of Properties
+
 Depending on their definition we can classify the properties as follows:
-	Read-only, i.e. these properties have only a get method as shown by the area of the rectangle.
-	Write-only, i.e. these properties have only a set method, but no method for reading the value of the property.
-	And the most common case is read-write, where the property has methods both for reading and for changing the value.
-Some properties are designed to be read-only. Others are supposed to support both read and write operations. The developers should decide whether someone should be able to change the value of given property and define it as read-only or read / write. Write-only properties are used very rarely.
+
+- **Read-only,** i.e. these properties have only a `get` method as shown by the area of the rectangle.
+- **Write-only,** i.e. these properties have only a `set` method, but no method for reading the value of the property.
+- And the most common case is **read-write,** where the property has **methods both for reading and for changing the value.**
+- 
+Some properties are designed to be **read-only.** Others are supposed to support **both read and write operations.** The developers should decide whether someone should be able to change the value of given property and define it as read-only or read / write. **Write-only** properties are used very rarely.
 
 ## Static Classes and Static Members
 
-We call an element static when it is declared with the modifier static. In C# we can declare fields, methods, properties, constructors and classes as static.
-We will first consider the static elements of a class or in other words we will look at the fields, methods, properties and constructors of a class and then we will study the concept of the static class.
-What the Static Elements Are Used For?
+We call an element static when it is declared with the modifier `static`. In C# we can declare fields, methods, properties, constructors and classes as static.
+
+We will first consider the **static elements** of a class or in other words we will look at the fields, methods, properties and constructors of a class and then we will study the concept of the static class.
+
+### What the Static Elements Are Used For?
+
 Before we study the working principle of the static elements, let’s see the reasons why we need to use them.
-Method to Sum Two Numbers
+
+#### Method to Sum Two Numbers
+
 Let’s imagine that we have a class with a single method that always works in the same manner. For example, its task is to get two numbers and return their sum as a result. In this scenario there is no matter exactly which object of that class is going to implement that method since it will always do the same thing – adding two numbers together, independent of the calling object.
-In practice the behavior of the method does not depend of the object state (the values in the object field). So why the need to create an object to accomplish that method provided that the method does not depend on any of the objects of that class? Why not just get the class to implement that method?
-Instance Counter for Given Class
-Consider a different scenario. Let’s say we want to keep in our program the current number of objects, which have been created by a given class. How will we keep that variable, which stores the number of created objects?
-As we know, we will not be able to store the variable as a class field because for each created object there will be created a copy of that field, initialized with default value. Every single object will store its own field for indication of the number of objects and the objects will not be able to share information.
+
+In practice **the behavior of the method does not depend of the object state** (the values in the object field). So why the need to create an object to accomplish that method provided that the method does not depend on any of the objects of that class? Why not just get the class to implement that method?
+
+#### Instance Counter for Given Class
+
+Consider a different scenario. Let’s say we want to keep in our program the current number of objects, which have been created by a given class. How will we keep that variable, which stores **the number of created objects?**
+
+As we know, we will not be able to store the variable as a class field because for each created object there will be created a copy of that field, initialized with default value. Every single object will store its own field for indication of the number of objects and the objects will not be able to **share information.**
+
 It looks like the counter should be outside a class field rather than inside it. In the following subsections we will find out how to deal with such a problem.
-What Is a Static Member?
-Formally speaking, a static member of the class is every field, property, method or other member, which has a static modifier in its declaration1. That means that fields, methods and properties, marked as static, belong to the particular class rather than to any particular object of the given class.
-Therefore, when we mark a field, method or property as static, we can use them without creating any object of the given class. All we need is to have access (visibility) to the class so that we can call the object’s static methods or its static fields and properties.
- 	Static elements of the class can be used without creating an object of the given class.
-On the other hand if we have created objects of the given class then its static fields and properties will be shared and there will be only one copy of the static field or property which will be shared among all objects of the given class. Because of that reason in the VB.NET language we have the keyword shared instead of the static keyword.
-Static Fields
-When we create objects from a given class, each of them holds different values in its fields. For example, consider again the class Dog:
+
+### What Is a Static Member?
+
+Formally speaking, a **static member** of the class is every field, property, method or other member, which has a **static** modifier in its declaration. That means that fields, methods and properties, marked as static, belong to the particular class rather than to any particular object of the given class.
+
+Therefore, when we mark a field, method or property as `static`, we can use them without creating any object of the given class. All we need is to have access (visibility) to the class so that we can call the object’s static methods or its static fields and properties.
+
+| :warning: | Static elements of the class can be used without creating an object of the given class. |
+|:--:|:--|
+
+On the other hand if we have created objects of the given class then its **static fields and properties will be shared** and there will be only one copy of the static field or property which will be shared among all objects of the given class. Because of that reason in the VB.NET language we have the keyword **shared** instead of the **static** keyword.
+
+### Static Fields
+
+When we create objects from a given class, each of them holds different values in its fields. For example, consider again the class `Dog`:
+
+```cs
 public class Dog
 {
 	// Instance variables
 	private string name;
 	private int age;
 }
-There are two fields in the class, one for the name – name and another one for the age – age. Every object, each of these fields, has its own value, which is stored in a different place in the memory for every object.
-Sometimes, however, we want to have common fields for all objects of a given class. To achieve that, we have to use the static modifier in the field declarations. As we already said, such fields are called static fields. In the literature they are also called class variables.
-We say that the static fields are class associated, rather than associated with any object from the particular class. That means that all objects, created by the description of a class share the static fields of the class.
- 	All objects, created by the description of a given class (that is, instances of a given class), share the static fields of the class.
-Declaration of Static Fields
-The static fields are declared the same way as the class fields. If there is access modifier, the keyword static should be added after it.
+```
+
+There are two fields in the class, one for the name – `name` and another one for the age – `age`. Every object, each of these fields, has its own value, which is stored in a different place in the memory for every object.
+
+Sometimes, however, we want to have **common fields** for all objects of a given class. To achieve that, we have to use the `static` modifier in the field declarations. As we already said, such fields are called **static fields.** In the literature they are also called **class variables.**
+
+We say that the static fields are **class associated,** rather than associated with any object from the particular class. That means that all objects, created by the description of a class **share** the static fields of the class.
+
+| :warning: | All objects, created by the description of a given class (that is, instances of a given class), share the static fields of the class. |
+|:--:|:--|
+
+### Declaration of Static Fields
+
+The static fields are declared the same way as the class fields. If there is access modifier, the keyword **static** should be added after it.
+
+```cs
 [<access_modifier>] static <field_type> <field_name>
-Here is how a field named dogCount would look like. The field stores information about the count of the created objects from the class Dog:
-Dog.cs
+```
+
+Here is how a field named `dogCount` would look like. The field stores information about the count of the created objects from the class `Dog`:
+
+| Dog.cs |
+|---|
+
+```cs
 public class Dog
 {
 	// Static (class) variable
@@ -2043,29 +2204,60 @@ public class Dog
 	private string name;
 	private int age;
 }
+```
+
 The static fields are created when we try to access them for the first time (read / modify). After their creation they are initialized with their default values of their types.
-Initialization during Declaration
-If during the static field declaration we set an initialization value, it will be assigned to the particular static field. The initialization executes only once when the field is accessed for the first time right after the assignment has finished. The next time when the field is accessed that field initialization will not execute.
-We can append the static field initialization in the example above:
+
+### Initialization during Declaration
+
+If during the static field declaration we set an initialization value, it will be assigned to the particular static field. The **initialization executes only once** when the field is accessed for the first time right after the assignment has finished. The next time when the field is accessed that field initialization will not execute.
+
+We can append the **static field initialization** in the example above:
+
+```cs
 // Static variable – declaration and initialization
 static int dogCount = 0;
-This initialization will complete during the first invocation to the static field. When we access some static field, an amount of memory will be reserved for it and it will be initialized with its default values. If the field has initialization during declaration (like it is in our case with the dogCount field) this initialization will execute. If we try later to access the field from other part of our program this process will not repeat, because the static field already exists and is initialized.
-Accessing Static Fields
-In contrast to the common (non-static) class fields, the static fields that are associated with the particular class can be accessed through an external class. In order to do that we need to put a "dot" notation this way:
+```
+
+This initialization will complete during the first invocation to the static field. When we access some static field, an amount of memory will be reserved for it and it will be initialized with its default values. If the field has initialization during declaration (like it is in our case with the `dogCount` field) this initialization will execute. If we try later to access the field from other part of our program this process will not repeat, because the static field already exists and is initialized.
+
+### Accessing Static Fields
+
+In contrast to the common (non-static) class fields, the static fields that are associated with the particular class can be accessed through an external class. In order to do that we need to put a **"dot" notation** this way:
+
+```cs
 <class_name>.<static_field_name>
-For example, if we want to print the value of the static field that holds the number of created objects of our class Dog we should do that:
+```
+
+For example, if we want to print the value of the static field that holds the number of created objects of our class `Dog` we should do that:
+
+```cs
 static void Main()
 {
 	// Access to the static variable through class name
 	Console.WriteLine("Dog count is now " + Dog.dogCount);
 }
-The result of the Main() method is:
+```
+
+The result of the `Main()` method is:
+
+```console
 Dog count is now 0
+```
+
 If we have a method in the class, which is defined as a static field, we can access it directly without the class name, because it is known by default.
+
+```cs
 <static_field_name>
-Modification of the Static Field Values
-As we said before, the static variables are shared between all objects of the class and do not belong to any object of the particular class. That way any object can access and modify the static field values and in the same time other objects can "see" the modified values.
-That’s why if we want to count the number of created objects of the class Dog, we should use a static field and increment it by one every time the constructor is invoked, i.e. every time we create and object of our class.
+```
+
+### Modification of the Static Field Values
+
+As we said before, the static variables are **shared between all objects** of the class and do not belong to any object of the particular class. That way any object can access and modify the static field values and in the same time other objects can "see" the modified values.
+
+That’s why if we want to count the number of created objects of the class `Dog`, we should use a **static field** and increment it by one every time the constructor is invoked, i.e. every time we create and object of our class.
+
+```cs
 public Dog(string name, int age)
 {
 	this.name = name;
@@ -2074,7 +2266,11 @@ public Dog(string name, int age)
 	// Modifying the static counter in the constructor
 	Dog.dogCount += 1;
 }
-We access static field from the class Dog so we can use the following code in order to access the field dogCount:
+```
+
+We access static field from the class `Dog` so we can use the following code in order to access the field `dogCount`:
+
+```cs
 public Dog(string name, int age)
 {
 	this.name = name;
@@ -2083,8 +2279,13 @@ public Dog(string name, int age)
 	// Modifying the static counter in the constructor
 	dogCount += 1;
 }
-The first way is preferable, it is clear that the field in the class Dog is static. The code is more readable.
-Let’s create some objects of the class Dog and print out their number in order to check if we are right:
+```
+
+The first way is preferable, it is clear that the field in the class `Dog` is static. The code is more readable.
+
+Let’s create some objects of the class `Dog` and print out their number in order to check if we are right:
+
+```cs
 static void Main()
 {
 	Dog dog1 = new Dog("Jackie", 1);
@@ -2094,31 +2295,68 @@ static void Main()
 	// Access to the static variable
 	Console.WriteLine("Dog count is now " + Dog.dogCount);
 }
+```
+
 The output of the example is:
+
+```console
 Dog count is now 3
-Constants
+```
+
+### Constants
+
 Before we finish with the static fields we should get familiar with one more specific type of static fields.
-Like the constants of mathematics, in C# special fields of a class called constants can be created. Once	declared and initialized constants always have the same value for all objects of a particular type.
+
+Like the constants of mathematics, in C# special fields of a class called **constants** can be created. Once declared and initialized **constants always have the same value** for all objects of a particular type.
+
 In C# constants are of two types:
-	Constants the values of which are extracted during the compilation of the program (compile-time constants).
-	Constants the values of which are extracted during the execution of the program (run-time constants).
-Compile-Time Constants (const)
-Constants, which are calculated at compile time (compile-time constants), are declared as follows, using modifier const:
+
+1. Constants the values of which are extracted during the compilation of the program (**compile-time constants**).
+2. Constants the values of which are extracted during the execution of the program (**run-time constants**).
+
+### Compile-Time Constants (const)
+
+Constants, which are calculated at compile time (compile-time constants), are declared as follows, using modifier `const`:
+
+```cs
 [<access_modifiers>] const <type> <name>;
-Constants, which are declared with special word const, are static fields. Nevertheless, the use of modifier static is not required (nor allowed by the compiler) in their declaration.
- 	Although the constants declared with a modifier const are static fields, they must not and cannot use the static modifier in their declaration.
+```
+
+Constants, which are declared with special word `const`, are static fields. Nevertheless, the use of modifier `static` is not required (nor allowed by the compiler) in their declaration.
+
+| :warning: | Although the constants declared with a modifier const are static fields, they must not and cannot use the static modifier in their declaration. |
+|:--:|:--|
+
 For example, if we want to declare as a constant the number "PI", which is known to us from mathematics, this can be done as follows:
+
+```cs
 public const double PI = 3.141592653589793;
+```
+
 The value we assign to a particular constant can be an expression, which has to be calculated by the compiler at compile time. For example, as we know from mathematics, the constant "PI" can be represented as the approximate result of the division of numbers 22 and 7:
+
+```cs
 public const double PI = 22d / 7;
+```
+
 When we try to print the value of the constant:
+
+```cs
 static void Main()
 {
 	Console.WriteLine("The value of PI is: " + PI);
 }
+```
+
 The command line will display:
+
+```console
 The value of PI is: 3.14285714285714
+```
+
 If we do not give a value to a constant at its declaration, but later, we will get a compilation error. For example, if we take the example of the constant PI, we first declare the constant and later try to give it a value:
+
+```cs
 public const double PI;
 
 // ... Some code ...
@@ -2128,14 +2366,29 @@ public void SetPiValue()
 	// Attempting to initialize the constant PI
 	PI = 3.141592653589793;
 }
+```
+
 The compiler will issue an error like this one, indicating the line, where the constant is declared:
+
+```console
 A const field requires a value to be provided
+```
+
 Let’s pay attention, again:
- 	Constants declared with modifier const must be initialized at the moment of their declaration.
-Assigning Constant Values at Runtime
-Having learned how to declare constants that are being initialized at compile time, let’s consider the following example: we want to create a class for color (Color). We will use the so-called Red-Green-Blue (RGB) color model, according to which, each color is represented by mixing the three primary colors – red, green and blue. These three primary colors are represented as three integers in the range from 0 to 255. For example, black is represented as (0, 0, 0), white as (255, 255, 255), blue – (0, 0, 255) etc.
+
+| :warning: | Constants declared with modifier const must be initialized at the moment of their declaration. |
+|:--:|:--|
+
+### Assigning Constant Values at Runtime
+
+Having learned how to declare constants that are being initialized at compile time, let’s consider the following example: we want to create a class for color (`Color`). We will use the so-called **Red-Green-Blue (RGB) color model,** according to which, each color is represented by mixing the three primary colors – red, green and blue. These three primary colors are represented as three integers in the range from 0 to 255. For example, black is represented as (0, 0, 0), white as (255, 255, 255), blue – (0, 0, 255) etc.
+
 In our class we declare three integer fields for red, green and blue light and a constructor that accepts values for each of them:
-Color.cs
+
+| Color.cs |
+|---|
+
+```cs
 class Color
 {
 	private int red;
@@ -2149,8 +2402,14 @@ class Color
 		this.blue = blue;
 	}
 }
-As some colors are used more frequently than others (for example, black and white) we can declare constants for them, with the idea that the users of our class will take them for granted, instead of creating their own objects for these particular colors every time. To do this, we modify the code of our class as follows, adding the declaration of the following color-constants:
-Color.cs
+```
+
+As some colors are used more frequently than others (for example, black and white) we can **declare constants for them,** with the idea that the users of our class will take them for granted, instead of creating their own objects for these particular colors every time. To do this, we modify the code of our class as follows, adding the declaration of the following color-constants:
+
+| Color.cs |
+|---|
+
+```cs
 class Color
 {
 	public const Color Black = new Color(0, 0, 0);
@@ -2167,30 +2426,59 @@ class Color
 		this.blue = blue;
 	}
 }
-Strangely, when we try to compile, we get the following error:
+```
+
+Strangely, when we try to compile, we **get the following error:**
+
+```console
 'Color.Black' is of type 'Color'. A const field of a reference type other than string can only be initialized with null.
 'Color.White' is of type 'Color'. A const field of a reference type other than string can only be initialized with null.
-This is so because in C#, constants, declared with the modifier const, can be only of the following types:
-	Primitive types: sbyte, byte, short, ushort, int, uint, long, ulong, char, float, double, decimal, bool.
-	Enumerated types (discussed in section "Enumerations" at the end of this chapter).
-	Reference types (mostly the type string).
-The problem with the compilation of the class in our example is connected with the reference types and the restriction on the compiler not to allow simultaneous use of the operator new when declaring a constant when this constant is declared with the modifier const, unless the reference type can be calculated at compile time.
-As we can guess, the only reference type, which can be calculated at compile time while using the operator new is string.
-Therefore, the only possibilities for reference type constants that are declared with modifier const are, as follows:
-	The constants must be of type string.
-	The value, which we assign to the constant of reference type, other than string, is null.
+```
+
+This is so because in C#, constants, declared with the modifier `const`, can be only of the following types:
+
+1. Primitive types: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, `decimal`, `bool`.
+2. **Enumerated types** (discussed in section "Enumerations" at the end of this chapter).
+3. **Reference types** (mostly the type string).
+
+The problem with the compilation of the class in our example is connected with the reference types and the restriction on the compiler not to allow simultaneous use of the operator `new` when declaring a constant when this constant is declared with the modifier `const`, unless the reference type can be calculated at compile time.
+
+As we can guess, the only reference type, which can be calculated at compile time while using the operator `new` is `string`.
+
+Therefore, the only possibilities for reference type constants that are declared with modifier `const` are, as follows:
+
+1. The constants must be of type `string`.
+2. The value, which we assign to the constant of reference type, other than `string`, is `null`.
+
 We can formulate the following definition:
- 	Constants declared with modifier const must be of primitive, enumeration or reference type, and if they are of reference type, this type must be either a string or the value, that we assign to the constant, must be null.
-Thus, using the modifier const, we will not be able to declare the constants Black and White of type Color in our color class because they aren’t null. The next section will show us how to deal with this problem.
-Runtime Constants (readonly)
-When we want to declare reference type constants, which cannot be calculated during compilation of the program, we must use a combination of static readonly modifiers, instead of const modifier.
+
+| :warning: | Constants declared with modifier `const` must be of primitive, enumeration or reference type, and if they are of reference type, this type must be either a `string` or the value, that we assign to the constant, must be `null`. |
+|:--:|:--|
+
+Thus, using the modifier `const`, we will not be able to declare the constants `Black` and `White` of type `Color` in our color class because they aren’t `null`. The next section will show us how to deal with this problem.
+
+### Runtime Constants (readonly)
+
+When we want to declare reference type constants, which cannot be calculated during compilation of the program, we must use a combination of `static readonly` modifiers, instead of `const` modifier.
+
+```cs
 [<access_modifiers>] static readonly <reference-type> <name>;
-Accordingly, <reference-type> is a type the value of which cannot be calculated at compilation time.
-The compilation is successful if we replace const by static readonly in the last example of the previous section:
+```
+
+Accordingly, `<reference-type>` is a type the value of which cannot be calculated at compilation time.
+
+The compilation is successful if we replace `const` by `static readonly` in the last example of the previous section:
+
+```cs
 public static readonly Color Black = new Color(0, 0, 0);
 public static readonly Color White = new Color(255, 255, 255);
-Naming the Constants
-The constants names in C# follow the PascalCase rule according to the Microsoft’s official C# coding convention. If the constant is composed of several words, each new word after the first one begins with a capital letter. Here are some examples of correctly named constants:
+```
+
+### Naming the Constants
+
+The constants names in C# follow the **PascalCase** rule according to the Microsoft’s official C# coding convention. If the constant is composed of several words, each new word after the first one begins with a capital letter. Here are some examples of correctly named constants:
+
+```cs
 // The base of the natural logarithms (approximate value)
 public const double E = 2.718281828459045;
 public const double PI = 3.141592653589793;
@@ -2198,24 +2486,48 @@ public const char PathSeparator = '/';
 public const string BigCoffee = "big coffee";
 public const int MaxValue = 2147483647;
 public static readonly Color DeepSkyBlue = new Color(0,104,139);
-Sometimes naming in style ALL-CAPS is used but it is not officially supported by the Microsoft code conventions, even though it is widely distributed in programming:
+```
+
+Sometimes naming in style **ALL-CAPS** is used but it is not officially supported by the Microsoft code conventions, even though it is widely distributed in programming:
+
+```cs
 public const double FONT_SIZE_IN_POINTS = 14; // 14pt font size
-The examples made it clear that the difference between const and static readonly fields is in the moment of their value assignments. The compile-time constants (const) must be initialized at the moment of declaration, while the run-time constants (static readonly) can be initialized at a later stage, for example in one of the constructors of the class in which they are defined.
-Using Constants
-Constants are used in programming to avoid repetition of numbers, strings or other common values (literals) in the program and to enable them to change easily. The use of constants instead of brutally hardcoded repeating values facilitates readability and maintenance of the code and is highly recommended practice. According to some authors all literals other than 0, 1, -1, empty string, true, false and null must be declared as constants, but this can make it difficult to read and maintain the code instead of making it simple. Therefore, it is believed that values, which occur more than once in the program or are likely to change over time, must be declared as constants.
+```
+
+The examples made it clear that the difference between `const` and `static readonly` fields is in the moment of their value assignments. The compile-time constants (`const`) must be initialized at the moment of declaration, while the run-time constants (`static readonly`) can be initialized at a later stage, for example in one of the constructors of the class in which they are defined.
+
+### Using Constants
+
+Constants are used in programming to **avoid repetition of numbers, strings or other common values** (literals) in the program and to enable them to change easily. The use of constants instead of brutally hardcoded repeating values facilitates readability and maintenance of the code and is highly recommended practice. According to some authors all literals other than `0`, `1`, `-1`, empty string, `true`, `false` and `null` must be declared as constants, but this can make it difficult to read and maintain the code instead of making it simple. Therefore, it is believed that **values, which occur more than once in the program or are likely to change over time, must be declared as constants.**
+
 In the chapter "High-Quality Programming Code" will we learn in details when and how to use constants efficiently.
-Static Methods
+
+### Static Methods
+
 Like static fields, we declare a method as static if we want it to be associated only with the class and not with a particular class object.
-Declaration of Static Methods
-To declare a static method syntactically means that we must add the keyword static in the method’s declaration:
+
+### Declaration of Static Methods
+
+To declare a **static method** syntactically means that we must add the keyword `static` in the method’s declaration:
+
+```cs
 [<access_modifier>] static <return_type> <method_name>()
+```
+
 Let’s for example declare the method of summing two numbers, which we discussed at the beginning of this section:
+
+```cs
 public static int Add(int number1, int number2)
 {
 	return (number1 + number2);
 }
-Accessing Static Methods
-Like static fields, static methods can be accessed with the "dot" notation (the dot operator) applied to the name of the class and the class name can be skipped if the calling is performed by the same class, in which the static method is declared. Here is an example of calling the static method Add(...):
+```
+
+### Accessing Static Methods
+
+Like static fields, static methods can be **accessed with the "dot" notation** (the dot operator) applied to the name of the class and the class name can be skipped if the calling is performed by the same class, in which the static method is declared. Here is an example of calling the static method `Add(...)`:
+
+```cs
 static void Main()
 {
 	// Call the static method through its class
@@ -2223,16 +2535,29 @@ static void Main()
 
 	Console.WriteLine(sum);
 }
-Access between Static and Non-Static Members
-In most cases static methods are used to access static fields in the class they have been defined. For example, if we want to declare a method, which returns the number of the created objects of the Dog class, it must be static, because our counter will be static too:
+```
+
+### Access between Static and Non-Static Members
+
+In most cases **static methods are used to access static fields** in the class they have been defined. For example, if we want to declare a method, which returns the number of the created objects of the `Dog` class, it must be static, because our counter will be static too:
+
+```cs
 public static int GetDogCount()
 {
 	return dogCount;
 }
+```
+
 But when we examine how static and non-static methods and fields can be accessed, not all combinations are allowed.
-Accessing Non-Static Members from Non-Static Method
-Non-static methods can access non-static fields and other non-static methods of the class. For example, in the Dog class we can declare method PrintInfo(), which displays information about our dog:
-Dog.cs
+
+### Accessing Non-Static Members from Non-Static Method
+
+Non-static methods can access non-static fields and other non-static methods of the class. For example, in the `Dog` class we can declare method `PrintInfo()`, which displays information about our dog:
+
+| Dog.cs |
+|---|
+
+```cs
 public class Dog
 {
 	// Static variable
@@ -2266,18 +2591,34 @@ public class Dog
 		this.Bark();
 	}
 }
-Of course, if we create an object of the Dog class and call his PrintInfo() method:
+```
+
+Of course, if we create an object of the `Dog` class and call its `PrintInfo()` method:
+
+```cs
 static void Main()
 {
 	Dog dog = new Dog("Doggy", 1);
 	dog.PrintInfo();
 }
+```
+
 The result will be the following:
+
+```console
 Dog's name: Doggy; age: 1; often says: wow-wow
-Accessing Static Elements from Non-Static Method
+```
+
+### Accessing Static Elements from Non-Static Method
+
 We can access static fields and static methods of the class from non-static method. As we learned earlier, this is because static methods and variables are bound by class, rather than a specific method and the static elements can be accessed from any object of the class, even of external classes (as long as they are visible to them).
+
 For example:
-Circle.cs
+
+| Circle.cs |
+|---|
+
+```cs
 public class Circle
 {
 	public static double PI = 3.141592653589793;
@@ -2300,18 +2641,34 @@ public class Circle
 		Console.WriteLine("Circle's surface is: " + surface);
 	}
 }
-In the example, we provide access to the value of the static field PI of the non-static method PrintSurface(), by calling the static method CalculateSurface(). Let’s try to call this non-static method:
+```
+
+In the example, we provide access to the value of the static field `PI` of the non-static method `PrintSurface()`, by calling the static method `CalculateSurface()`. Let’s try to call this non-static method:
+
+```cs
 static void Main()
 {
 	Circle circle = new Circle(3);
 	circle.PrintSurface();
 }
+```
+
 After the compilation and the execution, the following result will be printed on the console:
+
+```console
 Circle's surface is: 28.2743338823081
-Accessing Static Elements of the Class from Static Method
+```
+
+### Accessing Static Elements of the Class from Static Method
+
 We can call a static method or static field of the class from another static method without any problems.
-For example, let’s consider our class for mathematical calculations. We have declared the constant PI, in it. We can declare a static method for finding the length of the circle (the formula for finding perimeter of a circle is 2?r, where r is the radius of the circle), that uses the constant PI for calculating the perimeter of a circle. Then, to show that static method can call another static method, we can call the static method for finding the perimeter of a circle from the static method Main():
-MyMathClass.cs
+
+For example, let’s consider our class for mathematical calculations. We have declared the constant `PI`, in it. We can declare a static method for finding the length of the circle (the formula for finding perimeter of a circle is **2πr,** where **r** is the radius of the circle), that uses the constant `PI` for calculating the perimeter of a circle. Then, to show that static method can call another static method, we can call the static method for finding the perimeter of a circle from the static method `Main()`:
+
+| MyMathClass.cs |
+|---|
+
+```cs
 public class MyMathClass
 {
 	public const double PI = 3.141592653589793;
@@ -2334,53 +2691,105 @@ public class MyMathClass
 			" has perimeter: " + circlePerimeter);
 	}
 }
+```
+
 The code is compiled without errors and displays the following output:
+
+```console
 Circle with radius 5.0 has perimeter: 31.4159265358979
-Accessing Non-Static Elements from Static Method
-Let’s look at the most interesting case of a combination of accessing non-static and static elements of the class – accessing non-static elements form a static method.
-We should know that from static method we can neither access non-static fields, nor call non-static methods. This is because static methods are bound to the class and do not "know" any object of the class. Therefore, the keyword this cannot be used in static methods – it is bound to a specific instance of the class. When we try to access non-static elements of the class (fields or methods) from static method, we will always get a compilation error.
-Unauthorized Access to Non-Static Field – Example
-If in our class Dog we try to declare a static method PrintName(), which returns as a result the value of the non-static field name declared in the class:
+```
+
+### Accessing Non-Static Elements from Static Method
+
+Let’s look at the most interesting case of a combination of accessing non-static and static elements of the class – **accessing non-static elements form a static method.**
+
+We should know that from static method we can neither access non-static fields, nor call non-static methods. This is because static methods are bound to the class and do not "know" any object of the class. Therefore, the keyword `this` cannot be used in static methods – it is bound to a specific instance of the class. When we try to access non-static elements of the class (fields or methods) from static method, we will always get a compilation error.
+
+#### Unauthorized Access to Non-Static Field – Example
+
+If in our class `Dog` we try to declare a static method `PrintName()`, which returns as a result the value of the non-static field name declared in the class:
+
+```cs
 public static void PrintName()
 {
 	// Trying to access non-static variable from static method
 	Console.WriteLine(name); // INVALID
 }
-Accordingly, the compiler will respond with an error message:
+```
+
+Accordingly, the compiler will respond with an **error message:**
+
+```console
 An object reference is required for the non-static field, method, or property 'Dog.name'
-If we try to access the field in the method, via the keyword this:
+```
+
+If we try to access the field in the method, via the **keyword** `this`:
+
+```cs
 public void string PrintName()
 {
 	// Trying to access non-static variable from static method
 	Console.WriteLine(this.name); // INVALID
 }
-The compiler will still not be satisfied and this time will fail to compile the class and will display the following message:
+```
+
+The compiler will still not be satisfied and this time will **fail to compile** the class and will display the following message:
+
+```console
 Keyword 'this' is not valid in a static property, static method, or static field initializer
-Illegal Call of Non-Static Method from Static Method – Example
-Now we will try to call non-static method from static method. Let declare in our class Dog, the non-static method PrintAge(), which prints the value of the field age:
+```
+
+#### Illegal Call of Non-Static Method from Static Method – Example
+
+Now we will try to call non-static method from static method. Let declare in our class `Dog`, the non-static method `PrintAge()`, which prints the value of the field `age`:
+
+```cs
 public void PrintAge()
 {
 	Console.WriteLine(this.age);
 }
-Accordingly, let’s try from the method Main(), which we declare in the class Dog, to call this method without creating an object of our class:
+```
+
+Accordingly, let’s try from the method `Main()`, which we declare in the class `Dog`, to call this method without creating an object of our class:
+
+```cs
 static void Main()
 {
 	// Attempt to invoke non-static method from a static context
 	PrintAge(); // INVALID
 }
-When we try to compile we will get the following error:
+```
+
+When we try to compile we will **get the following error:**
+
+```console
 An object reference is required for the non-static field, method, or property 'Dog.PrintAge()'
-The result is similar, if we try to cheat the compiler, trying to call the method via the keyword this:
+```
+
+The result is similar, if we try to cheat the compiler, trying to call the method via the keyword `this`:
+
+```cs
 static void Main()
 {
 	// Attempt to invoke non-static method from a static context
 	this.PrintAge(); // INVALID
 }
-Accordingly, as with the attempt to access the non-static field of a static method using the keyword this, the compiler displays the following error message and fails to compile our class:
+```
+
+Accordingly, as with the attempt to access the non-static field of a static method using the keyword this, the compiler displays the following error message and **fails to compile our class:**
+
+```console
 Keyword 'this' is not valid in a static property, static method, or static field initializer
+```
+
 From the examples, we can make the following conclusion:
- 	Non-static elements of the class may NOT be used in a static context.
+
+| :warning: | Non-static elements of the class may NOT be used in a static context. |
+|:--:|:--|
+
 The problem with the access to non-static elements of the class of static method has a single solution – these non-static elements are accessed by reference to an object:
+
+```cs
 static void Main()
 {
 	Dog myDog = new Dog("Lassie", 2);
@@ -2389,18 +2798,35 @@ static void Main()
 	myDog.PrintAge();
 	Console.WriteLine("years");
 }
+```
+
 Accordingly, this code is compiled and the result is:
+
+```console
 My dog "Lassie" has age of 2 years
-Static Properties of the Class
-Although rare, it is sometimes convenient to use and declare not the object characteristics, but the ones of the class. They possess the same characteristics like the properties related to the particular object of a particular class, which we discussed above, but with the difference that the static properties refer to the class (not its objects).
-As we can guess, all we need to do to turn a simple property into a static one, is to add the static keyword in its declaration.
+```
+
+### Static Properties of the Class
+
+Although rare, it is sometimes convenient to use and declare not the object characteristics, but the ones of the class. They possess the same characteristics like the properties related to the particular object of a particular class, which we discussed above, but with the difference that the **static properties refer to the class** (not its objects).
+
+As we can guess, all we need to do to turn a simple property into a static one, is to **add the `static` keyword in its declaration.**
+
 The static properties are declared as follows:
+
+```cs
 [<modifiers>] static <property_type> <property_name>
 {
 	// ... Property's accessors methods go here
 }
+```
+
 Let’s consider an example. We have a class that describes a system. We can create many objects from it, but the model of the system has a version and a vendor, which are common to all instances created from this class. We can make the version and the vendors as static properties of the class:
-SystemInfo.cs
+
+| SystemInfo.cs |
+|---|
+
+```cs
 public class SystemInfo
 {
 	private static double version = 0.1;
@@ -2422,22 +2848,41 @@ public class SystemInfo
 
 	// ... More (non)static code here ...
 }
-In this example we have chosen to keep the value of static properties in static variables (which are logical, since they are bound only to the class). The properties that we consider are Version and Vendor, respectively. For each of them we have created static methods for reading and modification. Thus, all objects of this class will be able to retrieve the current version and vendor of the system, which describes the class. Accordingly, if one day an upgrade of the system version is done and the value becomes 0.2, as a result each object will receive the new version by accessing the class property.
-Static Properties and the Keyword "this"
-Like static methods, the keyword this cannot be used in the static properties, as the static property is associated only with the class and does not "recognize" objects of a class.
- 	The keyword this cannot be used in static properties.
-Accessing Static Properties
-Like the static fields and methods, static properties can be accessed by "dot" notation, applied only to the name of the class in which they are declared.
-To be sure, let’s try to access the property Version through a variable of the class SystemInfo:
+```
+
+In this example we have chosen to keep the value of static properties in static variables (which are logical, since they are bound only to the class). The properties that we consider are `Version` and `Vendor`, respectively. For each of them we have created static methods for reading and modification. Thus, all objects of this class will be able to retrieve the current version and vendor of the system, which describes the class. Accordingly, if one day an upgrade of the system version is done and the value becomes `0.2`, as a result each object will receive the new version by accessing the class property.
+
+### Static Properties and the Keyword "this"
+
+Like static methods, the keyword `this` cannot be used in the static properties, as the static property is associated only with the class and does not "recognize" objects of a class.
+
+| :warning: | The keyword `this` cannot be used in static properties. |
+|:--:|:--|
+
+### Accessing Static Properties
+
+Like the static fields and methods, static properties can be accessed by **"dot" notation,** applied only to the name of the class in which they are declared.
+
+To be sure, let’s try to access the property `Version` through a variable of the class `SystemInfo`:
+
+```cs
 static void Main()
 {
 	SystemInfo sysInfoInstance = new SystemInfo();
 	Console.WriteLine("System version: " +
 		sysInfoInstance.Version);
 }
+```
+
 When we try to compile the above code, we get the following error message:
+
+```console
 Member 'SystemInfo.Version.get' cannot be accessed with an instance reference; qualify it with a type name instead
+```
+
 Accordingly, if we try to access the static properties through class name, the code compiles and works correctly:
+
+```cs
 static void Main()
 {
 	// Invocation of static property setter
@@ -2447,33 +2892,63 @@ static void Main()
 	Console.WriteLine("System version: " + SystemInfo.Version);
 	Console.WriteLine("System vendor: " + SystemInfo.Vendor);
 }
+```
+
 The code is compiled and the result of its execution is:
+
+```console
 System version: 0.1
 System vendor: Microsoft Corporation
-Before proceeding to the next section, let’s look at the printed value of the property Vendor. It is "Microsoft Corpora¬tion", although we have initialized it with the value "Microsoft" in the SystemInfo class. This is because we changed the value of the property Vendor of the first line of the Main() method, by calling its method of modification.
- 	Static properties can be accessed only through dot notation, applied to the name of the class in which they are declared.
-Static Classes
-For complete understanding we have to explain that we can also declare classes as static. Similar to static members, a class is static, when the keyword static is used in its declaration.
+```
+
+Before proceeding to the next section, let’s look at the printed value of the property `Vendor`. It is "`Microsoft Corporation`", although we have initialized it with the value "`Microsoft`" in the `SystemInfo` class. This is because we changed the value of the property `Vendor` of the first line of the `Main()` method, by calling its method of modification.
+
+| :warning: | Static properties can be accessed only through dot notation, applied to the name of the class in which they are declared. |
+|:--:|:--|
+
+### Static Classes
+
+For complete understanding we have to explain that we can also declare classes as static. Similar to static members, a class is static, when the keyword `static` is used in its declaration.
+
+```cs
 [<modifiers>] static class <class_name>
 {
 	// ... Class body goes here
 }
-When a class is declared as static, it is an indication that this class contains only static members (i.e. static fields, methods, properties) and cannot be instantiated.
-The use of static classes is rare and most often associated with the use of static methods and constants, which do not belong to any particular object. For this reason, the details of static classes go beyond the scope of this book. Curious reader can find more information on the site of the Microsoft Developer Network (MSDN): http://msdn.microsoft.com/en-us/library/79b3xss3.aspx.
-Static Constructors
-To finish the section on static class members, we should mention that classes may also have static constructor (i.e. constructor that has the static keyword in its declaration):
+```
+
+When a class is declared as static, it is an indication that **this class contains only static members** (i.e. static fields, methods, properties) and cannot be instantiated.
+
+The use of static classes is rare and most often associated with the **use of static methods and constants,** which do not belong to any particular object. For this reason, the details of static classes go beyond the scope of this book. Curious reader can find more information on the site of the Microsoft Developer Network (MSDN): http://msdn.microsoft.com/en-us/library/79b3xss3.aspx.
+
+### Static Constructors
+
+To finish the section on static class members, we should mention that classes may also have **static constructor** (i.e. constructor that has the static keyword in its declaration):
+
+```cs
 [<modifiers>] static <class_name>([<parameters_list>])
 {
 }
-Static constructors can be declared both in static and in non-static classes. They are executed only once when the first of the following two events occurs for the first time:
-	An object of class is created.
-	A static element of the class is accessed (field, method, property).
+```
+
+Static constructors can be declared both in static and in non-static classes. They are **executed only once** when the first of the following two events occurs for the first time:
+
+1. An object of class is created.
+2. A static element of the class is accessed (field, method, property).
+
 Most often static constructors are used for initialization of static fields.
-Static Constructor – Example
-Consider an example for the use of a static constructor. We want to make a class that quickly calculates the square root of an integer and returns the whole part of the result, which is also an integer. Since calculating the square root is a time-consuming mathematical operation involving calculations with real numbers and calculating convergent series, it is a good idea these calculations to be done once at program startup and then to use the already calculated values. Of course, to make such pre-computing of all square roots in a given range, we must first define this range and it should not be too wide (e.g. from 1 to 1000). Then we need, at first request for a square roots of a number, to recalculate all the square roots in this range and then to return the already calculated value. Upon a following request for a square root, all values in this range will have already been calculated and returned directly. If the program is never required to calculate the square root, preliminary calculations should not be fulfilled at all.
+
+#### Static Constructor – Example
+
+Consider an example for the **use of a static constructor.** We want to make a class that quickly calculates the square root of an integer and returns the whole part of the result, which is also an integer. Since calculating the square root is a time-consuming mathematical operation involving calculations with real numbers and calculating convergent series, it is a good idea these calculations to be done once at program startup and then to use the already calculated values. Of course, to make such **pre-computing of all square roots** in a given range, we must first define this range and it should not be too wide (e.g. from 1 to 1000). Then we need, at first request for a square roots of a number, to recalculate all the square roots in this range and then to return the already calculated value. Upon a following request for a square root, all values in this range will have already been calculated and returned directly. If the program is never required to calculate the square root, preliminary calculations should not be fulfilled at all.
+
 Through the described process initially some CPU time is invested for preliminary calculations, but then the extraction of the square root later is done very quickly. If we have multiple calculations of the square root, the pre-calculation will significantly increase the performance.
-All this can be implemented in one static class with a static constructor, in which the square roots will be recalculated. The results, which have already been calculated, can be stored in a static array. A static method can be used to extract the already pre-calculated value. Since the preliminary calculations are being performed in the static constructor, if the class for pre-calculated square roots is not used, they will not be executed and CPU time and memory will be saved.
+
+All this can be implemented in one **static class with a static constructor,** in which the square roots will be recalculated. The results, which have already been calculated, can be **stored in a static array.** A **static method** can be used to extract the already pre-calculated value. Since the preliminary calculations are being performed in the static constructor, if the class for pre-calculated square roots is not used, they will not be executed and CPU time and memory will be saved.
+
 This is how the implementation might look like:
+
+```cs
 static class SqrtPrecalculated
 {
 	public const int MaxValue = 1000;
@@ -2512,15 +2987,22 @@ class SqrtTest
 		// Result: 15
 	}
 }
+```
 
 ## Structures
 
-In C# and .NET Framework there are two implementations of the concept of "class" from the object-oriented programming: classes and structures. Classes are defined through the keyword class while the structures are defined through the keyword struct. The main difference between a structure and a class is that:
-	Classes are reference types (references to some address in the heap which holds their members).
-	Structures (structs) are value types (they directly hold their members in the program execution stack).
-Structure (struct) – Example
-Let’s define a structure to hold a point in the 2D space, similar to the class Point defined in the section "Example of Encapsulation":
-Point2D.cs
+In C# and .NET Framework there are two implementations of the concept of "class" from the object-oriented programming: **classes** and **structures.** Classes are defined through the keyword `class` while the structures are defined through the keyword `struct`. The main difference between a structure and a class is that:
+
+- Classes are reference types (references to some address in the heap which holds their members).
+- Structures (structs) are value types (they directly hold their members in the program execution stack).
+
+#### Structure (struct) – Example
+
+Let’s define a **structure** to hold a point in the 2D space, similar to the class Point defined in the section "Example of Encapsulation":
+
+| Point2D.cs |
+
+```cs
 struct Point2D
 {
 	private double x;
@@ -2544,9 +3026,15 @@ struct Point2D
 		set { this.y = value; }
 	}
 }
-The only difference is that now we defined Point2D as struct, not as class. Point2D is a structure, a value type, so its instances behave like int and double. They are value types (not objects), which means they cannot be null and they are passed by value when taken as a method parameters.
-Structures are Value Types
-Unlike classes, the structures are value types. To illustrate this we will play a bit with the Point2D structure:
+```
+
+The only difference is that now we defined `Point2D` as `struct`, not as `class`. `Point2D` is a structure, a value type, so its instances behave like `int` and `double`. They are value types (not objects), which means they cannot be `null` and they are **passed by value** when taken as a method parameters.
+
+### Structures are Value Types
+
+Unlike classes, the **structures are value types.** To illustrate this we will play a bit with the `Point2D` structure:
+
+```cs
 class PlayWithPoints
 {
 	static void PrintPoint(Point2D p)
@@ -2568,10 +3056,17 @@ class PlayWithPoints
 		PrintPoint(point);
 	}
 }
+```
+
 If we run the above example, the result will be as follows:
+
+```console
 (3,-2)
 (3,-2)
-Obviously the structures are value types and when passed as parameters to a method their fields are copied (just like int parameters) and when changed inside the method, the change affects only the copy, not the original. This can be illustrated by the next few figures.
+```
+
+Obviously the **structures are value types** and when passed as parameters to a method **their fields are copied** (just like `int` parameters) and when changed inside the method, the change affects only the copy, not the original. This can be illustrated by the next few figures.
+
 First, the point variable is created which holds a value of (3, -2):
  
 Next, the method TryToChangePoint(Point2D p) is called and it copies the value of the variable point into another place in the stack, allocated for the parameter p of the method. When the parameter p is changed in the method’s body, it is modified in the stack and this does not affect the original variable point which was previously passed as argument when calling the method:
