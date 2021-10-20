@@ -30,41 +30,41 @@ Now, we will go through the main elements of every class, and we will explain th
 
 - **Class declaration** – this is the line where we declare the name of the class, e.g.:
 
-	```cs
-	public class Dog
-	```
+    ```cs
+    public class Dog
+    ```
 
 - **Class body** – similar to the method idioms in the language, the classes also have single class body. It is defined right after the class declaration, enclosed in curly brackets "`{`" and "`}`". The content inside the brackets is known as body of the class. The elements of the class, which are numbered below, are part of the body.
 
-	```cs
-	public class Dog
-	{
-		// ... The body of the class comes here ...
-	} 
-	```
+    ```cs
+    public class Dog
+    {
+        // ... The body of the class comes here ...
+    } 
+    ```
 
 - **Constructor** – it is used for **creating new objects.** Here is a typical constructor:
 
-	```cs
-	public Dog()
-	{
-		// ... Some code ...
-	}
-	```
+    ```cs
+    public Dog()
+    {
+        // ... Some code ...
+    }
+    ```
 
 - **Fields** – they are variables, declared inside the class (somewhere in the literature are known as **member-variables**). The data of the object, which these variables represent, and are retained into them, is the specific state of an object, and one is required for the proper work of object’s methods. The values, which are in the fields, reflect the specific state of the given object, but despite of this there are other types of fields, called **static,** which are shared among all the objects.
 
-	```cs
-	// Field definition
-	private string name;
-	```
+    ```cs
+    // Field definition
+    private string name;
+    ```
 
 - **Properties** – this is the way to describe the **characteristics** of a given class. Usually, the value of the characteristics is kept in the fields of the object. Similar to the fields, the properties may be held by certain object or to be shared among the rest of the objects.
 
-	```cs
-	// Property definition
-	private string Name { get; set; }
-	```
+    ```cs
+    // Property definition
+    private string Name { get; set; }
+    ```
 
 - **Methods** – from the chapter "Methods" we know that methods are named blocks of programming code. They perform particular actions and through them the objects achieve their behavior based on the class type. Methods execute the implemented programming logic (algorithms) and the handling of data.
 
@@ -75,36 +75,36 @@ Here is how a class looks like. The class `Dog` defined here owns all the elemen
 ```cs
 // Class declaration
 public class Dog
-{	// Opening bracket of the class body
+{    // Opening bracket of the class body
 
-	// Field declaration
-	private string name;
+    // Field declaration
+    private string name;
 
-	// Constructor declaration (peremeterless empty constructor)
-	public Dog()
-	{
-	}
+    // Constructor declaration (peremeterless empty constructor)
+    public Dog()
+    {
+    }
 
-	// Another constructor declaration
-	public Dog(string name)
-	{
-		this.name = name;
-	}
+    // Another constructor declaration
+    public Dog(string name)
+    {
+        this.name = name;
+    }
 
-	// Property declaration
-	public string Name
-	{
-		get { return name; }
-		set { name = value; }
-	}
+    // Property declaration
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
 
-	// Method declaration (non-static)
-	public void Bark()
-	{
-		Console.WriteLine("{0} said: Wow-wow!",
-			name ?? "[unnamed dog]");
-	}
-}	// Closing bracket of the class body
+    // Method declaration (non-static)
+    public void Bark()
+    {
+        Console.WriteLine("{0} said: Wow-wow!",
+            name ?? "[unnamed dog]");
+    }
+}    // Closing bracket of the class body
 ```
 
 At the moment we will not explain in greater details this code, because the related information will be presented later in this chapter.
@@ -127,31 +127,31 @@ Let’s have the example from the previous section where we defined the class `D
 ```cs
 static void Main()
 {
-	string firstDogName = null;
-	Console.Write("Enter first dog name: ");
-	firstDogName = Console.ReadLine();
+    string firstDogName = null;
+    Console.Write("Enter first dog name: ");
+    firstDogName = Console.ReadLine();
 
-	// Using a constructor to create a dog with specified name
-	Dog firstDog = new Dog(firstDogName);
+    // Using a constructor to create a dog with specified name
+    Dog firstDog = new Dog(firstDogName);
 
-	// Using a constructor to create a dog wit a default name
-	Dog secondDog = new Dog();
+    // Using a constructor to create a dog wit a default name
+    Dog secondDog = new Dog();
 
-	Console.Write("Enter second dog name: ");
-	string secondDogName = Console.ReadLine();
+    Console.Write("Enter second dog name: ");
+    string secondDogName = Console.ReadLine();
 
-	// Using property to set the name of the dog
-	secondDog.Name = secondDogName;
+    // Using property to set the name of the dog
+    secondDog.Name = secondDogName;
 
-	// Creating a dog with a default name
-	Dog thirdDog = new Dog();
+    // Creating a dog with a default name
+    Dog thirdDog = new Dog();
 
-	Dog[] dogs = new Dog[] { firstDog, secondDog, thirdDog };
+    Dog[] dogs = new Dog[] { firstDog, secondDog, thirdDog };
 
-	foreach (Dog dog in dogs)
-	{
-		dog.Bark();
-	}
+    foreach (Dog dog in dogs)
+    {
+        dog.Bark();
+    }
 }
 ```
 
@@ -229,25 +229,25 @@ using <namespace2>;
 // Namespace definition - optional
 namespace <namespace_name>
 {
-	// Class declaration
-	class <first_class_name>
-	{
-		// ... Class body ...
-	}
+    // Class declaration
+    class <first_class_name>
+    {
+        // ... Class body ...
+    }
 
-	// Class declaration
-	class <second_class_name>
-	{
-		// ... Class body ...
-	}
+    // Class declaration
+    class <second_class_name>
+    {
+        // ... Class body ...
+    }
 
-	// ...
+    // ...
 
-	// Class declaration
-	class <n-th_class_name>
-	{
-		// ... Class body ...
-	}
+    // Class declaration
+    class <n-th_class_name>
+    {
+        // ... Class body ...
+    }
 }
 ```
 
@@ -265,30 +265,30 @@ using System;
 
 public class EncodingTest
 {
-	// Ňĺńňîâ ęîěĺíňŕđ
-	static int ăîäčíč = 4;
+    // Ňĺńňîâ ęîěĺíňŕđ
+    static int ăîäčíč = 4;
 
-	static void Main()
-	{
-		Console.WriteLine("years: " + ăîäčíč);
-	}
+    static void Main()
+    {
+        Console.WriteLine("years: " + ăîäčíč);
+    }
 }
 This code will compile and execute without a problem, but to keep the characters readable in the Visual Studio editor we need to provide an appropriate encoding of the file.
 As we know from the "Strings" chapter, some not all characters can be stored in all encodings. If we use non-standard characters such as Chinese, Cyrillic or Arabic letters, we can use UTF-8 or other character encoding that supports these characters. By default Visual Studio uses the default character encoding (system locale) defined in the regional settings in Windows. This might be ISO-8859-1 in U.K. or U.S. and Windows-1251 in Bulgaria.
 To use a different encoding other than the system’s default encoding in Visual Studio, we need to choose the appropriate encoding of the file when opening it in the editor:
-	From the File menu we choose Open and then File.
-	In the Open File window we click on the option next to the button Open and we choose Open With...
-	From the list in the Open With window we choose an editor with encoding support, for example CSharp Editor with Encoding.
-	Then press [OK].
-	In the window Encoding we choose the appropriate encoding from the dropdown menu Encoding.
-	Then press [OK].
+    From the File menu we choose Open and then File.
+    In the Open File window we click on the option next to the button Open and we choose Open With...
+    From the list in the Open With window we choose an editor with encoding support, for example CSharp Editor with Encoding.
+    Then press [OK].
+    In the window Encoding we choose the appropriate encoding from the dropdown menu Encoding.
+    Then press [OK].
 
  
 The steps for saving files in the file system with a specific encoding are:
-	From the File menu we choose Save As.
-	In the window Save File As we press the drop-down box next to the button Save and choose Save with Encoding.
-	In Advanced Save Options we select the desired encoding from the list (preferably the universal UTF-8).
-	From the Line Endings we select the desired line ending type.
+    From the File menu we choose Save As.
+    In the window Save File As we press the drop-down box next to the button Save and choose Save with Encoding.
+    In Advanced Save Options we select the desired encoding from the list (preferably the universal UTF-8).
+    From the Line Endings we select the desired line ending type.
 Although we have the ability to use characters from any non-English alphabet, in .cs files it is highly recommended to write all the identifiers and comments in English, because this way our code will be readable for more people in the world.
 Imagine that you live in Germany and you need to type a code written by a Vietnamese person, where the names of all variables and comments are in Vietnamese. You will prefer English, right? Then think about how a developer from Vietnam will handle variables and comments in German. -->
 
@@ -366,7 +366,7 @@ By similarity to the methods, after the declaration of the class follows its bod
 ```cs
 [<access_modifier>] class <class_name>
 {
-	// ... Class body – the code of the class goes here ...
+    // ... Class body – the code of the class goes here ...
 }
 ```
 
@@ -426,10 +426,10 @@ This is a sample code declaring several fields:
 ```cs
 class SampleClass
 {
-	int age;
-	long distance;
-	string[] names;
-	Dog myDog;
+    int age;
+    long distance;
+    string[] names;
+    Dog myDog;
 }
 ```
 
@@ -466,13 +466,13 @@ Of course, the `<initial_value>` has to be a type compatible with the field’s 
 ```cs
 class SampleClass
 {
-	int age = 5;
-	long distance = 234; // The literal 234 is of integer type
+    int age = 5;
+    long distance = 234; // The literal 234 is of integer type
 
-	string[] names = new string[] { "Peter", "Martin" };
-	Dog myDog = new Dog();
+    string[] names = new string[] { "Peter", "Martin" };
+    Dog myDog = new Dog();
 
-	// ... Other code ...
+    // ... Other code ...
 }
 ```
 
@@ -507,19 +507,19 @@ For example, if we create a class `Dog` and we define for it fields `name`, `age
 ```cs
 public class Dog
 {
-	string name;
-	int age;
-	int length;
-	bool isHungry;
+    string name;
+    int age;
+    int length;
+    bool isHungry;
 
-	static void Main()
-	{
-		Dog dog = new Dog();
-		Console.WriteLine("Dog's name is: " + dog.name);
-		Console.WriteLine("Dog's age is: " + dog.age);
-		Console.WriteLine("Dog's length is: " + dog.length);
-		Console.WriteLine("Dog is hungry: " + dog.isHungry);
-	}
+    static void Main()
+    {
+        Dog dog = new Dog();
+        Console.WriteLine("Dog's name is: " + dog.name);
+        Console.WriteLine("Dog's age is: " + dog.age);
+        Console.WriteLine("Dog's length is: " + dog.length);
+        Console.WriteLine("Dog is hungry: " + dog.isHungry);
+    }
 }
 ```
 
@@ -544,8 +544,8 @@ Let’s have look into one example:
 ```cs
 static void Main()
 {
-	int notInitializedLocalVariable;
-	Console.WriteLine(notInitializedLocalVariable);
+    int notInitializedLocalVariable;
+    Console.WriteLine(notInitializedLocalVariable);
 }
 ```
 
@@ -564,12 +564,12 @@ One example for such initialization is the modified example class `SampleClass` 
 ```cs
 class SampleClass
 {
-	int age = 0;
-	long distance = 0;
-	string[] names = null;
-	Dog myDog = null;
+    int age = 0;
+    long distance = 0;
+    string[] names = null;
+    Dog myDog = null;
 
-	// ... Other code ...
+    // ... Other code ...
 }
 ```
 
@@ -590,34 +590,34 @@ Let’s illustrate the foregoing with the following example:
 ```cs
 public class ConstAndReadOnlyExample
 {
-	public const double PI = 3.1415926535897932385;
-	public readonly double Size;
+    public const double PI = 3.1415926535897932385;
+    public readonly double Size;
 
-	public ConstAndReadOnlyExample(int size)
-	{
-		this.Size = size; // Cannot be further modified!
-	}
+    public ConstAndReadOnlyExample(int size)
+    {
+        this.Size = size; // Cannot be further modified!
+    }
 
-	static void Main()
-	{
-		Console.WriteLine(PI);
-		Console.WriteLine(ConstAndReadOnlyExample.PI);
-		ConstAndReadOnlyExample instance =
-			new ConstAndReadOnlyExample(5);
-		Console.WriteLine(instance.Size);
+    static void Main()
+    {
+        Console.WriteLine(PI);
+        Console.WriteLine(ConstAndReadOnlyExample.PI);
+        ConstAndReadOnlyExample instance =
+            new ConstAndReadOnlyExample(5);
+        Console.WriteLine(instance.Size);
 
-		// Compile-time error: cannot access PI like a field
-		Console.WriteLine(instance.PI);
+        // Compile-time error: cannot access PI like a field
+        Console.WriteLine(instance.PI);
 
-		// Compile-time error: Size is instance field (non-static)
-		Console.WriteLine(ConstAndReadOnlyExample.Size);
+        // Compile-time error: Size is instance field (non-static)
+        Console.WriteLine(ConstAndReadOnlyExample.Size);
 
-		// Compile-time error: cannot modify a constant
-		ConstAndReadOnlyExample.PI = 0;
+        // Compile-time error: cannot modify a constant
+        ConstAndReadOnlyExample.PI = 0;
 
-		// Compile-time error: cannot modify a readonly field
-		instance.Size = 0;
-	}
+        // Compile-time error: cannot modify a readonly field
+        instance.Size = 0;
+    }
 }
 ```
 
@@ -633,8 +633,8 @@ The declaration of methods is done in the following way:
 // Method definition
 [<modifiers>] [<return_type>] <method_name>([<parameters_list>])
 {
-	// ... Method's body ...
-	[<return_statement>];
+    // ... Method's body ...
+    [<return_statement>];
 }
 ```
 
@@ -657,8 +657,8 @@ Let’s see the declaration of a method, which sums two values:
 ```cs
 int Add(int number1, int number2)
 {
-	int result = number1 + number2;
-	return result;
+    int result = number1 + number2;
+    return result;
 }
 ```
 
@@ -673,13 +673,13 @@ E.g. let’s have the class `Dog` with the field `age`. To print the value of th
 ```cs
 public class Dog
 {
-	int age = 2;
+    int age = 2;
 
-	static void Main()
-	{
-		Dog dog = new Dog();
-		Console.WriteLine("Dog's age is: " + dog.age);
-	}
+    static void Main()
+    {
+        Dog dog = new Dog();
+        Console.WriteLine("Dog's age is: " + dog.age);
+    }
 }
 ```
 
@@ -696,7 +696,7 @@ The access to the value of one field can be done via the "dot" notation (as in t
 ```cs
 public int GetAge()
 {
-	return this.age;
+    return this.age;
 }
 ```
 
@@ -705,8 +705,8 @@ As we see, to access the value of the age field, inside, from the owner class, w
 ```cs
 static void Main()
 {
-	Dog dog = new Dog();
-	Console.WriteLine("Dog's age is: " + dog.GetAge());
+    Dog dog = new Dog();
+    Console.WriteLine("Dog's age is: " + dog.GetAge());
 }
 ```
 
@@ -727,7 +727,7 @@ E.g., let’s declare a method **MakeOlder(),** which will be called every year 
 ```cs
 public void MakeOlder()
 {
-	this.age++;
+    this.age++;
 }
 ```
 
@@ -759,8 +759,8 @@ For example, let’s create a method `PrintAge()`, which prints the age of the o
 ```cs
 public void PrintAge()
 {
-	int myAge = this.GetAge();
-	Console.WriteLine("My age is: " + myAge);
+    int myAge = this.GetAge();
+    Console.WriteLine("My age is: " + myAge);
 }
 ```
 
@@ -776,12 +776,12 @@ When we access the fields of a class or we call its non-static methods, it is po
 ```cs
 public int GetAge()
 {
-	return age; // The same like this.age
+    return age; // The same like this.age
 }
 
 public void MakeOlder()
 {
-	age++; // The same like this.age++
+    age++; // The same like this.age++
 }
 ```
 
@@ -799,18 +799,18 @@ From the section "Declaring Fields" above, we know that the **scope of one field
 ```cs
 public class OverlappingScopeTest
 {
-	int myValue = 3;
+    int myValue = 3;
 
-	void PrintMyValue()
-	{
-		Console.WriteLine("My value is: " + myValue);
-	}
+    void PrintMyValue()
+    {
+        Console.WriteLine("My value is: " + myValue);
+    }
 
-	static void Main()
-	{
-		OverlappingScopeTest instance = new OverlappingScopeTest();
-		instance.PrintMyValue();
-	}
+    static void Main()
+    {
+        OverlappingScopeTest instance = new OverlappingScopeTest();
+        instance.PrintMyValue();
+    }
 }
 ```
 
@@ -825,8 +825,8 @@ On the other hand, when we implement the body of one method we have to declare l
 ```cs
 int CalculateNewValue(int newValue)
 {
-	int result = myValue + newValue;
-	return result;
+    int result = myValue + newValue;
+    return result;
 }
 ```
 
@@ -839,8 +839,8 @@ Let’s first look at one example, before we explain what it is about. Let’s m
 ```cs
 void PrintMyValue()
 {
-	int myValue = 5;
-	Console.WriteLine("My value is: " + myValue);
+    int myValue = 5;
+    Console.WriteLine("My value is: " + myValue);
 }
 ```
 
@@ -863,8 +863,8 @@ Let’s take a look again at our example relate to the printing of the value `my
 ```cs
 void PrintMyValue()
 {
-	int myValue = 5;
-	Console.WriteLine("My value is: " + this.myValue);
+    int myValue = 5;
+    Console.WriteLine("My value is: " + this.myValue);
 }
 ```
 
@@ -892,22 +892,22 @@ In the next subsections, to the explanations until now, we will review examples,
 ```cs
 public class Dog
 {
-	private string name = "Doggy";
+    private string name = "Doggy";
 
-	public string Name
-	{
-		get { return this.name; }
-	}
+    public string Name
+    {
+        get { return this.name; }
+    }
 
-	public void Bark()
-	{
-		Console.WriteLine("wow-wow");
-	}
+    public void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
 
-	public void DoSomething()
-	{
-		this.Bark();
-	}
+    public void DoSomething()
+    {
+        this.Bark();
+    }
 }
 ```
 
@@ -918,15 +918,15 @@ The code of the class `Kid` looks like this:
 ```cs
 public class Kid
 {
-	public void CallTheDog(Dog dog)
-	{
-		Console.WriteLine("Come, " + dog.Name);
-	}
+    public void CallTheDog(Dog dog)
+    {
+        Console.WriteLine("Come, " + dog.Name);
+    }
 
-	public void WagTheDog(Dog dog)
-	{
-		dog.Bark();
-	}
+    public void WagTheDog(Dog dog)
+    {
+        dog.Bark();
+    }
 }
 ```
 
@@ -951,22 +951,22 @@ When the members of both classes are public, we have the following:
 ```cs
 class Dog
 {
-	public string name = "Doggy";
+    public string name = "Doggy";
 
-	public string Name
-	{
-		get { return this.name; }        // Direct access
-	}
+    public string Name
+    {
+        get { return this.name; }        // Direct access
+    }
 
-	public void Bark()
-	{
-		Console.WriteLine("wow-wow");
-	}
+    public void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
 
-	public void DoSomething()
-	{
-		this.Bark();                     // Direct Access
-	}
+    public void DoSomething()
+    {
+        this.Bark();                     // Direct Access
+    }
 }
 ```
 
@@ -976,14 +976,14 @@ class Dog
 ```cs
 class Kid
 {
-	public void CallTheDog(Dog dog)
-	{
-		Console.WriteLine("Come, " + dog.name);  // Reference Access
-	}
-	public void WagTheDog(Dog dog)
-	{
-		dog.Bark();                              // Reference Access
-	}
+    public void CallTheDog(Dog dog)
+    {
+        Console.WriteLine("Come, " + dog.name);  // Reference Access
+    }
+    public void WagTheDog(Dog dog)
+    {
+        dog.Bark();                              // Reference Access
+    }
 }
 ```
 
@@ -1003,22 +1003,22 @@ Below is the explanation about the access level `internal`:
 ```cs
 class Dog
 {
-	internal string name = "Doggy";
+    internal string name = "Doggy";
 
-	public string Name
-	{
-		get { return this.name; }        // Direct Access
-	}
+    public string Name
+    {
+        get { return this.name; }        // Direct Access
+    }
 
-	internal void Bark()
-	{
-		Console.WriteLine("wow-wow");
-	}
+    internal void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
 
-	public void DoSomething()
-	{
-		this.Bark();                     // Direct Access
-	}
+    public void DoSomething()
+    {
+        this.Bark();                     // Direct Access
+    }
 }
 ```
 
@@ -1026,43 +1026,43 @@ Respectively, for the class `Kid`, we discuss two cases:
 
 - When the class in **the same assembly,** then the access to the elements of `Dog` will be allowed, independent of whether the classes are in the same namespace or not:
 
-	| Kid.cs |
-	|---|
+    | Kid.cs |
+    |---|
 
-	```cs
-	class Kid
-	{
-		public void CallTheDog(Dog dog)
-		{
-			Console.WriteLine("Come, " + dog.name);  // Reference Access
-		}
+    ```cs
+    class Kid
+    {
+        public void CallTheDog(Dog dog)
+        {
+            Console.WriteLine("Come, " + dog.name);  // Reference Access
+        }
 
-		public void WagTheDog(Dog dog)
-		{
-			dog.Bark();                              // Reference Access
-		}
-	}
-	```
+        public void WagTheDog(Dog dog)
+        {
+            dog.Bark();                              // Reference Access
+        }
+    }
+    ```
 
 - When the class `Kid` is **external for the assembly,** in which `Dog` is declared, then the access to the field `name` and the method `Bark()` will be denied:
 
-	| Kid.cs |
-	|---|
+    | Kid.cs |
+    |---|
 
-	```cs
-	class Kid
-	{
-		public void CallTheDog(Dog dog)
-		{
-			Console.WriteLine("Come, " + dog.name);   // NOT ALLOWED
-		}
+    ```cs
+    class Kid
+    {
+        public void CallTheDog(Dog dog)
+        {
+            Console.WriteLine("Come, " + dog.name);   // NOT ALLOWED
+        }
 
-		public void WagTheDog(Dog dog)
-		{
-			dog.Bark();                               // NOT ALLOWED
-		}
-	}
-	```
+        public void WagTheDog(Dog dog)
+        {
+            dog.Bark();                               // NOT ALLOWED
+        }
+    }
+    ```
 
 Actually the access level `internal` for members of the class `Dog` is impossible for two reasons: insufficient visibility of the class and insufficient visibility of its members. To allow access from other assembly to the class `Dog`, one is required to be declared `public` and in the same time its members to be declared as `public`. If the class or its members have lower visibility, the access to it from other assemblies is denied (i.e. from other Visual Studio projects which compile to different `.dll` / `.exe` file).
 
@@ -1080,22 +1080,22 @@ Therefore, if we declare the field `name` and the method `Bark()` of the `class`
 ```cs
 class Dog
 {
-	private string name = "Doggy";
+    private string name = "Doggy";
 
-	public string Name
-	{
-		get { return this.name; }        // Direct Access
-	}
+    public string Name
+    {
+        get { return this.name; }        // Direct Access
+    }
 
-	private void Bark()
-	{
-		Console.WriteLine("wow-wow");
-	}
+    private void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
 
-	public void DoSomething()
-	{
-		this.Bark();                     // Direct Access
-	}
+    public void DoSomething()
+    {
+        this.Bark();                     // Direct Access
+    }
 }
 ```
 
@@ -1107,15 +1107,15 @@ Accessing the `name` fields from the same class is permitted, but accessing it f
 ```cs
 class Kid
 {
-	public void CallTheDog(Dog dog)
-	{
-		Console.WriteLine("Come, " + dog.name);  // NOT ALLOWED
-	}
+    public void CallTheDog(Dog dog)
+    {
+        Console.WriteLine("Come, " + dog.name);  // NOT ALLOWED
+    }
 
-	public void WagTheDog(Dog dog)
-	{
-		dog.Bark();                              // NOT ALLOWED
-	}
+    public void WagTheDog(Dog dog)
+    {
+        dog.Bark();                              // NOT ALLOWED
+    }
 }
 ```
 
@@ -1128,23 +1128,23 @@ Before we end up the section regarding visibility of the elements of a class, le
 ```cs
 public class Dog
 {
-	private string name = "Doggy";
+    private string name = "Doggy";
 
-	// ...
+    // ...
 
-	private void Bark()
-	{
-		Console.WriteLine("wow-wow");
-	}
+    private void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
 
-	// ...
+    // ...
 
-	static void Main()
-	{
-		Dog myDog = new Dog();
-		Console.WriteLine("My dog's name is " + myDog.name);
-		myDog.Bark();
-	}
+    static void Main()
+    {
+        Dog myDog = new Dog();
+        Console.WriteLine("My dog's name is " + myDog.name);
+        myDog.Bark();
+    }
 }
 ```
 
@@ -1220,16 +1220,16 @@ In (C#) it **is not allowed to declare a method whose name matches the name of t
 ```cs
 public class IllegalMethodExample
 {
-	// Legal constructor
-	public IllegalMethodExample ()
-	{
-	}
+    // Legal constructor
+    public IllegalMethodExample ()
+    {
+    }
 
-	// Illegal method
-	private string IllegalMethodExample()
-	{
-		return "I am illegal method!";
-	}
+    // Illegal method
+    private string IllegalMethodExample()
+    {
+        return "I am illegal method!";
+    }
 }
 ```
 
@@ -1270,14 +1270,14 @@ Instead of doing this during the declaration of the field, a better programming 
 ```cs
 public class Dog
 {
-	private string name;
+    private string name;
 
-	public Dog()
-	{
-		this.name = "Sharo";
-	}
+    public Dog()
+    {
+        this.name = "Sharo";
+    }
 
-	// ... The rest of the class body ...
+    // ... The rest of the class body ...
 }
 ```
 
@@ -1286,14 +1286,14 @@ Although we initialize the fields in the constructor, some people recommend **ex
 ```cs
 public class Dog
 {
-	private string name = null;
+    private string name = null;
 
-	public Dog()
-	{
-		this.name = "Sharo";
-	}
+    public Dog()
+    {
+        this.name = "Sharo";
+    }
 
-	// ... The rest of the class body ...
+    // ... The rest of the class body ...
 }
 ```
 
@@ -1310,11 +1310,11 @@ The same will happen if we have other fields, which are not primitive types, and
 ```cs
 public class Collar
 {
-	private int size;
+    private int size;
 
-	public Collar()
-	{
-	}
+    public Collar()
+    {
+    }
 }
 ```
 
@@ -1323,23 +1323,23 @@ Let our class `Dog` has a field called `collar`, which is from type Coll`ar and 
 ```cs
 public class Dog
 {
-	private string name;
-	private int age;
-	private double length;
-	private Collar collar;
+    private string name;
+    private int age;
+    private double length;
+    private Collar collar;
 
-	public Dog()
-	{
-		this.name = "Sharo";
-		this.age = 3;
-		this.length = 0.5;
-		this.collar = new Collar();
-	}
+    public Dog()
+    {
+        this.name = "Sharo";
+        this.age = 3;
+        this.length = 0.5;
+        this.collar = new Collar();
+    }
 
-	static void Main()
-	{
-		Dog myDog = new Dog();
-	}
+    static void Main()
+    {
+        Dog myDog = new Dog();
+    }
 }
 ```
 
@@ -1382,15 +1382,15 @@ First **memory is allocated** for the respective field in the heap and this memo
 ```cs
 public class Dog
 {
-	private string name;
+    private string name;
 
-	public Dog()
-	{
-		Console.WriteLine(
-			"this.name has value of: \"" + this.name + "\"");
-		// ... No other code here ...
-	}
-	// ... Rest of the class body ...
+    public Dog()
+    {
+        Console.WriteLine(
+            "this.name has value of: \"" + this.name + "\"");
+        // ... No other code here ...
+    }
+    // ... Rest of the class body ...
 }
 ```
 
@@ -1413,7 +1413,7 @@ Respectively, for every creation of a new object of the class:
 ```cs
 static void Main()
 {
-	Dog dog = new Dog();
+    Dog dog = new Dog();
 }
 ```
 
@@ -1432,10 +1432,10 @@ In the previous section, we saw how we can set values to the fields, other than 
 ```cs
 public Dog(string dogName, int dogAge, double dogLength)
 {
-	name = dogName;
-	age = dogAge;
-	length = dogLength;
-	collar = new Collar();
+    name = dogName;
+    age = dogAge;
+    length = dogLength;
+    collar = new Collar();
 }
 ```
 
@@ -1444,11 +1444,11 @@ Similarly, the **call of a constructor with parameters** is done in the same way
 ```cs
 static void Main()
 {
-	Dog myDog = new Dog("Moby", 2, 0.4); // Passing parameters
+    Dog myDog = new Dog("Moby", 2, 0.4); // Passing parameters
 
-	Console.WriteLine("My dog " + myDog.name +
-		" is " + myDog.age + " year(s) old. " +
-		" and it has length: " + myDog.length + " m.");
+    Console.WriteLine("My dog " + myDog.name +
+        " is " + myDog.age + " year(s) old. " +
+        " and it has length: " + myDog.length + " m.");
 }
 ```
 
@@ -1469,10 +1469,10 @@ Very often, when we declare a constructor with parameters it is possible to name
 ```cs
 public Dog(string name, int age, double length)
 {
-	name = name;
-	age = age;
-	length = length;
-	collar = new Collar();
+    name = name;
+    age = age;
+    length = length;
+    collar = new Collar();
 }
 ```
 
@@ -1493,10 +1493,10 @@ As we saw from the section "Hiding Fields with Local Variables", to avoid this p
 ```cs
 public Dog(string name, int age, double length)
 {
-	this.name = name;
-	this.age = age;
-	this.length = length;
-	this.collar = new Collar();
+    this.name = name;
+    this.age = age;
+    this.length = length;
+    this.collar = new Collar();
 }
 ```
 
@@ -1505,11 +1505,11 @@ Now, assuming we execute again the `Main()` method:
 ```cs
 static void Main()
 {
-	Dog myDog = new Dog("Moby", 2, 0.4);
+    Dog myDog = new Dog("Moby", 2, 0.4);
 
-	Console.WriteLine("My dog " + myDog.name +
-		" is " + myDog.age + " year(s) old. " +
-		" and it has length: " + myDog.length + " m");
+    Console.WriteLine("My dog " + myDog.name +
+        " is " + myDog.age + " year(s) old. " +
+        " and it has length: " + myDog.length + " m");
 }
 ```
 
@@ -1532,7 +1532,7 @@ Consider a **sample declaration** of a constructor of a class, which describes a
 ```cs
 public Lecture(string subject, params string[] studentsNames)
 {
-	// ... Initialization of the instance variables ...
+    // ... Initialization of the instance variables ...
 }
 ```
 
@@ -1540,7 +1540,7 @@ The first parameter in the declaration is the name of the subject of the lecture
 
 ```cs
 Lecture lecture =
-	new Lecture("Biology", "Peter", "Mike", "Steven");
+    new Lecture("Biology", "Peter", "Mike", "Steven");
 ```
 
 Accordingly, as the first parameter is the name of the subject – **"Biology",** and all the rest arguments – the names of the attending students.
@@ -1555,46 +1555,46 @@ Consider, for example, the class `Dog`. We can declare different constructors:
 // No parameters
 public Dog()
 {
-	this.name = "Axl";
-	this.age = 1;
-	this.length = 0.3;
-	this.collar = new Collar();
+    this.name = "Axl";
+    this.age = 1;
+    this.length = 0.3;
+    this.collar = new Collar();
 }
 
 // One parameter
 public Dog(string name)
 {
-	this.name = name;
-	this.age = 1;
-	this.length = 0.3;
-	this.collar = new Collar();
+    this.name = name;
+    this.age = 1;
+    this.length = 0.3;
+    this.collar = new Collar();
 }
 
 // Two parameters
 public Dog(string name, int age)
 {
-	this.name = name;
-	this.age = age;
-	this.length = 0.3;
-	this.collar = new Collar();
+    this.name = name;
+    this.age = age;
+    this.length = 0.3;
+    this.collar = new Collar();
 }
 
 // Three parameters
 public Dog(string name, int age, double length)
 {
-	this.name = name;
-	this.age = age;
-	this.length = length;
-	this.collar = new Collar();
+    this.name = name;
+    this.age = age;
+    this.length = length;
+    this.collar = new Collar();
 }
 
 // Four parameters
 public Dog(string name, int age, double length, Collar collar)
 {
-	this.name = name;
-	this.age = age;
-	this.length = length;
-	this.collar = collar;
+    this.name = name;
+    this.age = age;
+    this.length = length;
+    this.collar = collar;
 }
 ```
 
@@ -1606,7 +1606,7 @@ In C# a mechanism exists through which **one constructor can call another** one 
 
 ```cs
 [<modifiers>] <class_name>([<parameters_list_1>])
-	: this([<parameters_list_2>])
+    : this([<parameters_list_2>])
 ```
 
 To the well-known form of declaring a constructor (the first line of the declaration above), we can add a colon, followed by the keyword `this`, followed by parentheses. If the constructor we want to call has parameters, in the brackets we need to add a list of parameters `parameters_list_2` to be supplied.
@@ -1616,36 +1616,36 @@ Here is how the code from the section about constructor overloading would look l
 ```cs
 // No parameters
 public Dog()
-	: this("Axl") // Constructor call
+    : this("Axl") // Constructor call
 {
-	// More code could be added here
+    // More code could be added here
 }
 
 // One parameter
 public Dog(string name)
-	: this(name, 1) // Constructor call
+    : this(name, 1) // Constructor call
 {
 }
 
 // Two parameters
 public Dog(string name, int age)
-	: this(name, age, 0.3) // Constructor call
+    : this(name, age, 0.3) // Constructor call
 {
 }
 
 // Three parameters
 public Dog(string name, int age, double length)
-	: this(name, age, length, new Collar()) // Constructor call
+    : this(name, age, length, new Collar()) // Constructor call
 {
 }
 
 // Four parameters
 public Dog(string name, int age, double length, Collar collar)
 {
-	this.name = name;
-	this.age = age;
-	this.length = length;
-	this.collar = collar;
+    this.name = name;
+    this.age = age;
+    this.length = length;
+    this.collar = collar;
 }
 ```
 
@@ -1665,12 +1665,12 @@ For example, let’s declare the class `Collar`, without declaring any construct
 ```cs
 public class Collar
 {
-	private int size;
+    private int size;
 
-	public int Size
-	{
-		get { return size; }
-	}
+    public int Size
+    {
+        get { return size; }
+    }
 }
 ```
 
@@ -1710,8 +1710,8 @@ As we can guess, the only thing the default constructor will do when creating ob
 ```cs
 static void Main()
 {
-	Collar collar = new Collar();
-	Console.WriteLine("Collar's size is: " + collar.Size);
+    Collar collar = new Collar();
+    Console.WriteLine("Collar's size is: " + collar.Size);
 }
 ```
 
@@ -1731,9 +1731,9 @@ To investigate this, consider the following example:
 
 ```cs
 public Collar(int size)
-	: this()
+    : this()
 {
-	this.size = size;
+    this.size = size;
 }
 ```
 
@@ -1797,26 +1797,26 @@ Let’s have a class, which represents a **point from the 2D space** with proper
 ```cs
 class Point
 {
-	private double x;
-	private double y;
+    private double x;
+    private double y;
 
-	public Point(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-	}
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
 
-	public double X
-	{
-		get { return this.x; }
-		set { this.x = value; }
-	}
+    public double X
+    {
+        get { return this.x; }
+        set { this.x = value; }
+    }
 
-	public double Y
-	{
-		get { return this.y; }
-		set { this.y = value; }
-	}
+    public double Y
+    {
+        get { return this.y; }
+        set { this.y = value; }
+    }
 }
 ```
 
@@ -1830,16 +1830,16 @@ using System;
 
 class PointTest
 {
-	static void Main()
-	{
-		Point myPoint = new Point(2, 3);
+    static void Main()
+    {
+        Point myPoint = new Point(2, 3);
 
-		double myPointXCoord = myPoint.X; // Access a property
-		double myPointYCoord = myPoint.Y; // Access a property
+        double myPointXCoord = myPoint.X; // Access a property
+        double myPointYCoord = myPoint.Y; // Access a property
 
-		Console.WriteLine("The X coordinate is: " + myPointXCoord);
-		Console.WriteLine("The Y coordinate is: " + myPointYCoord);
-	}
+        Console.WriteLine("The X coordinate is: " + myPointXCoord);
+        Console.WriteLine("The Y coordinate is: " + myPointYCoord);
+    }
 }
 ```
 
@@ -1860,30 +1860,30 @@ using System;
 
 class Point
 {
-	private double[] coordinates;
+    private double[] coordinates;
 
-	public Point(int xCoord, int yCoord)
-	{
-		this.coordinates = new double[2];
+    public Point(int xCoord, int yCoord)
+    {
+        this.coordinates = new double[2];
 
-		// Initializing the x coordinate
-		coordinates[0] = xCoord;
+        // Initializing the x coordinate
+        coordinates[0] = xCoord;
 
-		// Initializing the y coordinate
-		coordinates[1] = yCoord;
-	}
+        // Initializing the y coordinate
+        coordinates[1] = yCoord;
+    }
 
-	public double X
-	{
-		get { return coordinates[0]; }
-		set { coordinates[0] = value; }
-	}
+    public double X
+    {
+        get { return coordinates[0]; }
+        set { coordinates[0] = value; }
+    }
 
-	public double Y
-	{
-		get { return coordinates[1]; }
-		set { coordinates[1] = value; }
-	}
+    public double Y
+    {
+        get { return coordinates[1]; }
+        set { coordinates[1] = value; }
+    }
 }
 ```
 
@@ -1918,20 +1918,20 @@ using System;
 
 class Rectangle
 {
-	private float height;
-	private float width;
+    private float height;
+    private float width;
 
-	public Rectangle(float height, float width)
-	{
-		this.height = height;
-		this.width = width;
-	}
+    public Rectangle(float height, float width)
+    {
+        this.height = height;
+        this.width = width;
+    }
 
-	// Obtaining the value of the property area
-	public float Area
-	{
-		get { return this.height * this.width; }
-	}
+    // Obtaining the value of the property area
+    public float Area
+    {
+        get { return this.height * this.width; }
+    }
 }
 ```
 
@@ -1971,7 +1971,7 @@ Like classes and methods in C# properties also have **bodies,** where the method
 ```cs
 [<modifiers>] <property_type> <property_name>
 {
-	// ... Property's accessors methods go here
+    // ... Property's accessors methods go here
 }
 ```
 
@@ -1992,11 +1992,11 @@ The method of reading the value of a property must end with a `return` or `throw
 Although earlier in this section we considered many examples of declared properties with a method for reading their values, let’s consider another example of a property – `Age`, which is of type `int` and is declared via a field in the same class:
 
 ```cs
-private int age; 					// Field declaration
+private int age;                     // Field declaration
 
-public int Age					// Property declaration
+public int Age                    // Property declaration
 {
-	get { return this.age; }	// Getter declaration
+    get { return this.age; }    // Getter declaration
 }
 ```
 
@@ -2007,8 +2007,8 @@ Assume that the property `Age` from the last example is declared in the class `D
 ```cs
 Dog dogInstance = new Dog();
 // ...
-int dogAge = dogInstance.Age; 			// Getter invocation
-Console.WriteLine(dogInstance.Age); 	// Getter invocation
+int dogAge = dogInstance.Age;             // Getter invocation
+Console.WriteLine(dogInstance.Age);     // Getter invocation
 ```
 
 The last two lines of the example show that when accessing through a dot notation the name of the property, its getter method (method for reading its value) is called automatically.
@@ -2028,12 +2028,12 @@ The contents of the block surrounded by arrow brackets – `<accessor_body>` are
 Let’s add the example for the property `Age` in the class `Dog` to illustrate what we discussed so far:
 
 ```cs
-private int age; 				// Field declaration
+private int age;                 // Field declaration
 
-public int Age					// Property declaration
+public int Age                    // Property declaration
 {
-	get { return this.age; }
-	set { this.age = value; }	// Setter declaration
+    get { return this.age; }
+    set { this.age = value; }    // Setter declaration
 }
 ```
 
@@ -2044,7 +2044,7 @@ Calling the method to modify the property’s value is performed via the "dot" n
 ```cs
 Dog dogInstance = new Dog();
 // ...
-dogInstance.Age = 3; 			// Setter invocation
+dogInstance.Age = 3;             // Setter invocation
 ```
 
 In the last line where the value 3 is assigned the setter method of the property `Age` is called. In this way the value is saved in the parameter `value` and is assigned to the setter method of the property `Age`. In our example, the value of the variable `value` is assigned to the field `age` from the class `Dog`, but in the general case this can be handled in a more complicated way.
@@ -2058,18 +2058,18 @@ Consider again the example with the age of the dog. As we know the age has to be
 ```cs
 public int Age
 {
-	get { return this.age; }
-	set
-	{
-		// Take precaution: perform check for correctness
-		if (value < 0)
-		{
-			throw new ArgumentException(
-				"Invalid argument: Age should be a positive number.");
-		}
-		// Assign the new correct value
-		this.age = value;
-	}
+    get { return this.age; }
+    set
+    {
+        // Take precaution: perform check for correctness
+        if (value < 0)
+        {
+            throw new ArgumentException(
+                "Invalid argument: Age should be a positive number.");
+        }
+        // Assign the new correct value
+        this.age = value;
+    }
 }
 ```
 
@@ -2089,24 +2089,24 @@ using System;
 
 class Point
 {
-	public double X	{	get;	set;	}
-	public double Y	{	get;	set;	}
+    public double X    {    get;    set;    }
+    public double Y    {    get;    set;    }
 
-	public Point(int x, int y)
-	{
-		this.X = x;
-		this.Y = y;
-	}
+    public Point(int x, int y)
+    {
+        this.X = x;
+        this.Y = y;
+    }
 }
 
 class PointTest
 {
-	static void Main()
-	{
-		Point myPoint = new Point(2, 3);
-		Console.WriteLine("The X coordinate is: " + myPoint.X);
-		Console.WriteLine("The Y coordinate is: " + myPoint.Y);
-	}
+    static void Main()
+    {
+        Point myPoint = new Point(2, 3);
+        Console.WriteLine("The X coordinate is: " + myPoint.X);
+        Console.WriteLine("The Y coordinate is: " + myPoint.Y);
+    }
 }
 ```
 
@@ -2166,9 +2166,9 @@ When we create objects from a given class, each of them holds different values i
 ```cs
 public class Dog
 {
-	// Instance variables
-	private string name;
-	private int age;
+    // Instance variables
+    private string name;
+    private int age;
 }
 ```
 
@@ -2197,12 +2197,12 @@ Here is how a field named `dogCount` would look like. The field stores informati
 ```cs
 public class Dog
 {
-	// Static (class) variable
-	static int dogCount;
+    // Static (class) variable
+    static int dogCount;
 
-	// Instance variables
-	private string name;
-	private int age;
+    // Instance variables
+    private string name;
+    private int age;
 }
 ```
 
@@ -2234,8 +2234,8 @@ For example, if we want to print the value of the static field that holds the nu
 ```cs
 static void Main()
 {
-	// Access to the static variable through class name
-	Console.WriteLine("Dog count is now " + Dog.dogCount);
+    // Access to the static variable through class name
+    Console.WriteLine("Dog count is now " + Dog.dogCount);
 }
 ```
 
@@ -2260,11 +2260,11 @@ That’s why if we want to count the number of created objects of the class `Dog
 ```cs
 public Dog(string name, int age)
 {
-	this.name = name;
-	this.age = age;
+    this.name = name;
+    this.age = age;
 
-	// Modifying the static counter in the constructor
-	Dog.dogCount += 1;
+    // Modifying the static counter in the constructor
+    Dog.dogCount += 1;
 }
 ```
 
@@ -2273,11 +2273,11 @@ We access static field from the class `Dog` so we can use the following code in 
 ```cs
 public Dog(string name, int age)
 {
-	this.name = name;
-	this.age = age;
+    this.name = name;
+    this.age = age;
 
-	// Modifying the static counter in the constructor
-	dogCount += 1;
+    // Modifying the static counter in the constructor
+    dogCount += 1;
 }
 ```
 
@@ -2288,12 +2288,12 @@ Let’s create some objects of the class `Dog` and print out their number in ord
 ```cs
 static void Main()
 {
-	Dog dog1 = new Dog("Jackie", 1);
-	Dog dog2 = new Dog("Lassy", 2);
-	Dog dog3 = new Dog("Rex", 3);
+    Dog dog1 = new Dog("Jackie", 1);
+    Dog dog2 = new Dog("Lassy", 2);
+    Dog dog3 = new Dog("Rex", 3);
 
-	// Access to the static variable
-	Console.WriteLine("Dog count is now " + Dog.dogCount);
+    // Access to the static variable
+    Console.WriteLine("Dog count is now " + Dog.dogCount);
 }
 ```
 
@@ -2344,7 +2344,7 @@ When we try to print the value of the constant:
 ```cs
 static void Main()
 {
-	Console.WriteLine("The value of PI is: " + PI);
+    Console.WriteLine("The value of PI is: " + PI);
 }
 ```
 
@@ -2363,8 +2363,8 @@ public const double PI;
 
 public void SetPiValue()
 {
-	// Attempting to initialize the constant PI
-	PI = 3.141592653589793;
+    // Attempting to initialize the constant PI
+    PI = 3.141592653589793;
 }
 ```
 
@@ -2391,16 +2391,16 @@ In our class we declare three integer fields for red, green and blue light and a
 ```cs
 class Color
 {
-	private int red;
-	private int green;
-	private int blue;
+    private int red;
+    private int green;
+    private int blue;
 
-	public Color(int red, int green, int blue)
-	{
-		this.red = red;
-		this.green = green;
-		this.blue = blue;
-	}
+    public Color(int red, int green, int blue)
+    {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
 }
 ```
 
@@ -2412,19 +2412,19 @@ As some colors are used more frequently than others (for example, black and whit
 ```cs
 class Color
 {
-	public const Color Black = new Color(0, 0, 0);
-	public const Color White = new Color(255, 255, 255);
+    public const Color Black = new Color(0, 0, 0);
+    public const Color White = new Color(255, 255, 255);
 
-	private int red;
-	private int green;
-	private int blue;
+    private int red;
+    private int green;
+    private int blue;
 
-	public Color(int red, int green, int blue)
-	{
-		this.red = red;
-		this.green = green;
-		this.blue = blue;
-	}
+    public Color(int red, int green, int blue)
+    {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
 }
 ```
 
@@ -2519,7 +2519,7 @@ Let’s for example declare the method of summing two numbers, which we discusse
 ```cs
 public static int Add(int number1, int number2)
 {
-	return (number1 + number2);
+    return (number1 + number2);
 }
 ```
 
@@ -2530,10 +2530,10 @@ Like static fields, static methods can be **accessed with the "dot" notation** (
 ```cs
 static void Main()
 {
-	// Call the static method through its class
-	int sum = MyMathClass.Add(3, 5);
+    // Call the static method through its class
+    int sum = MyMathClass.Add(3, 5);
 
-	Console.WriteLine(sum);
+    Console.WriteLine(sum);
 }
 ```
 
@@ -2544,7 +2544,7 @@ In most cases **static methods are used to access static fields** in the class t
 ```cs
 public static int GetDogCount()
 {
-	return dogCount;
+    return dogCount;
 }
 ```
 
@@ -2560,36 +2560,36 @@ Non-static methods can access non-static fields and other non-static methods of 
 ```cs
 public class Dog
 {
-	// Static variable
-	static int dogCount;
+    // Static variable
+    static int dogCount;
 
-	// Instance variables
-	private string name;
-	private int age;
+    // Instance variables
+    private string name;
+    private int age;
 
-	public Dog(string name, int age)
-	{
-		this.name = name;
-		this.age = age;
+    public Dog(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
 
-		dogCount += 1;
-	}
+        dogCount += 1;
+    }
 
-	public void Bark()
-	{
-		Console.Write("wow-wow");
-	}
+    public void Bark()
+    {
+        Console.Write("wow-wow");
+    }
 
-	// Non-static (instance) method
-	public void PrintInfo()
-	{
-		// Accessing instance variables – name and age
-		Console.Write("Dog's name: " + this.name + "; age: "
-			+ this.age + "; often says: ");
+    // Non-static (instance) method
+    public void PrintInfo()
+    {
+        // Accessing instance variables – name and age
+        Console.Write("Dog's name: " + this.name + "; age: "
+            + this.age + "; often says: ");
 
-		// Calling instance method
-		this.Bark();
-	}
+        // Calling instance method
+        this.Bark();
+    }
 }
 ```
 
@@ -2598,8 +2598,8 @@ Of course, if we create an object of the `Dog` class and call its `PrintInfo()` 
 ```cs
 static void Main()
 {
-	Dog dog = new Dog("Doggy", 1);
-	dog.PrintInfo();
+    Dog dog = new Dog("Doggy", 1);
+    dog.PrintInfo();
 }
 ```
 
@@ -2621,25 +2621,25 @@ For example:
 ```cs
 public class Circle
 {
-	public static double PI = 3.141592653589793;
+    public static double PI = 3.141592653589793;
 
-	private double radius;
+    private double radius;
 
-	public Circle(double radius)
-	{
-		this.radius = radius;
-	}
+    public Circle(double radius)
+    {
+        this.radius = radius;
+    }
 
-	public static double CalculateSurface(double radius)
-	{
-		return (PI * radius * radius);
-	}
+    public static double CalculateSurface(double radius)
+    {
+        return (PI * radius * radius);
+    }
 
-	public void PrintSurface()
-	{
-		double surface = CalculateSurface(radius);
-		Console.WriteLine("Circle's surface is: " + surface);
-	}
+    public void PrintSurface()
+    {
+        double surface = CalculateSurface(radius);
+        Console.WriteLine("Circle's surface is: " + surface);
+    }
 }
 ```
 
@@ -2648,8 +2648,8 @@ In the example, we provide access to the value of the static field `PI` of the n
 ```cs
 static void Main()
 {
-	Circle circle = new Circle(3);
-	circle.PrintSurface();
+    Circle circle = new Circle(3);
+    circle.PrintSurface();
 }
 ```
 
@@ -2671,25 +2671,25 @@ For example, let’s consider our class for mathematical calculations. We have d
 ```cs
 public class MyMathClass
 {
-	public const double PI = 3.141592653589793;
+    public const double PI = 3.141592653589793;
 
-	// The method applies the formula: P = 2 * PI * r
-	static double CalculateCirclePerimeter(double r)
-	{
-		// Accessing the static variable PI from static method
-		return (2 * PI * r);
-	}
+    // The method applies the formula: P = 2 * PI * r
+    static double CalculateCirclePerimeter(double r)
+    {
+        // Accessing the static variable PI from static method
+        return (2 * PI * r);
+    }
 
-	static void Main()
-	{
-		double radius = 5;
+    static void Main()
+    {
+        double radius = 5;
 
-		// Accessing static method from other static method
-		double circlePerimeter = CalculateCirclePerimeter(radius);
+        // Accessing static method from other static method
+        double circlePerimeter = CalculateCirclePerimeter(radius);
 
-		Console.WriteLine("Circle with radius " + radius +
-			" has perimeter: " + circlePerimeter);
-	}
+        Console.WriteLine("Circle with radius " + radius +
+            " has perimeter: " + circlePerimeter);
+    }
 }
 ```
 
@@ -2712,8 +2712,8 @@ If in our class `Dog` we try to declare a static method `PrintName()`, which ret
 ```cs
 public static void PrintName()
 {
-	// Trying to access non-static variable from static method
-	Console.WriteLine(name); // INVALID
+    // Trying to access non-static variable from static method
+    Console.WriteLine(name); // INVALID
 }
 ```
 
@@ -2728,8 +2728,8 @@ If we try to access the field in the method, via the **keyword** `this`:
 ```cs
 public void string PrintName()
 {
-	// Trying to access non-static variable from static method
-	Console.WriteLine(this.name); // INVALID
+    // Trying to access non-static variable from static method
+    Console.WriteLine(this.name); // INVALID
 }
 ```
 
@@ -2746,7 +2746,7 @@ Now we will try to call non-static method from static method. Let declare in our
 ```cs
 public void PrintAge()
 {
-	Console.WriteLine(this.age);
+    Console.WriteLine(this.age);
 }
 ```
 
@@ -2755,8 +2755,8 @@ Accordingly, let’s try from the method `Main()`, which we declare in the class
 ```cs
 static void Main()
 {
-	// Attempt to invoke non-static method from a static context
-	PrintAge(); // INVALID
+    // Attempt to invoke non-static method from a static context
+    PrintAge(); // INVALID
 }
 ```
 
@@ -2771,8 +2771,8 @@ The result is similar, if we try to cheat the compiler, trying to call the metho
 ```cs
 static void Main()
 {
-	// Attempt to invoke non-static method from a static context
-	this.PrintAge(); // INVALID
+    // Attempt to invoke non-static method from a static context
+    this.PrintAge(); // INVALID
 }
 ```
 
@@ -2792,11 +2792,11 @@ The problem with the access to non-static elements of the class of static method
 ```cs
 static void Main()
 {
-	Dog myDog = new Dog("Lassie", 2);
-	string myDogName = myDog.name;
-	Console.WriteLine("My dog \"" + myDogName +"\" has age of ");
-	myDog.PrintAge();
-	Console.WriteLine("years");
+    Dog myDog = new Dog("Lassie", 2);
+    string myDogName = myDog.name;
+    Console.WriteLine("My dog \"" + myDogName +"\" has age of ");
+    myDog.PrintAge();
+    Console.WriteLine("years");
 }
 ```
 
@@ -2817,7 +2817,7 @@ The static properties are declared as follows:
 ```cs
 [<modifiers>] static <property_type> <property_name>
 {
-	// ... Property's accessors methods go here
+    // ... Property's accessors methods go here
 }
 ```
 
@@ -2829,24 +2829,24 @@ Let’s consider an example. We have a class that describes a system. We can cre
 ```cs
 public class SystemInfo
 {
-	private static double version = 0.1;
-	private static string vendor = "Microsoft";
+    private static double version = 0.1;
+    private static string vendor = "Microsoft";
 
-	// The "version" static property
-	public static double Version
-	{
-		get { return version; }
-		set { version = value; }
-	}
+    // The "version" static property
+    public static double Version
+    {
+        get { return version; }
+        set { version = value; }
+    }
 
-	// The "vendor" static property
-	public static string Vendor
-	{
-		get { return vendor; }
-		set { vendor = value; }
-	}
+    // The "vendor" static property
+    public static string Vendor
+    {
+        get { return vendor; }
+        set { vendor = value; }
+    }
 
-	// ... More (non)static code here ...
+    // ... More (non)static code here ...
 }
 ```
 
@@ -2868,9 +2868,9 @@ To be sure, let’s try to access the property `Version` through a variable of t
 ```cs
 static void Main()
 {
-	SystemInfo sysInfoInstance = new SystemInfo();
-	Console.WriteLine("System version: " +
-		sysInfoInstance.Version);
+    SystemInfo sysInfoInstance = new SystemInfo();
+    Console.WriteLine("System version: " +
+        sysInfoInstance.Version);
 }
 ```
 
@@ -2885,12 +2885,12 @@ Accordingly, if we try to access the static properties through class name, the c
 ```cs
 static void Main()
 {
-	// Invocation of static property setter
-	SystemInfo.Vendor = "Microsoft Corporation";
+    // Invocation of static property setter
+    SystemInfo.Vendor = "Microsoft Corporation";
 
-	// Invocation of static property getters
-	Console.WriteLine("System version: " + SystemInfo.Version);
-	Console.WriteLine("System vendor: " + SystemInfo.Vendor);
+    // Invocation of static property getters
+    Console.WriteLine("System version: " + SystemInfo.Version);
+    Console.WriteLine("System vendor: " + SystemInfo.Vendor);
 }
 ```
 
@@ -2913,7 +2913,7 @@ For complete understanding we have to explain that we can also declare classes a
 ```cs
 [<modifiers>] static class <class_name>
 {
-	// ... Class body goes here
+    // ... Class body goes here
 }
 ```
 
@@ -2951,41 +2951,41 @@ This is how the implementation might look like:
 ```cs
 static class SqrtPrecalculated
 {
-	public const int MaxValue = 1000;
+    public const int MaxValue = 1000;
 
-	// Static field
-	private static int[] sqrtValues;
+    // Static field
+    private static int[] sqrtValues;
 
-	// Static constructor
-	static SqrtPrecalculated()
-	{
-		sqrtValues = new int[MaxValue + 1];
-		for (int i = 0; i < sqrtValues.Length; i++)
-		{
-			sqrtValues[i] = (int)Math.Sqrt(i);
-		}
-	}
+    // Static constructor
+    static SqrtPrecalculated()
+    {
+        sqrtValues = new int[MaxValue + 1];
+        for (int i = 0; i < sqrtValues.Length; i++)
+        {
+            sqrtValues[i] = (int)Math.Sqrt(i);
+        }
+    }
 
-	// Static method
-	public static int GetSqrt(int value)
-	{
-		if ((value < 0) || (value > MaxValue))
-		{
-			throw new ArgumentOutOfRangeException(String.Format(
-				"The argument should be in range [0...{0}].",
-				MaxValue));
-		}
-		return sqrtValues[value];
-	}
+    // Static method
+    public static int GetSqrt(int value)
+    {
+        if ((value < 0) || (value > MaxValue))
+        {
+            throw new ArgumentOutOfRangeException(String.Format(
+                "The argument should be in range [0...{0}].",
+                MaxValue));
+        }
+        return sqrtValues[value];
+    }
 }
 
 class SqrtTest
 {
-	static void Main()
-	{
-		Console.WriteLine(SqrtPrecalculated.GetSqrt(254));
-		// Result: 15
-	}
+    static void Main()
+    {
+        Console.WriteLine(SqrtPrecalculated.GetSqrt(254));
+        // Result: 15
+    }
 }
 ```
 
@@ -3005,26 +3005,26 @@ Let’s define a **structure** to hold a point in the 2D space, similar to the c
 ```cs
 struct Point2D
 {
-	private double x;
-	private double y;
+    private double x;
+    private double y;
 
-	public Point2D(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-	}
+    public Point2D(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
 
-	public double X
-	{
-		get { return this.x; }
-		set { this.x = value; }
-	}
+    public double X
+    {
+        get { return this.x; }
+        set { this.x = value; }
+    }
 
-	public double Y
-	{
-		get { return this.y; }
-		set { this.y = value; }
-	}
+    public double Y
+    {
+        get { return this.y; }
+        set { this.y = value; }
+    }
 }
 ```
 
@@ -3037,24 +3037,24 @@ Unlike classes, the **structures are value types.** To illustrate this we will p
 ```cs
 class PlayWithPoints
 {
-	static void PrintPoint(Point2D p)
-	{
-		Console.WriteLine("({0},{1})", p.X, p.Y);
-	}
+    static void PrintPoint(Point2D p)
+    {
+        Console.WriteLine("({0},{1})", p.X, p.Y);
+    }
 
-	static void TryToChangePoint(Point2D p)
-	{
-		p.X++;
-		p.Y++;
-	}
+    static void TryToChangePoint(Point2D p)
+    {
+        p.X++;
+        p.Y++;
+    }
 
-	static void Main()
-	{
-		Point2D point = new Point2D(3, -2);
-		PrintPoint(point);
-		TryToChangePoint(point);
-		PrintPoint(point);
-	}
+    static void Main()
+    {
+        Point2D point = new Point2D(3, -2);
+        PrintPoint(point);
+        TryToChangePoint(point);
+        PrintPoint(point);
+    }
 }
 ```
 
@@ -3111,7 +3111,7 @@ Formally speaking, the enumerations can be declared using the reserved word `enu
 ```cs
 [<modifiers>] enum <enum_name>
 {
-	constant1 [, constant2 [, [, ... [, constantN]]
+    constant1 [, constant2 [, [, ... [, constantN]]
 }
 ```
 
@@ -3125,7 +3125,7 @@ Consider an example. Let’s define an enumeration for the days of the week (we 
 ```cs
 enum Days
 {
-	Mon, Tue, Wed, Thu, Fri, Sat, Sun
+    Mon, Tue, Wed, Thu, Fri, Sat, Sun
 }
 ```
 
@@ -3191,7 +3191,7 @@ As we can guess it is possible to change the **numerical value of constants in a
 ```cs
 [<modifiers>] enum <enum_name>
 {
-	constant1[=value1] [, constant2[=value2] [, ... ]]
+    constant1[=value1] [, constant2[=value2] [, ... ]]
 }
 ```
 
@@ -3205,9 +3205,9 @@ To get a clearer idea of the given definition consider the following example: le
 ```cs
 public class Coffee
 {
-	public Coffee()
-	{
-	}
+    public Coffee()
+    {
+    }
 }
 ```
 
@@ -3219,7 +3219,7 @@ In this facility customers can order different amounts of coffee, as the coffee 
 ```cs
 public enum CoffeeSize
 {
-	Small=100, Normal=150, Double=300
+    Small=100, Normal=150, Double=300
 }
 ```
 
@@ -3231,17 +3231,17 @@ Now we can add a field and property to the class `Coffee`, which reflect the typ
 ```cs
 public class Coffee
 {
-	public CoffeeSize size;
+    public CoffeeSize size;
 
-	public Coffee(CoffeeSize size)
-	{
-		this.size = size;
-	}
+    public Coffee(CoffeeSize size)
+    {
+        this.size = size;
+    }
 
-	public CoffeeSize Size
-	{
-		get { return size; }
-	}
+    public CoffeeSize Size
+    {
+        get { return size; }
+    }
 }
 ```
 
@@ -3250,13 +3250,13 @@ Let’s try to print the values of the coffee quantity for a normal and for one 
 ```cs
 static void Main()
 {
-	Coffee normalCoffee = new Coffee(CoffeeSize.Normal);
-	Coffee doubleCoffee = new Coffee(CoffeeSize.Double);
+    Coffee normalCoffee = new Coffee(CoffeeSize.Normal);
+    Coffee doubleCoffee = new Coffee(CoffeeSize.Double);
 
-	Console.WriteLine("The {0} coffee is {1} ml.",
-		normalCoffee.Size, (int)normalCoffee.Size);
-	Console.WriteLine("The {0} coffee is {1} ml.",
-		doubleCoffee.Size, (int)doubleCoffee.Size);
+    Console.WriteLine("The {0} coffee is {1} ml.",
+        normalCoffee.Size, (int)normalCoffee.Size);
+    Console.WriteLine("The {0} coffee is {1} ml.",
+        doubleCoffee.Size, (int)doubleCoffee.Size);
 }
 ```
 
@@ -3281,27 +3281,27 @@ To make this clearer, consider the following example: create a class **"coffee p
 ```cs
 public class PriceCalculator
 {
-	public const int SmallCoffeeQuantity = 100;
-	public const int NormalCoffeeQuantity = 150;
-	public const int DoubleCoffeeQuantity = 300;
+    public const int SmallCoffeeQuantity = 100;
+    public const int NormalCoffeeQuantity = 150;
+    public const int DoubleCoffeeQuantity = 300;
 
-	public CashMachine() { }
+    public CashMachine() { }
 
-	public double CalcPrice(int quantity)
-	{
-		switch (quantity)
-		{
-			case SmallCoffeeQuantity:
-				return 0.20;
-			case NormalCoffeeQuantity:
-				return 0.30;
-			case DoubleCoffeeQuantity:
-				return 0.60;
-			default:
-				throw new InvalidOperationException(
-					"Unsupported coffee quantity: " + quantity);
-		}
-	}
+    public double CalcPrice(int quantity)
+    {
+        switch (quantity)
+        {
+            case SmallCoffeeQuantity:
+                return 0.20;
+            case NormalCoffeeQuantity:
+                return 0.30;
+            case DoubleCoffeeQuantity:
+                return 0.60;
+            default:
+                throw new InvalidOperationException(
+                    "Unsupported coffee quantity: " + quantity);
+        }
+    }
 }
 ```
 
@@ -3319,18 +3319,18 @@ Let’s rework the method, which calculates the price for a cup of coffee, depen
 ```cs
 public double CalcPrice(CoffeeSize coffeeSize)
 {
-	switch (coffeeSize)
-	{
-		case CoffeeSize.Small:
-			return 0.20;
-		case CoffeeSize.Normal:
-			return 0.40;
-		case CoffeeSize.Double:
-			return 0.60;
-		default:
-			throw new InvalidOperationException(
-				"Unsupported coffee quantity: " + (int)coffeeSize);
-	}
+    switch (coffeeSize)
+    {
+        case CoffeeSize.Small:
+            return 0.20;
+        case CoffeeSize.Normal:
+            return 0.40;
+        case CoffeeSize.Double:
+            return 0.60;
+        default:
+            throw new InvalidOperationException(
+                "Unsupported coffee quantity: " + (int)coffeeSize);
+    }
 }
 ```
 
@@ -3347,7 +3347,7 @@ Before we finish with the enumeration section we should mention that the enumera
 ```cs
 public enum CoffeeSize
 {
-	Small=100, Normal=150, Double=300, Overwhelming=600
+    Small=100, Normal=150, Double=300, Overwhelming=600
 }
 ```
 
@@ -3394,38 +3394,38 @@ Consider the following example:
 ```cs
 public class OuterClass
 {
-	private string name;
+    private string name;
 
-	private OuterClass(string name)
-	{
-		this.name = name;
-	}
+    private OuterClass(string name)
+    {
+        this.name = name;
+    }
 
-	private class NestedClass
-	{
-		private string name;
-		private OuterClass parent;
+    private class NestedClass
+    {
+        private string name;
+        private OuterClass parent;
 
-		public NestedClass(OuterClass parent, string name)
-		{
-			this.parent = parent;
-			this.name = name;
-		}
+        public NestedClass(OuterClass parent, string name)
+        {
+            this.parent = parent;
+            this.name = name;
+        }
 
-		public void PrintNames()
-		{
-			Console.WriteLine("Nested name: " + this.name);
-			Console.WriteLine("Outer name: " + this.parent.name);
-		}
-	}
+        public void PrintNames()
+        {
+            Console.WriteLine("Nested name: " + this.name);
+            Console.WriteLine("Outer name: " + this.parent.name);
+        }
+    }
 
-	static void Main()
-	{
-		OuterClass outerClass = new OuterClass("outer");
-		NestedClass nestedClass = new
-			OuterClass.NestedClass(outerClass, "nested");
-		nestedClass.PrintNames();
-	}
+    static void Main()
+    {
+        OuterClass outerClass = new OuterClass("outer");
+        NestedClass nestedClass = new
+            OuterClass.NestedClass(outerClass, "nested");
+        nestedClass.PrintNames();
+    }
 }
 ```
 
@@ -3453,22 +3453,22 @@ Therefore, if you declare the class for a car: `Car` would be appropriate to cre
 ```cs
 class Car
 {
-	Door FrontRightDoor;
-	Door FrontLeftDoor;
-	Door RearRightDoor;
-	Door RearLeftDoor;
-	Engine engine;
+    Door FrontRightDoor;
+    Door FrontLeftDoor;
+    Door RearRightDoor;
+    Door RearLeftDoor;
+    Engine engine;
 
-	public Car()
-	{
-		engine = new Engine();
-		engine.horsePower = 2000;
-	}
+    public Car()
+    {
+        engine = new Engine();
+        engine.horsePower = 2000;
+    }
 
-	public class Engine
-	{
-		public int horsePower;
-	}
+    public class Engine
+    {
+        public int horsePower;
+    }
 }
 ```
 
@@ -3484,24 +3484,24 @@ For example, the enumeration of type `CoffeeSize`, we have created in the previo
 ```cs
 class Coffee
 {
-	// Enumeration declared inside a class
-	public static enum CoffeeSize
-	{
- 		Small = 100, Normal = 150, Double = 300
-	}
+    // Enumeration declared inside a class
+    public static enum CoffeeSize
+    {
+         Small = 100, Normal = 150, Double = 300
+    }
 
-	// Instance variable of enumerated type
-	private CoffeeSize size;
+    // Instance variable of enumerated type
+    private CoffeeSize size;
 
-	public Coffee(CoffeeSize size)
-	{
-		this.size = size;
-	}
+    public Coffee(CoffeeSize size)
+    {
+        this.size = size;
+    }
 
-	public CoffeeSize Size
-	{
-		get { return size; }
-	}
+    public CoffeeSize Size
+    {
+        get { return size; }
+    }
 }
 ```
 
@@ -3510,18 +3510,18 @@ Respectively, the method for calculation of the price of coffee will be slightly
 ```cs
 public double CalcPrice(Coffee.CoffeeSize coffeeSize)
 {
-	switch (coffeeSize)
-	{
-		case Coffee.CoffeeSize.Small:
-			return 0.20;
-		case Coffee.CoffeeSize.Normal:
-			return 0.40;
-		case Coffee.CoffeeSize.Double:
-			return 0.60;
-		default:
-			throw new InvalidOperationException(
-				"Unsupported coffee quantity: " + ((int)coffeeSize));
-	}
+    switch (coffeeSize)
+    {
+        case Coffee.CoffeeSize.Small:
+            return 0.20;
+        case Coffee.CoffeeSize.Normal:
+            return 0.40;
+        case Coffee.CoffeeSize.Double:
+            return 0.60;
+        default:
+            throw new InvalidOperationException(
+                "Unsupported coffee quantity: " + ((int)coffeeSize));
+    }
 }
 ```
 
@@ -3565,48 +3565,48 @@ For instance, if we want to make a shelter for dogs, here is how our class would
 ```cs
 public class AnimalShelter
 {
-	private const int DefaultPlacesCount = 20;
+    private const int DefaultPlacesCount = 20;
 
-	private Dog[] animalList;
-	private int usedPlaces;
+    private Dog[] animalList;
+    private int usedPlaces;
 
-	public AnimalShelter() : this(DefaultPlacesCount)
-	{
-	}
+    public AnimalShelter() : this(DefaultPlacesCount)
+    {
+    }
 
-	public AnimalShelter(int placesCount)
-	{
-		this.animalList = new Dog[placesCount];
-		this.usedPlaces = 0;
-	}
+    public AnimalShelter(int placesCount)
+    {
+        this.animalList = new Dog[placesCount];
+        this.usedPlaces = 0;
+    }
 
-	public void Shelter(Dog newAnimal)
-	{
-		if (this.usedPlaces >= this.animalList.Length)
-		{
-			throw new InvalidOperationException("Shelter is full.");
-		}
-		this.animalList[this.usedPlaces] = newAnimal;
-		this.usedPlaces++;
-	}
+    public void Shelter(Dog newAnimal)
+    {
+        if (this.usedPlaces >= this.animalList.Length)
+        {
+            throw new InvalidOperationException("Shelter is full.");
+        }
+        this.animalList[this.usedPlaces] = newAnimal;
+        this.usedPlaces++;
+    }
 
-	public Dog Release(int index)
-	{
-		if (index < 0 || index >= this.usedPlaces)
-		{
-			throw new ArgumentOutOfRangeException(
-				"Invalid cell index: " + index);
-		}
-		Dog releasedAnimal = this.animalList[index];
-		for (int i = index; i < this.usedPlaces - 1; i++)
-		{
-			this.animalList[i] = this.animalList[i + 1];
-		}
-		this.animalList[this.usedPlaces - 1] = null;
-		this.usedPlaces--;
+    public Dog Release(int index)
+    {
+        if (index < 0 || index >= this.usedPlaces)
+        {
+            throw new ArgumentOutOfRangeException(
+                "Invalid cell index: " + index);
+        }
+        Dog releasedAnimal = this.animalList[index];
+        for (int i = index; i < this.usedPlaces - 1; i++)
+        {
+            this.animalList[i] = this.animalList[i + 1];
+        }
+        this.animalList[this.usedPlaces - 1] = null;
+        this.usedPlaces--;
 
-		return releasedAnimal;
-	}
+        return releasedAnimal;
+    }
 }
 ```
 
@@ -3640,16 +3640,16 @@ So far we succeed implementing functionality of the shelter – the class `Anima
 ```cs
 static void Main()
 {
-	AnimalShelter dogsShelter = new AnimalShelter(10);
-	Dog dog1 = new Dog();
-	Dog dog2 = new Dog();
-	Dog dog3 = new Dog();
+    AnimalShelter dogsShelter = new AnimalShelter(10);
+    Dog dog1 = new Dog();
+    Dog dog2 = new Dog();
+    Dog dog3 = new Dog();
 
-	dogsShelter.Shelter(dog1);
-	dogsShelter.Shelter(dog2);
-	dogsShelter.Shelter(dog3);
+    dogsShelter.Shelter(dog1);
+    dogsShelter.Shelter(dog2);
+    dogsShelter.Shelter(dog3);
 
-	dogsShelter.Release(1); // Releasing dog2
+    dogsShelter.Release(1); // Releasing dog2
 }
 ```
 
@@ -3658,11 +3658,11 @@ What happens, however, if we attempt to use an `AnimalShelter` class for objects
 ```cs
 static void Main()
 {
-	AnimalShelter dogsShelter = new AnimalShelter(10);
+    AnimalShelter dogsShelter = new AnimalShelter(10);
 
-	Cat cat1 = new Cat();
+    Cat cat1 = new Cat();
 
-	dogsShelter.Shelter(cat1);
+    dogsShelter.Shelter(cat1);
 }
 ```
 
@@ -3717,7 +3717,7 @@ The **declaration of generic class,** which describes a shelter for homeless ani
 ```cs
 class AnimalShelter<T>
 {
-	// Class body here ...
+    // Class body here ...
 }
 ```
 
@@ -3738,7 +3738,7 @@ In case, we should to create a shelter for animals of a mixed type, one that acc
 ```cs
 class AnimalShelter<T, U>
 {
-	// Class body here ...
+    // Class body here ...
 }
 ```
 
@@ -3750,7 +3750,7 @@ Before we present more details about generics, we should look at **how to use ge
 
 ```cs
 <class_name><concrete_type> <variable_name> =
-	new <class_name><concrete_type>();
+    new <class_name><concrete_type>();
 ```
 
 Again, similar to `T` substitution in the declaration of our class, the characters '`<`' and '`>`' surrounding a particular class `concrete_type`, are required.
@@ -3789,8 +3789,8 @@ Accordingly, when we want to initialize a particular field in the constructor of
 ```cs
 public AnimalShelter(int placesNumber)
 {
-	animalList = new T[placesNumber]; // Initialization
-	usedPlaces = 0;
+    animalList = new T[placesNumber]; // Initialization
+    usedPlaces = 0;
 }
 ```
 
@@ -3800,53 +3800,53 @@ As an **unknown type** used in the declaration of a generic class is visible fro
 
 - As a parameter in the list of parameters of the method:
 
-	```cs
-	<return_type> MethodWithParamsOfT(T param)
-	```
+    ```cs
+    <return_type> MethodWithParamsOfT(T param)
+    ```
 
 - As a result of implementation of the method:
 
-	```cs
-	T MethodWithReturnTypeOfT(<params>)
-	```
+    ```cs
+    T MethodWithReturnTypeOfT(<params>)
+    ```
 
 As we already guessed, using our example, we can adapt the methods `Shelter(...)` and `Release(...)`, respectively:
 
 - As a method of unknown type parameter `T`:
 
-	```cs
-	public void Shelter(T newAnimal)
-	{
-		// Method's body goes here ...
-	}
-	```
+    ```cs
+    public void Shelter(T newAnimal)
+    {
+        // Method's body goes here ...
+    }
+    ```
 - And a method, which returns a result of unknown type `T`:
 
-	```cs
-	public T Release(int i)
-	{
-		// Method's body goes here ...
-	}
-	```
+    ```cs
+    public T Release(int i)
+    {
+        // Method's body goes here ...
+    }
+    ```
 
 As we already know when we create an object from our class shelter and replace the unknown type with a specific one (e.g. `Cat`), during the execution of the program, the above methods will have the following form:
 
 - The parameter of method `Shelter` will be of type `Cat`:
 
-	```cs
-	public void Shelter(Cat newAnimal)
-	{
-		// Method's body goes here ...
-	}
-	```
+    ```cs
+    public void Shelter(Cat newAnimal)
+    {
+        // Method's body goes here ...
+    }
+    ```
 - The method `Release` will return a result of type `Cat`:
 
-	```cs
-	public Cat Release(int i)
-	{
-		// Method's body goes here ...
-	}
-	```
+    ```cs
+    public Cat Release(int i)
+    {
+        // Method's body goes here ...
+    }
+    ```
 
 ### Typifying (Generics) – Behind the Scenes
 
@@ -3861,11 +3861,11 @@ Using our example, if we create an object of type `AnimalShelter<T>`, which work
 ```cs
 static void Main()
 {
-	AnimalShelter<Dog> dogsShelter = new AnimalShelter<Dog>(10);
+    AnimalShelter<Dog> dogsShelter = new AnimalShelter<Dog>(10);
 
-	Cat cat1 = new Cat();
+    Cat cat1 = new Cat();
 
-	dogsShelter.Shelter(cat1);
+    dogsShelter.Shelter(cat1);
 }
 ```
 
@@ -3894,9 +3894,9 @@ For example, consider a **method that swaps the values of two variables:**
 ```cs
 public void Swap<K>(ref K a, ref K b)
 {
-	K oldA = a;
-	a = b;
-	b = oldA;
+    K oldA = a;
+    a = b;
+    b = oldA;
 }
 ```
 
@@ -3956,17 +3956,17 @@ As we have already seen in the section "Using Unknown Types in a Declaration of 
 ```cs
 public class AnimalShelter<T>
 {
-	// ... The rest of the code ...
+    // ... The rest of the code ...
 
-	public void Shelter(T newAnimal)
-	{
-		// Method body here
-	}
+    public void Shelter(T newAnimal)
+    {
+        // Method body here
+    }
 
-	public T Release(int i)
-	{
-		// Method body here
-	}
+    public T Release(int i)
+    {
+        // Method body here
+    }
 }
 ```
 
@@ -3978,13 +3978,13 @@ If we try to reuse the variable, which is used to mark the unknown type of the g
 ```cs
 public class CommonOperations<T>
 {
-	// CS0693
-	public void Swap<T>(ref T a, ref T b)
-	{
-		T oldA = a;
-		a = b;
-		b = oldA;
-	}
+    // CS0693
+    public void Swap<T>(ref T a, ref T b)
+    {
+        T oldA = a;
+        a = b;
+        b = oldA;
+    }
 }
 ```
 
@@ -4002,13 +4002,13 @@ So if we want our code to be flexible, and our generic method safely to be calle
 ```cs
 public class CommonOperations<T>
 {
-	// No warning
-	public void Swap<K>(ref K a, ref K b)
-	{
-		K oldA = a;
-		a = b;
-		b = oldA;
-	}
+    // No warning
+    public void Swap<K>(ref K a, ref K b)
+    {
+        K oldA = a;
+        a = b;
+        b = oldA;
+    }
 }
 ```
 
@@ -4024,48 +4024,48 @@ Once we have introduced the basics of generic types, let’s try to **redesign o
 ```cs
 public class AnimalShelter<T>
 {
-	private const int DefaultPlacesCount = 20;
+    private const int DefaultPlacesCount = 20;
 
-	private T[] animalList;
-	private int usedPlaces;
+    private T[] animalList;
+    private int usedPlaces;
 
-	public AnimalShelter() : this(DefaultPlacesCount)
-	{
-	}
+    public AnimalShelter() : this(DefaultPlacesCount)
+    {
+    }
 
-	public AnimalShelter(int placesCount)
-	{
-		this.animalList = new T[placesCount];
-		this.usedPlaces = 0;
-	}
+    public AnimalShelter(int placesCount)
+    {
+        this.animalList = new T[placesCount];
+        this.usedPlaces = 0;
+    }
 
-	public void Shelter(T newAnimal)
-	{
-		if (this.usedPlaces >= this.animalList.Length)
-		{
-			throw new InvalidOperationException("Shelter is full.");
-		}
-		this.animalList[this.usedPlaces] = newAnimal;
-		this.usedPlaces++;
-	}
+    public void Shelter(T newAnimal)
+    {
+        if (this.usedPlaces >= this.animalList.Length)
+        {
+            throw new InvalidOperationException("Shelter is full.");
+        }
+        this.animalList[this.usedPlaces] = newAnimal;
+        this.usedPlaces++;
+    }
 
-	public T Release(int index)
-	{
-		if (index < 0 || index >= this.usedPlaces)
-		{
-			throw new ArgumentOutOfRangeException(
-				"Invalid cell index: " + index);
-		}
-		T releasedAnimal = this.animalList[index];
-		for (int i = index; i <this.usedPlaces - 1; i++)
-		{
-			this.animalList[i] = this.animalList[i + 1];
-		}
-		this.animalList[this.usedPlaces - 1] = null;
-		this.usedPlaces--;
+    public T Release(int index)
+    {
+        if (index < 0 || index >= this.usedPlaces)
+        {
+            throw new ArgumentOutOfRangeException(
+                "Invalid cell index: " + index);
+        }
+        T releasedAnimal = this.animalList[index];
+        for (int i = index; i <this.usedPlaces - 1; i++)
+        {
+            this.animalList[i] = this.animalList[i + 1];
+        }
+        this.animalList[this.usedPlaces - 1] = null;
+        this.usedPlaces--;
 
-		return releasedAnimal;
-	}
+        return releasedAnimal;
+    }
 }
 ```
 
@@ -4089,17 +4089,17 @@ Finally the compilation runs smoothly and the class `AnimalShelter<T>` operates 
 ```cs
 static void Main()
 {
-	AnimalShelter<Dog> shelter = new AnimalShelter<Dog>();
-	shelter.Shelter(new Dog());
-	shelter.Shelter(new Dog());
-	shelter.Shelter(new Dog());
-	Dog d = shelter.Release(1); // Release the second dog
-	Console.WriteLine(d);
-	d = shelter.Release(0); // Release the first dog
-	Console.WriteLine(d);
-	d = shelter.Release(0); // Release the third dog
-	Console.WriteLine(d);
-	d = shelter.Release(0); // Exception: invalid cell index
+    AnimalShelter<Dog> shelter = new AnimalShelter<Dog>();
+    shelter.Shelter(new Dog());
+    shelter.Shelter(new Dog());
+    shelter.Shelter(new Dog());
+    Dog d = shelter.Release(1); // Release the second dog
+    Console.WriteLine(d);
+    d = shelter.Release(0); // Release the first dog
+    Console.WriteLine(d);
+    d = shelter.Release(0); // Release the third dog
+    Console.WriteLine(d);
+    d = shelter.Release(0); // Exception: invalid cell index
 }
 ```
 
@@ -4122,17 +4122,17 @@ Before we finish generics as a topic, let’s give you some guidance on working 
 ```cs
 public class AnimalShelter<Animal>
 {
-	// ... The rest of the code ...
+    // ... The rest of the code ...
 
-	public void Shelter(Animal newAnimal)
-	{
-		// Method body here
-	}
+    public void Shelter(Animal newAnimal)
+    {
+        // Method body here
+    }
 
-	public Animal Release(int i)
-	{
-		// Method body here
-	}
+    public Animal Release(int i)
+    {
+        // Method body here
+    }
 }
 ```
 
