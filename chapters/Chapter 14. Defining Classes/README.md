@@ -3067,83 +3067,168 @@ If we run the above example, the result will be as follows:
 
 Obviously the **structures are value types** and when passed as parameters to a method **their fields are copied** (just like `int` parameters) and when changed inside the method, the change affects only the copy, not the original. This can be illustrated by the next few figures.
 
-First, the point variable is created which holds a value of (3, -2):
+First, the `point` variable is created which holds a value of (3, -2):
+
+![](assets/structure-point-1.png)
  
-Next, the method TryToChangePoint(Point2D p) is called and it copies the value of the variable point into another place in the stack, allocated for the parameter p of the method. When the parameter p is changed in the method’s body, it is modified in the stack and this does not affect the original variable point which was previously passed as argument when calling the method:
+Next, the method `TryToChangePoint(Point2D p)` is called and it copies the value of the variable `point` into **another place in the stack,** allocated for the parameter `p` of the method. When the parameter `p` is changed in the method’s body, it is modified in the stack and this **does not affect the original variable** `point` which was previously passed as argument when calling the method:
+
+![](assets/structure-point-2.png)
   
-If we change Point2D from struct to class, the result will be very different:
+If we change `Point2D` from `struct` to `class`, the result will be very different:
+
+```console
 (3,-2)
 (4,-1)
-This is because the variable point will be now passed by reference (not by value) and its value will be shared between point and p in the heap. The figure below illustrates what happens in the memory at the end of the method TryToChangePoint(Point2D p) when Point2D is a class:
+```
+
+This is because the variable `point` will be now passed by reference (not by value) and its value will be shared between `point` and `p` in the heap. The figure below illustrates what happens in the memory at the end of the method `TryToChangePoint(Point2D p)` when `Point2D` is a class:
+
+![](assets/structure-point-3.png)
  
-Class or Structure?
-How to decide when to use a class and when a structure? We will give you some general guidelines.
-Use structures to hold simple data structures consisting of few fields that come together. Examples are coordinates, sizes, locations, colors, etc. Structures are not supposed to have functionality inside (no methods except simple ones like ToString() and comparators). Use structures for small data structures consisting of set of fields that should be passed by value.
-Use classes for more complex scenarios where you combine data and programming logic into a class. If you have logic, use a class. If you have more than few simple fields, use a class. If you need to pass variables by reference, use a class. If you need to assign a null value, prefer using a class. If you prefer working with a reference type, use a class.
-Classes are used more often than structures. Use structs as exception, and only if you know well what are you doing!
-There are few other differences between class and structure in addition that classes are reference types and structures are values types, but we will not going to discuss them. For more details refer to the following article in MSDN: http://msdn.microsoft.com/en-us/library/ms173109.aspx.
+### Class or Structure?
+
+How to decide **when to use a class and when a structure?** We will give you some general guidelines.
+
+**Use structures** to hold simple data structures consisting of few fields that come together. Examples are coordinates, sizes, locations, colors, etc. Structures are not supposed to have functionality inside (no methods except simple ones like `ToString()` and comparators). Use structures for **small data structures consisting of set of fields** that should be passed by value.
+
+**Use classes** for more complex scenarios where you combine data and programming logic into a class. If you have logic, use a class. If you have more than few simple fields, use a class. If you need to pass variables by reference, use a class. If you need to assign a `null` value, prefer using a class. If you prefer working with a reference type, use a class.
+
+Classes are used more often than structures. Use structs as exception, and **only if you know well what are you doing!**
+
+There are few other **differences between class and structure** in addition that classes are reference types and structures are values types, but we will not going to discuss them. For more details refer to the following article in MSDN: http://msdn.microsoft.com/en-us/library/ms173109.aspx.
 
 ## Enumerations
 
-Earlier in this chapter we discussed what constants are, how to declare and use them. In this connection we will now consider a part of the C# language, in which a variety of logically connected constants can be linked by means of language. These language constructs are the so-called enumerated types.
-Declaration of Enumerations
-Enumeration is a structure, which resembles a class but differs from it in that in the class body we can declare only constants. Enumerations can take values only from the constants listed in the type. An enumerated variable can have as a value one of the listed in the type constants but cannot have value null.
-Formally speaking, the enumerations can be declared using the reserved word enum instead of class:
+Earlier in this chapter we discussed what constants are, how to declare and use them. In this connection we will now consider a part of the C# language, in which a variety of logically connected constants can be linked by means of language. These language constructs are the so-called **enumerated types.**
+
+### Declaration of Enumerations
+
+**Enumeration** is a structure, which resembles a class but differs from it in that in the class body we can **declare only constants.** Enumerations can take values only from the constants listed in the type. An enumerated variable can have as a value one of the listed in the type constants but cannot have value `null`.
+
+Formally speaking, the enumerations can be declared using the reserved word `enum` instead of `class`:
+
+```cs
 [<modifiers>] enum <enum_name>
 {
 	constant1 [, constant2 [, [, ... [, constantN]]
 }
-Under <modifiers> we understand the access modifiers public, internal and private. The identifier <enum_name> follows the rules for class names in C#. Constants separated by commas are declared in the enumeration block.
-Consider an example. Let’s define an enumeration for the days of the week (we will call it Days). As we can guess, the constants that will appear in this particular enumeration are the names of the week days:
-Days.cs
+```
+
+Under `<modifiers>` we understand the access modifiers `public`, `internal` and `private`. The identifier `<enum_name>` follows the rules for class names in C#. Constants separated by commas are declared in the enumeration block.
+
+Consider an example. Let’s define an enumeration for the days of the week (we will call it `Days`). As we can guess, the constants that will appear in this particular enumeration are the **names of the week days:**
+
+| Days.cs |
+|---|
+
+```cs
 enum Days
 {
 	Mon, Tue, Wed, Thu, Fri, Sat, Sun
 }
+```
+
 Naming of constants in one particular enumeration follows the same principles of naming of which we already explained in the "Naming Constants" section.
-Note that each of the constants listed in the enumeration is of type this enumeration, i.e. in our case Mon belongs to type Days, as well as each of the other constants.
+
+Note that each of the constants listed in the enumeration is of type this enumeration, i.e. in our case `Mon` belongs to type `Days`, as well as each of the other constants.
+
 In other words, if we execute the following line:
+
+```cs
 Console.WriteLine(Days.Mon is Days);
+```
+
 This will be printed as a result:
+
+```console
 True
+```
+
 Let’s repeat again:
- 	The enumerations are a set of constants of type – this listed type.
-Nature of Enumerations
-Each constant, which is declared in one enumeration, is being associated with a certain integer. By default, for this hidden integer representation of constants in one enumeration int is being used.
-To show "the integer nature" of constants in the listed types let’s try to figure out what’s the numerical representation of the constant, which corresponds to "Monday" from the example of the previous subsection:
+
+| :warning: | The enumerations are a set of constants of type – this listed type. |
+|:--:|:--|
+
+### Nature of Enumerations
+
+Each constant, which is declared in one enumeration, is being associated with a certain integer. By default, for this hidden integer representation of constants in one enumeration `int` is being used.
+
+To show **"the integer nature" of constants** in the listed types let’s try to figure out what’s the numerical representation of the constant, which corresponds to "Monday" from the example of the previous subsection:
+
+```cs
 int mondayValue = (int)Days.Mon;
 Console.WriteLine(mondayValue);
+```
+
 After we execute it, the result will be:
+
+```console
 0
-The values, associated with constants of a particular enumerated type by default are the indices in the list of constants of this type, i.e. numbers from 0 to the number of constants in the type less 1. In this way, if we consider the example with the enumeration type for the week days, used in the previous subsection, the constant Mon is associated with the numerical value 0, the constant Tue with the integer value 1, Wed – with 2, etc.
- 	Each constant in one enumeration is actually a textual representation of an integer. By default this number is the constant’s index in the list of constants of a particular enumeration type.
+```
+
+The values, associated with constants of a particular enumerated type by default are the indices in the list of constants of this type, i.e. numbers from 0 to the number of constants in the type less 1. In this way, if we consider the example with the enumeration type for the week days, used in the previous subsection, the constant `Mon` is associated with the numerical value 0, the constant `Tue` with the integer value 1, `Wed` – with 2, etc.
+
+| :warning: | Each constant in one enumeration is actually a textual representation of an integer. By default this number is the constant’s index in the list of constants of a particular enumeration type. |
+|:--:|:--|
+
 Despite the integer nature of constants in a particular enumeration, when we try to print a particular constant, its textual representation at the time of the constant’s declaration will be printed:
+
+```cs
 Console.WriteLine(Days.Mon);
+```
+
 After we execute the code above we will get the following result:
+
+```console
 Mon
-Hidden Numerical Value of Constants in Enumeration
-As we can guess it is possible to change the numerical value of constants in an enumeration. This is done when we assign the values we prefer to each of the constants at the time of declaration.
+```
+
+### Hidden Numerical Value of Constants in Enumeration
+
+As we can guess it is possible to change the **numerical value of constants in an enumeration.** This is done when we assign the values we prefer to each of the constants at the time of declaration.
+
+```cs
 [<modifiers>] enum <enum_name>
 {
 	constant1[=value1] [, constant2[=value2] [, ... ]]
 }
-Accordingly value1, value2, etc. must be integers.
-To get a clearer idea of the given definition consider the following example: let’s have a class Coffee, which represents a cup of coffee that customers order in a coffee shop:
-Coffee.cs
+```
+
+Accordingly `value1`, `value2`, etc. must be integers.
+
+To get a clearer idea of the given definition consider the following example: let’s have a class `Coffee`, which represents a cup of coffee that customers order in a coffee shop:
+
+| Coffee.cs |
+|---|
+
+```cs
 public class Coffee
 {
 	public Coffee()
 	{
 	}
 }
-In this facility customers can order different amounts of coffee, as the coffee machine has predefined values "small" – 100 ml, "normal" – 150 ml and "double" – 300 ml. Therefore, we can declare one enumeration CoffeeSize, which has respectively three constants – Small, Normal and Double, the correspondent qualities of which will be assigned:
-CoffeeSize.cs
+```
+
+In this facility customers can order different amounts of coffee, as the coffee machine has predefined values "small" – 100 ml, "normal" – 150 ml and "double" – 300 ml. Therefore, we can declare one enumeration `CoffeeSize`, which has respectively three constants – `Small`, `Normal` and `Double`, the correspondent qualities of which will be assigned:
+
+| CoffeeSize.cs |
+|---|
+
+```cs
 public enum CoffeeSize
 {
 	Small=100, Normal=150, Double=300
 }
-Now we can add a field and property to the class Coffee, which reflect the type of coffee the customer has ordered:
-Coffee.cs
+```
+
+Now we can add a field and property to the class `Coffee`, which reflect the type of coffee the customer has ordered:
+
+| Coffee.cs |
+|---|
+
+```cs
 public class Coffee
 {
 	public CoffeeSize size;
@@ -3158,7 +3243,11 @@ public class Coffee
 		get { return size; }
 	}
 }
+```
+
 Let’s try to print the values of the coffee quantity for a normal and for one double coffee:
+
+```cs
 static void Main()
 {
 	Coffee normalCoffee = new Coffee(CoffeeSize.Normal);
@@ -3169,14 +3258,27 @@ static void Main()
 	Console.WriteLine("The {0} coffee is {1} ml.",
 		doubleCoffee.Size, (int)doubleCoffee.Size);
 }
+```
+
 As we compile and execute this method, the following will be printed:
+
+```console
 The Normal coffee is 150 ml.
 The Double coffee is 300 ml.
-Use of Enumerations
-The main purpose of the enumerations is to replace the numeric values, which we would use, if there were no enumeration types. In this way the code becomes simpler and easier to read.
+```
+
+### Use of Enumerations
+
+The main purpose of the enumerations is to **replace the numeric values,** which we would use, if there were no enumeration types. In this way the code becomes simpler and easier to read.
+
 Another very important application of the enumerations is the pressure exercised by the compiler to use constants from the enumerations and not just numbers. Thus we minimize future errors in the code. For example, if we use an int variable instead of a variable from enumerations and a set of constants for the valid values, nothing prevents us from assigning the variable any value, e.g. -6723.
-To make this clearer, consider the following example: create a class "coffee price calculator", which is calculating the price of each type of coffee, offered in the coffee shop:
-PriceCalculator.cs
+
+To make this clearer, consider the following example: create a class **"coffee price calculator",** which is calculating the price of each type of coffee, offered in the coffee shop:
+
+| PriceCalculator.cs |
+|---|
+
+```cs
 public class PriceCalculator
 {
 	public const int SmallCoffeeQuantity = 100;
@@ -3201,11 +3303,20 @@ public class PriceCalculator
 		}
 	}
 }
-We have three constants for the capacity of the coffee cups in the coffee shop, respectively 100, 150 and 300 ml. Furthermore, we expect that users of our class will diligently use the defined constants, instead of numbers – SmallCoffeeQuantity, NormalCoffeeQuantity and DoubleCoffeeQuantity. The method CalcPrice(int) returns the respective price, calculating it by the submitted amount.
+```
+
+We have three constants for the capacity of the coffee cups in the coffee shop, respectively 100, 150 and 300 ml. Furthermore, **we expect** that users of our class will diligently use the defined constants, instead of numbers – `SmallCoffeeQuantity`, `NormalCoffeeQuantity` and `DoubleCoffeeQuantity`. The method `CalcPrice(int)` returns the respective price, calculating it by the submitted amount.
+
 The problem lies in the fact that someone may decide not to use the constants defined by us and may submit an invalid number as a parameter of our method, for example: -1 or 101. In this case, if the method does not check for invalid quantity, it will likely return a wrong price, which is incorrect behavior.
-To avoid this problem we will use one feature of these enumerations, namely constants in the enumeration type can be used in switch-case structures. They can be submitted as values of the operator switch and accordingly – as operands of the operator case.
- 	The constants of enumerations can be used in switch-case structures.
-Let’s rework the method, which calculates the price for a cup of coffee, depending on the capacity of the cup. This time we will use the enumeration type CoffeeSize, which we declared in previous examples:
+
+To avoid this problem we will use one feature of these enumerations, namely constants in the enumeration type can be used in `switch-case` structures. They can be submitted as values of the operator `switch` and accordingly – as operands of the operator `case`.
+
+| :warning: | The constants of enumerations can be used in switch-case structures. |
+|:--:|:--|
+
+Let’s rework the method, which calculates the price for a cup of coffee, depending on the capacity of the cup. This time we will use the enumeration type `CoffeeSize`, which we declared in previous examples:
+
+```cs
 public double CalcPrice(CoffeeSize coffeeSize)
 {
 	switch (coffeeSize)
@@ -3221,37 +3332,66 @@ public double CalcPrice(CoffeeSize coffeeSize)
 				"Unsupported coffee quantity: " + (int)coffeeSize);
 	}
 }
-As we can see in this example, the possibility for the users of our method to provoke unexpected behavior of the method is negligible, because we force them to use specific values which to be used as arguments, namely constants of enumerated CoffeeSize type. This is one of the advantages of constants, which are declared in enumeration types to constants declared in any class.
- 	Whenever possible, use enumerations instead of set of constants declared in a class.
-Before we finish with the enumeration section we should mention that the enumerations are to be used with caution when working with the switch-case construct. For example, if one day the owner of the coffee shop buys many big cups (mugs) for coffee, we will need to add a new constant in the constant list of the enumeration CoffeeSize, which may be called, for example, Overwhelming:
-CoffeeSize.cs
+```
+
+As we can see in this example, the possibility for the users of our method to provoke unexpected behavior of the method is negligible, because we force them to use specific values which to be used as arguments, namely constants of enumerated `CoffeeSize` type. This is one of the advantages of constants, which are declared in enumeration types to constants declared in any class.
+
+| :warning: | Whenever possible, use enumerations instead of set of constants declared in a class. |
+|:--:|:--|
+
+Before we finish with the enumeration section we should mention that the enumerations are to be used with caution when working with the `switch-case` construct. For example, if one day the owner of the coffee shop buys many big cups (mugs) for coffee, we will need to add a new constant in the constant list of the enumeration `CoffeeSize`, which may be called, for example, `Overwhelming`:
+
+| CoffeeSize.cs |
+|---|
+
+```cs
 public enum CoffeeSize
 {
 	Small=100, Normal=150, Double=300, Overwhelming=600
 }
+```
+
 When we try to calculate the coffee price with the new quantity, the method, which calculates the price, will throw an exception, informing the user that such amount of coffee is not available in the coffee shop.
-What we should do to solve this problem is to add a new case-condition, which reflects the new constant in the enumerated CoffeeSize type.
- 	When we modify the list of constants in an existing enumeration, we should be careful not to break the logic of the code that already exists and uses the constants, declared so far.
+
+What we should do to solve this problem is to add a new `case`-condition, which reflects the new constant in the enumerated `CoffeeSize` type.
+
+| :warning: | When we modify the list of constants in an existing enumeration, we should be careful not to break the logic of the code that already exists and uses the constants, declared so far. |
+|:--:|:--|
 
 ## Inner Classes (Nested Classes)
 
-In C# an inner (nested) class is called a class that is declared inside the body of another class. Accordingly, the class that encloses the inner class is called an outer class.
+In C# an inner (nested) class is called a **class that is declared inside the body of another class.** Accordingly, the class that encloses the inner class is called an **outer class.**
+
 The main reason to declare one class into another are:
-	To better organize the code when working with objects in the real world, among which have a special relationship and one cannot exist without the other.
-	To hide a class in another class, so that the inner class cannot be used outside the class wrapped it.
+
+1. To **better organize the code** when working with objects in the real world, among which have a special relationship and one cannot exist without the other.
+2. To **hide a class in another class,** so that the inner class cannot be used outside the class wrapped it.
+
 In general, inner classes are used rarely, because they complicate the structure of the code and increase the nested levels.
-Declaration of Inner Classes
-The inner classes are declared in the same way as normal classes, but are located within another class. Allowed modifiers in the declaration of the class are:
-	public – an inner class is accessible from any assembly.
-	internal – an inner class is available in the current assembly, in which is located the outer class.
-	private – access is restricted only to the class holding the inner class.
-	static – an inner class contains only static members.
-There are four more permitted modifiers – abstract, protected, protected internal, sealed and unsafe, which are outside the scope and subject of this chapter and will not be considered here.
-The keyword this to an inner class has relation only to the internal class, but not to the outside. Fields of the outside class cannot be accessed using the reference this. If necessary fields of the outer class can be accessed by the internal, it needs in creating the internal class to submit a reference to an outer class.
-Static members (fields, methods, properties) of the outer class are accessible from the inner class regardless of their level of access.
-Inner Classes – Example
+
+### Declaration of Inner Classes
+
+The inner classes are declared in the same way as normal classes, but are **located within another class.** Allowed modifiers in the declaration of the class are:
+
+1. `public` – an inner class is accessible from any assembly.
+2. `internal` – an inner class is available in the current assembly, in which is located the outer class.
+3. `private` – access is restricted only to the class holding the inner class.
+4. `static` – an inner class contains only static members.
+
+There are four more permitted modifiers – `abstract`, `protected`, `protected internal`, `sealed` and `unsafe`, which are outside the scope and subject of this chapter and will not be considered here.
+
+The keyword `this` to an inner class has relation only to the internal class, but not to the outside. Fields of the outside class **cannot be accessed** using the reference `this`. If necessary fields of the outer class can be accessed by the internal, it needs in creating the internal class to submit a reference to an outer class.
+
+**Static members** (fields, methods, properties) of the outer class **are accessible from the inner class** regardless of their level of access.
+
+#### Inner Classes – Example
+
 Consider the following example:
-OuterClass.cs
+
+| OuterClass.cs |
+|---|
+
+```cs
 public class OuterClass
 {
 	private string name;
@@ -3287,15 +3427,30 @@ public class OuterClass
 		nestedClass.PrintNames();
 	}
 }
-In the example the outer class OuterClass defines into itself as a member the class InnerClass. Non-static inner class methods have access to their own body this as well as the instance of outside class parent (through syntax this.parent, if the parent reference is added by the developer). In the example while creating the inner class, parent reference is set to constructor of the outer class.
+```
+
+In the example the outer class `OuterClass` defines into itself as a member the class `InnerClass`. Non-static inner class methods have access to their own body `this` as well as the instance of outside class `parent` (through syntax `this.parent`, if the `parent` reference is added by the developer). In the example while creating the inner class, `parent` reference is set to constructor of the outer class.
+
 If we run the above example, we will obtain the following result:
+
+```console
 Nested name: nested
 Outer name: outer
-Usage of Inner Classes
-Consider an example. Let’s have a class for car – Car. Each car has an engine and doors. Unlike the car’s door, however, the engine makes no sense regarded as being outside the car, because without it, the car cannot run, i.e. we have composition (see the section "Class Diagrams: Composition" in the chapter "Principles of Object-Oriented Programming").
- 	When the connection between the two classes is a composition, the class, which consequently is a part of another class, is convenient to be declared as inner class.
-Therefore, if you declare the class for a car: Car would be appropriate to create an inner class Engine, which will reflect the appropriate concept for the car engine:
-Car.cs
+```
+
+### Usage of Inner Classes
+
+Consider an example. Let’s have a class for car – `Car`. Each car has an engine and doors. Unlike the car’s door, however, the engine makes no sense regarded as being outside the car, because without it, the car cannot run, i.e. we have composition (see the section "Class Diagrams: Composition" in the chapter "Principles of Object-Oriented Programming").
+
+| :warning: | When the connection between the two classes is a composition, the class, which consequently is a part of another class, is convenient to be declared as inner class. |
+|:--:|:--|
+
+Therefore, if you declare the class for a car: `Car` would be appropriate to create an inner class `Engine`, which will reflect the appropriate concept for the car engine:
+
+| Car.cs |
+|---|
+
+```cs
 class Car
 {
 	Door FrontRightDoor;
@@ -3315,16 +3470,24 @@ class Car
 		public int horsePower;
 	}
 }
-Declare Enumeration in a Class
-Before proceeding to the next section that refers to generic types, it should be noticed, that sometimes enumeration should and can be declared within a class in order of better encapsulation of the class.
-For example, the enumeration of type CoffeeSize, we have created in the previous section, can be declared inside the body of the class Coffee, thereby it improves its encapsulation:
-Coffee.cs
+```
+
+### Declare Enumeration in a Class
+
+Before proceeding to the next section that refers to generic types, it should be noticed, that sometimes **enumeration should and can be declared within a class** in order of better encapsulation of the class.
+
+For example, the enumeration of type `CoffeeSize`, we have created in the previous section, can be declared inside the body of the class `Coffee`, thereby it improves its encapsulation:
+
+| Coffee.cs |
+|---|
+
+```cs
 class Coffee
 {
 	// Enumeration declared inside a class
 	public static enum CoffeeSize
 	{
-		Small = 100, Normal = 150, Double = 300
+ 		Small = 100, Normal = 150, Double = 300
 	}
 
 	// Instance variable of enumerated type
@@ -3340,7 +3503,11 @@ class Coffee
 		get { return size; }
 	}
 }
+```
+
 Respectively, the method for calculation of the price of coffee will be slightly modified slightly:
+
+```cs
 public double CalcPrice(Coffee.CoffeeSize coffeeSize)
 {
 	switch (coffeeSize)
@@ -3356,25 +3523,46 @@ public double CalcPrice(Coffee.CoffeeSize coffeeSize)
 				"Unsupported coffee quantity: " + ((int)coffeeSize));
 	}
 }
+```
 
 ## Generics
 
-In this section we will explain the concept of generic classes (generic data types, generics). Before we begin, however, let’s look through an example that will help us understand more easily the idea.
-Shelter for Homeless Animals – Example
-Let’s assume that we have two classes. A class Dog, which describes a dog:
-Dog.cs
+In this section we will explain the concept of **generic classes** (generic data types, generics). Before we begin, however, let’s look through an example that will help us understand more easily the idea.
+
+#### Shelter for Homeless Animals – Example
+
+Let’s assume that we have two classes. A class `Dog`, which describes a dog:
+
+| Dog.cs |
+|---|
+
+```cs
 public class Dog
 {
 }
-And let a class Cat, which describes a cat:
-Cat.cs
+```
+
+And let a class `Cat`, which describes a cat:
+
+| Cat.cs |
+|---|
+
+```cs
 public class Cat
 {
 }
-Then we want to create a class that describes a shelter for homeless animals – AnimalShelter. This class has a specific number of free cells, which determines the number of animals, which could find refuge in the shelter. The special feature of the class, that we want to create, is that it only needs to accommodate animals of the same kind, in our case, dogs or cats only, because the coexistence of different species is not always a good idea.
-If we think about how to solve the task with the knowledge that we have until here, we will come to the following conclusion – to ensure that our class will contain elements only from one and the same type we need to use an array of identical objects. These objects may be dogs, cats or simply instances of the universal type object.
+```
+
+Then we want to create a class that describes a **shelter for homeless animals** – `AnimalShelter`. This class has a specific number of free cells, which determines the number of animals, which could find refuge in the shelter. The special feature of the class, that we want to create, is that it only needs to accommodate animals of the same kind, in our case, dogs or cats only, because the coexistence of different species is not always a good idea.
+
+If we think about how to solve the task with the knowledge that we have until here, we will come to the following conclusion – to ensure that our class will contain elements only from one and the same type we need to use an array of identical objects. These objects may be dogs, cats or simply instances of the universal type `object`.
+
 For instance, if we want to make a shelter for dogs, here is how our class would look like:
-AnimalsShelter.cs
+
+| AnimalsShelter.cs |
+|---|
+
+```cs
 public class AnimalShelter
 {
 	private const int DefaultPlacesCount = 20;
@@ -3420,20 +3608,36 @@ public class AnimalShelter
 		return releasedAnimal;
 	}
 }
-Shelter capacity (number of animals, which it is capable to accommodate) is set when the object is created. By default it is the value of the constant DefaultPlacesCount. We use the field usedPlaces to monitor the occupied cells (at the same time we use it to index into the array for "pointing" to the first space from left to right in the array).
+```
+
+Shelter capacity (number of animals, which it is capable to accommodate) is set when the object is created. By default it is the value of the constant `DefaultPlacesCount`. We use the field `usedPlaces` to monitor the occupied cells (at the same time we use it to index into the array for "pointing" to the first space from left to right in the array).
+
+![](assets/animal-shelter-1.png)
  
 We have created a method for adding a new dog into the shelter –
-Shelter() and respectively for releasing from the shelter – Release(int).
-The method Shelter() adds each new animal in the first free cell in the right side of the array (if there is any free).
-The method Release(int) accepts the number of cell from which the dog will be released (i.e. the index number in the array, where it is stored a link to the object of type Dog).
+`Shelter()` and respectively for releasing from the shelter – `Release(int)`.
+
+The method `Shelter()` adds each new animal in the first free cell in the right side of the array (if there is any free).
+
+The method `Release(int)` accepts the number of cell from which the dog will be released (i.e. the index number in the array, where it is stored a link to the object of type `Dog`).
+
+![](assets/animal-shelter-2.png)
  
 Then it moves all animals which are having a bigger cell number then the current cell, from which we will release a dog, with a position to the left (steps 2 and 3 are shown in the diagram below).
+
+![](assets/animal-shelter-3.png)
  
-Released cell at position usedPlaces-1 is marked as free, and a value null is assigned to it. This provides release of the reference to it and respectively allows the system to clean memory (garbage collector), to release the object if it is not used anywhere else in the program at this moment. This prevents from indirect loss of memory (memory leak).
-Finally, it assigns the number of the last free cell to a usedPlaces field (steps 4 and 5 of the scheme above).
+Released cell at position `usedPlaces - 1` is marked as free, and a value `null` is assigned to it. This provides release of the reference to it and respectively allows the system to clean memory (garbage collector), to release the object if it is not used anywhere else in the program at this moment. This prevents from indirect loss of memory (memory leak).
+
+Finally, it assigns the number of the last free cell to a `usedPlaces` field (steps 4 and 5 of the scheme above).
+
+![](assets/animal-shelter-4.png)
  
-It is visible that the "removal" of an animal from a cell could be a slow operation, because it requires the transfer of all animals from the next cells with one position left. In the chapter "Linear Data Structures" we will discuss also more efficient ways of presenting the animal shelter, but for now let’s focus on the topic about generic types.
-So far we succeed implementing functionality of the shelter – the class AnimalShelter. When we work with objects of type Dog, everything compiles and executes smoothly:
+It is visible that the "removal" of an animal from a cell **could be a slow operation,** because it requires the transfer of all animals from the next cells with one position left. In the chapter "Linear Data Structures" we will discuss also more efficient ways of presenting the animal shelter, but for now let’s focus on the topic about generic types.
+
+So far we succeed implementing functionality of the shelter – the class `AnimalShelter`. When we work with objects of type `Dog`, everything compiles and executes smoothly:
+
+```cs
 static void Main()
 {
 	AnimalShelter dogsShelter = new AnimalShelter(10);
@@ -3447,7 +3651,11 @@ static void Main()
 
 	dogsShelter.Release(1); // Releasing dog2
 }
-What happens, however, if we attempt to use an AnimalShelter class for objects of type Cat:
+```
+
+What happens, however, if we attempt to use an `AnimalShelter` class for objects of type `Cat`:
+
+```cs
 static void Main()
 {
 	AnimalShelter dogsShelter = new AnimalShelter(10);
@@ -3456,100 +3664,201 @@ static void Main()
 
 	dogsShelter.Shelter(cat1);
 }
+```
+
 As expected, the compiler displays an error:
+
+```console
 The best overloaded method match for 'AnimalShelter.Shelter(
 Dog)' has some invalid arguments. Argument 1: cannot convert from 'Cat' to 'Dog'
-Consequently, if we want to create a shelter for cats, we will not be able to reuse the class that we already created, although the operations of adding and removing animals from the shelter will be identical. Therefore, we have to literally copy AnimalShelter class and change only the type of the objects, which are handled – Cat.
+```
+
+Consequently, if we want to create a shelter for cats, we will not be able to reuse the class that we already created, although the operations of adding and removing animals from the shelter will be identical. Therefore, we have to literally copy `AnimalShelter` class and change only the type of the objects, which are handled – `Cat`.
+
 Yes, but if we decide to make a shelter for other species? How many classes of shelters for the particular type of animals we shall create?
-We can see that this solution of the problem is not sufficiently comprehensive and does not fully meets the terms, which we were set – to exist a single class that describes our shelter for any kind of animal (i.e. for all objects) and by working with it, it should contain only one kind of animals (i.e. only objects of one and the same type).
-We could use instead of the type Dog, the universal type object, which can take values as Dog, Cat and all other data types, but this will create some inconvenience, associated with the need to convert back from the object to the Dog, when creating a shelter for dogs and it contains cells of type object, instead of type Dog.
-To solve the task efficiently, we have to use a feature of the C# language that allows us to satisfy all required conditions simultaneously. It is called generics (template classes).
-What Is a Generic Class?
+
+We can see that this solution of the problem **is not sufficiently comprehensive** and does not fully meets the terms, which we were set – to exist a **single class** that describes our shelter **for any kind of animal** (i.e. for all objects) and by working with it, **it should contain only one kind of animals** (i.e. only objects of one and the same type).
+
+We could use instead of the type `Dog`, the universal type object, which can take values as `Dog`, `Cat` and all other data types, but this will create some inconvenience, associated with the need to convert back from the object to the `Dog`, when creating a shelter for dogs and it contains cells of type `object`, instead of type `Dog`.
+
+To solve the task efficiently, we have to use a feature of the C# language that allows us to satisfy all required conditions simultaneously. It is called **generics** (template classes).
+
+### What Is a Generic Class?
+
 As we know if a method needs additional information to operate properly, this information is passed to the method using parameters. During the execution of the program, when calling this particular method, we pass arguments to the method, which are assigned to its parameters and then used in the method’s body.
-Like the methods, when we know, that the functionality (actions) encapsulated into a class, can be applied not only to objects of one, but to many (heterogeneous) types, and these types are not known at the time of declaring the class, we can use a functionality of the language C# called generics (generic types).
-It allows us to declare parameters of this class, by indicating an unknown type that the class will work eventually with. Then, when we instantiate our generic class, we replace the unknown with a particular. Accordingly, the newly created object will only work with objects of this type that we have assigned at its initialization. The specific type can be any data type that the compiler recognizes, including class, structure, enumeration or another generic class.
-To get a cleaner picture of the nature of the generic types, let’s return to our task from the previous section. As you might guess, the class that describes the animal shelter (AnimalShelter) can operate with different types of animals. Consequently, if we want to create a general solution of the task, during the declaration of class AnimalShelter, we cannot know what type of animals will be sheltered to shelter. This is sufficient indication, that we can typify our class, adding to the declaration of the class as a parameter, the unknown type of animals.
-Later, when we want to create a dog’s shelter for example, this parameter of the class will pass the name of our type – class Dog. Accordingly, if you create a shelter for cats, we will pass the type Cat, etc.
- 	Typifying a class (creating a generic class) means to add to the declaration of a class a parameter (replacement) of unknown type, which the class will use during its operation. Subsequently, when the class is instantiated, this parameter is replaced with the name of some specific type.
+
+Like the methods, when we know, that the functionality (actions) encapsulated into a class, can be applied not only to objects of one, but to many (heterogeneous) types, and these types are not known at the time of declaring the class, we can use a functionality of the language C# called **generics** (generic types).
+
+It allows us to **declare parameters of this class, by indicating an unknown type** that the class will work eventually with. Then, when we instantiate our generic class, we replace the unknown with a particular. Accordingly, the newly created object will only work with objects of this type that we have assigned at its initialization. The specific type can be any data type that the compiler recognizes, including class, structure, enumeration or another generic class.
+
+To get a cleaner picture of the nature of the generic types, let’s return to our task from the previous section. As you might guess, the class that describes the animal shelter (`AnimalShelter`) **can operate with different types of animals.** Consequently, if we want to create a general solution of the task, during the declaration of class `AnimalShelter`, we cannot know what type of animals will be sheltered to shelter. This is sufficient indication, that we can typify our class, adding to the declaration of the class as a parameter, the unknown type of animals.
+
+Later, when we want to create a dog’s shelter for example, this parameter of the class will pass the name of our type – class `Dog`. Accordingly, if you create a shelter for cats, we will pass the type `Cat`, etc.
+
+| :warning: | Typifying a class (creating a generic class) means to add to the declaration of a class a parameter (replacement) of unknown type, which the class will use during its operation. Subsequently, when the class is instantiated, this parameter is replaced with the name of some specific type. |
+|:--:|:--|
+
 In the following sections we will introduce the syntax of generic classes and we will modify our previous example to use generics.
-Declaration of Generic Class
-Formally, the parameterizing of a class is done by adding <T> to the declaration of the class, after its name, where T is the substitute (parameter) of the type, which will be used later:
+
+### Declaration of Generic Class
+
+Formally, the **parameterizing of a class** is done by adding `<T>` to the declaration of the class, after its name, where `T` is the substitute (parameter) of the type, which will be used later:
+
+```cs
 [<modifiers>] class <class_name><T>
 {
 }
-It should be noticed that the characters '<' and '>', which surround the substitution T are an obligatory part of the syntax of language C# and must participate in the declaration of a generic class.
-The declaration of generic class, which describes a shelter for homeless animals, should look like as follows:
+```
+
+It should be noticed that the characters '`<`' and '`>`', which surround the substitution `T` are an obligatory part of the syntax of language C# and must participate in the declaration of a generic class.
+
+The **declaration of generic class,** which describes a shelter for homeless animals, should look like as follows:
+
+```cs
 class AnimalShelter<T>
 {
 	// Class body here ...
 }
-Let’s can imagine that we are creating a template of our class AnimalShelter, which we will specify later, replacing T with a specific type, for instance a Dog.
+```
+
+Let’s can imagine that we are creating a **template of our class** `AnimalShelter`, which we will specify later, replacing `T` with a specific type, for instance a `Dog`.
+
 A particular class may have more than one substitute (to be parameterized by more than one type), depending on its needs:
+
+```cs
 [<modifiers>] class <class_name><T1 [, T2, [... [, Tn]]]>
 {
 }
-If the class needs several different unknown types, these types should be listed by a comma between the characters '<' and '>' in the declaration of the class, as each of the substitutes used must be different identifier (e.g. a different letter) – in the definition they are indicated as T1, T2, ..., Tn.
+```
+
+If the class needs **several different unknown types,** these types should be listed by a comma between the characters '`<`' and '`>`' in the declaration of the class, as each of the substitutes used must be different identifier (e.g. a different letter) – in the definition they are indicated as `T1`, `T2`, ..., `Tn`.
+
 In case, we should to create a shelter for animals of a mixed type, one that accommodates both – dogs and cats, we should declare the class as follows:
+
+```cs
 class AnimalShelter<T, U>
 {
 	// Class body here ...
 }
-If this were our case, we would use the first parameter T, to indicate objects of type Dog, which our class would operate with, and with U – to indicate objects of type Cat.
-Specifying Generic Classes
-Before we present more details about generics, we should look at how to use generic classes. The using of generic classes should be done as follows:
-<class_name><concrete_type><variable_name> =
+```
+
+If this were our case, we would use the first parameter `T`, to indicate objects of type `Dog`, which our class would operate with, and with `U` – to indicate objects of type `Cat`.
+
+### Specifying Generic Classes
+
+Before we present more details about generics, we should look at **how to use generic classes.** The using of generic classes should be done as follows:
+
+```cs
+<class_name><concrete_type> <variable_name> =
 	new <class_name><concrete_type>();
-Again, similar to T substitution in the declaration of our class, the characters '<' and '>' surrounding a particular class concrete_type, are required.
+```
+
+Again, similar to `T` substitution in the declaration of our class, the characters '`<`' and '`>`' surrounding a particular class `concrete_type`, are required.
+
 If we want to create two shelters, one for dogs and one for cats, we should use the following code:
+
+```cs
 AnimalShelter<Dog> dogsShelter = new AnimalShelter<Dog>();
 AnimalShelter<Cat> catsShelter = new AnimalShelter<Cat>();
-In this way, we ensure that the shelter dogsShelter will always contain objects of a type Dog and the variable catsShelter will always operate with objects of type Cat.
-Using Unknown Types by Declaring Fields
+```
+
+In this way, we ensure that the shelter `dogsShelter` will always contain objects of a type `Dog` and the variable `catsShelter` will always operate with objects of type `Cat`.
+
+### Using Unknown Types by Declaring Fields
+
 Once used during the class declaration, the parameters that are used to indicate the unknown types are visible in the whole body of the class, therefore they can be used to declare the field as each other type:
+
+```cs
 [<modifiers>] T <field_name>;
-As we can guess, in our example with shelter for homeless animals, we can use this feature provided by language C#, to declare the type of field animalsList, which holds references to objects for the housed animals, instead of a specific type of Dog, with parameter T:
+```
+
+As we can guess, in our example with shelter for homeless animals, we can use this feature provided by language C#, to declare the type of field `animalsList`, which holds references to objects for the housed animals, instead of a specific type of `Dog`, with parameter `T`:
+
+```cs
 private T[] animalList;
-Let’s assume when we create an object of our class, setting a specific type (e.g. Dog) during the execution of the program, the unknown type T will be replaced with the above type. If we choose to create a shelter for dogs, we can consider that our field is declared as follows:
+```
+
+Let’s assume when we create an object of our class, setting a specific type (e.g. Dog) during the execution of the program, **the unknown type `T` will be replaced** with the above type. If we choose to create a shelter for dogs, we can consider that our field is declared as follows:
+
+```cs
 private Dog[] animalList;
-Accordingly, when we want to initialize a particular field in the constructor of our class, we should do it as usual – creating an array, using substitution of the unknown type – T:
+```
+
+Accordingly, when we want to initialize a particular field in the constructor of our class, we should do it as usual – creating an array, using substitution of the unknown type – `T`:
+
+```cs
 public AnimalShelter(int placesNumber)
 {
 	animalList = new T[placesNumber]; // Initialization
 	usedPlaces = 0;
 }
-Using Unknown Types in a Method’s Declaration
-As an unknown type used in the declaration of a generic class is visible from opening to closing brace of the class body, except for field’s declaration, it can be used in a method declaration, namely:
-As a parameter in the list of parameters of the method:
-<return_type> MethodWithParamsOfT(T param)
-	As a result of implementation of the method:
-T MethodWithReturnTypeOfT(<params>)
-As we already guessed, using our example, we can adapt the methods Shelter(...) and Release(...), respectively:
-	As a method of unknown type parameter T:
-public void Shelter(T newAnimal)
-{
-	// Method's body goes here ...
-}
-	And a method, which returns a result of unknown type T:
-public T Release(int i)
-{
-	// Method's body goes here ...
-}
-As we already know when we create an object from our class shelter and replace the unknown type with a specific one (e.g. Cat), during the execution of the program, the above methods will have the following form:
-	The parameter of method Shelter will be of type Cat:
-public void Shelter(Cat newAnimal)
-{
-	// Method's body goes here ...
-}
-	The method Release will return a result of type Cat:
-public Cat Release(int i)
-{
-	// Method's body goes here ...
-}
-Typifying (Generics) – Behind the Scenes
+```
+
+### Using Unknown Types in a Method’s Declaration
+
+As an **unknown type** used in the declaration of a generic class is visible from opening to closing brace of the class body, except for field’s declaration, it **can be used in a method declaration,** namely:
+
+- As a parameter in the list of parameters of the method:
+
+	```cs
+	<return_type> MethodWithParamsOfT(T param)
+	```
+
+- As a result of implementation of the method:
+
+	```cs
+	T MethodWithReturnTypeOfT(<params>)
+	```
+
+As we already guessed, using our example, we can adapt the methods `Shelter(...)` and `Release(...)`, respectively:
+
+- As a method of unknown type parameter `T`:
+
+	```cs
+	public void Shelter(T newAnimal)
+	{
+		// Method's body goes here ...
+	}
+	```
+- And a method, which returns a result of unknown type `T`:
+
+	```cs
+	public T Release(int i)
+	{
+		// Method's body goes here ...
+	}
+	```
+
+As we already know when we create an object from our class shelter and replace the unknown type with a specific one (e.g. `Cat`), during the execution of the program, the above methods will have the following form:
+
+- The parameter of method `Shelter` will be of type `Cat`:
+
+	```cs
+	public void Shelter(Cat newAnimal)
+	{
+		// Method's body goes here ...
+	}
+	```
+- The method `Release` will return a result of type `Cat`:
+
+	```cs
+	public Cat Release(int i)
+	{
+		// Method's body goes here ...
+	}
+	```
+
+### Typifying (Generics) – Behind the Scenes
+
 Before we continue, let’s us explain what happens into the memory of the computer, when we work with generic classes.
+
+![](assets/typifying-generics.png)
  
-First we declare our generic class MyClass<T> (generic class description in the scheme above). Then the compiler translates our code to an intermediate language (MSIL), as translated code contains information that the class is generic, i.e. it works with undefined types until now. At runtime, when someone tries to work with our generic class and tries to use it with a specific type, a new description of the class is created (specific type class description in the diagram above), which is identical to the generic class, with the difference that where it has been used T, now is replaced by a specific type. For example, if you try to use MyClass<int>, everywhere in your code, where the unknown parameter T is used, it will be replaced with int. Only then we can create object of a generic class with a specific type int. The interesting thing here is that to create this object, the description of the class, which was created in the meantime (specific type class description), will be used. Instantiating of a generic class by given specific types of its parameters is called "specialization of the type" or "extension of generic class".
-Using our example, if we create an object of type AnimalShelter<T>, which works only with objects of type Dog, if we try to add an object of type Cat, this will cause a compile error almost identical to the errors, that were derived by an attempt to add an object of type Cat, into an object of type AnimalShelter, which we have created in section "Shelter for Homeless Animals – Example":
+First we declare our generic class `MyClass<T>` (generic class description in the scheme above). Then the compiler translates our code to an intermediate language (MSIL), as translated code contains information that the class is generic, i.e. it works with undefined types until now. At runtime, when someone tries to work with our generic class and tries to use it with a specific type, a **new description of the class** is created (specific type class description in the diagram above), which is identical to the generic class, with the difference that where it has been used `T`, now is replaced by a specific type. For example, if you try to use `MyClass<int>`, everywhere in your code, where the unknown parameter T is used, it will be replaced with `int`. Only then we can create object of a generic class with a specific type `int`. The interesting thing here is that to create this object, the description of the class, which was created in the meantime (specific type class description), will be used. Instantiating of a generic class by given specific types of its parameters is called **"specialization of the type"** or **"extension of generic class".**
+
+Using our example, if we create an object of type `AnimalShelter<T>`, which works only with objects of type `Dog`, if we try to add an object of type `Cat`, this will cause a compile error almost identical to the errors, that were derived by an attempt to add an object of type `Cat`, into an object of type `AnimalShelter`, which we have created in section "Shelter for Homeless Animals – Example":
+
+```cs
 static void Main()
 {
 	AnimalShelter<Dog> dogsShelter = new AnimalShelter<Dog>(10);
@@ -3558,24 +3867,44 @@ static void Main()
 
 	dogsShelter.Shelter(cat1);
 }
-As expected, we get the following compilation error messages:
+```
+
+As expected, we get the following **compilation error messages:**
+
+```console
 The best overloaded method match for 'AnimalShelter< Dog>.Shelter(Dog)' has some invalid arguments
 
 Argument 1: cannot convert from 'Cat' to 'Dog'
-Generic Methods
-Like classes, when the type of method’s parameters cannot be specified, we can parameterize (typify) the method. Accordingly, the indication of a specific type will happen during the invocation of the method, replacing the unknown type with a specific one, as we did in the classes.
-Typifying of a method is done, when after the name and before the opening bracket of the method, we add <K>, where K is the replacement of the type that will be used later:
-<return_type><methods_name><K>(<params>)
-Accordingly, we can use unknown type K for parameters in the parameter’s list of method <params>, whose type is unknown and also for return value or to declare variables of type substitute K in the body of the method.
-For example, consider a method that swaps the values of two variables:
+```
+
+### Generic Methods
+
+Like classes, when the type of method’s parameters cannot be specified, we can **parameterize (typify) the method.** Accordingly, the indication of a specific type will happen during the invocation of the method, replacing the unknown type with a specific one, as we did in the classes.
+
+Typifying of a method is done, when after the name and before the opening bracket of the method, we add `<K>`, where `K` is the replacement of the type that will be used later:
+
+```cs
+<return_type> <methods_name><K>(<params>)
+```
+
+Accordingly, we can use unknown type `K` for parameters in the parameter’s list of method `<params>`, whose type is unknown and also for return value or to declare variables of type substitute `K` in the body of the method.
+
+For example, consider a **method that swaps the values of two variables:**
+
+```cs
 public void Swap<K>(ref K a, ref K b)
 {
 	K oldA = a;
 	a = b;
 	b = oldA;
 }
-This is a method that swaps the values of two variables, without carrying of their types. That is why we define it as a generic, so we can use it for all types of variables.
+```
+
+This is a method that swaps the values of two variables, **without carrying of their types.** That is why we define it as a generic, so we can use it for all types of variables.
+
 Accordingly, if we want to swap the values of two integers and then two string variables, we should use our method:
+
+```cs
 int num1 = 3;
 int num2 = 5;
 Console.WriteLine("Before swap: {0} {1}", num1, num2);
@@ -3589,22 +3918,42 @@ Console.WriteLine("Before swap: {0} {1}!", str1, str2);
 // Invoking the method with concrete type (string)
 Swap<string>(ref str1, ref str2);
 Console.WriteLine("After swap: {0} {1}!", str1, str2);
+```
+
 When you run this code, the result is as expected:
+
+```console
 Before swap: 3 5
 After swap: 5 3
 
 Before swap: Hello There!
 After swap: There Hello!
-We notice that in the list of parameters we have used also the keyword ref. This concerns the specification of the method – namely, to exchange the values of two references. By using the keyword ref, the method will use the same reference that was given by the calling method. This way, all changes on this variable made by our method, will remain after the method exits.
-We should know that by calling a generic method, we can miss the explicit declaration of a specific type (in our example <int>), because the compiler will detect it automatically, recognizing the type of the given parameters. In other words, our code can be simplified using the following calls:
+```
+
+We notice that in the list of parameters we have used also the keyword `ref`. This concerns the specification of the method – namely, to exchange the values of two references. By using the keyword `ref`, the method will use the same reference that was given by the calling method. This way, all changes on this variable made by our method, will remain after the method exits.
+
+We should know that by **calling a generic method,** we can miss the explicit declaration of a specific type (in our example `<int>`), because the compiler will detect it automatically, recognizing the type of the given parameters. In other words, our code can be simplified using the following calls:
+
+```cs
 Swap(ref num1, ref num2); // Invoking the method Swap<int>
 Swap(ref str1, ref str2); // Invoking the method Swap<string>
-We should know that the compiler will be able to recognize what is the specific type, only if this type is involved in the parameter’s list. The compiler cannot recognize what is the specific type of a generic method only by the type its return value or if it does not have parameters. In both cases, this specific type will have to be given explicitly. In our example, it will be similar to the original method call, or by adding <int> or <string>.
+```
+
+We should know that the **compiler will be able to recognize what is the specific type,** only if this type is involved in the parameter’s list. The compiler cannot recognize what is the specific type of a generic method only by the type its return value or if it does not have parameters. In both cases, this specific type will have to be given explicitly. In our example, it will be similar to the original method call, or by adding `<int>` or `<string>`.
+
 It should be noticed that static methods can also be typified, unlike the properties and constructors of the class.
- 	Static methods can also be typified, but properties and constructors of the class cannot.
-Features by Declaration of Generic Methods in Generic Classes
-As we have already seen in the section "Using Unknown Types in a Declaration of Methods", non-generic methods can use unknown types, described in the generic class declaration (e.g. methods Shelter() and Release() from the example "Shelter for Homeless Animals"):
-AnimalShelter.cs
+
+| :warning: | Static methods can also be typified, but properties and constructors of the class cannot. |
+|:--:|:--|
+
+### Features by Declaration of Generic Methods in Generic Classes
+
+As we have already seen in the section "Using Unknown Types in a Declaration of Methods", non-generic methods can use unknown types, described in the generic class declaration (e.g. methods `Shelter()` and `Release()` from the example "Shelter for Homeless Animals"):
+
+| AnimalShelter.cs |
+|---|
+
+```cs
 public class AnimalShelter<T>
 {
 	// ... The rest of the code ...
@@ -3619,8 +3968,14 @@ public class AnimalShelter<T>
 		// Method body here
 	}
 }
-If we try to reuse the variable, which is used to mark the unknown type of the generic class, for example as T, in the declaration of generic method, then when we try to compile the class, we will get a warning CS0693. This is happening because the scope of action of the unknown type T, defined in declaration of the method, overlaps the scope of action of the unknown type T, in class declaration:
-CommonOperations.cs
+```
+
+If we try to reuse the variable, which is used to mark the unknown type of the generic class, for example as `T`, in the declaration of generic method, then when we try to compile the class, we will get a warning **CS0693.** This is happening because the scope of action of the unknown type `T`, defined in declaration of the method, overlaps the scope of action of the unknown type `T`, in class declaration:
+
+| CommonOperations.cs |
+|---|
+
+```cs
 public class CommonOperations<T>
 {
 	// CS0693
@@ -3631,10 +3986,20 @@ public class CommonOperations<T>
 		b = oldA;
 	}
 }
-When you try to compile this class, you receive the following message:
+```
+
+When you try to compile this class, you receive the following **message:**
+
+```console
 Type parameter 'T' has the same name as the type parameter from outer type 'CommonOperations<T>'
-So if we want our code to be flexible, and our generic method safely to be called with a specific type, different from that in the generic class by instantiating it, we just have to declare the replacement of the unknown type in the declaration of the generic method to be different than the parameter for the unknown type in the class declaration, as shown below:
-CommonOperations.cs
+```
+
+So if we want our code to be flexible, and our generic method safely to be called with a specific type, different from that in the generic class by instantiating it, we just have to declare the replacement of the unknown type in the declaration of the generic method **to be different than the parameter for the unknown type** in the class declaration, as shown below:
+
+| CommonOperations.cs |
+|---|
+
+```cs
 public class CommonOperations<T>
 {
 	// No warning
@@ -3645,10 +4010,18 @@ public class CommonOperations<T>
 		b = oldA;
 	}
 }
+```
+
 Thus, always make sure that there will be no overlapping of substitutes of the unknown types of method and class.
-Using a Keyword "default" in a Generic Source Code
-Once we have introduced the basics of generic types, let’s try to redesign our first example in this section (Shelter for Homeless Animals). The only thing we need to do is to replace the type Dog with some parameter T:
-AnimalsShelter.cs
+
+### Using a Keyword "default" in a Generic Source Code
+
+Once we have introduced the basics of generic types, let’s try to **redesign our first example** in this section (Shelter for Homeless Animals). The only thing we need to do is to replace the type `Dog` with some parameter `T`:
+
+| AnimalsShelter.cs |
+|---|
+
+```cs
 public class AnimalShelter<T>
 {
 	private const int DefaultPlacesCount = 20;
@@ -3694,13 +4067,26 @@ public class AnimalShelter<T>
 		return releasedAnimal;
 	}
 }
-Everything looks to work properly, until we try to compile the class. Then we get the following error:
+```
+
+Everything looks to work properly, until we try to compile the class. Then we **get the following error:**
+
+```console
 Cannot convert null to type parameter 'T' because it could be a non-nullable value type. Consider using 'default(T)' instead.
-The error is inside the method Release() and it is related to the recording a null value in the last released (rightmost) cell in the shelter. The problem is that we are trying to use the default value for a reference type, but we are not sure whether this type is a reference type or a primitive. Therefore the compiler displays the errors above. If the type AnimalShelter is instantiated by a structure and not by a class, then the null value is not valid.
-To handle this problem, in our code we have to use the construct default(T) instead of null, which returns the default value for the particular type that will be used instead of T. As we know, the default value for reference type is null, and for numeric types – zero. We can make the following change:
+```
+
+The error is inside the method `Release()` and it is related to the recording a null value in the last released (rightmost) cell in the shelter. The problem is that we are trying to use the default value for a reference type, but **we are not sure whether this type is a reference type or a primitive.** Therefore the compiler displays the errors above. If the type `AnimalShelter` is instantiated by a structure and not by a class, then the null value is not valid.
+
+To handle this problem, in our code we have to use the construct `default(T)` instead of `null`, which returns the default value for the particular type that will be used instead of `T`. As we know, the default value for reference type is `null`, and for numeric types – zero. We can make the following change:
+
+```cs
 // this.animalList[this.usedPlaces - 1] = null;
 this.animalList[this.usedPlaces - 1] = default(T);
-Finally the compilation runs smoothly and the class AnimalShelter<T> operates correctly. We can test it as follows:
+```
+
+Finally the compilation runs smoothly and the class `AnimalShelter<T>` operates correctly. We can test it as follows:
+
+```cs
 static void Main()
 {
 	AnimalShelter<Dog> shelter = new AnimalShelter<Dog>();
@@ -3715,14 +4101,25 @@ static void Main()
 	Console.WriteLine(d);
 	d = shelter.Release(0); // Exception: invalid cell index
 }
-Advantages and Disadvantages of Generics
-Generic classes and methods increase the reusability of the code, the security and the performance compared to other non-generic alternatives.
-As a general rule, the programmer should strive to create and use generic classes, whenever it is possible. The more generic types are used, the higher level of abstraction there is in the program and the source code becomes more flexible and reusable. However we should keep in mind, that overuse of generics can lead to over-generalization and the code may become unreadable and difficult to understand by other programmers.
-Naming the Parameters of the Generic Types
+```
+
+### Advantages and Disadvantages of Generics
+
+Generic classes and methods **increase the reusability of the code,** the security and the performance compared to other non-generic alternatives.
+
+As a general rule, the **programmer should strive to create and use generic classes, whenever it is possible.** The more generic types are used, the higher level of abstraction there is in the program and the source code becomes more flexible and reusable. However we should keep in mind, that overuse of generics can lead to over-generalization and the code may become unreadable and difficult to understand by other programmers.
+
+### Naming the Parameters of the Generic Types
+
 Before we finish generics as a topic, let’s give you some guidance on working with the substitutes (parameters) of unknown types in a generic class:
-	If there is just one unknown type in the generic, it is common to use the letter T, as a substitute for that unknown type. As an example we can give our class declaration AnimalShelter<T>, which we used until now.
-	To the substitutes should be given the most descriptive names, unless a letter is not a sufficiently descriptive and well-chosen name, this will not improve readability of the source code. For instance, we can modify our example, replacing the letter T, with the more descriptive substitute for Animal:
-AnimalShelter.cs
+
+1. If there is just one unknown type in the generic, it is common to use the letter `T`, as a substitute for that unknown type. As an example we can give our class declaration `AnimalShelter<T>`, which we used until now.
+2. To the substitutes should be given the most descriptive names, unless a letter is not a sufficiently descriptive and well-chosen name, this will not improve readability of the source code. For instance, we can modify our example, replacing the letter `T`, with the more descriptive substitute for `Animal`:
+
+| AnimalShelter.cs |
+|---|
+
+```cs
 public class AnimalShelter<Animal>
 {
 	// ... The rest of the code ...
@@ -3737,4 +4134,6 @@ public class AnimalShelter<Animal>
 		// Method body here
 	}
 }
-When we use descriptive names of substitutes instead of a letter, it is better to add T at the beginning of the name, to distinguish it more easily from the class names in our application. In other words, instead of using a substitute Animal in the previous example, we should use TAnimal (T comes from the word "template" which means a parameterized / generic type).
+```
+
+When we use descriptive names of substitutes instead of a letter, it is better to add `T` at the beginning of the name, to distinguish it more easily from the class names in our application. In other words, instead of using a substitute `Animal` in the previous example, we should use `TAnimal` (`T` comes from the word "template" which means a parameterized / generic type).
