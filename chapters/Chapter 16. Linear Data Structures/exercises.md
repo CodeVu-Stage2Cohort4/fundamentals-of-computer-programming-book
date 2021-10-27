@@ -6,10 +6,10 @@
 4. Write a method that finds the **longest subsequence of equal numbers** in a given `List<int>` and returns the result as new `List<int>`. Write a program to test whether the method works correctly.
 5. Write a program, which **removes all negative numbers** from a sequence.
 
-    Example: array = {19, -10, 12, -6, -3, 34, -2, 5} ? {19, 12, 34, 5}
+    Example: array = {19, -10, 12, -6, -3, 34, -2, 5} -> {19, 12, 34, 5}
 6. Write a program that **removes from a given sequence all numbers that appear an odd count of times.**
 
-    Example: array = {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2} ? {5, 3, 3, 5}
+    Example: array = {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2} -> {5, 3, 3, 5}
 7. Write a program that finds in a given array of integers (in the range [0...1000]) **how many times each of them occurs.**
 
     Example: array = {3, 4, 4, 2, 3, 3, 4, 3, 2}  
@@ -19,7 +19,7 @@
 
 8. The **majorant** of an array of size N is a value that occurs in it at least N/2 + 1 times. Write a program that **finds the majorant** of given array and prints it. If it does not exist, print "The majorant does not exist!".
 
-    Example: {2, 2, 3, 3, 2, 3, 4, 3, 3} ? 3
+    Example: {2, 2, 3, 3, 2, 3, 4, 3, 3} -> 3
 
 9. We are given the following **sequence:**
 
@@ -34,7 +34,7 @@
 
     Using the `Queue<T>` class, write a program which by given **N** prints on the console the first 50 elements of the sequence.
     
-    Example: N=2 ? 2, 3, 5, 4, 4, 7, 5, 6, 11, 7, 5, 9, 6, ...
+    Example: N=2 -> 2, 3, 5, 4, 4, 7, 5, 6, 11, 7, 5, 9, 6, ...
 
 10. We are given N and M and the following operations:
 
