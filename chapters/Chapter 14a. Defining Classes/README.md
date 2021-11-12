@@ -485,7 +485,7 @@ This is different for the local variables defined in methods. If a local variabl
 | :warning: | When an object is created all of the fields are initialized with their respective default values in .NET, except if they are not explicitly initialized with some other value. |
 |:--:|:--|
 
-In some languages (as C and C++) the newly created objects are not initialized with default values of theirs data and this creates conditions for hard-to-find errors. The last leads to **uncontrolled behavior,** where the program sometimes works correctly (when the allocated memory by chance has good values), and sometimes does not work (when the allocated memory does not contain the proper values). In C# and generally in .NET Framework this problem is solved by the default values for each type coming from the framework.
+In some languages (as C and C++) the newly created objects are not initialized with default values of their data and this creates conditions for hard-to-find errors. The last leads to **uncontrolled behavior,** where the program sometimes works correctly (when the allocated memory by chance has good values), and sometimes does not work (when the allocated memory does not contain the proper values). In C# and generally in .NET Framework this problem is solved by the default values for each type coming from the framework.
 
 The value of all types is 0 or something similar. For the most used types these values are as the follows:
 
@@ -579,11 +579,11 @@ As was explained in the beginning in this section, in the declaration of one fie
 
 #### Constants Based on "const"
 
-The fields, declared with `const`, have to be initialized during the de facto declaration and afterwards theirs value cannot be changed. They can be accessed without to create an instance (an object) of the class and they are common for all created objects in our program. Something more, when we compile the code, the places where `const` fields are referred are replaced with theirs particular values directly without to use the constant variable at all. For this reason the `const` fields are called **compile-time constants,** because they are replaced with the value during the compilation process.
+The fields, declared with `const`, have to be initialized during the de facto declaration and afterwards their value cannot be changed. They can be accessed without to create an instance (an object) of the class and they are common for all created objects in our program. Something more, when we compile the code, the places where `const` fields are referred are replaced with their particular values directly without to use the constant variable at all. For this reason the `const` fields are called **compile-time constants,** because they are replaced with the value during the compilation process.
 
 #### Constants Based on "readonly"
 
-The modifier `readonly` creates fields, which values cannot be changed once they are assigned. Fields, declared as `readonly`, allow one-time initialization either in the moment of the declaration or in the class constructors. Later theirs values cannot be changed. Because of this reason, the `readonly` fields are called **run-time constants** – constants, because their values cannot be changed after assignment and run-time, because this process happens during the execution of the program (in runtime).
+The modifier `readonly` creates fields, which values cannot be changed once they are assigned. Fields, declared as `readonly`, allow one-time initialization either in the moment of the declaration or in the class constructors. Later their values cannot be changed. Because of this reason, the `readonly` fields are called **run-time constants** – constants, because their values cannot be changed after assignment and run-time, because this process happens during the execution of the program (in runtime).
 
 Let’s illustrate the foregoing with the following example:
 
@@ -666,7 +666,7 @@ The name of the method is `Add` and the return value type is `int`. The paramete
 
 ## Accessing Non-Static Data of the Class
 
-In "Creating and Using Objects", we have discussed how based on the "dot" operator we can access fields and to call the methods of a given class. Now, let’s recall how we use conventional non-static methods of a given class, i.e. the methods do not have the modifier `static` in theirs declaration.
+In "Creating and Using Objects", we have discussed how based on the "dot" operator we can access fields and to call the methods of a given class. Now, let’s recall how we use conventional non-static methods of a given class, i.e. the methods do not have the modifier `static` in their declaration.
 
 E.g. let’s have the class `Dog` with the field `age`. To print the value of this field we need to create a `Dog` instance and access the field of this instance via a "dot" notation:
 
@@ -748,7 +748,7 @@ After one year dog's age is: 3
 
 ### Calling Non-Static Methods
 
-Like the fields, which do not have `static` modifier in theirs declarations, the methods, which are also non-static, can be called in the body of a class via the reserved word `this`. This is happening again with the "dot" notation and more specifically with the required arguments (if there are any):
+Like the fields, which do not have `static` modifier in their declarations, the methods, which are also non-static, can be called in the body of a class via the reserved word `this`. This is happening again with the "dot" notation and more specifically with the required arguments (if there are any):
 
 ```cs
 this.<method_name>(...)
@@ -993,7 +993,7 @@ As we can see, we implement without problem the access to the field `name` and t
 
 When a member of some class is declared with access level `internal`, then this element from the class **can be accessed from every class in the same assembly** (i.e. in the same project in Visual Studio), but not from classes outside it (i.e. from other projects in Visual Studio – from the same solution or from a different solution).
 
-Not that if we have a Visual Studio project, all classes in it are from the same assembly and classes defined in different Visual Studio projects (in the same or in a different solution) are from different assemblies.
+Note that if we have a Visual Studio project, all classes in it are from the same assembly and classes defined in different Visual Studio projects (in the same or in a different solution) are from different assemblies.
 
 Below is the explanation about the access level `internal`:
 
@@ -2089,8 +2089,8 @@ using System;
 
 class Point
 {
-    public double X    {    get;    set;    }
-    public double Y    {    get;    set;    }
+    public double X { get; set; }
+    public double Y { get; set; }
 
     public Point(int x, int y)
     {
