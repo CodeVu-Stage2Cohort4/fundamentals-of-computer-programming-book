@@ -1,4 +1,4 @@
-# Chapter 16. Linear Data Structures
+# Chapter 16. Lists, Linked List, and Dictionaries
 
 ## In This Chapter
 
@@ -1060,7 +1060,7 @@ Considering memory, `LinkedList<T>` generally takes more space because it holds 
 
 ## Dictionary Data Structure
 
-In the last few chapters we got familiar with some classic and very important data structures – arrays, lists, trees and graphs. In this chapter we will get familiar with the so called **"dictionaries",** which are extremely useful and widely used in the programming.
+In the last few chapters we got familiar with some classic and very important data structures – arrays and lsits. In this chapter we will get familiar with the so called **"dictionaries",** which are extremely useful and widely used in the programming.
 
 The dictionaries are also known as **associative arrays** or **maps.** In this book we are going to use the terminology "dictionary". Every element in the dictionary has a **key** and an **associated value** for this key. Both the key and the value represent a pair. The analogy with the real world dictionary comes from the fact, that in every dictionary, for every for word **(key),** we also have a description related to this word **(value).**
 
