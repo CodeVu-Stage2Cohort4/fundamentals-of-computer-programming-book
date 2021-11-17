@@ -1121,7 +1121,6 @@ In .NET there is a standard interface `IDictionary<K, V>` where `K` defines the 
 In .NET **interfaces** represent **specifications of methods** for a certain class. They define methods without implementation, which should be implemented by the classes that inherit them. How the interfaces and inheritance work we will discuss in more details in the chapter "Principles of the Object-Oriented Programming". For the moment all you need to know is that interfaces define which methods and fields should be implemented in the classes that inherit the interface.
 
 ### Class `Dictionary<K, V>`
-
 The class `Dictionary<K, V>` is a standard implementation of a **dictionary based on hash-table** in .NET Framework. Let's take a look at its main features. We will examine a specific example that illustrates the use of this class and its methods.
 
 ### Class `Dictionary<K, V>` – Main Operations
@@ -1143,7 +1142,7 @@ Let's review the methods in the class `Dictionary<K, V>`:
 
 We will illustrate how to use some of the above described operations with an example. We have some students, and every one of them could have only one mark. We want to store the marks in a structure that would allow us to perform a **fast search by the student's name.**
 
-For this task we create a **hash-table** with initial capacity of 6. It will use the student names for keys, and their marks for values. We will add 6 sample students, and then we will check what's happening when we print their data on the console. Here is how the code for this example should look like:
+For this task we create a **dictionary** with initial capacity of 6. It will use the student names for keys, and their marks for values. We will add 6 sample students, and then we will check what's happening when we print their data on the console. Here is how the code for this example should look like:
 
 ```cs
 using System;
@@ -1238,9 +1237,8 @@ Students dictionary cleared.
 Is dictionary empty: True
 ```
 
-We can see that the students are not ordered when printed. This is because in hash-tables (unlike balanced trees) the elements **are not kept sorted.**
+We can see that the students are not ordered when printed. This is because in dictionaries the elements **are not kept sorted.**
 
 Even if the current table capacity is changed while working with it, it is also highly possible that the order of the pairs could be changed as well. We will analyze the reason for this behavior later on.
 
-It is important to remember, that with hash-tables, we cannot rely on the elements being in order. If we need them ordered, we could sort the elements before printing. Another option would be using `SortedDictionary<K, V>`.
-
+It is important to remember, that with dictionaries, we cannot rely on the elements being in order. If we need them ordered, we could sort the elements before printing.
