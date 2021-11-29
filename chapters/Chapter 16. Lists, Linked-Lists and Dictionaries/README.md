@@ -2,7 +2,7 @@
 
 ## In This Chapter
 
-In this chapter we are going to get familiar with some of the basic presentations of data in programming: **lists and linear data structures.** Very often in order to solve a given problem we need to work with a sequence of elements. For example, to read completely this book we have to read sequentially each page, i.e. to **traverse sequentially** each of the elements of the set of the pages in the book. Depending on the task, we have to apply different operations on this set of data. In this chapter we will introduce the concept of **abstract data types (ADT)** and will explain how a certain ADT can have **multiple different implementations.** After that we shall explore how and when to use lists and their implementations **(linked list, doubly-linked list and array-list).** We are going to see how for a given task one structure may be more convenient than another. We are going to get familiar with some **implementations** of these structures.
+In this chapter we are going to get familiar with some of the basic presentations of data in programming: **lists and linear data structures.** Very often to solve a given problem we need to work with a sequence of elements. For example, to read completely this book we have to read sequentially each page, i.e. to **traverse sequentially** each of the elements of the set of the pages in the book. Depending on the task, we have to apply different operations to this set of data. In this chapter, we will introduce the concept of **abstract data types (ADT)** and will explain how a certain ADT can have **multiple different implementations.** After that we shall explore how and when to use lists and their implementations **(linked list, doubly-linked list, and array-list).** We are going to see how for a given task one structure may be more convenient than another. We are going to get familiar with some **implementations** of these structures.
 
 ## Abstract Data Structures
 
@@ -12,7 +12,7 @@ Before we start considering classes in C#, which implement some of the most freq
 
 Very often, when we write programs, we have to work with many objects (data). Sometimes we add and remove elements, other times we would like to order them or to process the data in another specific way. For this reason, different ways of storing data are developed, depending on the task. Most frequently these elements are ordered in some way (for example, object A is before object B).
 
-At this point we come to the aid of **data structures – a set of data** organized on the basis of logical and mathematical laws. Very often the choice of the right data structure makes the program much more efficient – we could save memory and execution time (and sometimes even the amount of code we write).
+At this point we come to the aid of **data structures – a set of data** organized based on logical and mathematical laws. Very often the choice of the right data structure makes the program much more efficient – we could save memory and execution time (and sometimes even the amount of code we write).
 
 ### What Is an Abstract Data Type?
 
@@ -22,23 +22,23 @@ In general, **abstract data types (ADT)** gives us a definition (abstraction) of
 
 We can differentiate several groups of data structures:
 
-- **Linear** – these include lists, stacks and queues
-- **Tree-like** – different types of trees like binary trees, B-trees and balanced trees
+- **Linear** – these include lists, stacks, and queues
+- **Tree-like** – different types of trees like binary trees, B-trees, and balanced trees
 - **Dictionaries** – key-value pairs organized in hash tables
 - **Sets** – unordered bunches of unique elements
 - **Others** – multi-sets, bags, multi-bags, priority queues, graphs, ...
 
-In this chapter we are going to explore the **linear (list-like) data structures,** and in the next several chapters we are going to pay attention to more complicated data structures.
+In this chapter, we are going to explore the **linear (list-like) data structures,** and in the next several chapters we are going to pay attention to more complicated data structures.
 
-**Mastering basic data structures in programming is essential,** as without them we could not program efficiently. They, together with algorithms, are in the basis of programming and in the next several chapters we are going to get familiar with them.
+**Mastering basic data structures in programming is essential,** as without them we could not program efficiently. They, together with algorithms, are the basis of programming and in the next several chapters we are going to get familiar with them.
 
 ## List Data Structures
 
-Most commonly used data structures are the **linear (list) data structures.** They are an abstraction of all kinds of rows, sequences, series and others from the real world.
+The most commonly used data structures are the **linear (list) data structures.** They are an abstraction of all kinds of rows, sequences, series, and others from the real world.
 
 ### List
 
-We could imagine the **list** as an **ordered sequence (line) of elements.** Let’s take as an example purchases from a shop. In the list we can read each of the elements (the purchases), as well as add new purchases in it. We can also remove (erase) purchases or shuffle them.
+We could imagine the **list** as an **ordered sequence (line) of elements.** Let’s take as an example purchases from a shop. In the list, we can read each of the elements (the purchases), as well as add new purchases in it. We can also remove (erase) purchases or shuffle them.
 
 ### Abstract Data Structure "List"
 
@@ -46,15 +46,15 @@ Let’s now give a more strict definition of the **structure list:**
 
 **List is a linear data structure,** which contains a sequence of elements. The list has the property length (count of elements) and its elements are **arranged consecutively.**
 
-The list allows adding elements on different positions, removing them and incremental crawling. Like we already mentioned, an ADT can have several implementations. An example of such ADT is the interface `System.
+The list allows adding elements on different positions, removing them, and incremental crawling. Like we already mentioned, an ADT can have several implementations. An example of such ADT is the interface `System.
 Collections.IList`.
 
-Interfaces in C# construct a frame (contract) for their implementations – classes. This contract consists of **a set of methods and properties,** which each class must implement in order to implement the interface. The data type "Interface" in C# we are going to discuss in depth in the chapter "Object-Oriented Programming Principles".
+Interfaces in C# construct a frame (contract) for their implementations – classes. This contract consists of **a set of methods and properties,** which each class must implement to implement the interface. The data type "Interface" in C# we are going to discuss in-depth in the chapter "Object-Oriented Programming Principles".
 
 Each ADT defines some interface. Let’s consider the interface `System.
 Collections.IList`. The basic methods, which it defines, are:
 
-- `int Add(object)` – adds element in the end of the list
+- `int Add(object)` – adds an element to the end of the list
 - `void Insert(int, object)` – adds element on a preliminary chosen position in the list
 - `void Clear()` – removes all elements in the list
 - `bool Contains(object)` – checks whether the list contains the element
@@ -69,7 +69,7 @@ Let’s see several from the basic implementations of the ADT list and explain i
 
 **Arrays** perform many of the features of the ADT list, but there is a significant difference – the lists allow adding new elements, while arrays have fixed size.
 
-Despite of that, an implementation of list is possible with an array, which automatically increments its size (similar to the class `StringBuilder`, which we already know from the chapter "Strings"). Such list is called **static list implemented with an extensible array.** Below we shall give a sample implementation of auto-resizable array-based list (array list). It is intended to hold any data type `T` through the concept of **generics** (see the "Generics" section in chapter "Defining Classes"):
+Despite that, an implementation of list is possible with an array, which automatically increments its size (similar to the class `StringBuilder`, which we already know from the chapter "Strings"). Such a list is called **static list implemented with an extensible array.** Below we shall give a sample implementation of an auto-resizable array-based list (array list). It is intended to hold any data type `T` through the concept of **generics** (see the "Generics" section in chapter "Defining Classes"):
 
 ```cs
 public class CustomArrayList<T>
@@ -98,7 +98,7 @@ public class CustomArrayList<T>
     }
 ```
 
-Firstly, we define an **array,** in which we are going **to keep the elements,** as well as a counter for the current count of elements. After that we add the constructor, as we initialize our array with some **initial capacity** (when capacity is not specified) in order to avoid resizing it when adding the first few elements. Let’s take a look at some typical operations like **add** (append) an element, **insert** an element at specified position (index) and **clear** the list:
+Firstly, we define an **array,** in which we are going **to keep the elements,** as well as a counter for the current count of elements. After that, we add the constructor, as we initialize our array with some **initial capacity** (when capacity is not specified) to avoid resizing it when adding the first few elements. Let’s take a look at some typical operations like **add** (append) an element, **insert** an element at specified position (index) and **clear** the list:
 
 ```cs
 /// <summary>Adds element to the list</summary>
@@ -153,9 +153,9 @@ public void Clear()
 }
 ```
 
-We implemented the operation **adding** a new element, as well as **inserting** a new element which both first ensure that the internal array (buffer) holding the elements has enough capacity. If the internal buffer is full, it is extended (grown) to a double of the current capacity. Since arrays in .NET do not support resizing, the **growing operation** allocated a new array of double size and moves all elements from the old array to the new.
+We implemented the operation **adding** a new element, as well as **inserting** a new element which both first ensures that the internal array (buffer) holding the elements has enough capacity. If the internal buffer is full, it is extended (grown) to double the current capacity. Since arrays in .NET do not support resizing, the **growing operation** allocated a new array of double size and moves all elements from the old array to the new.
 
-Below we implement **searching** operations (finding the index of given element and checking whether given element exists), as well as **indexer** – the ability to access the elements (for read and change) by their index specified in the `[]` operator:
+Below we implement **searching** operations (finding the index of a given element and checking whether a given element exists), as well as **indexer** – the ability to access the elements (for read and change) by their index specified in the `[]` operator:
 
 ```cs
 /// <summary>
@@ -254,9 +254,9 @@ public int Remove(T item)
 }
 ```
 
-In the methods above we **remove** elements. For this purpose, firstly we find the searched element, remove it and then shift the elements after it by one position to the left, in order to fill the empty position. Finally, we fill the position after the last item in the array with `null` value (the `default(T)`) to allow the garbage collector to release it if it is not needed. Generally, we want to keep all unused elements in the `arr` empty (`null` / zero value).
+In the methods above we **remove** elements. For this purpose, firstly we find the searched element, remove it and then shift the elements after it by one position to the left, to fill the empty position. Finally, we fill the position after the last item in the array with a `null` value (the `default(T)`) to allow the garbage collector to release it if it is not needed. Generally, we want to keep all unused elements in the `arr` empty (`null` / zero value).
 
-Let’s consider a sample usage of the recently implemented class. There is a `Main()` method, in which we demonstrate most of the operations. In the enclosed code we create a list of purchases, add, insert and remove few items and print the list on the console. Finally we check whether certain items exist:
+Let’s consider a sample usage of the recently implemented class. There is a `Main()` method, in which we demonstrate most of the operations. In the enclosed code we create a list of purchases, add, insert and remove a few items and print the list on the console. Finally, we check whether certain items exist:
 
 ```cs
 class CustomArrayListTest
@@ -308,11 +308,11 @@ Do we have to buy Bread? False
 
 ### Linked List (Dynamic Implementation)
 
-As we saw, the static list has a serious disadvantage – the operations for inserting and removing items from the inside of the array requires rearrangement of the elements. When frequently inserting and removing items (especially a large number of items), this can lead to low performance. In such cases it is advisable to use the so called **linked lists.** The difference in them is the structure of elements – while in the static list the element contains only the specific object, with the dynamic list the **elements keep information about their next element.**
+As we saw, the static list has a serious disadvantage – the operations for inserting and removing items from the inside of the array require rearrangement of the elements. When frequently inserting and removing items (especially a large number of items), can lead to low performance. In such cases, it is advisable to use the so-called **linked lists.** The difference in them is the structure of elements – while in the static list the element contains only the specific object, with the dynamic list the **elements keep information about their next element.**
 
 Here is how a sample linked list looks like in the memory:
 
-![Sample linked list](assets/sample-linked-list.png)
+![Sample linked list](./assets/sample-linked-list.png)
  
 For the dynamic **implementation of the linked list** we will need two classes: the class `ListNode`, which will hold a single element of the list along with its next element, and the main list class `DynamicList<T>` which will hold a sequence of elements as well as the `head` and the `tail` of the list:
 
@@ -346,9 +346,9 @@ public class DynamicList<T>
 }
 ```
 
-First, let’s consider the recursive class `ListNode`. It holds a single element and a reference (pointer) to the next element which is of the same class `ListNode`. So `ListNode` is an example of **recursive data structure** that is defined by referencing itself. The class is inner to the class `DynamicList<T>` (it is declared as a private member) and is therefore accessible only to it. For our `DynamicList<T>` we create 3 fields: `head` – pointer to the first element, `tail` – pointer to the last element and `count` – counter of the elements.
+First, let’s consider the recursive class `ListNode`. It holds a single element and a reference (pointer) to the next element which is of the same class `ListNode`. So `ListNode` is an example of **recursive data structure** that is defined by referencing itself. The class is inner to the class `DynamicList<T>` (it is declared as a private member) and is therefore accessible only to it. For our `DynamicList<T>` we create 3 fields: `head` – pointer to the first element, `tail` – pointer to the last element, and `count` – counter of the elements.
 
-After that we declare the **constructor** which creates and empty linked list:
+After that we declare the **constructor** which creates an empty linked list:
 
 ```cs
 public DynamicList()
@@ -363,7 +363,7 @@ Upon the initial construction the list is empty and for this reason we assign `h
 
 We are going to implement all basic operations: **adding** and **removing** items, as well as **searching** for an element and **accessing the elements by index.**
 
-Let’s start with the operation **add** (append) which is relatively simple. Two cases are considered: an **empty list** and a **non-empty list.** In both cases we append the element at the end of the list (where `tail` points) and after the operation all fields (`head`, `tail` and `count`) have correct values:
+Let’s start with the operation **add** (append) which is relatively simple. Two cases are considered: an **empty list** and a **non-empty list.** In both cases we append the element at the end of the list (where `tail` points) and after the operation, all fields (`head`, `tail` and `count`) have correct values:
 
 ```cs
 /// <summary>Add element at the end of the list</summary>
@@ -386,7 +386,7 @@ public void Add(T item)
 }
 ```
 
-You can now see the operation **removing** an item at specified index. It is considerably more complicated than adding:
+You can now see the operation **removing** an item at the specified index. It is considerably more complicated than adding:
 
 ```cs
 /// <summary>Removes and returns element on the specified index
@@ -502,11 +502,11 @@ public int Remove(T item)
 }
 ```
 
-The removal by value of an element works **like the removal of an element by index,** but there are two special considerations: the searched element **may not exist** and for this reason an extra check is necessary; there may be elements with `null` value in the list, which have to be removed and processed correctly. The last is done by comparing the elements through the static method `object.Equals(...)` which works well with `null` values.
+The removal by the value of an element works **like the removal of an element by index,** but there are two special considerations: the searched element **may not exist** and for this reason an extra check is necessary; there may be elements with `null` value in the list, which have to be removed and processed correctly. The last is done by comparing the elements through the static method `object.Equals(...)` which works well with `null` values.
 
-In order the removal to work correctly, it is necessary the elements in the array to be comparable, i.e. to have a correct implementation of the method `Equals()` derived from `System.Object`.
+For the removal to work correctly, the elements in the array must be comparable, i.e. to have a correct implementation of the method `Equals()` derived from `System.Object`.
 
-Bellow we give implementations of the operations for **searching** and checking whether the list **contains** a specified element:
+Below we give implementations of the operations for **searching** and checking whether the list **contains** a specified element:
 
 ```cs
 /// <summary>Searches for given element in the list</summary>
@@ -546,7 +546,7 @@ public bool Contains(T item)
 }
 ```
 
-The searching for an element works **like in the method for removing:** we start from the beginning of the list and check sequentially the next elements one after another, until we reach the end of the list or find the searched element.
+The searching for an element works **like in the method for removing:** we start from the beginning of the list and check sequentially the next elements one after another until we reach the end of the list or find the searched element.
 
 We have two more operations to implement – **accessing elements by index** (using the indexer) and finding the **count of elements** (through a property):
 
@@ -643,7 +643,7 @@ class DynamicListTest
 }
 ```
 
-The above code **checks all the operations** from our linked list implementation along with their special cases (like removing the first and the last element) and shows that out dynamic list implementation works correctly. The output of the above code is the following:
+The above code **checks all the operations** from our linked list implementation along with their special cases (like removing the first and the last element) and shows that our dynamic list implementation works correctly. The output of the above code is the following:
 
 ```console
 We need to buy:
@@ -657,7 +657,7 @@ Do we have to buy Bread? False
 
 ### Comparing the Static and the Dynamic Lists
 
-We implemented the abstract data type (ADT) **list** in two ways: **static (array list)** and **dynamic (linked list).** Once written these two implementations can be used in almost exactly the same way. For example see the following two pieces of code (using our array list and our linked list):
+We implemented the abstract data type (ADT) **list** in two ways: **static (array list)** and **dynamic (linked list).** Once written these two implementations can be used in almost the same way. For example, see the following two pieces of code (using our array list and our linked list):
 
 ```cs
 static void Main()
@@ -700,9 +700,9 @@ Dynamic list:
  - Zero
  - Three
 ```
-The above example demonstrates that certain ADT could be implemented in several conceptually different ways and the users may not notice the difference between them. Still, different implementations could have different performance and could take different amount of memory.
+The above example demonstrates that certain ADT could be implemented in several conceptually different ways and the users may not notice the difference between them. Still, different implementations could have different performances and could take a different amount of memory.
 
-This concept, known as **abstract behavior,** is fundamental for OOP and can be implemented by **abstract classes** or **interfaces** as we shall see in the section "Abstraction" of chapter "Object-Oriented Programming Principles".
+This concept, known as **abstract behavior,** is fundamental for OOP and can be implemented by **abstract classes** or **interfaces** as we shall see in the section "Abstraction" of the chapter "Object-Oriented Programming Principles".
 
 ### The ArrayList Class
 
@@ -716,11 +716,11 @@ After we got familiar with some of the basic implementations of the lists, we ar
 - `Clear()` – removes all elements from the list
 - `this[int]` – an indexer, allows accessing the elements by a given position (index)
 
-As we saw, one of the main problems with this implementation is the resizing of the inner array when adding and removing elements. In the `ArrayList` the problem is solved by preliminarily created array (buffer), which gives us the opportunity to add elements without resizing the array at each insertion or removal of elements.
+As we saw, one of the main problems with this implementation is the resizing of the inner array when adding and removing elements. In the `ArrayList` the problem is solved by a preliminarily created array (buffer), which allows us to add elements without resizing the array at each insertion or removal of elements.
 
 #### The ArrayList Class – Example
 
-The `ArrayList` class is **untyped,** so it can keep all kinds of elements – numbers, strings and other objects. Here is a small example:
+The `ArrayList` class is **untyped,** so it can keep all kinds of elements – numbers, strings, and other objects. Here is a small example:
 
 ```cs
 using System;
@@ -745,7 +745,7 @@ class ProgrArrayListExample
 }
 ```
 
-In the example we create `ArrayList` and we add in it several elements from different types: `string`, `int`, `double` and `DateTime`. After that we iterate over the elements and print them. If we execute the example, we are going to get the following result:
+In the example, we create `ArrayList` and we add in it several elements from different types: `string`, `int`, `double` and `DateTime`. After that, we iterate over the elements and print them. If we execute the example, we are going to get the following result:
 
 ```console
 Index=0; Value=Hello
@@ -756,7 +756,7 @@ Index=3; Value=29.12.2009 23:17:01
 
 #### ArrayList of Numbers – Example
 
-In case we would like to make an array of numbers and then process them, for example to find their sum, we have to convert the `object` type to a number. This is because `ArrayList` is actually a list of elements of type `object`, and not from some specific type (like `int` or `string`). Here is a sample code, which sums the elements of `ArrayList`:
+In case we would like to make an array of numbers and then process them, for example, to find their sum, we have to convert the `object` type to a number. This is because `ArrayList` is actually a list of elements of type `object`, and not from some specific type (like `int` or `string`). Here is a sample code, which sums the elements of `ArrayList`:
 
 ```cs
 ArrayList list = new ArrayList();
@@ -774,21 +774,21 @@ Console.WriteLine("Sum = " + sum);
 // Output: Sum = 30.5 EUR
 ```
 
-Note that in the array list we hold different types of values (`int`, `float`, `uint` and `string`) and we sum them in a variable of special type called `dynamic`. In C# `dynamic` is a universal data type intended to hold any value (numbers, objects, strings, even functions and methods). Operations over `dynamic` variables (like the + operator used above) are **resolved at runtime** and their action depends on the actual values of their arguments. At compile time almost every operation with `dynamic` variables successfully compiles. At runtime, if the operation can be performed, it is performed, otherwise and exception is thrown. This explains why we apply the operation + over the arguments 2, 3.5f, 25u and " EUR" and we finally obtain as a result the string "30.5 EUR".
+Note that in the array list we hold different types of values (`int`, `float`, `uint` and `string`) and we sum them in a variable of a special type called `dynamic`. In C# `dynamic` is a universal data type intended to hold any value (numbers, objects, strings, even functions, and methods). Operations over `dynamic` variables (like the + operator used above) are **resolved at runtime** and their action depends on the actual values of their arguments. At compile time almost every operation with `dynamic` variables successfully compiles. At runtime, if the operation can be performed, it is performed, otherwise, an exception is thrown. This explains why we apply the operation + over the arguments 2, 3.5f, 25u, and " EUR" and we finally obtain as a result the string "30.5 EUR".
 
 ### Generic Collections
 
-Before we continue to play with more examples of working with the `ArrayList` class, we shall recall the concept of Generic Data Types in C#, which gives the opportunity to parameterize lists and collections in C#.
+Before we continue to play with more examples of working with the `ArrayList` class, we shall recall the concept of Generic Data Types in C#, which allows parameterizing lists and collections in C#.
 
-When we use the `ArrayList` class and all classes, which implement the interface `System.IList`, we face the problem we saw earlier: when we add a new element from a class, we pass it as a value of type `object`. Later, when we search for a certain element, we get it as `object` and we have to cast it to the expected type (or use `dynamic`). It is not guaranteed, however, that all elements in the list will be of one and the same type. Besides this, the conversion from one type to another takes time, and this drastically slows down the program execution.
+When we use the `ArrayList` class and all classes, which implement the interface `System.IList`, we face the problem we saw earlier: when we add a new element from a class, we pass it as a value of type `object`. Later, when we search for a certain element, we get it as `object` and we have to cast it to the expected type (or use `dynamic`). It is not guaranteed, however, that all elements in the list will be of the same type. Besides this, the conversion from one type to another takes time, and this drastically slows down the program execution.
 
-To solve the problem we use the **generic (template / parameterized) classes.** They are created to work with one or several types, as when we create them, we indicate what type of objects we are going to keep in them. Let’s recall that we create an instance of a generic class, for example `GenericType`, by indicating the type, of which the elements have to be:
+To solve the problem we use the **generic (template / parameterized) classes.** They are created to work with one or several types, as when we create them, we indicate what type of objects we are going to keep in them. Let’s recall that we create an instance of a generic class, for example, `GenericType`, by indicating the type, of which the elements have to be:
 
 ```cs
 GenericType<T> instance = new GenericType<T>();
 ```
 
-This type `T` can be any successor of the class `System.Object`, for example `string` or `DateTime`. Here are few examples:
+This type `T` can be any successor of the class `System.Object`, for example `string` or `DateTime`. Here are a few examples:
 
 ```cs
 List<int> intList = new List<int>();
@@ -800,7 +800,7 @@ Let’s consider some of the **generic collections in .NET Framework.**
 
 ### The `List<T>` Class
 
-**`List<T>` is the generic variant of `ArrayList`.** When we create an object of type `List<T>`, we indicate the type of the elements, which will be hold in the list, i.e. we substitute the denoted by `T` type with some real data type (for example number or string).
+**`List<T>` is the generic variant of `ArrayList`.** When we create an object of type `List<T>`, we indicate the type of the elements, which will be held in the list, i.e. we substitute the denoted by `T` type with some real data type (for example number or string).
 
 Let’s consider a case in which we would like to create a list of integer elements. We could do this in the following way:
 
@@ -808,25 +808,25 @@ Let’s consider a case in which we would like to create a list of integer eleme
 List<int> intList = new List<int>();
 ```
 
-Thus the created list can contain only integer numbers and cannot contain other objects, for example strings. If we try to add to `List<int>` an object of type `string`, we are going to get a compilation error. Via the generic types the C# compiler protects us from mistakes when working with collections.
+Thus the created list can contain only integer numbers and cannot contain other objects, for example, strings. If we try to add to `List<int>` an object of type `string`, we are going to get a compilation error. Via the generic types, the C# compiler protects us from mistakes when working with collections.
 
 ### The List Class – Array-Based Implementation
 
 `List<T>` works like our class `CustomArrayList<T>`. It keeps its elements in the memory as an **array,** which is **partially in use and partially free** for new elements (blank). Thanks to the reserved blank elements in the array, the operation **append** almost always manages to add the new element without the need to resize the array. Sometimes, of course, the array has to be resized, but as each resize would double the size of the array, resizing happens so seldom that it can be ignored in comparison to the count of append operations. We could imagine a `List<T>` like an **array, which has some capacity and is filled to a certain level:**
 
-![Array-based List Class](assets/array-based-list-class.png)
+![Array-based List Class](./assets/array-based-list-class.png)
  
-Thanks to the preliminarily allocated capacity of the array, containing the elements of the class `List<T>`, it can be extremely efficient data structure when it is necessary to **add elements fast,** **extract elements** and **access the elements by index.** Still, it is pretty **slow in inserting and removing elements** unless these elements are at the last position.
+Thanks to the preliminarily allocated capacity of the array, containing the elements of the class `List<T>`, it can be an extremely efficient data structure when it is necessary to **add elements fast,** **extract elements** and **access the elements by index.** Still, it is pretty **slow in inserting and removing elements** unless these elements are at the last position.
 
-We could say that `List<T>` combines the good sides of lists and arrays – fast adding, changeable size and direct access by index.
+We could say that `List<T>` combines the good sides of lists and arrays – fast adding, changeable size, and direct access by index.
 
 ### When to Use `List<T>`?
 
 We already explained that the `List<T>` class uses an inner array for keeping the elements and the array doubles its size when it gets overfilled. Such implementation causes the following good and bad sides:
 
-- The **search by index is very fast** – we can access with equal speed each of the elements, regardless of the count of elements.
+- The **search by an index is very fast** – we can access with equal speed each of the elements, regardless of the count of elements.
 - The **search for an element by value** works with as many comparisons as the count of elements (in the worst case), i.e. it **is slow.**
-- **Inserting and removing elements** is a **slow** operation – when we add or remove elements, especially if they are not in the end of the array, we have to shift the rest of the elements and this is a slow operation.
+- **Inserting and removing elements** is a **slow** operation – when we add or remove elements, especially if they are not at the end of the array, we have to shift the rest of the elements and this is a slow operation.
 - When **adding a new element,** sometimes we have to increase the capacity of the array, which is a slow operation, but it happens seldom and the average speed of insertion to List does not depend on the count of elements, i.e. it works **very fast.**
 
 | :warning: | Use `List<T>` when you don’t expect frequent insertion and deletion of elements, but you expect to add new elements at the end of the list or to access the elements by index. |
@@ -870,7 +870,7 @@ static void Main()
 }
 ```
 
-From the mathematics we know that if a number is **not prime** it has **at least one divisor** in the interval [2 ... square root from the given number]. This is what we use in the example above. For each number we look for a divisor in this interval. If we find a divisor, then the number is not prime and we could continue with the next number from the interval. Gradually, by adding the prime numbers we fill the list, after which we traverse it and print it on the screen. Here is how the output of the code above looks like:
+From the mathematics, we know that if a number is **not prime** it has **at least one divisor** in the interval [2 ... square root from the given number]. This is what we use in the example above. For each number, we look for a divisor in this interval. If we find a divisor, then the number is not prime and we could continue with the next number from the interval. Gradually, by adding the prime numbers we fill the list, after which we traverse it and print it on the screen. Here is how the output of the code above looks like:
 
 ```console
 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293
@@ -880,7 +880,7 @@ From the mathematics we know that if a number is **not prime** it has **at least
 
 Let’s consider a more interesting example – let’s write a program, which can find the **union and the intersection of two sets of numbers.**
 
-![Union and intersection](assets/union-and-intersection.png)
+![Union and intersection](./assets/union-and-intersection.png)
 
 We could consider that there are two lists of numbers and we would like to take the elements, which are in both sets **(intersection),** or we look for those elements, which are at least in one of the sets **(union).**
 
@@ -1007,11 +1007,11 @@ static void Main()
 }
 ```
 
-In order to intersect the sets we do the following: we put all elements from the first list (via `AddRange()`), after which we remove all elements, which are not in the second list.
+To intersect the sets we do the following: we put all elements from the first list (via `AddRange()`), after which we remove all elements, which are not in the second list.
 
-The problem can also be solved even in an easier way by using the method `RemoveAll(Predicate<T> match)`, but it is related to using programming constructs, called **delegates and lambda expressions,** which are considered in the chapter Lambda Expressions and LINQ. The union we make as we add elements from the first list, after which we remove all elements, which are in the second list, and finally we add all elements of the second list.
+The problem can also be solved even in an easier way by using the method `RemoveAll(Predicate<T> match)`, but it is related to using programming constructs, called **delegates and lambda expressions,** which are considered in the chapter Lambda Expressions and LINQ. The union we make as we add elements from the first list, after which we remove all elements, which are in the second list, and finally, we add all elements of the second list.
 
-The result from the two programs is **exactly the same:**
+The result from the two programs is **the same:**
 
 ```console
 firstList = { 1 2 3 4 5 }
@@ -1022,7 +1022,7 @@ intersect = { 2 4 }
 
 ### Converting a List to Array and Vice Versa
 
-In C# the **conversion of a list to an array** is easy by using the given method `ToArray()`. For the opposite operation we could use the constructor of `List<T>(System.Array)`. Let’s see an example, demonstrating their usage:
+In C# the **conversion of a list to an array** is easy by using the given method `ToArray()`. For the opposite operation, we could use the constructor of `List<T>(System.Array)`. Let’s see an example, demonstrating their usage:
 
 ```cs
 static void Main()
@@ -1035,7 +1035,7 @@ static void Main()
 
 ### The `LinkedList<T>` Class
 
-This class is a **dynamic implementation of a doubly linked list** built in .NET Framework. Its elements contain a certain value and a pointer to the previous and the next element. The `LinkedList<T>` class in .NET works in similar fashion like our class `DynamicList<T>`.
+This class is a **dynamic implementation of a doubly linked list** built-in .NET Framework. Its elements contain a certain value and a pointer to the previous and the next element. The `LinkedList<T>` class in .NET works similarly to our class `DynamicList<T>`.
 
 ### When Should We Use `LinkedList<T>`?
 
@@ -1044,7 +1044,7 @@ We saw that the dynamic and the static implementation have their specifics consi
 - The **append** operation is **very fast,** because the list always knows its last element **(tail).**
 - **Inserting** a new element at a random position in the list is **very fast** (unlike `List<T>`) if we have a pointer to this position, e.g. if we insert at the list start or at the list end.
 - **Searching** for elements **by index** or **by value** in `LinkedList` is a **slow** operation, as we have to scan all elements consecutively by beginning from the start of the list.
-- **Removing** elements is a **slow** operation, because it includes searching.
+- **Removing** elements is a **slow** operation because it includes searching.
 
 ### Basic Operations in the `LinkedList<T>` Class
 
@@ -1052,15 +1052,15 @@ We saw that the dynamic and the static implementation have their specifics consi
 
 ### When Should We Use `LinkedList<T>`?
 
-Using `LinkedList<T>` is preferable when we have to **add / remove elements at both ends of the list** and when the access to the elements is consequential.
+Using `LinkedList<T>` is preferable when we have to **add/remove elements at both ends of the list** and when the access to the elements is consequential.
 
 However, when we have to **access the elements by index,** then `List<T>` is a more appropriate choice.
 
-Considering memory, `LinkedList<T>` generally takes more space because it holds the value and several additional pointers for each element. `List<T>` also takes additional space because it allocates memory for more elements than it actually uses (it keeps bigger capacity than the number of its elements).
+Considering memory, `LinkedList<T>` generally takes more space because it holds the value and several additional pointers for each element. `List<T>` also takes additional space because it allocates memory for more elements than it uses (it keeps a bigger capacity than the number of its elements).
 
 ## Dictionary Data Structure
 
-In the last few chapters we got familiar with some classic and very important data structures – arrays and lsits. In this chapter we will get familiar with the so called **"dictionaries",** which are extremely useful and widely used in the programming.
+In the last few chapters, we got familiar with some classic and very important data structures – arrays and lists. In this chapter, we will get familiar with the so-called **"dictionaries",** which are extremely useful and widely used in programming.
 
 The dictionaries are also known as **associative arrays** or **maps.** In this book we are going to use the terminology "dictionary". Every element in the dictionary has a **key** and an **associated value** for this key. Both the key and the value represent a pair. The analogy with the real world dictionary comes from the fact, that in every dictionary, for every for word **(key),** we also have a description related to this word **(value).**
 
@@ -1069,13 +1069,13 @@ The dictionaries are also known as **associative arrays** or **maps.** In this b
 
 ### Dictionary Data Structure – Example
 
-We are going to illustrate what exactly the data structure dictionary means using an everyday, real world example.
+We are going to illustrate what exactly the data structure dictionary means using an everyday, real-world example.
 
-When you go to a theatre, opera or a concert, there is usually a place where you can leave your outdoor clothing. The employee than takes your jacket and gives you a number. When the event is over, on your way out, you give them back the same number. The employee uses this number to search and find your jacket to give back to you.
+When you go to a theatre, opera or a concert, there is usually a place where you can leave your outdoor clothing. The employee then takes your jacket and gives you a number. When the event is over, on your way out, you give them back the same number. The employee uses this number to search and find your jacket to give back to you.
 
-Thanks to this example we can see that the idea for using a **key** (the number that the employee gives you) to store a **value** (your jacket), and later having the option to access it, is not so abstract. Actually this is a method that is often widely used not only in programming, but also in many other practical areas.
+Thanks to this example we can see that the idea for using a **key** (the number that the employee gives you) to store a **value** (your jacket) and later having the option to access it, is not so abstract. This is a method that is often widely used not only in programming but also in many other practical areas.
 
-When using the **ADT dictionary,** the key may not just be a number, but any other type of object. In the case, when we have a key (number), we could implement this type of structure as a regular array. In this scenario the **set of keys** is already known – these are the numbers from `0` to `n`, where `n` represents the size of the array (when `n` is within the allowed limits). The idea of the dictionaries is to provide us with more flexibility regarding the set of the keys.
+When using the **ADT dictionary,** the key may not just be a number, but any other type of object. In that case, when we have a key (number), we could implement this type of structure as a regular array. In this scenario, the **set of keys** is already known – these are the numbers from `0` to `n`, where `n` represents the size of the array (when `n` is within the allowed limits). The idea of the dictionaries is to provide us with more flexibility regarding the set of the keys.
 
 When using dictionaries, the set of keys usually is a randomly chosen set of values like real numbers or strings. The only restriction is that we can distinguish one key from the other. Later we will take a look at some additional requirements for the keys that are needed for the different kinds of implementations.
 
@@ -1096,7 +1096,7 @@ Later in this chapter, we will find out the result from the execution of the exa
 
 ### The Abstract Data Structure "Dictionary" (Associative Array, Map)
 
-In programming the **abstract data structure "dictionary"** is represented by many aggregated pairs (key, value) along with predefined methods for accessing the values by a given key. Alternatively this data structure can also be called a **"map"** or **"associative array".**
+In programming, the **abstract data structure "dictionary"** is represented by many aggregated pairs (key, value) along with predefined methods for accessing the values by a given key. Alternatively, this data structure can also be called a **"map"** or **"associative array".**
 
 Described below are the required operations, defined by this data structure:
 
@@ -1107,42 +1107,42 @@ Described below are the required operations, defined by this data structure:
 Here are some additional methods, which are supported by the ADT.
 
 - `bool Contains(key)` – returns true if the dictionary has a pair with the selected key
-- `int Count` – returns the number of elements (key value pairs) in the dictionary
+- `int Count` – returns the number of elements (key-value pairs) in the dictionary
 
-Other operations that are usually supported are: extracting all of the keys, values or key value pairs and importing them into another structure (array, list). This way they can easily be traversed using a loop.
+Other operations that are usually supported are: extracting all of the keys, values, or key-value pairs and importing them into another structure (array, list). This way they can easily be traversed using a loop.
 
-| :warning: | For the comfort of .NET developers, the IDictionary<K, V> interface holds an indexing property `V this[K] { get; set; }`, which is usually implemented by calling the methods `V Get(K)`, `Add(K, V)`. Bear in mind that the access method (accessor) get of the property `V this[K]` of the class `Dictionary<K, V>` in .NET throws an exception if the given key `K` does not exist in the dictionary. In order to access the value of a certain key, without having to worry about exceptions, use the method `bool TryGetValue(K key, out V value)`. |
+| :warning: | For the comfort of .NET developers, the IDictionary<K, V> interface holds an indexing property `V this[K] { get; set; }`, which is usually implemented by calling the methods `V Get(K)`, `Add(K, V)`. Bear in mind that the access method (accessor) get of the property `V this[K]` of the class `Dictionary<K, V>` in .NET throws an exception if the given key `K` does not exist in the dictionary. To access the value of a certain key, without having to worry about exceptions, use the method `bool TryGetValue(K key, out V value)`. |
 |:--:|:--|
 
 ### The Interface `IDictionary<K, V>`
 
-In .NET there is a standard interface `IDictionary<K, V>` where `K` defines the type of the key, and `V` type of the value. It defines all of the basic operations that the dictionaries should implement. `IDictionary<K, V>` corresponds to the abstract data structure "dictionary" and defines the operations, mentioned above, but without supplying an actual implementation of them. This interface is defined in assembly `mscorelib`, `namespace System.Collections.Generic`.
+In .NET there is a standard interface `IDictionary<K, V>` where `K` defines the type of the key and `V` type of the value. It defines all of the basic operations that the dictionaries should implement. `IDictionary<K, V>` corresponds to the abstract data structure "dictionary" and defines the operations, mentioned above, but without supplying an actual implementation of them. This interface is defined in assembly `mscorelib`, `namespace System.Collections.Generic`.
 
-In .NET **interfaces** represent **specifications of methods** for a certain class. They define methods without implementation, which should be implemented by the classes that inherit them. How the interfaces and inheritance work we will discuss in more details in the chapter "Principles of the Object-Oriented Programming". For the moment all you need to know is that interfaces define which methods and fields should be implemented in the classes that inherit the interface.
+In .NET **interfaces** represent **specifications of methods** for a certain class. They define methods without implementation, which should be implemented by the classes that inherit them. How the interfaces and inheritance work we will discuss in more detail in the chapter "Principles of Object-Oriented Programming". For the moment all you need to know is that interfaces define which methods and fields should be implemented in the classes that inherit the interface.
 
 ### Class `Dictionary<K, V>`
-The class `Dictionary<K, V>` is a standard implementation of a **dictionary based on hash-table** in .NET Framework. Let's take a look at its main features. We will examine a specific example that illustrates the use of this class and its methods.
+The class `Dictionary<K, V>` is a standard implementation of a **dictionary based on hash-table** in the .NET Framework. Let's take a look at its main features. We will examine a specific example that illustrates the use of this class and its methods.
 
 ### Class `Dictionary<K, V>` – Main Operations
 
-Creating a hash-table is done by calling some of the constructors of `Dictionary<K, V>`. Through them we can assign an initial value for the capacity and load factor. It's good if we know in advance the expected number of elements, which would be added in our hash-table, so as to set it at the creation of the hash-table. This way we will avoid the unneeded expansions of the hash-table and we will achieve better performance. By default the value of the **initial capacity is 16,** and the load **factor is 0.75.**
+Creating a hash-table is done by calling some of the constructors of `Dictionary<K, V>`. Through them, we can assign an initial value for the capacity and load factor. It's good if we know in advance the expected number of elements, which would be added in our hash-table, to set it at the creation of the hash-table. This way we will avoid the unneeded expansions of the hash-table and we will achieve better performance. By default, the value of the **initial capacity is 16,** and the load **factor is 0.75.**
 
 Let's review the methods in the class `Dictionary<K, V>`:
 
 - `void Add(K, V)` adds a new pair (key and a value) to the hash-table. Throws an exception in the case that the key exists. This operation is extremely fast.
-- `bool TryGetValue(K, out V)` returns an element of type V via the out parameter for the given key or null, if there is no such key. The result of this operation will be true if such an element is found. The operation is very fast, because the algorithm for searching an element by key in the hash-table is with complexity about O(1)
+- `bool TryGetValue(K, out V)` returns an element of type V via the out parameter for the given key or null, if there is no such key. The result of this operation will be true if such an element is found. The operation is very fast because the algorithm for searching an element by key in the hash-table is with complexity about O(1)
 - `bool Remove(K)` removes the element with this key. This operation works very fast.
 - `void Clear()` removes all the elements from the dictionary.
 - `bool ContainsKey(K)` check if there is an ordered pair with this key in the dictionary. This operation works extremely fast.
 - `bool ContainsValue(V)` checks if there is one or more ordered pairs with this value. This operation is slow because it checks every element of the hash-table (like searching in a list).
 - `int Count` returns the number of ordered pairs within the dictionary.
-- Other operations – extracting all the keys, values or ordered pairs into a structure that could be iterated through using a loop.
+- Other operations – extracting all the keys, values, or ordered pairs into a structure that could be iterated through using a loop.
 
 #### Students and Marks – Example
 
-We will illustrate how to use some of the above described operations with an example. We have some students, and every one of them could have only one mark. We want to store the marks in a structure that would allow us to perform a **fast search by the student's name.**
+We will illustrate how to use some of the above-described operations with an example. We have some students, and every one of them could have only one mark. We want to store the marks in a structure that would allow us to perform a **fast search by the student's name.**
 
-For this task we create a **dictionary** with initial capacity of 6. It will use the student names for keys, and their marks for values. We will add 6 sample students, and then we will check what's happening when we print their data on the console. Here is how the code for this example should look like:
+For this task, we create a **dictionary** with an initial capacity of 6. It will use the student names for keys, and their marks for values. We will add 6 sample students, and then we will check what's happening when we print their data on the console. Here is how the code for this example should look like:
 
 ```cs
 using System;
