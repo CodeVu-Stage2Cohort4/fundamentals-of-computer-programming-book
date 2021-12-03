@@ -4,7 +4,7 @@
 
 In this chapter we will familiarize ourselves with the principles of object-oriented programming: **class inheritance, interface implementation, abstraction of data and behavior, encapsulation of data and class implementation, polymorphism and virtual methods.** We will explain in details the principles of cohesion and coupling. We will briefly outline object-oriented modeling and how to create an object model based on a specific business problem. We will familiarize ourselves with UML and its role in object-oriented modeling. Finally, we will briefly discuss design patterns and illustrate some of those that are widely used in practice.
 
-### Let’s Review: Classes and Objects
+## Let’s Review: Classes and Objects
 
 We introduced classes and objects in the chapter "Creating and Using Objects". Let’s shortly review them again.
 
@@ -13,28 +13,33 @@ Classes are a description (model) of real objects and events referred to as enti
 Classes possess characteristics – in programming they are referred to as properties. An example would be a set of grades.
 
 Classes also expose behavior known in programming as methods. An example would be sitting an exam.
+
 Methods and properties can be visible only within the scope of the class, which declared them and their descendants (private / protected), or visible to all other classes (public).
+
 Objects are instances of classes. For example, John is a Student and Peter is also a Student.
 
-### Object-Oriented Programming (OOP)
+## Object-Oriented Programming (OOP)
 
-**Object-oriented programming** is the successor of procedural (structural) programming. Procedural programming describes programs as groups of reusable code units (procedures) which define input and output parameters. Procedural programs consist of procedures, which invoke each other.
+**Object-oriented programming** is the successor of procedural (structural) programming. **Procedural programming describes programs as groups of reusable code units (procedures) which define input and output parameters.** Procedural programs consist of procedures, which invoke each other.
 
 The problem with procedural programming is that code reusability is hard and limited – only procedures can be reused and it is hard to make them generic and flexible. There is no easy way to work with abstract data structures with different implementations.
+
 The object-oriented approach relies on the paradigm that each and every program works with data that describes entities (objects or events) from real life. For example: accounting software systems work with invoices, items, warehouses, availabilities, sale orders, etc.
+
 This is how objects came to be. They describe characteristics (properties) and behavior (methods) of such real life entities.
+
 The main advantages and goals of OOP are to make complex software faster to develop and easier to maintain. OOP enables the easy reuse of code by applying simple and widely accepted rules (principles). Let’s check them out.
 
 ### Fundamental Principles of OOP
 
-In order for a programming language to be object-oriented, it has to enable working with classes and objects as well as the implementation and use of the fundamental object-oriented principles and concepts: inheritance, abstraction, encapsulation and polymorphism. Let’s summarize each of these fundamental principles of OOP:
-	Encapsulation
+In order for a programming language to be object-oriented, it has to enable working with classes and objects as well as the implementation and use of the fundamental object-oriented principles and concepts: **inheritance, abstraction, encapsulation and polymorphism.** Let’s summarize each of these fundamental principles of OOP:
+	**Encapsulation**
 We will learn to hide unnecessary details in our classes and provide a clear and simple interface for working with them.
-	Inheritance
+	**Inheritance**
 We will explain how class hierarchies improve code readability and enable the reuse of functionality.
-	Abstraction
+	**Abstraction**
 We will learn how to work through abstractions: to deal with objects considering their important characteristics and ignore all other details.
-	Polymorphism
+	**Polymorphism**
 
 We will explain how to work in the same manner with different objects, which define a specific implementation of some abstract behavior.
 Some OOP theorists also put the concept of exception handling as additional fifth fundamental principle of OOP. We shall not get into a detailed dispute about whether or not exceptions are part of OOP and rather will note that exceptions are supported in all modern object-oriented languages and are the primary mechanism of handling errors and unusual situations in object-oriented programming. Exceptions always come together with OOP and their importance is explained in details in the chapter "Exception Handling".
