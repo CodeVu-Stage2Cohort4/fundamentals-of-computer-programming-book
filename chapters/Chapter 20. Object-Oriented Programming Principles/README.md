@@ -66,7 +66,9 @@ Inheritance in .NET is defined with a special construct in the class declaration
 
 Let’s take a look at an example of class inheritance in .NET. This is how a base class looks like:
 
-	/// <summary>Felidae is latin for "cats"</summary>
+/// <summary>
+///Felidae is latin for "cats"
+///</summary>
 public class Felidae
 {
 	private bool male;
