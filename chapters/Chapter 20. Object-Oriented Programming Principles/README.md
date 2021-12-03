@@ -54,18 +54,17 @@ Some OOP theorists also put the concept of exception handling as additional fift
 
 ### Inheritance
 
-Inheritance is a fundamental principle of object-oriented programming. It allows a class to "inherit" (behavior or characteristics) of another, more general class. For example, a lion belongs to the biological family of cats (Felidae). All cats that have four paws, are predators and hunt their prey. This functionality can be coded once in the Felidae class and all its predators can reuse it – Tiger, Puma, Bobcat, etc. Inheritance is described as is-kind-of relationship, e.g. Tiger is kind of Animal.
+**Inheritance** is a fundamental principle of object-oriented programming. It **allows a class to "inherit" (behavior or characteristics) of another, more general class.** For example, a lion belongs to the biological family of cats (Felidae). All cats that have four paws, are predators and hunt their prey. This functionality can be coded once in the Felidae class and all its predators can reuse it – Tiger, Puma, Bobcat, etc. Inheritance is described as is-kind-of relationship, e.g. Tiger is kind of Animal.
 
 ### How Does Inheritance Work in .NET?
 
 Inheritance in .NET is defined with a special construct in the class declaration. In .NET and other modern programming languages, a class can inherit from a single class only (single inheritance), unlike C++ which supports inheriting from multiple classes (multiple inheritance). This limitation is necessitated by the difficulty in deciding which method to use when there are duplicate methods across classes (in C++, this problem is solved in a very complicated manner). In .NET, classes can inherit multiple interfaces, which we will discuss later.
 
-The class from which we inherit is referred to as parent class or base class / super class.
+**The class from which we inherit is referred to as parent class or base class / super class.**
 
 ### Inheritance of Classes – Example
 
 Let’s take a look at an example of class inheritance in .NET. This is how a base class looks like:
-Felidae.cs
 
 /// <summary>Felidae is latin for "cats"</summary>
 public class Felidae
@@ -88,8 +87,9 @@ public class Felidae
 		set { this.male = value; }
 	}
 }
+
 This is how the inheriting class, Lion, looks like:
-Lion.cs
+
 public class Lion : Felidae
 {
 	private int weight;
