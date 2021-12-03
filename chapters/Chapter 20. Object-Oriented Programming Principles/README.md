@@ -174,14 +174,14 @@ Calling the constructor of a base class happens outside the body of the construc
 ### Access Modifiers of Class Members and Inheritance
 
 Let’s review: in the "Defining Classes" chapter, we examined the basic access modifiers. Regarding members of a class (methods, properties and member variables) we examined the modifiers public, private and internal. Actually, there are two other modifiers: **protected and protected internal.** This is what they mean:
-	-protected defines class members which are not visible to users of the class (those who initialize and use it), but are visible to all inheriting classes (descendants).
-    
-	-protected internal defines class members which are both internal, i.e. visible within the entire assembly, and protected, i.e. not visible outside the assembly, but visible to classes who inherit it (even outside the assembly).
+
+-protected defines class members which are not visible to users of the class (those who initialize and use it), but are visible to all inheriting classes (descendants).
+-protected internal defines class members which are both internal, i.e. visible within the entire assembly, and protected, i.e. not visible outside the assembly, but visible to classes who inherit it (even outside the assembly).
 	
 **When a base class is inherited:**
-	-All of its public, protected and protected internal members (methods, properties, etc.) are visible to the inheriting class.
-	-All of its private methods, properties and member-variables are not visible to the inheriting class.
-	-All of its internal members are visible to the inheriting class, only if the base class and the inheriting class are in the same assembly (the same Visual Studio project).
+-All of its public, protected and protected internal members (methods, properties, etc.) are visible to the inheriting class.
+-All of its private methods, properties and member-variables are not visible to the inheriting class.
+-All of its internal members are visible to the inheriting class, only if the base class and the inheriting class are in the same assembly (the same Visual Studio project).
     
 Here is an example, which demonstrates the levels of visibility with inheritance:
 
@@ -206,7 +206,6 @@ public class Felidae
 
 And this is how the class Lion looks like:
 
-Lion.cs
 public class Lion : Felidae
 {
 	private int weight;
@@ -234,7 +233,7 @@ In .NET every class, which does not inherit a class explicitly, inherits the sys
 
 Because of this property, every class instance can be cast to Object. A typical example of the advantages of implicit inheritance is its use with data structures, which we saw in the chapters on data structures. Untyped list structures (like System.Collections.ArrayList) can hold all kinds of objects, because they treat them as instances of the class Object.
 
- 	The generic types (generics) have been provided specifically for working with collections and objects of different types (generics are further discussed in the chapter "Defining Classes"). They allow creating typified classes, e.g. a collection which works only with objects of type Lion.
+ The generic types (generics) have been provided specifically for working with collections and objects of different types (generics are further discussed in the chapter "Defining Classes"). They allow creating typified classes, e.g. a collection which works only with objects of type Lion.
     
 ### .NET, Standard Libraries and Object
 
@@ -248,7 +247,6 @@ In .NET, there are a lot of predefined classes (we already covered a lot of them
 
 Let’s take a closer look at the Object class using an example:
 
-ObjectExample.cs
 public class ObjectExample
 {
 	static void Main()
@@ -261,11 +259,10 @@ public class ObjectExample
 
 In this example, we cast an AfricanLion to Object. This operation is called upcasting and is permitted because AfricanLion is an indirect child of the Object class.
 
- 	Now it is the time to mention that the keywords string and object are simply compiler tricks and are substituted with System.String and System.Object during compilation.
+ Now it is the time to mention that the keywords string and object are simply compiler tricks and are substituted with System.String and System.Object during compilation.
     
 Let’s continue with the example:
 
-ObjectExample.cs
 // …
 
 AfricanLion africanLion = new AfricanLion(true, 80);
@@ -286,13 +283,12 @@ In this example, we cast an Object to AfricanLion. This operation is called down
 
 ### The Object.ToString() Method
 
-One of the most commonly used methods, originating from the class Object is ToString(). It returns a textual representation of an object. Every object includes this method and therefore has a textual representation. This method is used when we print the object using Console.WriteLine(…).
+One of the most commonly used methods, originating from the class Object is ToString(). It returns a textual representation of an object. Every object includes this method and therefore has a textual representation. This method is used when we print the object using `Console.WriteLine(…)`.
 
 ### Object.ToString() – Example
 
 Here is an example in which we call the ToString() method:
 
-ToStringExample.cs
 public class ToStringExample
 {
 	static void Main()
@@ -313,7 +309,6 @@ In this case, the base class implementation is called, because Lion doesn’t ov
 ### Overriding ToString() – Example
 
 We will now demonstrate how useful overriding ToString() inherited from System.Object can be:
-AfricanLion.cs
 
 public class AfricanLion : Lion
 {
@@ -331,7 +326,6 @@ public class AfricanLion : Lion
 
 In the source code above, we use the method String.Format(…), in order to format the result appropriately. This is how we can then invoke the overridden method ToString():
 
-OverrideExample.cs
 public class OverrideExample
 {
 	static void Main()
@@ -348,11 +342,15 @@ System.Object
 Chapter_20_OOP.Felidae
 Chapter_20_OOP.Lion
 (AfricanLion, male: True, weight: 80)
-Notice that ToString() is invoked implicitly. When we pass an object to the WriteLine() method, that object provides its string representation using ToString() and only then it is printed to the output stream. That way, there’s no need to explicitly get string representations of objects when printing them.
-Virtual Methods: the "override" and "new" Keywords
+
+**Notice that ToString() is invoked implicitly.** When we pass an object to the WriteLine() method, that object provides its string representation using ToString() and only then it is printed to the output stream. That way, there’s no need to explicitly get string representations of objects when printing them.
+
+### Virtual Methods: the "override" and "new" Keywords
+
 We need to explicitly instruct the compiler that we want our method to override another. In order to do this, we use the override keyword. Notice what happens if we remove it:
  
 Let’s experiment and use the keyword new instead of override:
+
 public class AfricanLion : Lion
 {
 	// …
@@ -382,7 +380,9 @@ public class OverrideExample
 This is the result:
 (AfricanLion, male: True, weight: 80)
 Chapter_20_OOP.AfricanLion
+
 We notice that the implementation of Object.ToString() is invoked when we upcast AfricanLion to object. In other words, when we use the keyword new, we create a new method, which hides the old one. The old method can then only be called with an upcast.
+
 What would happen, if we reverted to using the keyword override in the previous example? Take a look for yourself:
 (AfricanLion, male: True, weight: 80)
 (AfricanLion, male: True, weight: 80)
@@ -392,6 +392,7 @@ Surprising, isn’t it? It turns out that when we override a method, we cannot a
 A method, which can be overridden, is called virtual. In .NET, methods are not virtual by default. If we want a method to be overridable, we can do so by including the keyword virtual in the declaration of the method.
 
 The explicit instructions to the compiler that we want to override a method (by using override), is a protection against mistakes. If there’s a typo in the method’s name or the types of its parameters, the compiler will inform us immediately of this mistake. It will know something is not right when it cannot find a method with the same signature in any of the base classes.
+
 Virtual Methods are explained in details in the section about polymorphism.
 
 ### Transitive Properties of Inheritance
@@ -399,11 +400,11 @@ Virtual Methods are explained in details in the section about polymorphism.
 In mathematics, transitivity indicates transferability of relationships. Let’s take the indicator "larger than" (>) as an example. If A>B and B>C, we can conclude that A>C. This means that the relation "larger than" (>) is transitive, because we can unequivocally determine whether A is larger or smaller than C and vice versa.
 
 If the class Lion inherits the class Felidae and the class AfricanLion inherits Lion, then this implies that AfricanLion inherits Felidae. Therefore, AfricanLion also has the property Male, which is defined in Felidae. This useful property allows a particular functionality to be defined in the most appropriate class.
-Transitiveness – Example
+
+### Transitiveness – Example
 
 Here is an example, which demonstrates the transitive property of inheritance:
 
-TransitivenesExample.cs
 public class TransitivityExample
 {
 	static void Main()
@@ -414,7 +415,8 @@ public class TransitivityExample
 		africanLion.Male = true;
 	}
 }
-It is because of the transitive property of inheritance that we can be sure that all classes include the method ToString() and all other methods of Object regardless of which class they inherit.
+
+It is because of the transitive property of inheritance that we can be sure that all classes include the method `ToString()` and all other methods of Object regardless of which class they inherit.
 
 ### Inheritance Hierarchy
 
@@ -463,12 +465,13 @@ A one-to-one association is depicted like this:
 ### From Diagrams to Classes
 
 Class diagrams are most often used for creating classes. Diagrams facilitate and speed up the design of classes in a software project.
+
 We can create classes directly following the diagram above. Here is the Capital class:
 
-Capital.cs
 public class Capital { }
+
 And the Country class:
-Country.cs
+
 public class Country
 {
 	/// <summary>Country's capital - association</summary>
@@ -509,7 +512,6 @@ Abstraction allows us to do something very important – define an interface for
 
 Here is an example, where we define a specific data type "African lion", but use it later on in an abstract manner through the "Felidae" abstraction. This abstraction does not concern itself with the details of all types of lions.
 
-AbstractionExample.cs
 public class AbstractionExample
 {
 	static void Main()
@@ -524,7 +526,7 @@ public class AbstractionExample
 
 ### Interfaces
 
-In the C# language the interface is a definition of a role (a group of abstract actions). It defines what sort of behavior a certain object must exhibit, without specifying how this behavior should be implemented. Interfaces are also known as contracts or specifications of behavior.
+In the C# language the **interface is a definition of a role (a group of abstract actions).** It defines what sort of behavior a certain object must exhibit, without specifying how this behavior should be implemented. Interfaces are also known as contracts or specifications of behavior.
 
 An object can have multiple roles (or implement multiple interfaces / contracts) and its users can utilize it from different points of view.
 
@@ -548,17 +550,15 @@ A class / method implementation is the source code of a class / method. Usually 
 
 An interface in .NET is defined with the keyword interface. An interface can contain only method declarations and constants. Here is an example of an interface:
 
-a
-Reproducible.cs
 public interface Reproducible<T> where T : Felidae
 {
 	T[] Reproduce(T mate);
 }
+	
 We explained the generics in the "Defining Classes" chapter (section "Generics"). The interface we wrote has a method of type T (T must inherit Felidae) which returns an array of T.
     
 And this is how the class Lion, which implements the interface Reproducible looks like:
-    
-Lion.cs
+   
 public class Lion : Felidae, Reproducible<Lion>
 {
 	// …
@@ -570,10 +570,12 @@ public class Lion : Felidae, Reproducible<Lion>
 }
     
 The name of the interface is coded in the declaration of the class (on the first row) and specifies the generic class.
+	
 We can indicate which method from a specific interface we implement by typing its name explicitly:
 Lion[] Reproducible<Lion>.Reproduce(Lion mate)
     
 In an interface, methods are only declared; the implementation is coded in the class implementing the interface, i.e. – Lion.
+	
 The class that implements a certain interface must implement all methods in it. The only exception is when the class is abstract. Then it can implement none, some or all of the methods. All remaining methods have to be implemented in some of the inheriting classes.
 
 ### Abstraction and Interfaces
@@ -597,13 +599,13 @@ Internally, a program / component can use interfaces for defining roles. That wa
 ### Encapsulation
 
 Encapsulation is one of the main concepts in OOP. It is also called "information hiding". An object has to provide its users only with the essential information for manipulation, without the internal details. A Secretary using a Laptop only knows about its screen, keyboard and mouse. Everything else is hidden internally under the cover. She does not know about the inner workings of Laptop, because she doesn’t need to, and if she does, she might make a mess. Therefore parts of the properties and methods remain hidden to her.
+	
 The person writing the class has to decide what should be hidden and what not. When we program, we must define as private every method or field which other classes should not be able to access.
 
 ### Encapsulation – Examples
 
 The example below shows how to hide methods that the class’ user doesn’t have to be familiar with and are only used internally by the author of the class. First, we define an abstract class Felidae, which defines the public operations of cats (regardless of the cat’s type):
-	
-Felidae.cs
+
 public class Felidae
 {
 	public virtual void Walk()
@@ -615,7 +617,7 @@ public class Felidae
 }
 	
 This is how the class Lion looks like:
-Lion.cs
+	
 public class Lion : Felidae, Reproducible<Lion>
 {
 	// …
@@ -644,7 +646,7 @@ The public method Walk() calls some other private method 4 times. That way the b
 	
 ### Polymorphism
 	
-The next fundamental principle of Object-Oriented Programming is "Polymorphism". Polymorphism allows treating objects of a derived class as objects of its base class. For example, big cats (base class) catch their prey (a method) in different ways. A Lion (derived class) sneaks on it, while a Cheetah (another derived class) simply outruns it.
+The next fundamental principle of Object-Oriented Programming is "Polymorphism". **Polymorphism allows treating objects of a derived class as objects of its base class.** For example, big cats (base class) catch their prey (a method) in different ways. A Lion (derived class) sneaks on it, while a Cheetah (another derived class) simply outruns it.
 	
 Polymorphism allows us to treat a cat of random size just like a big cat and command it "catch your prey", regardless of its exact size.
 Polymorphism can bear strong resemblance to abstraction, but it is mostly related to overriding methods in derived classes, in order to change their original behavior inherited from the base class. Abstraction is associated with creating an interface of a component or functionality (defining a role). We are going to explain method overriding shortly.
@@ -679,10 +681,10 @@ public abstract class Felidae
 	public abstract bool CatchPrey(object prey);
 }
 
-Notice how in the example above the ordinary methods Hide() and Run() have a body, while the abstract method CatchPrey() does not. Notice that the methods are declared as protected.
+Notice how in the example above the ordinary methods Hide() and Run() have a body, while the abstract method `CatchPrey()`i does not. Notice that the methods are declared as protected.
 	
 Here is how the implementation of the above abstraction looks like:
-Lion.cs
+
 public class Lion : Felidae, Reproducible<Lion>
 {
 	protected void Ambush()
@@ -703,7 +705,7 @@ public class Lion : Felidae, Reproducible<Lion>
 Here is one more example of abstract behavior, implemented with an abstract class and a polymorphic call to an abstract method. In this example we define abstract method and we override it later in a descendant class. Let’s see the code and discuss it later.
 
 Firstly, we define the abstract class Animal:
-Animal.cs
+
 public abstract class Animal
 {
 	public void PrintInformation()
@@ -716,7 +718,7 @@ public abstract class Animal
 }
 	
 We also define the class Cat, which inherits the abstract class Animal and defines an implementation of the abstract method GetTypicalSound():
-Cat.cs
+
 public class Cat : Animal
 {
 	protected override String GetTypicalSound()
@@ -759,7 +761,7 @@ Virtual methods are important for method overriding, which lies at the heart of 
 ### Virtual Methods – Example
 	
 We have a class inheriting another and the two classes share a common method. Both versions of the method write on the console. Here is how the Lion class looks like:
-Lion.cs
+
 public class Lion : Felidae, Reproducible<Lion>
 {
 	public override void CatchPrey(object prey)
@@ -769,7 +771,7 @@ public class Lion : Felidae, Reproducible<Lion>
 }
 	
 Here is how the AfricanLion class looks like:
-AfricanLion.cs
+
 public class AfricanLion : Lion
 {
 	public override void CatchPrey(object prey)
@@ -779,8 +781,7 @@ public class AfricanLion : Lion
 }
 	
 We make three attempts to create instances and call the method CatchPrey.
-	
-VirtualMethodsExample.cs
+
 public class VirtualMethodsExample
 {
 	static void Main()
@@ -809,8 +810,7 @@ Virtual methods as well as abstract methods can be overridden. Abstract methods 
  In the example above, the implementation of the base class is hidden and omitted. Here is how we can also use it as part of the new implementation (in case we want to complement the old implementation rather than override it).
 	
 Here is how the AfricanLion class looks like:
-	
-AfricanLion.cs
+
 public class AfricanLion : Lion
 {
 	public override void CatchPrey(object prey)
@@ -833,12 +833,14 @@ calling base.CatchPrey
 	
 Some may ask what the difference between the virtual and non-virtual methods is.
 	
-Virtual methods are used when we expect from derived classes to change / complement / alter some of the inherited functionality. For example, the method Object.ToString() allows derived classes to change / replace its implementation in any way they want. Then, even if we work with an object not directly, but rather by upcasting it to Object, we use the overwritten implementation of the virtual methods.
+Virtual methods are used when we expect from derived classes to change / complement / alter some of the inherited functionality. For example, the method `Object.ToString()` allows derived classes to change / replace its implementation in any way they want. Then, even if we work with an object not directly, but rather by upcasting it to Object, we use the overwritten implementation of the virtual methods.
+	
 Virtual methods are a key characteristic of objects when we talk about abstraction and working with abstract types.
 	
 Sealing of methods is done when we rely on a piece of functionality and we don’t want it to be altered. We already know that methods are sealed by default. But if we want a base class’ virtual method to become sealed in a derived class, we use override sealed.
 	
 The string class has no virtual methods. In fact, inheriting string is entirely forbidden for inheritance through the keyword sealed in its declaration. Here are parts of the declarations of string and object classes (the ellipses in square brackets indicate omitted, irrelevant code):
+	
 namespace System
 {
 	[…] public class Object
@@ -865,6 +867,7 @@ namespace System
 }
 	
 ### When Should We Use Polymorphism?
+	
 The answer to this question is simple: whenever we want to enable changing a method’s implementation in a derived class. It’s a good rule to work with the most basic class possible or directly with an interface. That way, changes in used classes reflect to a much lesser extent on classes written by us. The less a program knows about its surrounding classes, the fewer changes (if any) it would have to undergo.
 	
 ### Cohesion and Coupling
@@ -898,11 +901,12 @@ A method is well written when it performs only one task and performs it well. A 
 	
 ### Weak Cohesion
 	
-Weak cohesion is observed along with methods, which perform several unrelated tasks. Such methods take several different groups of parameters, in order to perform different tasks. 	Sometimes, this requires logically unrelated data to be unified for the sake of such methods. Weak cohesion is harmful and must be avoided!
+Weak cohesion is observed along with methods, which perform several unrelated tasks. Such methods take several different groups of parameters, in order to perform different tasks. Sometimes, this requires logically unrelated data to be unified for the sake of such methods. Weak cohesion is harmful and must be avoided!
 	
 ### Weak Cohesion – Example
 	
 Here is a sample class with weak cohesion:
+	
 public class Magic
 {
 	public void PrintDocument(Document d) { … }
@@ -996,6 +1000,7 @@ In fact, the above code is an example of bad code according to all rules of Proc
 ### Best Practices with Coupling
 	
 The most common and advisable way of invoking a well written module’s functionality is through interfaces. That way, the functionality can be substituted without clients of the code requiring changes. The jargon expression for this is "programming against interfaces".
+	
 Most commonly, an interface describes a "contract" observed by this module. It is good practice not to rely on anything else other than what’s described by this contract. The use of inner classes, which are not part of the public interface of a module, is not recommended because their implementation can be substituted without substituting the contract (we already discussed this in the section "Abstraction").
 	
 It is good practice that the methods are made flexible and ready to work with all components, which observe their interfaces, and not only with definitive ones (i.e. to have implicit requirements). The latter would mean that these methods expect something specific from the components they can work with. It is also good practice that all dependencies are clearly described and visible. Otherwise, the maintenance of such code becomes difficult (it is riddled with stumbling-blocks).
@@ -1005,6 +1010,7 @@ A good example of strong cohesion and loose coupling we can find in the classes 
 ### Spaghetti Code
 
 Spaghetti code is unstructured code with unclear logic; it is difficult to read, understand and maintain; it violates and mixes up consistency; it has weak cohesion and tight coupling. Such code is associated with spaghetti, because it is just as tangled and twisted. When you pull out a strand of spaghetti (i.e. a class or method), the whole dish of spaghetti can turn out tangled in it (i.e. changes in one method or class lead to dozens of other changes because of the strong dependence between them). It is almost impossible to reuse spaghetti code, since there is no way to separate that part of the code, which is practically applicable.
+	
 Spaghetti code is achieved when you have written code, supplement it and have to readapt it again and again every time the requirements change. Time passes by until a moment comes when it has to be rewritten from scratch.
 	
 ### Cohesion and Coupling in Engineering Disciplines
@@ -1054,9 +1060,12 @@ Sometimes it’s difficult to determine whether some subject or phenomena from t
 ### Identification of Class Attributes
 	
 Classes have attributes (characteristics), for example the class Student has a name, institution and a list of courses. Not all characteristics are important for a software system. For example, as far as the class Student is concerned eye color is a non-essential characteristic. Only essential characteristics have to be modeled.
-Identification of Operations on Classes
+	
+### Identification of Operations on Classes
+	
 Each class must have clearly defined responsibilities – what objects or processes from the real world it identifies and what tasks it performs. Each action in the program is performed by one or several methods in some class. The actions are modeled as operations (methods).
-A combination of verb + noun is used for the name of a method, e.g. PrintReport(), ConnectToDatabase(). We cannot define all methods of a given class immediately. Firstly, we define the most important methods – those that implement the basic responsibilities of the class. Over time additional methods appear.
+	
+A combination of verb + noun is used for the name of a method, e.g. `PrintReport()`, `ConnectToDatabase()`. We cannot define all methods of a given class immediately. Firstly, we define the most important methods – those that implement the basic responsibilities of the class. Over time additional methods appear.
 	
 ### Identification of Relationships between Classes
 
@@ -1077,6 +1086,7 @@ Use cases describe interaction between the actors and the system. The use case m
 Here is how a use case diagram looks like:
  
 The actor (the "dwarf" in the diagram) is someone who interacts with the system (a user, external system or, for instance, an external environment). The actor has a unique name and, possibly, a description. I our case actors are the WatchUser and the WatchRepairPerson.
+	
 A use case (the "egg" in the diagram) describes a single functionality of the system, a single action that can be performed by some actor. It has a unique name and is related to actors. It can have input and output conditions. Most frequently, it contains a flow of operations (a process). It can also have other requirements. We have three use cases in the diagram above: ReadTime, SetTime and ChangeBattery.
 	
 A package holds several logically related use cases.
@@ -1122,8 +1132,7 @@ This is the most popular and most frequently used design pattern. It allows a cl
 ### The Singleton Design Pattern – Example
 	
 Here is a sample implementation of the singleton design pattern:
-	
-Singleton.cs
+
 public class Singleton
 {
 	// The single instance
