@@ -33,15 +33,19 @@ The main advantages and goals of OOP are to make complex software faster to deve
 ### Fundamental Principles of OOP
 
 In order for a programming language to be object-oriented, it has to enable working with classes and objects as well as the implementation and use of the fundamental object-oriented principles and concepts: **inheritance, abstraction, encapsulation and polymorphism.** Let’s summarize each of these fundamental principles of OOP:
+	
 	**Encapsulation**
 We will learn to hide unnecessary details in our classes and provide a clear and simple interface for working with them.
+	
 	**Inheritance**
 We will explain how class hierarchies improve code readability and enable the reuse of functionality.
+	
 	**Abstraction**
 We will learn how to work through abstractions: to deal with objects considering their important characteristics and ignore all other details.
+	
 	**Polymorphism**
-
 We will explain how to work in the same manner with different objects, which define a specific implementation of some abstract behavior.
+
 Some OOP theorists also put the concept of exception handling as additional fifth fundamental principle of OOP. We shall not get into a detailed dispute about whether or not exceptions are part of OOP and rather will note that exceptions are supported in all modern object-oriented languages and are the primary mechanism of handling errors and unusual situations in object-oriented programming. Exceptions always come together with OOP and their importance is explained in details in the chapter "Exception Handling".
 
 ### Inheritance
