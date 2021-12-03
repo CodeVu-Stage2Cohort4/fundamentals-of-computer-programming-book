@@ -662,7 +662,7 @@ Abstract classes are something in the middle between classes and interfaces. The
 ### Abstract Class – Examples
 
 Let’s take a look at an example of an abstract class:
-Felidae.cs
+
 /// <summary>Latin for "cats"</summary>
 public abstract class Felidae
 {
