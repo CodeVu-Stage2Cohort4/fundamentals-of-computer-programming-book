@@ -1169,17 +1169,21 @@ Factory method is another very common design pattern. It is intended for "produc
 Factory methods encapsulate object creation. This is useful if the creation process is very complicated – if it depends on settings in configuration files or input data by the user.
 	
 Suppose we have a class which contains graphics files (png, jpeg, bmp, etc.) and creates reduced size copies of them (the so called thumbnails). A variety of formats are supported, each represented by a class:
-	
+
+```cs	
 public class Thumbnail
 {
 	// …
 }
-
+```
+```cs
 public interface Image
 {
 	Thumbnail CreateThumbnail();
 }
-
+```	
+	
+```cs
 public class GifImage : Image
 {
 	public Thumbnail CreateThumbnail()
@@ -1188,7 +1192,9 @@ public class GifImage : Image
 		return gifThumbnail;
 	}
 }
-
+```
+	
+```cs
 public class JpegImage : Image
 {
 	public Thumbnail CreateThumbnail()
@@ -1197,9 +1203,11 @@ public class JpegImage : Image
 		return jpegThumbnail;
 	}
 }
-	
+```
+
 Here is how the class holding an album of images looks like:
-	
+
+```cs
 public class ImageCollection
 {
 	private IList<Image> images;
@@ -1220,9 +1228,11 @@ public class ImageCollection
 		return thumbnails;
 	}
 }
+```
 	
 The client of the program may require thumbnails of all images in the album:
 	
+```cs	
 public class Example
 {
 	static void Main()
@@ -1238,6 +1248,7 @@ public class Example
 		Console.WriteLine(imageRepository.CreateThumbnails());
 	}
 }
+```
 	
 ### Other Design Patterns
 	
