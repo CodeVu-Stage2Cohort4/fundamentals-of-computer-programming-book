@@ -109,21 +109,23 @@ public class Lion : Felidae
 
 ### The "base" Keyword
 
-In the above example, we used the keyword base in the constructor of the class Lion. The keyword indicates that the base class must be used and allows access to its methods, constructors and member variables. Using base(), we can call the constructor of the base class. Using base.Method(…) we can invoke a method of the base class, pass parameters to it and use its results. Using base.field we can get the value of a member variable from the base class or assign a different one to it.
+In the above example, we used the keyword base in the constructor of the class Lion. **The keyword indicates that the base class must be used and allows access to its methods, constructors and member variables.** Using `base()`, we can call the constructor of the base class. Using `base.Method(…)` we can invoke a method of the base class, pass parameters to it and use its results. Using `base.field` we can get the value of a member variable from the base class or assign a different one to it.
 
 In .NET, methods inherited from the base class and declared as virtual can be overridden. This means changing their implementation; the original source code from the base class is ignored and new code takes its place. More on overriding methods we will discuss in "Virtual Methods".
 
 We can invoke non-overridden methods from the base class without using the keyword base. Using the keyword is required only if we have an overridden method or variable with the same name in the inheriting class.
 
- 	The keyword base can be used explicitly for clarity. base.method(…) calls a method, which is necessarily from the base class. Such source code is easier to read, because we know where to look for the method in question.
+The keyword base can be used explicitly for clarity. `base.method(…)` calls a method, which is necessarily from the base class. Such source code is easier to read, because we know where to look for the method in question.
+
 Bear in mind that using the keyword this is not the same. It can mean accessing a method from the current, as well as the base class.
+
 You can take a look at the example in the section about access modifiers and inheritance. There it is clearly explained which members of the base class (methods, constructors and member variables) are accessible.
 
 ### Constructors with Inheritance
 
 When inheriting a class, our constructors must call the base class constructor, so that it can initialize its member variables. If we do not do this explicitly, the compiler will place a call to the parameterless base class constructor, ":base()", at the beginning of all our inheriting class' constructors. Here is an example:
-public class ExtendingClass : BaseClass
 
+public class ExtendingClass : BaseClass
 {
 	public ExtendingClass() { … }
 }
@@ -132,15 +134,18 @@ public class ExtendingClass : BaseClass
 {
 	public ExtendingClass() : base() { … }
 }
+
 If the base class has no default constructor (one without parameters) or that constructor is hidden, our constructors need to explicitly call one of the other base class constructors. The omission of such a call will result in a compile-time error.
- 	If a class has private constructors only, then it cannot be inherited.
+
+If a class has private constructors only, then it cannot be inherited.
+
 If a class has private constructors only, then this could indicate many other things. For example, no-one (other than that class itself) can create instances of such a class. Actually, that’s how one of the most popular design patterns (Singleton) is implemented.
+
 The Singleton design pattern is described in details at the end of this chapter.
 
 ### Constructors and the Keyword "base" – Example
 
 Take a look at the Lion class from our last example. It does not have a default constructor. Let’s examine a class inheriting from Lion:
-AfricanLion.cs
 
 public class AfricanLion : Lion
 {
@@ -163,21 +168,23 @@ public class AfricanLion : Lion
 }
 
 If we comment out the line ":base(male, weight);", the class AfricanLion will not compile. Try it.
- 	Calling the constructor of a base class happens outside the body of the constructor. The idea is that the fields of the base class should be initialized before we start initializing fields of the inheriting class, because they might depend on a base class field.
-Access Modifiers of Class Members and Inheritance
+ 
+Calling the constructor of a base class happens outside the body of the constructor. The idea is that the fields of the base class should be initialized before we start initializing fields of the inheriting class, because they might depend on a base class field.
 
-Let’s review: in the "Defining Classes" chapter, we examined the basic access modifiers. Regarding members of a class (methods, properties and member variables) we examined the modifiers public, private and internal. Actually, there are two other modifiers: protected and protected internal. This is what they mean:
-	protected defines class members which are not visible to users of the class (those who initialize and use it), but are visible to all inheriting classes (descendants).
+### Access Modifiers of Class Members and Inheritance
+
+Let’s review: in the "Defining Classes" chapter, we examined the basic access modifiers. Regarding members of a class (methods, properties and member variables) we examined the modifiers public, private and internal. Actually, there are two other modifiers: **protected and protected internal.** This is what they mean:
+	-protected defines class members which are not visible to users of the class (those who initialize and use it), but are visible to all inheriting classes (descendants).
     
 	-protected internal defines class members which are both internal, i.e. visible within the entire assembly, and protected, i.e. not visible outside the assembly, but visible to classes who inherit it (even outside the assembly).
-When a base class is inherited:
-	All of its public, protected and protected internal members (methods, properties, etc.) are visible to the inheriting class.
-	All of its private methods, properties and member-variables are not visible to the inheriting class.
-	All of its internal members are visible to the inheriting class, only if the base class and the inheriting class are in the same assembly (the same Visual Studio project).
+	
+**When a base class is inherited:**
+	-All of its public, protected and protected internal members (methods, properties, etc.) are visible to the inheriting class.
+	-All of its private methods, properties and member-variables are not visible to the inheriting class.
+	-All of its internal members are visible to the inheriting class, only if the base class and the inheriting class are in the same assembly (the same Visual Studio project).
     
 Here is an example, which demonstrates the levels of visibility with inheritance:
 
-Felidae.cs
 /// <summary>Latin for "cats"</summary>
 public class Felidae
 {
