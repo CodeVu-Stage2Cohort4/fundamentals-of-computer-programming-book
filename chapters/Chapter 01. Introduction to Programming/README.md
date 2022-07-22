@@ -10,7 +10,7 @@ We will introduce the C# language, the .NET platform and the different Microsoft
 
 ## What Does It Mean "To Program"?
 
-Nowadays computers have become irreplaceable. We use them to solve complex problems at the workplace, look for driving directions, have fun and communicate. They have countless applications in the business world, the entertainment industry, telecommunications and finance. It’s not an over¬statement to say that computers build the neural system of our contemporary society and it is difficult to imagine its existence without them.
+Nowadays computers have become irreplaceable. We use them to solve complex problems at the workplace, look for driving directions, have fun and communicate. They have countless applications in the business world, the entertainment industry, telecommunications and finance. It’s not an over-statement to say that computers build the neural system of our contemporary society and it is difficult to imagine its existence without them.
 
 Despite the fact that computers are so wide-spread, few people know how they really work. In reality, it is not the computers, but the programs (the software), which run on them, that matter. It is the software that makes computers valuable to the end-user, allowing for many different types of services that change our lives.
 
